@@ -34,7 +34,7 @@
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 16px;
       margin-bottom: 30px;
     }
@@ -53,8 +53,16 @@
     }
 
     .card-value {
-      font-size: 28px;
+      font-size: 27px;
       font-weight: bold;
+    }
+
+    .positive {
+      color: #16833b;
+    }
+
+    .negative {
+      color: #c62828;
     }
 
     .section {
@@ -74,7 +82,6 @@
       text-align: left;
       padding: 10px;
       border-bottom: 2px solid #ddd;
-      cursor: pointer;
     }
 
     td {
@@ -119,8 +126,23 @@
   <div class="cards">
 
     <div class="card">
+      <div class="card-title">Index Level</div>
+      <div class="card-value" id="indexLevel">--</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Daily Return</div>
+      <div class="card-value" id="dailyReturn">--</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Since Inception</div>
+      <div class="card-value" id="sinceInception">--</div>
+    </div>
+
+    <div class="card">
       <div class="card-title">Total Market Value</div>
-      <div class="card-value" id="totalValue">Loading...</div>
+      <div class="card-value" id="totalValue">--</div>
     </div>
 
     <div class="card">
@@ -133,10 +155,14 @@
       <div class="card-value" id="marketDate">--</div>
     </div>
 
-    <div class="card">
-      <div class="card-title">Largest Holding</div>
-      <div class="card-value" id="largestHolding">--</div>
-    </div>
+  </div>
+
+
+  <div class="section">
+
+    <h2>Index Performance</h2>
+
+    <canvas id="indexChart"></canvas>
 
   </div>
 
@@ -166,43 +192,93 @@
 <script>
 
 let holdingsData = [];
+let indexHistory = [];
 
 
 // ==========================================================
-// Load latest holdings
+// CSV loader
 // ==========================================================
 
-Papa.parse(
-  "data/latest.csv",
-  {
-    download: true,
-    header: true,
-    dynamicTyping: true,
+function loadCSV(path) {
 
-    complete: function(results) {
+  return new Promise((resolve, reject) => {
 
-      holdingsData = results.data.filter(
-        row => row.Symbol
-      );
+    Papa.parse(
+      path,
+      {
+        download: true,
+        header: true,
+        dynamicTyping: true,
 
-      holdingsData.sort(
-        (a, b) => b.Weight - a.Weight
-      );
+        complete: function(results) {
 
-      updateSummary();
-      createChart();
-      createTable();
-    },
+          resolve(
+            results.data.filter(
+              row => Object.values(row).some(
+                value => value !== null && value !== ""
+              )
+            )
+          );
+        },
 
-    error: function(error) {
+        error: function(error) {
+          reject(error);
+        }
+      }
+    );
 
-      document.getElementById("tableArea").innerHTML =
-        '<div class="error">Could not load latest.csv</div>';
+  });
+}
 
-      console.error(error);
-    }
-  }
-);
+
+// ==========================================================
+// Load all data
+// ==========================================================
+
+Promise.all([
+  loadCSV("data/latest.csv"),
+  loadCSV("data/index_history.csv")
+])
+
+.then(([holdings, history]) => {
+
+  holdingsData = holdings.filter(
+    row => row.Symbol
+  );
+
+  holdingsData.sort(
+    (a, b) => b.Weight - a.Weight
+  );
+
+
+  indexHistory = history.filter(
+    row => row.Date
+  );
+
+  indexHistory.sort(
+    (a, b) =>
+      new Date(a.Date) - new Date(b.Date)
+  );
+
+
+  updateSummary();
+
+  createIndexChart();
+
+  createHoldingsChart();
+
+  createTable();
+
+})
+
+.catch(error => {
+
+  document.getElementById("tableArea").innerHTML =
+    '<div class="error">Could not load index data.</div>';
+
+  console.error(error);
+
+});
 
 
 // ==========================================================
@@ -211,23 +287,65 @@ Papa.parse(
 
 function updateSummary() {
 
-  if (holdingsData.length === 0) {
+  if (
+    holdingsData.length === 0 ||
+    indexHistory.length === 0
+  ) {
     return;
   }
 
-  const totalValue = holdingsData.reduce(
-    (sum, row) => sum + row.MarketValue,
-    0
+
+  const latestIndex =
+    indexHistory[indexHistory.length - 1];
+
+
+  const firstIndex =
+    indexHistory[0];
+
+
+  const totalValue =
+    holdingsData.reduce(
+      (sum, row) =>
+        sum + row.MarketValue,
+      0
+    );
+
+
+  const indexLevel =
+    latestIndex.IndexLevel;
+
+
+  const dailyReturn =
+    latestIndex.DailyReturn;
+
+
+  const sinceInception =
+    indexLevel / firstIndex.IndexLevel - 1;
+
+
+  document.getElementById(
+    "indexLevel"
+  ).textContent =
+    indexLevel.toFixed(2);
+
+
+  setReturn(
+    "dailyReturn",
+    dailyReturn
   );
 
-  const marketDate =
-    holdingsData[0].PriceDate;
 
-  const largest =
-    holdingsData[0];
+  setReturn(
+    "sinceInception",
+    sinceInception
+  );
 
-  document.getElementById("totalValue").textContent =
-    "$" + totalValue.toLocaleString(
+
+  document.getElementById(
+    "totalValue"
+  ).textContent =
+    "$" +
+    totalValue.toLocaleString(
       undefined,
       {
         minimumFractionDigits: 2,
@@ -235,55 +353,110 @@ function updateSummary() {
       }
     );
 
-  document.getElementById("holdingCount").textContent =
+
+  document.getElementById(
+    "holdingCount"
+  ).textContent =
     holdingsData.length;
 
-  document.getElementById("marketDate").textContent =
-    marketDate;
 
-  document.getElementById("largestHolding").textContent =
-    largest.Symbol + " " +
-    (largest.Weight * 100).toFixed(2) + "%";
+  document.getElementById(
+    "marketDate"
+  ).textContent =
+    latestIndex.Date;
+
 }
 
 
 // ==========================================================
-// Top 10 chart
+// Format returns
 // ==========================================================
 
-function createChart() {
+function setReturn(elementId, value) {
 
-  const top10 =
-    holdingsData.slice(0, 10);
+  const element =
+    document.getElementById(elementId);
+
+  const sign =
+    value > 0 ? "+" : "";
+
+  element.textContent =
+    sign +
+    (value * 100).toFixed(2) +
+    "%";
+
+
+  element.classList.remove(
+    "positive",
+    "negative"
+  );
+
+
+  if (value > 0) {
+
+    element.classList.add(
+      "positive"
+    );
+
+  }
+
+  else if (value < 0) {
+
+    element.classList.add(
+      "negative"
+    );
+
+  }
+
+}
+
+
+// ==========================================================
+// Index performance chart
+// ==========================================================
+
+function createIndexChart() {
 
   const labels =
-    top10.map(row => row.Symbol);
-
-  const weights =
-    top10.map(
-      row => row.Weight * 100
+    indexHistory.map(
+      row => row.Date
     );
+
+
+  const levels =
+    indexHistory.map(
+      row => row.IndexLevel
+    );
+
 
   const ctx =
     document.getElementById(
-      "topHoldingsChart"
+      "indexChart"
     );
+
 
   new Chart(
     ctx,
     {
-      type: "bar",
+
+      type: "line",
 
       data: {
+
         labels: labels,
 
         datasets: [
           {
-            label: "Weight (%)",
-            data: weights
+            label: "Index Level",
+            data: levels,
+            tension: 0.15,
+            pointRadius: 3,
+            borderWidth: 2
           }
         ]
+
       },
+
 
       options: {
 
@@ -296,32 +469,154 @@ function createChart() {
           },
 
           tooltip: {
+
             callbacks: {
+
               label: function(context) {
+
                 return (
+                  "Index: " +
                   context.raw.toFixed(2)
-                  + "%"
                 );
+
               }
+
             }
+
           }
+
         },
+
 
         scales: {
 
           y: {
+
+            ticks: {
+
+              callback: function(value) {
+
+                return value.toFixed(1);
+
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+  );
+
+}
+
+
+// ==========================================================
+// Top 10 holdings chart
+// ==========================================================
+
+function createHoldingsChart() {
+
+  const top10 =
+    holdingsData.slice(0, 10);
+
+
+  const labels =
+    top10.map(
+      row => row.Symbol
+    );
+
+
+  const weights =
+    top10.map(
+      row => row.Weight * 100
+    );
+
+
+  const ctx =
+    document.getElementById(
+      "topHoldingsChart"
+    );
+
+
+  new Chart(
+    ctx,
+    {
+
+      type: "bar",
+
+      data: {
+
+        labels: labels,
+
+        datasets: [
+          {
+            label: "Weight (%)",
+            data: weights
+          }
+        ]
+
+      },
+
+
+      options: {
+
+        responsive: true,
+
+        plugins: {
+
+          legend: {
+            display: false
+          },
+
+          tooltip: {
+
+            callbacks: {
+
+              label: function(context) {
+
+                return (
+                  context.raw.toFixed(2)
+                  + "%"
+                );
+
+              }
+
+            }
+
+          }
+
+        },
+
+
+        scales: {
+
+          y: {
+
             beginAtZero: true,
 
             ticks: {
+
               callback: function(value) {
+
                 return value + "%";
+
               }
+
             }
+
           }
+
         }
+
       }
+
     }
   );
+
 }
 
 
@@ -376,7 +671,9 @@ function createTable() {
         <tr>
 
           <td>
-            <strong>${row.Symbol}</strong>
+            <strong>
+              ${row.Symbol}
+            </strong>
           </td>
 
           <td>
@@ -402,6 +699,7 @@ function createTable() {
         </tr>
 
       `;
+
     }
   );
 
@@ -417,7 +715,9 @@ function createTable() {
 
   document.getElementById(
     "tableArea"
-  ).innerHTML = html;
+  ).innerHTML =
+    html;
+
 }
 
 </script>
