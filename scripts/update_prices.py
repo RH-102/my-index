@@ -1,7 +1,14 @@
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timedelta
 import pandas as pd
 import yfinance as yf
+
+
+# ============================================================
+# Configuration
+# ============================================================
+
+BACKFILL_START = "2026-08-12"
 
 
 # ============================================================
@@ -37,18 +44,25 @@ holdings["Quantity"] = pd.to_numeric(
 symbols = holdings["Symbol"].tolist()
 
 print(
-    f"Downloading prices for "
-    f"{len(symbols)} securities..."
+    f"Downloading history for {len(symbols)} securities "
+    f"from {BACKFILL_START}..."
 )
 
 
 # ============================================================
-# Download latest daily prices
+# Download daily price history
+# yfinance end date is exclusive, so add one day.
 # ============================================================
+
+end_date = (
+    datetime.now().date()
+    + timedelta(days=1)
+).isoformat()
 
 prices = yf.download(
     tickers=symbols,
-    period="5d",
+    start=BACKFILL_START,
+    end=end_date,
     interval="1d",
     auto_adjust=False,
     group_by="ticker",
@@ -58,180 +72,175 @@ prices = yf.download(
 )
 
 
-price_map = {}
-date_map = {}
-missing = []
+# ============================================================
+# Build a price map for every symbol and trading date
+# ============================================================
 
+price_history = {}
+missing_symbols = []
 
 for symbol in symbols:
 
     try:
-
-        ticker_data = prices[symbol]
-
-        close = (
-            ticker_data["Close"]
-            .dropna()
-        )
+        close = prices[symbol]["Close"].dropna()
 
         if close.empty:
-
-            missing.append(symbol)
+            missing_symbols.append(symbol)
             continue
 
-        latest_price = float(
-            close.iloc[-1]
-        )
-
-        latest_date = (
-            close.index[-1]
-            .date()
-            .isoformat()
-        )
-
-        price_map[symbol] = latest_price
-        date_map[symbol] = latest_date
+        price_history[symbol] = {
+            idx.date().isoformat(): float(value)
+            for idx, value in close.items()
+        }
 
     except Exception:
+        missing_symbols.append(symbol)
 
-        missing.append(symbol)
 
+if missing_symbols:
 
-# ============================================================
-# Safety check
-# ============================================================
+    print("\nMissing price history:")
 
-if missing:
-
-    print("\nMissing prices:")
-
-    for symbol in missing:
+    for symbol in missing_symbols:
         print(f" - {symbol}")
 
     raise RuntimeError(
-        "Some securities have no price data. "
+        "Some securities have no price history. "
         "No index data was saved."
     )
 
 
 # ============================================================
-# Calculate market values and weights
+# Use only trading dates available for every holding
 # ============================================================
 
-holdings["Price"] = (
-    holdings["Symbol"]
-    .map(price_map)
-)
-
-holdings["PriceDate"] = (
-    holdings["Symbol"]
-    .map(date_map)
-)
-
-holdings["MarketValue"] = (
-    holdings["Quantity"]
-    * holdings["Price"]
-)
-
-total_value = (
-    holdings["MarketValue"]
-    .sum()
-)
-
-holdings["Weight"] = (
-    holdings["MarketValue"]
-    / total_value
-)
-
-
-# Sort by largest weight
-holdings = (
-    holdings
-    .sort_values(
-        by="Weight",
-        ascending=False
-    )
-    .reset_index(drop=True)
-)
-
-
-# ============================================================
-# Save latest snapshot
-# ============================================================
-
-holdings.to_csv(
-    LATEST_FILE,
-    index=False
-)
-
-
-# ============================================================
-# Determine market date
-# ============================================================
-
-latest_market_date = max(
-    date_map.values()
-)
-
-
-# ============================================================
-# Save DAILY HOLDINGS HISTORY
-# ============================================================
-
-daily_history = holdings[
-    [
-        "Symbol",
-        "Name",
-        "Quantity",
-        "Price",
-        "MarketValue",
-        "Weight",
+common_dates = set.intersection(
+    *[
+        set(price_history[symbol].keys())
+        for symbol in symbols
     ]
-].copy()
+)
 
+common_dates = sorted(common_dates)
 
-daily_history.insert(
-    0,
-    "Date",
-    latest_market_date
+if not common_dates:
+    raise RuntimeError(
+        "No common trading dates were found for all holdings."
+    )
+
+if BACKFILL_START not in common_dates:
+    raise RuntimeError(
+        f"{BACKFILL_START} is not available for every holding. "
+        "Backfill was stopped to avoid an incorrect index history."
+    )
+
+print(
+    f"Common trading dates: {common_dates[0]} "
+    f"through {common_dates[-1]}"
 )
 
 
-if HOLDINGS_HISTORY_FILE.exists():
+# ============================================================
+# Build complete historical snapshots
+# ============================================================
 
-    holdings_history = pd.read_csv(
-        HOLDINGS_HISTORY_FILE
+holdings_history_rows = []
+index_history_rows = []
+
+daily_totals = {}
+
+for market_date in common_dates:
+
+    snapshot = holdings[
+        ["Symbol", "Name", "Quantity"]
+    ].copy()
+
+    snapshot["Price"] = snapshot["Symbol"].map(
+        lambda symbol: price_history[symbol][market_date]
     )
 
-    # Remove existing records for the same
-    # trading day, so rerunning the workflow
-    # does not create duplicates.
-    holdings_history = (
-        holdings_history[
-            holdings_history["Date"]
-            != latest_market_date
-        ]
+    snapshot["MarketValue"] = (
+        snapshot["Quantity"]
+        * snapshot["Price"]
     )
 
-    holdings_history = pd.concat(
-        [
-            holdings_history,
-            daily_history
-        ],
-        ignore_index=True
+    total_value = float(
+        snapshot["MarketValue"].sum()
     )
 
-else:
-
-    holdings_history = daily_history
-
-
-holdings_history = (
-    holdings_history
-    .sort_values(
-        ["Date", "Weight"],
-        ascending=[True, False]
+    snapshot["Weight"] = (
+        snapshot["MarketValue"]
+        / total_value
     )
+
+    daily_totals[market_date] = total_value
+
+    for _, row in snapshot.iterrows():
+        holdings_history_rows.append(
+            {
+                "Date": market_date,
+                "Symbol": row["Symbol"],
+                "Name": row["Name"],
+                "Quantity": row["Quantity"],
+                "Price": row["Price"],
+                "MarketValue": row["MarketValue"],
+                "Weight": row["Weight"],
+            }
+        )
+
+
+# ============================================================
+# Index level: first day = 100
+# ============================================================
+
+base_market_value = daily_totals[BACKFILL_START]
+previous_level = None
+updated_at = datetime.now().isoformat(timespec="seconds")
+
+for market_date in common_dates:
+
+    total_value = daily_totals[market_date]
+
+    index_level = (
+        total_value
+        / base_market_value
+        * 100
+    )
+
+    if previous_level is None:
+        daily_return = 0.0
+    else:
+        daily_return = (
+            index_level
+            / previous_level
+            - 1
+        )
+
+    index_history_rows.append(
+        {
+            "Date": market_date,
+            "TotalMarketValue": total_value,
+            "IndexLevel": index_level,
+            "DailyReturn": daily_return,
+            "NumberOfHoldings": len(holdings),
+            "UpdatedAt": updated_at,
+        }
+    )
+
+    previous_level = index_level
+
+
+# ============================================================
+# Save full holdings history
+# ============================================================
+
+holdings_history = pd.DataFrame(
+    holdings_history_rows
+)
+
+holdings_history = holdings_history.sort_values(
+    ["Date", "Weight"],
+    ascending=[True, False]
 )
 
 holdings_history.to_csv(
@@ -241,189 +250,84 @@ holdings_history.to_csv(
 
 
 # ============================================================
-# Save INDEX HISTORY
+# Save full index history
 # ============================================================
 
-if INDEX_HISTORY_FILE.exists():
-
-    index_history = pd.read_csv(
-        INDEX_HISTORY_FILE
-    )
-
-else:
-
-    index_history = pd.DataFrame(
-        columns=[
-            "Date",
-            "TotalMarketValue",
-            "IndexLevel",
-            "DailyReturn",
-            "NumberOfHoldings",
-            "UpdatedAt",
-        ]
-    )
-
-
-# ------------------------------------------------------------
-# Establish base value
-# First trading day = Index Level 100
-# ------------------------------------------------------------
-
-if not index_history.empty:
-
-    index_history = (
-        index_history
-        .sort_values("Date")
-        .reset_index(drop=True)
-    )
-
-    base_market_value = float(
-        index_history.iloc[0]["TotalMarketValue"]
-    )
-
-else:
-
-    base_market_value = total_value
-
-
-# ------------------------------------------------------------
-# Backfill IndexLevel for old history if needed
-# ------------------------------------------------------------
-
-if (
-    not index_history.empty
-    and "IndexLevel" not in index_history.columns
-):
-
-    index_history["IndexLevel"] = (
-        index_history["TotalMarketValue"]
-        / base_market_value
-        * 100
-    )
-
-
-# ------------------------------------------------------------
-# Calculate today's index level
-# ------------------------------------------------------------
-
-index_level = (
-    total_value
-    / base_market_value
-    * 100
+index_history = pd.DataFrame(
+    index_history_rows
 )
 
-
-# Remove today's old row first
-# so rerunning the workflow does not duplicate dates
-
-if not index_history.empty:
-
-    index_history = (
-        index_history[
-            index_history["Date"]
-            != latest_market_date
-        ]
-    )
-
-
-# ------------------------------------------------------------
-# Daily return
-# ------------------------------------------------------------
-
-if not index_history.empty:
-
-    previous_level = float(
-        index_history
-        .sort_values("Date")
-        .iloc[-1]["IndexLevel"]
-    )
-
-    daily_return = (
-        index_level
-        / previous_level
-        - 1
-    )
-
-else:
-
-    daily_return = 0.0
-
-
-# ------------------------------------------------------------
-# Today's row
-# ------------------------------------------------------------
-
-today_row = pd.DataFrame(
-    [
-        {
-            "Date": latest_market_date,
-            "TotalMarketValue": total_value,
-            "IndexLevel": index_level,
-            "DailyReturn": daily_return,
-            "NumberOfHoldings": len(holdings),
-            "UpdatedAt": datetime.now().isoformat(
-                timespec="seconds"
-            ),
-        }
-    ]
-)
-
-
-index_history = pd.concat(
-    [
-        index_history,
-        today_row
-    ],
-    ignore_index=True
-)
-
-
-index_history = (
-    index_history
-    .sort_values("Date")
-)
+index_history = index_history.sort_values("Date")
 
 index_history.to_csv(
     INDEX_HISTORY_FILE,
     index=False
 )
 
+
+# ============================================================
+# Save latest snapshot
+# ============================================================
+
+latest_market_date = common_dates[-1]
+
+latest = holdings[
+    ["Symbol", "Name", "Quantity"]
+].copy()
+
+latest["Price"] = latest["Symbol"].map(
+    lambda symbol: price_history[symbol][latest_market_date]
+)
+
+latest["PriceDate"] = latest_market_date
+
+latest["MarketValue"] = (
+    latest["Quantity"]
+    * latest["Price"]
+)
+
+latest_total_value = float(
+    latest["MarketValue"].sum()
+)
+
+latest["Weight"] = (
+    latest["MarketValue"]
+    / latest_total_value
+)
+
+latest = (
+    latest
+    .sort_values(
+        by="Weight",
+        ascending=False
+    )
+    .reset_index(drop=True)
+)
+
+latest.to_csv(
+    LATEST_FILE,
+    index=False
+)
+
+
 # ============================================================
 # Display results
 # ============================================================
 
+latest_index = index_history.iloc[-1]
+
 print("\nSUCCESS")
-
-print(
-    f"Market date: "
-    f"{latest_market_date}"
-)
-
-print(
-    f"Total market value: "
-    f"${total_value:,.2f}"
-)
-
-print(
-    f"Index level: "
-    f"{index_level:.2f}"
-)
-
-print(
-    f"Daily return: "
-    f"{daily_return * 100:.2f}%"
-)
-
-print(
-    f"Holdings saved: "
-    f"{len(holdings)}"
-)
+print(f"Backfill start: {BACKFILL_START}")
+print(f"Latest market date: {latest_market_date}")
+print(f"Trading days saved: {len(common_dates)}")
+print(f"Total market value: ${latest_total_value:,.2f}")
+print(f"Index level: {latest_index['IndexLevel']:.2f}")
+print(f"Daily return: {latest_index['DailyReturn'] * 100:.2f}%")
+print(f"Holdings saved per day: {len(holdings)}")
 
 print("\nTop 10 holdings:")
 
-
-for _, row in holdings.head(10).iterrows():
-
+for _, row in latest.head(10).iterrows():
     print(
         f"{row['Symbol']:6s} "
         f"${row['Price']:10.2f} "
