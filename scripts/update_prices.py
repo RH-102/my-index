@@ -244,11 +244,122 @@ holdings_history.to_csv(
 # Save INDEX HISTORY
 # ============================================================
 
+if INDEX_HISTORY_FILE.exists():
+
+    index_history = pd.read_csv(
+        INDEX_HISTORY_FILE
+    )
+
+else:
+
+    index_history = pd.DataFrame(
+        columns=[
+            "Date",
+            "TotalMarketValue",
+            "IndexLevel",
+            "DailyReturn",
+            "NumberOfHoldings",
+            "UpdatedAt",
+        ]
+    )
+
+
+# ------------------------------------------------------------
+# Establish base value
+# First trading day = Index Level 100
+# ------------------------------------------------------------
+
+if not index_history.empty:
+
+    index_history = (
+        index_history
+        .sort_values("Date")
+        .reset_index(drop=True)
+    )
+
+    base_market_value = float(
+        index_history.iloc[0]["TotalMarketValue"]
+    )
+
+else:
+
+    base_market_value = total_value
+
+
+# ------------------------------------------------------------
+# Backfill IndexLevel for old history if needed
+# ------------------------------------------------------------
+
+if (
+    not index_history.empty
+    and "IndexLevel" not in index_history.columns
+):
+
+    index_history["IndexLevel"] = (
+        index_history["TotalMarketValue"]
+        / base_market_value
+        * 100
+    )
+
+
+# ------------------------------------------------------------
+# Calculate today's index level
+# ------------------------------------------------------------
+
+index_level = (
+    total_value
+    / base_market_value
+    * 100
+)
+
+
+# Remove today's old row first
+# so rerunning the workflow does not duplicate dates
+
+if not index_history.empty:
+
+    index_history = (
+        index_history[
+            index_history["Date"]
+            != latest_market_date
+        ]
+    )
+
+
+# ------------------------------------------------------------
+# Daily return
+# ------------------------------------------------------------
+
+if not index_history.empty:
+
+    previous_level = float(
+        index_history
+        .sort_values("Date")
+        .iloc[-1]["IndexLevel"]
+    )
+
+    daily_return = (
+        index_level
+        / previous_level
+        - 1
+    )
+
+else:
+
+    daily_return = 0.0
+
+
+# ------------------------------------------------------------
+# Today's row
+# ------------------------------------------------------------
+
 today_row = pd.DataFrame(
     [
         {
             "Date": latest_market_date,
             "TotalMarketValue": total_value,
+            "IndexLevel": index_level,
+            "DailyReturn": daily_return,
             "NumberOfHoldings": len(holdings),
             "UpdatedAt": datetime.now().isoformat(
                 timespec="seconds"
@@ -258,31 +369,13 @@ today_row = pd.DataFrame(
 )
 
 
-if INDEX_HISTORY_FILE.exists():
-
-    index_history = pd.read_csv(
-        INDEX_HISTORY_FILE
-    )
-
-    # Prevent duplicate dates
-    index_history = (
-        index_history[
-            index_history["Date"]
-            != latest_market_date
-        ]
-    )
-
-    index_history = pd.concat(
-        [
-            index_history,
-            today_row
-        ],
-        ignore_index=True
-    )
-
-else:
-
-    index_history = today_row
+index_history = pd.concat(
+    [
+        index_history,
+        today_row
+    ],
+    ignore_index=True
+)
 
 
 index_history = (
@@ -294,7 +387,6 @@ index_history.to_csv(
     INDEX_HISTORY_FILE,
     index=False
 )
-
 
 # ============================================================
 # Display results
@@ -310,6 +402,16 @@ print(
 print(
     f"Total market value: "
     f"${total_value:,.2f}"
+)
+
+print(
+    f"Index level: "
+    f"{index_level:.2f}"
+)
+
+print(
+    f"Daily return: "
+    f"{daily_return * 100:.2f}%"
 )
 
 print(
