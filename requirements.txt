@@ -1,2 +1,5 @@
 pandas
 yfinance
+requests
+lxml
+pandas_market_calendars
