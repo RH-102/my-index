@@ -16,16 +16,20 @@ OUTPUT_FILE = DATA_DIR / "top100_history.csv"
 START_YEAR = 2026
 QUARTER_MONTHS = [2, 5, 8, 11]
 TIMEZONE = ZoneInfo("America/New_York")
+LIST_SIZE = 125
 
 SOURCES = {
     "NASDAQ": "https://stockanalysis.com/list/nasdaq-stocks/",
     "NYSE": "https://stockanalysis.com/list/nyse-stocks/",
 }
 
+FINANCIALS_URL = "https://stockanalysis.com/stocks/sector/financials/"
+
 COLUMNS = [
     "SnapshotDate",
     "DataDate",
     "Status",
+    "ListType",
     "Rank",
     "Company",
     "Symbol",
@@ -34,6 +38,21 @@ COLUMNS = [
     "MarketCapDisplay",
     "Source",
 ]
+
+LIST_TYPES = [
+    "All",
+    "ExFinancials",
+]
+
+
+def headers():
+    return {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/151.0 Safari/537.36"
+        )
+    }
 
 
 def parse_market_cap(value):
@@ -78,68 +97,112 @@ def normalize_company_name(name):
     return re.sub(r"[^a-z0-9]+", "", str(name).lower())
 
 
-def fetch_exchange(exchange, url):
-    headers = {
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/151.0 Safari/537.36"
-        )
-    }
-
-    response = requests.get(url, headers=headers, timeout=45)
+def read_stock_table(url, required_columns):
+    response = requests.get(
+        url,
+        headers=headers(),
+        timeout=45,
+    )
     response.raise_for_status()
 
     tables = pd.read_html(StringIO(response.text))
 
-    table = None
     for candidate in tables:
-        required = {"Symbol", "Company Name", "Market Cap"}
-        if required.issubset(set(candidate.columns)):
-            table = candidate.copy()
-            break
+        if required_columns.issubset(set(candidate.columns)):
+            return candidate.copy()
 
-    if table is None:
-        raise RuntimeError(
-            f"Could not find the stock table for {exchange}."
-        )
+    raise RuntimeError(
+        f"Could not find the expected stock table at {url}."
+    )
+
+
+def fetch_exchange(exchange, url):
+    table = read_stock_table(
+        url,
+        {"Symbol", "Company Name", "Market Cap"},
+    )
 
     table = table[["Symbol", "Company Name", "Market Cap"]].copy()
     table.columns = ["Symbol", "Company", "MarketCapRaw"]
     table["Exchange"] = exchange
     table["MarketCap"] = table["MarketCapRaw"].map(parse_market_cap)
-    table = table.dropna(subset=["Symbol", "Company", "MarketCap"])
+
+    table = table.dropna(
+        subset=["Symbol", "Company", "MarketCap"]
+    )
     table = table[table["MarketCap"] > 0]
 
-    return table[["Symbol", "Company", "Exchange", "MarketCap"]]
+    return table[
+        ["Symbol", "Company", "Exchange", "MarketCap"]
+    ]
 
 
-def fetch_current_top100():
-    frames = []
+def fetch_financial_symbols():
+    financial_symbols = set()
 
-    for exchange, url in SOURCES.items():
-        print(f"Downloading {exchange} market-cap list...")
-        frames.append(fetch_exchange(exchange, url))
+    # StockAnalysis currently paginates the Financials sector list.
+    # Read several pages so the exclusion list is not limited to only
+    # the first page of financial companies.
+    for page in range(1, 5):
+        url = FINANCIALS_URL
+        if page > 1:
+            url = f"{FINANCIALS_URL}?page={page}"
 
-    combined = pd.concat(frames, ignore_index=True)
-    combined["CompanyKey"] = combined["Company"].map(normalize_company_name)
+        try:
+            table = read_stock_table(
+                url,
+                {"Symbol", "Company Name"},
+            )
+        except Exception:
+            # A page beyond the end may not exist. Once we already have
+            # symbols, it is safe to stop pagination.
+            if financial_symbols:
+                break
+            raise
 
-    # A company can have multiple share classes (for example GOOG/GOOGL).
-    # Keep only the largest market-cap listing so the ranking is by company.
-    combined = combined.sort_values("MarketCap", ascending=False)
-    combined = combined.drop_duplicates(subset=["CompanyKey"], keep="first")
-
-    top100 = combined.head(100).copy().reset_index(drop=True)
-
-    if len(top100) < 100:
-        raise RuntimeError(
-            f"Only {len(top100)} companies were available after filtering."
+        symbols = (
+            table["Symbol"]
+            .dropna()
+            .astype(str)
+            .str.strip()
+            .str.upper()
         )
 
-    top100["Rank"] = range(1, 101)
-    top100["MarketCapDisplay"] = top100["MarketCap"].map(format_market_cap)
+        before = len(financial_symbols)
+        financial_symbols.update(symbols.tolist())
 
-    return top100[
+        # No new symbols means pagination has reached the end.
+        if len(financial_symbols) == before:
+            break
+
+    if len(financial_symbols) < 100:
+        raise RuntimeError(
+            "Financial-sector symbol list looks incomplete."
+        )
+
+    print(
+        f"Financial-sector symbols loaded: "
+        f"{len(financial_symbols)}"
+    )
+
+    return financial_symbols
+
+
+def rank_list(frame):
+    ranked = frame.head(LIST_SIZE).copy().reset_index(drop=True)
+
+    if len(ranked) < LIST_SIZE:
+        raise RuntimeError(
+            f"Only {len(ranked)} companies were available; "
+            f"{LIST_SIZE} are required."
+        )
+
+    ranked["Rank"] = range(1, LIST_SIZE + 1)
+    ranked["MarketCapDisplay"] = ranked["MarketCap"].map(
+        format_market_cap
+    )
+
+    return ranked[
         [
             "Rank",
             "Company",
@@ -149,6 +212,50 @@ def fetch_current_top100():
             "MarketCapDisplay",
         ]
     ]
+
+
+def fetch_current_lists():
+    frames = []
+
+    for exchange, url in SOURCES.items():
+        print(f"Downloading {exchange} market-cap list...")
+        frames.append(fetch_exchange(exchange, url))
+
+    combined = pd.concat(frames, ignore_index=True)
+
+    combined["Symbol"] = (
+        combined["Symbol"]
+        .astype(str)
+        .str.strip()
+        .str.upper()
+    )
+
+    combined["CompanyKey"] = combined["Company"].map(
+        normalize_company_name
+    )
+
+    # A company can have multiple share classes (for example GOOG/GOOGL).
+    # Keep only the largest market-cap listing so the ranking is by company.
+    combined = combined.sort_values("MarketCap", ascending=False)
+    combined = combined.drop_duplicates(
+        subset=["CompanyKey"],
+        keep="first",
+    )
+
+    financial_symbols = fetch_financial_symbols()
+
+    all_top125 = rank_list(combined)
+
+    nonfinancial = combined[
+        ~combined["Symbol"].isin(financial_symbols)
+    ].copy()
+
+    ex_financials_top125 = rank_list(nonfinancial)
+
+    return {
+        "All": all_top125,
+        "ExFinancials": ex_financials_top125,
+    }
 
 
 def quarter_end_dates(year):
@@ -174,20 +281,41 @@ def quarter_end_dates(year):
     return dates
 
 
-def make_snapshot(top100, snapshot_date, data_date, status):
-    snapshot = top100.copy()
+def make_snapshot(
+    ranked,
+    list_type,
+    snapshot_date,
+    data_date,
+    status,
+):
+    snapshot = ranked.copy()
     snapshot.insert(0, "SnapshotDate", snapshot_date.isoformat())
     snapshot.insert(1, "DataDate", data_date.isoformat())
     snapshot.insert(2, "Status", status)
+    snapshot.insert(3, "ListType", list_type)
     snapshot["Source"] = "StockAnalysis"
+
     return snapshot[COLUMNS]
+
+
+def empty_history():
+    return pd.DataFrame(columns=COLUMNS)
 
 
 def load_history():
     if not OUTPUT_FILE.exists():
-        return pd.DataFrame(columns=COLUMNS)
+        return empty_history()
 
     history = pd.read_csv(OUTPUT_FILE)
+
+    # Migrate the old Top-100 format by rebuilding the temporary snapshots.
+    # At the time of this migration there are no legacy official snapshots.
+    if "ListType" not in history.columns:
+        print(
+            "Legacy Top-100 file detected. "
+            "Rebuilding it as Top-125 with two list types."
+        )
+        return empty_history()
 
     for column in COLUMNS:
         if column not in history.columns:
@@ -196,88 +324,101 @@ def load_history():
     return history[COLUMNS]
 
 
+def snapshot_is_complete(history, target_text):
+    subset = history[
+        history["SnapshotDate"].astype(str) == target_text
+    ]
+
+    if subset.empty:
+        return False
+
+    for list_type in LIST_TYPES:
+        count = len(
+            subset[subset["ListType"] == list_type]
+        )
+        if count != LIST_SIZE:
+            return False
+
+    return True
+
+
 def main():
     today = datetime.now(TIMEZONE).date()
     history = load_history()
 
-    # Include all four quarterly targets for the current year, even if a
-    # future target has not arrived yet. Future targets get a clearly marked
-    # Temporary snapshot using today's data, then are replaced by Official
-    # data when the actual quarter-end trading day arrives.
+    # Show all four quarterly targets for the current year. Future targets
+    # use a clearly marked Temporary snapshot until their actual trading
+    # date arrives, at which point they are replaced by Official data.
     snapshot_targets = []
 
     for year in range(START_YEAR, today.year + 1):
         for target in quarter_end_dates(year):
-            if year < today.year or target <= today:
-                snapshot_targets.append(target)
-            elif year == today.year:
+            if year <= today.year:
                 snapshot_targets.append(target)
 
     if not snapshot_targets:
         print("No quarterly snapshot dates are available.")
         return
 
-    existing_dates = (
-        set(history["SnapshotDate"].astype(str))
-        if not history.empty
-        else set()
-    )
-
     needs_current_data = False
 
     for target in snapshot_targets:
         target_text = target.isoformat()
 
-        # Exact quarter-end day must replace any Temporary snapshot.
         if target == today:
             needs_current_data = True
-
-        # Missing past or future snapshot gets today's data as Temporary.
-        elif target_text not in existing_dates:
+        elif not snapshot_is_complete(history, target_text):
             needs_current_data = True
 
     if not needs_current_data:
-        print("Quarterly Top 100 history is already up to date.")
+        print("Quarterly Top 125 history is already up to date.")
         return
 
-    top100 = fetch_current_top100()
+    current_lists = fetch_current_lists()
     new_snapshots = []
 
     for target in snapshot_targets:
         target_text = target.isoformat()
-        existing = history[
-            history["SnapshotDate"].astype(str) == target_text
-        ]
+        complete = snapshot_is_complete(history, target_text)
 
         if target == today:
-            # Exact quarter-end trading day: replace Temporary with Official.
             history = history[
                 history["SnapshotDate"].astype(str) != target_text
             ]
 
-            new_snapshots.append(
-                make_snapshot(top100, target, today, "Official")
-            )
-
-            print(f"Saved official snapshot for {target_text}.")
-
-        elif existing.empty:
-            # No reliable historical snapshot is available yet. Use today's
-            # ranking temporarily, while keeping the true DataDate visible.
-            new_snapshots.append(
-                make_snapshot(top100, target, today, "Temporary")
-            )
-
-            if target > today:
-                print(
-                    f"Saved future placeholder for {target_text} "
-                    f"using data from {today.isoformat()}."
+            for list_type, ranked in current_lists.items():
+                new_snapshots.append(
+                    make_snapshot(
+                        ranked,
+                        list_type,
+                        target,
+                        today,
+                        "Official",
+                    )
                 )
-            else:
-                print(
-                    f"Saved historical placeholder for {target_text} "
-                    f"using data from {today.isoformat()}."
+
+            print(f"Saved official Top 125 snapshots for {target_text}.")
+
+        elif not complete:
+            history = history[
+                history["SnapshotDate"].astype(str) != target_text
+            ]
+
+            for list_type, ranked in current_lists.items():
+                new_snapshots.append(
+                    make_snapshot(
+                        ranked,
+                        list_type,
+                        target,
+                        today,
+                        "Temporary",
+                    )
                 )
+
+            print(
+                f"Saved temporary Top 125 snapshots for {target_text} "
+                f"using data from {today.isoformat()}."
+            )
 
     if new_snapshots:
         history = pd.concat(
@@ -296,15 +437,16 @@ def main():
     )
 
     history = history.sort_values(
-        ["SnapshotDate", "Rank"],
-        ascending=[True, True],
+        ["SnapshotDate", "ListType", "Rank"],
+        ascending=[True, True, True],
     )
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     history.to_csv(OUTPUT_FILE, index=False)
 
     print("\nSUCCESS")
-    print(f"Snapshots stored: {history['SnapshotDate'].nunique()}")
+    print(f"Snapshot dates stored: {history['SnapshotDate'].nunique()}")
+    print(f"List types stored: {history['ListType'].nunique()}")
     print(f"Rows stored: {len(history)}")
 
 
