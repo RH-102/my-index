@@ -305,8 +305,11 @@ let holdingsData = [];
 let indexHistory = [];
 
 function loadCSV(path) {
+  const separator = path.includes("?") ? "&" : "?";
+  const url = path + separator + "v=" + Date.now();
+
   return new Promise((resolve, reject) => {
-    Papa.parse(path, {
+    Papa.parse(url, {
       download: true,
       header: true,
       dynamicTyping: true,
@@ -425,9 +428,10 @@ function renderRiskDashboard(rows) {
 
   const updated = cleanRows[0]?.UpdatedAt || "";
   document.getElementById("riskMeta").innerHTML =
-    `数据源：Forward P/E 使用 Koyfin 的 QQQ / SPY 12-month forward P/E 作为 Nasdaq-100 / S&amp;P 500 代理；` +
-    `DFII10 与 Mortgage Delinquency 来自 FRED；Credit-to-GDP Gap 来自 BIS。` +
-    `Cushion = 100 / Forward P/E − DFII10。历史百分位使用各指标可获得的最长重叠历史。` +
+    `数据源：Nasdaq-100 / S&amp;P 500 Forward P/E 来自 History of Market；` +
+    `10Y 实际收益率使用 U.S. Treasury 官方历史数据；Mortgage Delinquency 来自 Federal Reserve Board；` +
+    `Credit-to-GDP Gap 来自 BIS。Cushion = 100 / Forward P/E − 10Y real yield。` +
+    `历史百分位使用各指标可获得的最长重叠历史。` +
     (updated ? `<br>Last updated: ${escapeHTML(updated)}` : "");
 }
 
