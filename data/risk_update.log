@@ -2,8 +2,6 @@ Fetching exact index forward P/E histories from History of Market...
 Nasdaq-100 forward P/E: 1239 observations, 2001-04-27 to 2026-08-05
 S&P 500 forward P/E: 1495 observations, 1990-06-29 to 2026-08-05
 Fetching FRED DFII10 and DRSFRMACBS...
-FRED DFII10 attempt 1 failed: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=30)
-FRED DFII10 attempt 2 failed: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=30)
-Risk refresh skipped: FRED DFII10 failed after retries: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=30)
+Risk refresh skipped: Treasury returned no 10Y real-yield observations
 Existing risk_dashboard.csv and risk_history.csv were retained unchanged.
 exit_code=0
