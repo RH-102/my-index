@@ -1,11 +1,14 @@
 """Reliability wrapper for the market-risk updater.
 
 Keep the calculation/rating logic in update_risk.py, but make public-source
-requests fail fast. If a source is unavailable, the existing dashboard files
-are left unchanged and the next scheduled run can try again.
+requests fail fast. FRED is attempted first; if its CSV endpoint is slow or
+unavailable, the exact underlying Federal Reserve Board series is loaded from
+the Board's Data Download Program instead.
 """
 
+import csv
 from io import StringIO
+import re
 import time
 
 import pandas as pd
@@ -17,7 +20,24 @@ import update_risk as base
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; my-index/1.0)"}
 MAX_ATTEMPTS = 2
 REQUEST_TIMEOUT = (10, 30)
+FRED_TIMEOUT = (5, 12)
 RETRY_SLEEP_SECONDS = 2
+
+# Official Federal Reserve Board fallbacks for the two FRED series used here.
+# These are the underlying Board data that FRED republishes.
+FED_H15_TIPS_URL = (
+    "https://www.federalreserve.gov/datadownload/Output.aspx?"
+    "rel=H15&series=0b98a66d3ff5e1ea0fbf88adc59b387f&lastobs=&from=&to=&"
+    "filetype=csv&label=include&layout=seriescolumn&type=package"
+)
+FED_H15_TIPS_ID = "H15/H15/RIFLGFCY10_XII_N.B"
+
+FED_CHGDEL_URL = (
+    "https://www.federalreserve.gov/datadownload/Output.aspx?"
+    "rel=CHGDEL&series=e77af32404312ad2d45dd60dfa36477a&lastobs=&from=&to=&"
+    "filetype=csv&label=include&layout=seriescolumn&type=package"
+)
+FED_CHGDEL_ID = "CHGDEL/CHGDEL/STFBQDSS%STFBAILSS_XEOP_XDO_MA.Q"
 
 
 def _series_frame(dates, values):
@@ -43,13 +63,11 @@ def _extract_from_forward_node(node):
 
     def walk(value):
         if isinstance(value, dict):
-            # {"2020-01-03": 18.2, ...}
             if len(value) >= 10 and all(
                 not isinstance(v, (dict, list)) for v in value.values()
             ):
                 add(list(value.keys()), list(value.values()))
 
-            # {date:[...], value:[...]} / {x:[...], y:[...]}
             arrays = {
                 base.key_norm(k): v
                 for k, v in value.items()
@@ -76,7 +94,6 @@ def _extract_from_forward_node(node):
                 walk(child)
 
         elif isinstance(value, list):
-            # [[date, pe], ...]
             pairs = [
                 row for row in value
                 if isinstance(row, (list, tuple)) and len(row) >= 2
@@ -84,7 +101,6 @@ def _extract_from_forward_node(node):
             if len(pairs) >= 10:
                 add([row[0] for row in pairs], [row[1] for row in pairs])
 
-            # [{date: ..., pe/value: ...}, ...]
             rows = [row for row in value if isinstance(row, dict)]
             if len(rows) >= 10:
                 dates = []
@@ -117,7 +133,6 @@ def _extract_from_forward_node(node):
                         if pe_value is not None:
                             break
 
-                    # Last resort: use the only numeric scalar other than date.
                     if pe_value is None:
                         numerics = []
                         for key, item in row.items():
@@ -190,43 +205,129 @@ def fetch_forward_pe(url: str, label: str) -> pd.DataFrame:
     raise RuntimeError(f"{label} forward P/E failed: {last_error}")
 
 
+def _parse_ddp_date(text: str):
+    value = str(text).strip()
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
+        return pd.to_datetime(value, errors="coerce")
+
+    match = re.fullmatch(r"(\d{4})-?Q([1-4])", value, re.IGNORECASE)
+    if match:
+        return pd.Period(f"{match.group(1)}Q{match.group(2)}", freq="Q").end_time.normalize()
+
+    return pd.NaT
+
+
+def _parse_fed_ddp(text: str, unique_id: str) -> pd.DataFrame:
+    """Parse a Federal Reserve DDP series-column CSV robustly."""
+    rows = list(csv.reader(StringIO(text)))
+    if not rows:
+        raise RuntimeError("Federal Reserve DDP returned an empty file")
+
+    target_col = None
+    short_id = unique_id.split("/")[-1]
+
+    for row in rows:
+        for idx, cell in enumerate(row):
+            cell_text = str(cell).strip()
+            if unique_id in cell_text or short_id in cell_text:
+                target_col = idx
+                break
+        if target_col is not None:
+            break
+
+    if target_col is None:
+        raise RuntimeError(f"Could not find DDP series column {short_id}")
+
+    dates = []
+    values = []
+    for row in rows:
+        if len(row) <= target_col:
+            continue
+        dt = _parse_ddp_date(row[0])
+        if pd.isna(dt):
+            continue
+        number = pd.to_numeric(pd.Series([row[target_col]]), errors="coerce").iloc[0]
+        if pd.isna(number):
+            continue
+        dates.append(dt)
+        values.append(float(number))
+
+    frame = pd.DataFrame({"Date": dates, "Value": values})
+    frame = frame.dropna().sort_values("Date").drop_duplicates("Date", keep="last")
+    frame = frame.reset_index(drop=True)
+    if frame.empty:
+        raise RuntimeError(f"No usable DDP observations for {short_id}")
+    return frame
+
+
+def _fetch_fed_ddp(url: str, unique_id: str, label: str) -> pd.DataFrame:
+    last_error = None
+    for attempt in range(MAX_ATTEMPTS):
+        try:
+            response = requests.get(url, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+            response.raise_for_status()
+            frame = _parse_fed_ddp(response.text, unique_id)
+            print(
+                f"Federal Reserve fallback {label}: {len(frame)} observations through "
+                f"{frame.iloc[-1]['Date'].date()}"
+            )
+            return frame
+        except Exception as exc:
+            last_error = exc
+            print(f"Federal Reserve fallback {label} attempt {attempt + 1} failed: {exc}")
+            if attempt + 1 < MAX_ATTEMPTS:
+                time.sleep(RETRY_SLEEP_SECONDS)
+
+    raise RuntimeError(f"Federal Reserve fallback {label} failed: {last_error}")
+
+
 def fetch_fred(series_id: str) -> pd.DataFrame:
+    """Fetch from FRED first, then fall back to the exact Board source series."""
     starts = {
         "DFII10": "2003-01-01",
         "DRSFRMACBS": "1991-01-01",
     }
     url = base.FRED_BASE.format(series_id)
     params = {"cosd": starts.get(series_id, "1950-01-01")}
-    last_error = None
 
-    for attempt in range(MAX_ATTEMPTS):
-        try:
-            response = requests.get(
-                url,
-                params=params,
-                headers=HEADERS,
-                timeout=REQUEST_TIMEOUT,
-            )
-            response.raise_for_status()
-            frame = pd.read_csv(StringIO(response.text)).iloc[:, :2].copy()
-            frame.columns = ["Date", "Value"]
-            frame["Date"] = pd.to_datetime(frame["Date"], errors="coerce")
-            frame["Value"] = pd.to_numeric(frame["Value"], errors="coerce")
-            frame = frame.dropna().sort_values("Date").reset_index(drop=True)
-            if frame.empty:
-                raise RuntimeError(f"No observations returned for {series_id}")
-            print(
-                f"FRED {series_id}: {len(frame)} observations through "
-                f"{frame.iloc[-1]['Date'].date()}"
-            )
-            return frame
-        except Exception as exc:
-            last_error = exc
-            print(f"FRED {series_id} attempt {attempt + 1} failed: {exc}")
-            if attempt + 1 < MAX_ATTEMPTS:
-                time.sleep(RETRY_SLEEP_SECONDS)
+    try:
+        response = requests.get(
+            url,
+            params=params,
+            headers=HEADERS,
+            timeout=FRED_TIMEOUT,
+        )
+        response.raise_for_status()
+        frame = pd.read_csv(StringIO(response.text)).iloc[:, :2].copy()
+        frame.columns = ["Date", "Value"]
+        frame["Date"] = pd.to_datetime(frame["Date"], errors="coerce")
+        frame["Value"] = pd.to_numeric(frame["Value"], errors="coerce")
+        frame = frame.dropna().sort_values("Date").reset_index(drop=True)
+        if frame.empty:
+            raise RuntimeError(f"No observations returned for {series_id}")
+        print(
+            f"FRED {series_id}: {len(frame)} observations through "
+            f"{frame.iloc[-1]['Date'].date()}"
+        )
+        return frame
+    except Exception as exc:
+        print(f"FRED {series_id} unavailable ({exc}); using Federal Reserve fallback.")
 
-    raise RuntimeError(f"FRED {series_id} failed after retries: {last_error}")
+    if series_id == "DFII10":
+        return _fetch_fed_ddp(
+            FED_H15_TIPS_URL,
+            FED_H15_TIPS_ID,
+            "DFII10 / 10Y inflation-indexed Treasury",
+        )
+
+    if series_id == "DRSFRMACBS":
+        return _fetch_fed_ddp(
+            FED_CHGDEL_URL,
+            FED_CHGDEL_ID,
+            "DRSFRMACBS / single-family mortgage delinquency",
+        )
+
+    raise RuntimeError(f"No fallback configured for FRED series {series_id}")
 
 
 def fetch_bis_credit_gap() -> pd.DataFrame:
@@ -289,7 +390,6 @@ def fetch_bis_credit_gap() -> pd.DataFrame:
     raise RuntimeError(f"BIS credit gap failed after retries: {last_error}")
 
 
-# Patch only the network-sensitive input functions; retain all calculations/ratings.
 base.fetch_forward_pe = fetch_forward_pe
 base.fetch_fred = fetch_fred
 base.fetch_bis_credit_gap = fetch_bis_credit_gap
