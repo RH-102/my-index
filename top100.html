@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NASDAQ + NYSE Top 100</title>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      color: #222;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+    a {
+      color: #1f5fbf;
+      text-decoration: none;
+    }
+    h1 {
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      color: #666;
+      margin-bottom: 24px;
+    }
+    .controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    select, input {
+      padding: 9px 10px;
+      border: 1px solid #ccc;
+      border-radius: 7px;
+      background: white;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .card, .section {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .card {
+      padding: 18px;
+    }
+    .card-title {
+      color: #777;
+      font-size: 13px;
+      margin-bottom: 7px;
+    }
+    .card-value {
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .section {
+      padding: 20px;
+      overflow-x: auto;
+    }
+    .notice {
+      padding: 12px 14px;
+      border-radius: 8px;
+      background: #fff6d8;
+      margin-bottom: 18px;
+      display: none;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+    }
+    th.number, td.number {
+      text-align: right;
+    }
+    th {
+      border-bottom: 2px solid #ddd;
+    }
+    .loading, .error {
+      padding: 28px;
+      text-align: center;
+      color: #666;
+    }
+    .error {
+      color: #b00020;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div style="margin-bottom:16px;"><a href="index.html">← Back to My Index</a></div>
+
+    <h1>NASDAQ + NYSE Top 100</h1>
+    <div class="subtitle">
+      Largest 100 companies by market capitalization at quarterly snapshot dates.
+    </div>
+
+    <div class="controls">
+      <label>
+        Snapshot:
+        <select id="snapshotSelect"></select>
+      </label>
+      <input id="searchBox" type="text" placeholder="Search company or ticker">
+    </div>
+
+    <div id="temporaryNotice" class="notice"></div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-title">Snapshot Date</div>
+        <div class="card-value" id="snapshotDate">--</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Actual Data Date</div>
+        <div class="card-value" id="dataDate">--</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Status</div>
+        <div class="card-value" id="status">--</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Companies</div>
+        <div class="card-value" id="companyCount">--</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div id="tableArea" class="loading">Loading Top 100 data...</div>
+    </div>
+  </div>
+
+<script>
+let allRows = [];
+let selectedRows = [];
+
+Papa.parse("data/top100_history.csv", {
+  download: true,
+  header: true,
+  dynamicTyping: true,
+  complete: function(results) {
+    allRows = results.data.filter(row => row.SnapshotDate && row.Symbol);
+
+    if (allRows.length === 0) {
+      document.getElementById("tableArea").innerHTML =
+        '<div class="error">No snapshots yet. Run the GitHub workflow once to create the first data.</div>';
+      return;
+    }
+
+    const dates = [...new Set(allRows.map(row => row.SnapshotDate))].sort();
+    const select = document.getElementById("snapshotSelect");
+
+    dates.forEach(date => {
+      const option = document.createElement("option");
+      option.value = date;
+      option.textContent = date;
+      select.appendChild(option);
+    });
+
+    select.value = dates[dates.length - 1];
+    select.addEventListener("change", renderSnapshot);
+    document.getElementById("searchBox").addEventListener("input", renderTable);
+
+    renderSnapshot();
+  },
+  error: function(error) {
+    document.getElementById("tableArea").innerHTML =
+      '<div class="error">Could not load top100_history.csv</div>';
+    console.error(error);
+  }
+});
+
+function renderSnapshot() {
+  const date = document.getElementById("snapshotSelect").value;
+
+  selectedRows = allRows
+    .filter(row => row.SnapshotDate === date)
+    .sort((a, b) => a.Rank - b.Rank);
+
+  if (selectedRows.length === 0) return;
+
+  const first = selectedRows[0];
+  document.getElementById("snapshotDate").textContent = first.SnapshotDate;
+  document.getElementById("dataDate").textContent = first.DataDate;
+  document.getElementById("status").textContent = first.Status;
+  document.getElementById("companyCount").textContent = selectedRows.length;
+
+  const notice = document.getElementById("temporaryNotice");
+  if (first.Status === "Temporary") {
+    notice.style.display = "block";
+    notice.textContent =
+      `Historical market-cap data was not available yet. This ${first.SnapshotDate} snapshot temporarily uses data from ${first.DataDate}.`;
+  } else {
+    notice.style.display = "none";
+  }
+
+  renderTable();
+}
+
+function renderTable() {
+  const term = document.getElementById("searchBox").value.trim().toLowerCase();
+
+  const rows = selectedRows.filter(row => {
+    if (!term) return true;
+    return String(row.Company).toLowerCase().includes(term) ||
+           String(row.Symbol).toLowerCase().includes(term);
+  });
+
+  let html = `
+    <table>
+      <thead>
+        <tr>
+          <th class="number">Rank</th>
+          <th>Company</th>
+          <th>Ticker</th>
+          <th>Exchange</th>
+          <th class="number">Market Cap</th>
+        </tr>
+      </thead>
+      <tbody>`;
+
+  rows.forEach(row => {
+    html += `
+      <tr>
+        <td class="number">${row.Rank}</td>
+        <td>${row.Company}</td>
+        <td><strong>${row.Symbol}</strong></td>
+        <td>${row.Exchange}</td>
+        <td class="number">${row.MarketCapDisplay}</td>
+      </tr>`;
+  });
+
+  html += "</tbody></table>";
+  document.getElementById("tableArea").innerHTML = html;
+}
+</script>
+</body>
+</html>
