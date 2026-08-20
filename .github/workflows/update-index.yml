@@ -3,6 +3,15 @@ name: Update Index and Deploy
 on:
   workflow_dispatch:
 
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/**"
+      - "*.html"
+      - "requirements.txt"
+      - ".github/workflows/update-index.yml"
+
   schedule:
     - cron: "10 16 * * 1-5"
       timezone: "America/New_York"
@@ -49,7 +58,7 @@ jobs:
           python scripts/update_prices.py
 
 
-      - name: Update quarterly Top 100
+      - name: Update quarterly Top 125
         continue-on-error: true
         run: |
           python scripts/update_top100.py
