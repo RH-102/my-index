@@ -18,7 +18,7 @@ on:
 
 concurrency:
   group: index-update-and-pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 permissions:
   contents: write
