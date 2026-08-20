@@ -64,6 +64,12 @@ jobs:
           python scripts/update_top100.py
 
 
+      - name: Update market risk dashboard
+        continue-on-error: true
+        run: |
+          python scripts/update_risk.py
+
+
       - name: Save updated data
         run: |
 
@@ -74,7 +80,9 @@ jobs:
             data/latest.csv \
             data/index_history.csv \
             data/holdings_history.csv \
-            data/top100_history.csv
+            data/top100_history.csv \
+            data/risk_dashboard.csv \
+            data/risk_history.csv
 
           if git diff --cached --quiet; then
 
