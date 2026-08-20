@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>My Index Dashboard</title>
 
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
@@ -29,7 +28,25 @@
 
     .subtitle {
       color: #666;
+      margin-bottom: 16px;
+    }
+
+    .nav {
       margin-bottom: 30px;
+    }
+
+    .nav a {
+      display: inline-block;
+      text-decoration: none;
+      color: #ffffff;
+      background: #2563eb;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    .nav a:hover {
+      background: #1d4ed8;
     }
 
     .cards {
@@ -111,9 +128,7 @@
   </style>
 </head>
 
-
 <body>
-
 <div class="container">
 
   <h1>My Index Dashboard</h1>
@@ -122,9 +137,11 @@
     Personal market-cap weighted index tracker
   </div>
 
+  <div class="nav">
+    <a href="top100.html">View NASDAQ + NYSE Top 100 →</a>
+  </div>
 
   <div class="cards">
-
     <div class="card">
       <div class="card-title">Index Level</div>
       <div class="card-value" id="indexLevel">--</div>
@@ -154,574 +171,213 @@
       <div class="card-title">Market Date</div>
       <div class="card-value" id="marketDate">--</div>
     </div>
-
   </div>
 
-
   <div class="section">
-
     <h2>Index Performance</h2>
-
     <canvas id="indexChart"></canvas>
-
   </div>
 
-
   <div class="section">
-
     <h2>Top 10 Holdings</h2>
-
     <canvas id="topHoldingsChart"></canvas>
-
   </div>
 
-
   <div class="section">
-
     <h2>Current Holdings</h2>
-
-    <div id="tableArea" class="loading">
-      Loading holdings...
-    </div>
-
+    <div id="tableArea" class="loading">Loading holdings...</div>
   </div>
 
 </div>
 
-
 <script>
-
 let holdingsData = [];
 let indexHistory = [];
 
-
-// ==========================================================
-// CSV loader
-// ==========================================================
-
 function loadCSV(path) {
-
   return new Promise((resolve, reject) => {
-
-    Papa.parse(
-      path,
-      {
-        download: true,
-        header: true,
-        dynamicTyping: true,
-
-        complete: function(results) {
-
-          resolve(
-            results.data.filter(
-              row => Object.values(row).some(
-                value => value !== null && value !== ""
-              )
+    Papa.parse(path, {
+      download: true,
+      header: true,
+      dynamicTyping: true,
+      complete: function(results) {
+        resolve(
+          results.data.filter(
+            row => Object.values(row).some(
+              value => value !== null && value !== ""
             )
-          );
-        },
-
-        error: function(error) {
-          reject(error);
-        }
-      }
-    );
-
+          )
+        );
+      },
+      error: reject
+    });
   });
 }
-
-
-// ==========================================================
-// Load all data
-// ==========================================================
 
 Promise.all([
   loadCSV("data/latest.csv"),
   loadCSV("data/index_history.csv")
 ])
-
 .then(([holdings, history]) => {
+  holdingsData = holdings
+    .filter(row => row.Symbol)
+    .sort((a, b) => b.Weight - a.Weight);
 
-  holdingsData = holdings.filter(
-    row => row.Symbol
-  );
-
-  holdingsData.sort(
-    (a, b) => b.Weight - a.Weight
-  );
-
-
-  indexHistory = history.filter(
-    row => row.Date
-  );
-
-  indexHistory.sort(
-    (a, b) =>
-      new Date(a.Date) - new Date(b.Date)
-  );
-
+  indexHistory = history
+    .filter(row => row.Date)
+    .sort((a, b) => new Date(a.Date) - new Date(b.Date));
 
   updateSummary();
-
   createIndexChart();
-
   createHoldingsChart();
-
   createTable();
-
 })
-
 .catch(error => {
-
   document.getElementById("tableArea").innerHTML =
     '<div class="error">Could not load index data.</div>';
-
   console.error(error);
-
 });
 
-
-// ==========================================================
-// Summary cards
-// ==========================================================
-
 function updateSummary() {
+  if (holdingsData.length === 0 || indexHistory.length === 0) return;
 
-  if (
-    holdingsData.length === 0 ||
-    indexHistory.length === 0
-  ) {
-    return;
-  }
-
-
-  const latestIndex =
-    indexHistory[indexHistory.length - 1];
-
-
-  const firstIndex =
-    indexHistory[0];
-
-
-  const totalValue =
-    holdingsData.reduce(
-      (sum, row) =>
-        sum + row.MarketValue,
-      0
-    );
-
-
-  const indexLevel =
-    latestIndex.IndexLevel;
-
-
-  const dailyReturn =
-    latestIndex.DailyReturn;
-
-
-  const sinceInception =
-    indexLevel / firstIndex.IndexLevel - 1;
-
-
-  document.getElementById(
-    "indexLevel"
-  ).textContent =
-    indexLevel.toFixed(2);
-
-
-  setReturn(
-    "dailyReturn",
-    dailyReturn
+  const latestIndex = indexHistory[indexHistory.length - 1];
+  const firstIndex = indexHistory[0];
+  const totalValue = holdingsData.reduce(
+    (sum, row) => sum + row.MarketValue,
+    0
   );
 
+  const indexLevel = latestIndex.IndexLevel;
+  const dailyReturn = latestIndex.DailyReturn;
+  const sinceInception = indexLevel / firstIndex.IndexLevel - 1;
 
-  setReturn(
-    "sinceInception",
-    sinceInception
-  );
+  document.getElementById("indexLevel").textContent = indexLevel.toFixed(2);
+  setReturn("dailyReturn", dailyReturn);
+  setReturn("sinceInception", sinceInception);
 
+  document.getElementById("totalValue").textContent =
+    "$" + totalValue.toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
 
-  document.getElementById(
-    "totalValue"
-  ).textContent =
-    "$" +
-    totalValue.toLocaleString(
-      undefined,
-      {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      }
-    );
-
-
-  document.getElementById(
-    "holdingCount"
-  ).textContent =
-    holdingsData.length;
-
-
-  document.getElementById(
-    "marketDate"
-  ).textContent =
-    latestIndex.Date;
-
+  document.getElementById("holdingCount").textContent = holdingsData.length;
+  document.getElementById("marketDate").textContent = latestIndex.Date;
 }
-
-
-// ==========================================================
-// Format returns
-// ==========================================================
 
 function setReturn(elementId, value) {
+  const element = document.getElementById(elementId);
+  const sign = value > 0 ? "+" : "";
 
-  const element =
-    document.getElementById(elementId);
+  element.textContent = sign + (value * 100).toFixed(2) + "%";
+  element.classList.remove("positive", "negative");
 
-  const sign =
-    value > 0 ? "+" : "";
-
-  element.textContent =
-    sign +
-    (value * 100).toFixed(2) +
-    "%";
-
-
-  element.classList.remove(
-    "positive",
-    "negative"
-  );
-
-
-  if (value > 0) {
-
-    element.classList.add(
-      "positive"
-    );
-
-  }
-
-  else if (value < 0) {
-
-    element.classList.add(
-      "negative"
-    );
-
-  }
-
+  if (value > 0) element.classList.add("positive");
+  else if (value < 0) element.classList.add("negative");
 }
-
-
-// ==========================================================
-// Index performance chart
-// ==========================================================
 
 function createIndexChart() {
-
-  const labels =
-    indexHistory.map(
-      row => row.Date
-    );
-
-
-  const levels =
-    indexHistory.map(
-      row => row.IndexLevel
-    );
-
-
-  const ctx =
-    document.getElementById(
-      "indexChart"
-    );
-
-
-  new Chart(
-    ctx,
-    {
-
-      type: "line",
-
-      data: {
-
-        labels: labels,
-
-        datasets: [
-          {
-            label: "Index Level",
-            data: levels,
-            tension: 0.15,
-            pointRadius: 3,
-            borderWidth: 2
+  new Chart(document.getElementById("indexChart"), {
+    type: "line",
+    data: {
+      labels: indexHistory.map(row => row.Date),
+      datasets: [{
+        label: "Index Level",
+        data: indexHistory.map(row => row.IndexLevel),
+        tension: 0.15,
+        pointRadius: 3,
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: context => "Index: " + context.raw.toFixed(2)
           }
-        ]
-
-      },
-
-
-      options: {
-
-        responsive: true,
-
-        plugins: {
-
-          legend: {
-            display: false
-          },
-
-          tooltip: {
-
-            callbacks: {
-
-              label: function(context) {
-
-                return (
-                  "Index: " +
-                  context.raw.toFixed(2)
-                );
-
-              }
-
-            }
-
-          }
-
-        },
-
-
-        scales: {
-
-          y: {
-
-            ticks: {
-
-              callback: function(value) {
-
-                return value.toFixed(1);
-
-              }
-
-            }
-
-          }
-
         }
-
+      },
+      scales: {
+        y: {
+          ticks: {
+            callback: value => Number(value).toFixed(1)
+          }
+        }
       }
-
     }
-  );
-
+  });
 }
-
-
-// ==========================================================
-// Top 10 holdings chart
-// ==========================================================
 
 function createHoldingsChart() {
+  const top10 = holdingsData.slice(0, 10);
 
-  const top10 =
-    holdingsData.slice(0, 10);
-
-
-  const labels =
-    top10.map(
-      row => row.Symbol
-    );
-
-
-  const weights =
-    top10.map(
-      row => row.Weight * 100
-    );
-
-
-  const ctx =
-    document.getElementById(
-      "topHoldingsChart"
-    );
-
-
-  new Chart(
-    ctx,
-    {
-
-      type: "bar",
-
-      data: {
-
-        labels: labels,
-
-        datasets: [
-          {
-            label: "Weight (%)",
-            data: weights
+  new Chart(document.getElementById("topHoldingsChart"), {
+    type: "bar",
+    data: {
+      labels: top10.map(row => row.Symbol),
+      datasets: [{
+        label: "Weight (%)",
+        data: top10.map(row => row.Weight * 100)
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: context => context.raw.toFixed(2) + "%"
           }
-        ]
-
-      },
-
-
-      options: {
-
-        responsive: true,
-
-        plugins: {
-
-          legend: {
-            display: false
-          },
-
-          tooltip: {
-
-            callbacks: {
-
-              label: function(context) {
-
-                return (
-                  context.raw.toFixed(2)
-                  + "%"
-                );
-
-              }
-
-            }
-
-          }
-
-        },
-
-
-        scales: {
-
-          y: {
-
-            beginAtZero: true,
-
-            ticks: {
-
-              callback: function(value) {
-
-                return value + "%";
-
-              }
-
-            }
-
-          }
-
         }
-
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            callback: value => value + "%"
+          }
+        }
       }
-
     }
-  );
-
+  });
 }
-
-
-// ==========================================================
-// Holdings table
-// ==========================================================
 
 function createTable() {
-
   let html = `
-
     <table>
-
       <thead>
-
         <tr>
-
           <th>Symbol</th>
-
           <th>Name</th>
-
-          <th class="number">
-            Quantity
-          </th>
-
-          <th class="number">
-            Price
-          </th>
-
-          <th class="number">
-            Market Value
-          </th>
-
-          <th class="number">
-            Weight
-          </th>
-
+          <th class="number">Quantity</th>
+          <th class="number">Price</th>
+          <th class="number">Market Value</th>
+          <th class="number">Weight</th>
         </tr>
-
       </thead>
-
       <tbody>
-
   `;
 
+  holdingsData.forEach(row => {
+    html += `
+      <tr>
+        <td><strong>${row.Symbol}</strong></td>
+        <td>${row.Name}</td>
+        <td class="number">${row.Quantity.toFixed(5)}</td>
+        <td class="number">$${row.Price.toFixed(2)}</td>
+        <td class="number">$${row.MarketValue.toFixed(2)}</td>
+        <td class="number">${(row.Weight * 100).toFixed(2)}%</td>
+      </tr>
+    `;
+  });
 
-  holdingsData.forEach(
-    row => {
-
-      html += `
-
-        <tr>
-
-          <td>
-            <strong>
-              ${row.Symbol}
-            </strong>
-          </td>
-
-          <td>
-            ${row.Name}
-          </td>
-
-          <td class="number">
-            ${row.Quantity.toFixed(5)}
-          </td>
-
-          <td class="number">
-            $${row.Price.toFixed(2)}
-          </td>
-
-          <td class="number">
-            $${row.MarketValue.toFixed(2)}
-          </td>
-
-          <td class="number">
-            ${(row.Weight * 100).toFixed(2)}%
-          </td>
-
-        </tr>
-
-      `;
-
-    }
-  );
-
-
-  html += `
-
-      </tbody>
-
-    </table>
-
-  `;
-
-
-  document.getElementById(
-    "tableArea"
-  ).innerHTML =
-    html;
-
+  html += `</tbody></table>`;
+  document.getElementById("tableArea").innerHTML = html;
 }
-
 </script>
-
 
 </body>
 </html>
