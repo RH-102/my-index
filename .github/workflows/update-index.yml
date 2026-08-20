@@ -13,7 +13,7 @@ on:
       - ".github/workflows/update-index.yml"
 
   schedule:
-    - cron: "10 16 * * 1-5"
+    - cron: "10 16 * * * 1-5"
       timezone: "America/New_York"
 
 concurrency:
@@ -67,7 +67,12 @@ jobs:
       - name: Update market risk dashboard
         continue-on-error: true
         run: |
-          python scripts/update_risk.py
+          set +e
+          python scripts/update_risk.py > data/risk_update.log 2>&1
+          status=$?
+          cat data/risk_update.log
+          echo "exit_code=$status" >> data/risk_update.log
+          exit 0
 
 
       - name: Save updated data
@@ -82,7 +87,8 @@ jobs:
             data/holdings_history.csv \
             data/top100_history.csv \
             data/risk_dashboard.csv \
-            data/risk_history.csv
+            data/risk_history.csv \
+            data/risk_update.log
 
           if git diff --cached --quiet; then
 
