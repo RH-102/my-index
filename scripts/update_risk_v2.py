@@ -1,8 +1,8 @@
 """Reliability wrapper for the market-risk updater.
 
-It keeps the calculation/rating logic in update_risk.py, but makes the two
-network-sensitive inputs more tolerant of public-source schema changes and
-transient FRED timeouts.
+Keep the calculation/rating logic in update_risk.py, but make public-source
+requests fail fast. If a source is unavailable, the existing dashboard files
+are left unchanged and the next scheduled run can try again.
 """
 
 from io import StringIO
@@ -15,6 +15,9 @@ import update_risk as base
 
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; my-index/1.0)"}
+MAX_ATTEMPTS = 2
+REQUEST_TIMEOUT = (10, 30)
+RETRY_SLEEP_SECONDS = 2
 
 
 def _series_frame(dates, values):
@@ -151,12 +154,12 @@ def _extract_from_forward_node(node):
 
 def fetch_forward_pe(url: str, label: str) -> pd.DataFrame:
     last_error = None
-    for attempt in range(4):
+    for attempt in range(MAX_ATTEMPTS):
         try:
             response = requests.get(
                 url,
                 headers=HEADERS,
-                timeout=(15, 90),
+                timeout=REQUEST_TIMEOUT,
             )
             response.raise_for_status()
             payload = response.json()
@@ -181,8 +184,8 @@ def fetch_forward_pe(url: str, label: str) -> pd.DataFrame:
         except Exception as exc:
             last_error = exc
             print(f"{label} forward P/E attempt {attempt + 1} failed: {exc}")
-            if attempt < 3:
-                time.sleep(3 * (attempt + 1))
+            if attempt + 1 < MAX_ATTEMPTS:
+                time.sleep(RETRY_SLEEP_SECONDS)
 
     raise RuntimeError(f"{label} forward P/E failed: {last_error}")
 
@@ -196,13 +199,13 @@ def fetch_fred(series_id: str) -> pd.DataFrame:
     params = {"cosd": starts.get(series_id, "1950-01-01")}
     last_error = None
 
-    for attempt in range(5):
+    for attempt in range(MAX_ATTEMPTS):
         try:
             response = requests.get(
                 url,
                 params=params,
                 headers=HEADERS,
-                timeout=(15, 120),
+                timeout=REQUEST_TIMEOUT,
             )
             response.raise_for_status()
             frame = pd.read_csv(StringIO(response.text)).iloc[:, :2].copy()
@@ -220,16 +223,81 @@ def fetch_fred(series_id: str) -> pd.DataFrame:
         except Exception as exc:
             last_error = exc
             print(f"FRED {series_id} attempt {attempt + 1} failed: {exc}")
-            if attempt < 4:
-                time.sleep(5 * (attempt + 1))
+            if attempt + 1 < MAX_ATTEMPTS:
+                time.sleep(RETRY_SLEEP_SECONDS)
 
     raise RuntimeError(f"FRED {series_id} failed after retries: {last_error}")
 
 
-# Patch only the unreliable input functions; retain all calculations/ratings.
+def fetch_bis_credit_gap() -> pd.DataFrame:
+    last_error = None
+
+    for attempt in range(MAX_ATTEMPTS):
+        try:
+            response = requests.get(
+                base.BIS_GAP_URL,
+                headers={
+                    "Accept": "application/vnd.sdmx.data+csv;version=1.0.0;labels=id",
+                    **HEADERS,
+                },
+                timeout=REQUEST_TIMEOUT,
+            )
+            response.raise_for_status()
+
+            frame = pd.read_csv(StringIO(response.text))
+            upper = {str(c).upper(): c for c in frame.columns}
+            time_col = upper.get("TIME_PERIOD") or upper.get("TIME_PERIOD_START")
+            value_col = upper.get("OBS_VALUE")
+            if time_col is None or value_col is None:
+                raise RuntimeError(
+                    "Unexpected BIS columns: " + ", ".join(map(str, frame.columns))
+                )
+
+            def parse_quarter(value):
+                text = str(value).strip()
+                try:
+                    return pd.Period(text, freq="Q").end_time.normalize()
+                except Exception:
+                    return pd.to_datetime(text, errors="coerce")
+
+            out = pd.DataFrame(
+                {
+                    "Date": frame[time_col].map(parse_quarter),
+                    "Value": pd.to_numeric(frame[value_col], errors="coerce"),
+                }
+            ).dropna()
+
+            out = (
+                out.sort_values("Date")
+                .drop_duplicates("Date", keep="last")
+                .reset_index(drop=True)
+            )
+            if out.empty:
+                raise RuntimeError("No BIS credit-gap observations returned")
+
+            print(
+                f"BIS credit-to-GDP gap: {len(out)} observations through "
+                f"{out.iloc[-1]['Date'].date()}"
+            )
+            return out
+        except Exception as exc:
+            last_error = exc
+            print(f"BIS credit gap attempt {attempt + 1} failed: {exc}")
+            if attempt + 1 < MAX_ATTEMPTS:
+                time.sleep(RETRY_SLEEP_SECONDS)
+
+    raise RuntimeError(f"BIS credit gap failed after retries: {last_error}")
+
+
+# Patch only the network-sensitive input functions; retain all calculations/ratings.
 base.fetch_forward_pe = fetch_forward_pe
 base.fetch_fred = fetch_fred
+base.fetch_bis_credit_gap = fetch_bis_credit_gap
 
 
 if __name__ == "__main__":
-    base.main()
+    try:
+        base.main()
+    except Exception as exc:
+        print(f"Risk refresh skipped: {exc}")
+        print("Existing risk_dashboard.csv and risk_history.csv were retained unchanged.")
