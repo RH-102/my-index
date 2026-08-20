@@ -200,27 +200,39 @@ def main():
     today = datetime.now(TIMEZONE).date()
     history = load_history()
 
-    due_dates = []
+    # Include all four quarterly targets for the current year, even if a
+    # future target has not arrived yet. Future targets get a clearly marked
+    # Temporary snapshot using today's data, then are replaced by Official
+    # data when the actual quarter-end trading day arrives.
+    snapshot_targets = []
+
     for year in range(START_YEAR, today.year + 1):
         for target in quarter_end_dates(year):
-            if target <= today:
-                due_dates.append(target)
+            if year < today.year or target <= today:
+                snapshot_targets.append(target)
+            elif year == today.year:
+                snapshot_targets.append(target)
 
-    if not due_dates:
-        print("No quarterly snapshot dates are due yet.")
+    if not snapshot_targets:
+        print("No quarterly snapshot dates are available.")
         return
 
-    existing_dates = set(history["SnapshotDate"].astype(str)) if not history.empty else set()
+    existing_dates = (
+        set(history["SnapshotDate"].astype(str))
+        if not history.empty
+        else set()
+    )
 
     needs_current_data = False
-    for target in due_dates:
+
+    for target in snapshot_targets:
         target_text = target.isoformat()
 
-        # If the target date is today, replace any temporary version with an
-        # official quarter-end snapshot. If it is an older missing date, save
-        # today's data as a clearly marked temporary placeholder.
+        # Exact quarter-end day must replace any Temporary snapshot.
         if target == today:
             needs_current_data = True
+
+        # Missing past or future snapshot gets today's data as Temporary.
         elif target_text not in existing_dates:
             needs_current_data = True
 
@@ -231,34 +243,57 @@ def main():
     top100 = fetch_current_top100()
     new_snapshots = []
 
-    for target in due_dates:
+    for target in snapshot_targets:
         target_text = target.isoformat()
-        existing = history[history["SnapshotDate"].astype(str) == target_text]
+        existing = history[
+            history["SnapshotDate"].astype(str) == target_text
+        ]
 
         if target == today:
-            # Exact quarter-end trading day: this is the real snapshot.
-            history = history[history["SnapshotDate"].astype(str) != target_text]
+            # Exact quarter-end trading day: replace Temporary with Official.
+            history = history[
+                history["SnapshotDate"].astype(str) != target_text
+            ]
+
             new_snapshots.append(
                 make_snapshot(top100, target, today, "Official")
             )
+
             print(f"Saved official snapshot for {target_text}.")
 
         elif existing.empty:
-            # Historical market-cap source not yet available: use today's
-            # ranking temporarily, but never disguise the data date.
+            # No reliable historical snapshot is available yet. Use today's
+            # ranking temporarily, while keeping the true DataDate visible.
             new_snapshots.append(
                 make_snapshot(top100, target, today, "Temporary")
             )
-            print(
-                f"Saved temporary placeholder for {target_text} "
-                f"using data from {today.isoformat()}."
-            )
+
+            if target > today:
+                print(
+                    f"Saved future placeholder for {target_text} "
+                    f"using data from {today.isoformat()}."
+                )
+            else:
+                print(
+                    f"Saved historical placeholder for {target_text} "
+                    f"using data from {today.isoformat()}."
+                )
 
     if new_snapshots:
-        history = pd.concat([history] + new_snapshots, ignore_index=True)
+        history = pd.concat(
+            [history] + new_snapshots,
+            ignore_index=True,
+        )
 
-    history["Rank"] = pd.to_numeric(history["Rank"], errors="coerce")
-    history["MarketCap"] = pd.to_numeric(history["MarketCap"], errors="coerce")
+    history["Rank"] = pd.to_numeric(
+        history["Rank"],
+        errors="coerce",
+    )
+
+    history["MarketCap"] = pd.to_numeric(
+        history["MarketCap"],
+        errors="coerce",
+    )
 
     history = history.sort_values(
         ["SnapshotDate", "Rank"],
