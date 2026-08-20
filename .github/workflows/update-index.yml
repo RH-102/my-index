@@ -49,6 +49,12 @@ jobs:
           python scripts/update_prices.py
 
 
+      - name: Update quarterly Top 100
+        continue-on-error: true
+        run: |
+          python scripts/update_top100.py
+
+
       - name: Save updated data
         run: |
 
@@ -58,7 +64,8 @@ jobs:
           git add \
             data/latest.csv \
             data/index_history.csv \
-            data/holdings_history.csv
+            data/holdings_history.csv \
+            data/top100_history.csv
 
           if git diff --cached --quiet; then
 
