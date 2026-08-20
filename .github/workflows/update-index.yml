@@ -63,7 +63,7 @@ jobs:
         continue-on-error: true
         run: |
           set +e
-          python scripts/update_risk_v2.py > data/risk_update.log 2>&1
+          python scripts/update_risk_v3.py > data/risk_update.log 2>&1
           status=$?
           cat data/risk_update.log
           echo "exit_code=$status" >> data/risk_update.log
