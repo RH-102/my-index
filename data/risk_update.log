@@ -1,11 +1,15 @@
 Fetching exact index forward P/E histories from History of Market...
 Nasdaq-100 forward P/E: 1239 observations, 2001-04-27 to 2026-08-05
+Saved local cache risk_source_nasdaq_forward_pe.csv: 1239 observations through 2026-08-05
 S&P 500 forward P/E: 1495 observations, 1990-06-29 to 2026-08-05
+Saved local cache risk_source_sp500_forward_pe.csv: 1495 observations through 2026-08-05
 Fetching FRED DFII10 and DRSFRMACBS...
-Treasury 10Y real yield: 5912 observations, 2003-01-02 to 2026-08-19
-Fed mortgage delinquency: 141 observations, 1991-03-31 to 2026-03-31
+Saved local cache risk_source_dfii10.csv: 5912 observations through 2026-08-19
+Local DFII10 history: 5912 observations, 2003-01-02 to 2026-08-19
+Saved local cache risk_source_mortgage.csv: 141 observations through 2026-03-31
 Fetching BIS US credit-to-GDP gap...
 BIS credit-to-GDP gap: 273 observations through 2025-12-31
+Saved local cache risk_source_credit_gap.csv: 273 observations through 2025-12-31
 SUCCESS
 Risk dashboard rows: 9
 Risk history rows: 5952
