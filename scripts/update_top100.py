@@ -17,6 +17,7 @@ START_YEAR = 2026
 QUARTER_MONTHS = [2, 5, 8, 11]
 TIMEZONE = ZoneInfo("America/New_York")
 LIST_SIZE = 125
+RULE_VERSION = "2-company-level-financials"
 
 SOURCES = {
     "NASDAQ": "https://stockanalysis.com/list/nasdaq-stocks/",
@@ -30,6 +31,7 @@ COLUMNS = [
     "DataDate",
     "Status",
     "ListType",
+    "RuleVersion",
     "Rank",
     "Company",
     "Symbol",
@@ -137,13 +139,15 @@ def fetch_exchange(exchange, url):
     ]
 
 
-def fetch_financial_symbols():
+def fetch_financial_identifiers():
     financial_symbols = set()
+    financial_company_keys = set()
 
-    # StockAnalysis currently paginates the Financials sector list.
-    # Read several pages so the exclusion list is not limited to only
-    # the first page of financial companies.
-    for page in range(1, 5):
+    # Read the complete Financials-sector list. We keep both ticker symbols
+    # and normalized company identities. The company-level match is important
+    # for companies with multiple share classes, e.g. Berkshire Hathaway
+    # BRK.A / BRK.B.
+    for page in range(1, 21):
         url = FINANCIALS_URL
         if page > 1:
             url = f"{FINANCIALS_URL}?page={page}"
@@ -154,38 +158,51 @@ def fetch_financial_symbols():
                 {"Symbol", "Company Name"},
             )
         except Exception:
-            # A page beyond the end may not exist. Once we already have
-            # symbols, it is safe to stop pagination.
             if financial_symbols:
                 break
             raise
 
+        rows = table[["Symbol", "Company Name"]].dropna().copy()
+
         symbols = (
-            table["Symbol"]
-            .dropna()
+            rows["Symbol"]
             .astype(str)
             .str.strip()
             .str.upper()
         )
 
-        before = len(financial_symbols)
-        financial_symbols.update(symbols.tolist())
+        company_keys = rows["Company Name"].map(
+            normalize_company_name
+        )
 
-        # No new symbols means pagination has reached the end.
-        if len(financial_symbols) == before:
+        before_symbols = len(financial_symbols)
+        before_companies = len(financial_company_keys)
+
+        financial_symbols.update(symbols.tolist())
+        financial_company_keys.update(company_keys.tolist())
+
+        # No new tickers and no new companies means pagination has ended.
+        if (
+            len(financial_symbols) == before_symbols
+            and len(financial_company_keys) == before_companies
+        ):
             break
 
-    if len(financial_symbols) < 100:
+    if len(financial_symbols) < 100 or len(financial_company_keys) < 100:
         raise RuntimeError(
-            "Financial-sector symbol list looks incomplete."
+            "Financial-sector company list looks incomplete."
         )
 
     print(
         f"Financial-sector symbols loaded: "
         f"{len(financial_symbols)}"
     )
+    print(
+        f"Financial-sector companies loaded: "
+        f"{len(financial_company_keys)}"
+    )
 
-    return financial_symbols
+    return financial_symbols, financial_company_keys
 
 
 def rank_list(frame):
@@ -242,12 +259,18 @@ def fetch_current_lists():
         keep="first",
     )
 
-    financial_symbols = fetch_financial_symbols()
+    financial_symbols, financial_company_keys = (
+        fetch_financial_identifiers()
+    )
 
     all_top125 = rank_list(combined)
 
+    # Exclude Financials using BOTH ticker-level and company-level matching.
+    # This prevents a different share class from slipping through when only
+    # one class appears on the sector page (for example BRK.A vs BRK.B).
     nonfinancial = combined[
         ~combined["Symbol"].isin(financial_symbols)
+        & ~combined["CompanyKey"].isin(financial_company_keys)
     ].copy()
 
     ex_financials_top125 = rank_list(nonfinancial)
@@ -293,6 +316,7 @@ def make_snapshot(
     snapshot.insert(1, "DataDate", data_date.isoformat())
     snapshot.insert(2, "Status", status)
     snapshot.insert(3, "ListType", list_type)
+    snapshot.insert(4, "RuleVersion", RULE_VERSION)
     snapshot["Source"] = "StockAnalysis"
 
     return snapshot[COLUMNS]
@@ -309,7 +333,6 @@ def load_history():
     history = pd.read_csv(OUTPUT_FILE)
 
     # Migrate the old Top-100 format by rebuilding the temporary snapshots.
-    # At the time of this migration there are no legacy official snapshots.
     if "ListType" not in history.columns:
         print(
             "Legacy Top-100 file detected. "
@@ -333,11 +356,21 @@ def snapshot_is_complete(history, target_text):
         return False
 
     for list_type in LIST_TYPES:
-        count = len(
-            subset[subset["ListType"] == list_type]
-        )
-        if count != LIST_SIZE:
+        list_rows = subset[subset["ListType"] == list_type]
+
+        if len(list_rows) != LIST_SIZE:
             return False
+
+        # Temporary snapshots are safe to rebuild when the ranking rule
+        # changes. Official historical snapshots are preserved.
+        if (list_rows["Status"] == "Temporary").any():
+            versions = set(
+                list_rows["RuleVersion"]
+                .dropna()
+                .astype(str)
+            )
+            if versions != {RULE_VERSION}:
+                return False
 
     return True
 
