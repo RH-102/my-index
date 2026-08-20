@@ -14,7 +14,6 @@ from __future__ import annotations
 
 import csv
 import re
-import xml.etree.ElementTree as ET
 from datetime import datetime
 from io import StringIO
 
@@ -32,76 +31,52 @@ TREASURY_ARCHIVE_URL = (
     "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/"
     "daily-treasury-rate-archives/par-real-yield-curve-rates-2003-2023.csv"
 )
-TREASURY_XML_URL = (
-    "https://home.treasury.gov/resource-center/data-chart-center/"
-    "interest-rates/pages/xml"
+TREASURY_YEAR_URL = (
+    "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/"
+    "daily-treasury-rates.csv/{year}/all"
 )
 
+# Official Federal Reserve Board preformatted package: Delinquency rates / All banks.
 FED_MORTGAGE_URL = (
     "https://www.federalreserve.gov/datadownload/Output.aspx?"
     "filetype=csv&from=&label=include&lastobs=&layout=seriescolumn&"
-    "rel=CHGDEL&series=9c215a53d083d9416a3f3625bcb1223d&to=&type=package"
+    "rel=CHGDEL&series=e77af32404312ad2d45dd60dfa36477a&to=&type=package"
 )
 FED_MORTGAGE_SERIES = "STFBQDSS%STFBAILSS_XEOP_XDO_MA.Q"
 
 
-def _local_name(tag: str) -> str:
-    return tag.split("}")[-1].upper()
-
-
-def _parse_treasury_xml(xml_text: str) -> list[dict]:
-    root = ET.fromstring(xml_text)
-    rows = []
-
-    for entry in root.iter():
-        if _local_name(entry.tag) != "ENTRY":
-            continue
-
-        values = {}
-        for element in entry.iter():
-            name = _local_name(element.tag)
-            text = (element.text or "").strip()
-            if text:
-                values[name] = text
-
-        date_text = values.get("NEW_DATE") or values.get("QUOTE_DATE") or values.get("DATE")
-        yield_text = values.get("BC_10YEAR") or values.get("BC_10_YEAR") or values.get("10_YEAR")
-
-        if date_text is None or yield_text is None:
-            continue
-
-        try:
-            rows.append({
-                "Date": pd.to_datetime(date_text, errors="raise"),
-                "Value": float(yield_text),
-            })
-        except Exception:
-            continue
-
-    return rows
+def _normalise_treasury_frame(frame: pd.DataFrame) -> pd.DataFrame:
+    frame = frame.copy()
+    frame.columns = [str(c).strip().lower() for c in frame.columns]
+    if "date" not in frame.columns or "10 yr" not in frame.columns:
+        raise RuntimeError(
+            "Unexpected Treasury columns: " + ", ".join(map(str, frame.columns))
+        )
+    out = frame[["date", "10 yr"]].copy()
+    out.columns = ["Date", "Value"]
+    out["Date"] = pd.to_datetime(out["Date"], errors="coerce")
+    out["Value"] = pd.to_numeric(out["Value"], errors="coerce")
+    return out.dropna()
 
 
 def _fetch_treasury_year(year: int) -> pd.DataFrame:
     response = requests.get(
-        TREASURY_XML_URL,
+        TREASURY_YEAR_URL.format(year=year),
         params={
-            "data": "daily_treasury_real_yield_curve",
+            "_format": "csv",
             "field_tdr_date_value": str(year),
+            "page": "",
+            "type": "daily_treasury_real_yield_curve",
         },
         headers=HEADERS,
         timeout=REQUEST_TIMEOUT,
     )
     response.raise_for_status()
-    rows = _parse_treasury_xml(response.text)
-    if not rows:
-        raise RuntimeError(f"Treasury returned no real-yield data for {year}")
-    return pd.DataFrame(rows)
+    return _normalise_treasury_frame(pd.read_csv(StringIO(response.text)))
 
 
 def fetch_treasury_dfii10() -> pd.DataFrame:
-    """Fetch long history quickly: one archive file + recent yearly feeds."""
-
-    frames = []
+    """Fetch long history with one archive request plus recent yearly CSVs."""
 
     response = requests.get(
         TREASURY_ARCHIVE_URL,
@@ -109,33 +84,20 @@ def fetch_treasury_dfii10() -> pd.DataFrame:
         timeout=REQUEST_TIMEOUT,
     )
     response.raise_for_status()
-    archive = pd.read_csv(StringIO(response.text))
-    archive.columns = [str(c).strip().lower() for c in archive.columns]
-    if "date" not in archive.columns or "10 yr" not in archive.columns:
-        raise RuntimeError(
-            "Unexpected Treasury archive columns: " + ", ".join(map(str, archive.columns))
-        )
-    archive = archive[["date", "10 yr"]].copy()
-    archive.columns = ["Date", "Value"]
-    frames.append(archive)
+    frames = [_normalise_treasury_frame(pd.read_csv(StringIO(response.text)))]
 
     current_year = datetime.now().year
     for year in range(2024, current_year + 1):
         try:
             frames.append(_fetch_treasury_year(year))
         except Exception as exc:
-            # Historical 2024/2025 gaps should not block today's dashboard.
-            # Current-year data is required so the displayed real yield is fresh.
             if year == current_year:
-                raise
+                raise RuntimeError(f"Treasury current-year real yield failed: {exc}") from exc
             print(f"Treasury real-yield year {year} skipped: {exc}")
 
     frame = pd.concat(frames, ignore_index=True)
-    frame["Date"] = pd.to_datetime(frame["Date"], errors="coerce")
-    frame["Value"] = pd.to_numeric(frame["Value"], errors="coerce")
     frame = (
-        frame.dropna()
-        .sort_values("Date")
+        frame.sort_values("Date")
         .drop_duplicates("Date", keep="last")
         .reset_index(drop=True)
     )
