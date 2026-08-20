@@ -207,7 +207,7 @@
     .risk-note {
       font-size: 12px;
       color: #666;
-      line-height: 1.55;
+      line-height: 1.65;
       margin-top: 14px;
     }
 
@@ -371,7 +371,9 @@ loadCSV("data/risk_dashboard.csv")
 function renderRiskDashboard(rows) {
   const cleanRows = rows.filter(row => row.Indicator);
   const summaries = cleanRows.filter(row => row.RowType === "Summary");
-  const metrics = cleanRows.filter(row => row.RowType === "Metric");
+  const metrics = cleanRows.filter(
+    row => row.RowType === "Metric" && row.Indicator !== "DFII10 (10Y Real Yield)"
+  );
 
   if (cleanRows.length === 0) {
     document.getElementById("riskSummary").innerHTML = "";
@@ -428,10 +430,15 @@ function renderRiskDashboard(rows) {
 
   const updated = cleanRows[0]?.UpdatedAt || "";
   document.getElementById("riskMeta").innerHTML =
-    `数据源：Nasdaq-100 / S&amp;P 500 Forward P/E 来自 History of Market；` +
+    `<strong>指标说明：</strong><br>` +
+    `<strong>Forward P/E</strong>：市场价格 ÷ 未来12个月预期盈利。数值越高，代表投资者为未来盈利支付的估值越高。<br>` +
+    `<strong>Cushion</strong>：Earnings Yield（100 ÷ Forward P/E）− 10年期实际收益率。它表示股票盈利收益率相对无风险实际利率还剩多少“估值缓冲”；越高通常越宽松，越低代表估值对利率更敏感。<br>` +
+    `<strong>Credit-to-GDP Gap</strong>：信贷占GDP比重相对长期趋势的偏离程度。明显为正且持续扩大，通常表示信用扩张过快、金融周期风险上升；负值一般表示没有明显信贷过热。<br>` +
+    `<strong>Mortgage Delinquency</strong>：住宅按揭贷款逾期率。判断重点不是单看绝对水平，而是是否连续上升，以及同比上升速度是否进入历史异常区间。<br>` +
+    `<strong>历史百分位</strong>：当前值在可获得历史数据中的相对位置。例如 90% 表示当前值高于约90%的历史观察值；对 Cushion 而言则反过来看，百分位越低通常越危险。<br><br>` +
+    `<strong>数据源：</strong>Nasdaq-100 / S&amp;P 500 Forward P/E 来自 History of Market；` +
     `10Y 实际收益率使用 U.S. Treasury 官方历史数据；Mortgage Delinquency 来自 Federal Reserve Board；` +
-    `Credit-to-GDP Gap 来自 BIS。Cushion = 100 / Forward P/E − 10Y real yield。` +
-    `历史百分位使用各指标可获得的最长重叠历史。` +
+    `Credit-to-GDP Gap 来自 BIS。10Y 实际收益率仍用于 Cushion 和综合评级计算，但不单独显示在表中。` +
     (updated ? `<br>Last updated: ${escapeHTML(updated)}` : "");
 }
 
