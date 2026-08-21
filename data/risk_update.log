@@ -4,15 +4,15 @@ Saved local cache risk_source_nasdaq_forward_pe.csv: 1239 observations through 2
 S&P 500 forward P/E: 1495 observations, 1990-06-29 to 2026-08-05
 Saved local cache risk_source_sp500_forward_pe.csv: 1495 observations through 2026-08-05
 Fetching FRED DFII10 and DRSFRMACBS...
-Saved local cache risk_source_dfii10.csv: 5913 observations through 2026-08-20
-Local DFII10 history: 5913 observations, 2003-01-02 to 2026-08-20
+Saved local cache risk_source_dfii10.csv: 5914 observations through 2026-08-21
+Local DFII10 history: 5914 observations, 2003-01-02 to 2026-08-21
 Saved local cache risk_source_mortgage.csv: 141 observations through 2026-03-31
 Fetching BIS US credit-to-GDP gap...
 BIS credit-to-GDP gap: 273 observations through 2025-12-31
 Saved local cache risk_source_credit_gap.csv: 273 observations through 2025-12-31
 SUCCESS
 Risk dashboard rows: 9
-Risk history rows: 5953
+Risk history rows: 5954
 Tech risk: 🟡注意
 Overall valuation risk: 🔴极高风险
 exit_code=0
