@@ -69,13 +69,17 @@ jobs:
           echo "exit_code=$status" >> data/risk_update.log
           exit 0
 
+      - name: Adjust risk summary badge size
+        run: |
+          sed -i 's/font-size: 24px;/font-size: 16px;/' index.html
+
       - name: Save updated data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Save all CSV databases, including persistent source caches.
-          git add data/*.csv data/risk_update.log
+          # Save all CSV databases, persistent source caches, and any UI patch.
+          git add data/*.csv data/risk_update.log index.html
 
           if git diff --cached --quiet; then
             echo "No data changes to commit"
