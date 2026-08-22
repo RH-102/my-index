@@ -511,7 +511,7 @@ SnapshotDate,DataDate,Status,ListType,RuleVersion,Rank,Company,Symbol,Exchange,M
 2026-08-31,2026-08-22,Temporary,All,2-company-level-financials,10,"Meta Platforms, Inc.",META,NASDAQ,1400000000000.0,$1.40T,StockAnalysis
 2026-08-31,2026-08-22,Temporary,All,2-company-level-financials,11,Eli Lilly and Company,LLY,NYSE,1120000000000.0,$1.12T,StockAnalysis
 2026-08-31,2026-08-22,Temporary,All,2-company-level-financials,12,"Micron Technology, Inc.",MU,NASDAQ,1090000000000.0001,$1.09T,StockAnalysis
-2026-08-31,2026-08-22,Temporary,All,2-company-level-financials,13,Berkshire Hathaway Inc.,BRK.B,NYSE,1060000000000.0,$1.06T,StockAnalysis
+2026-08-31,2026-08-22,Temporary,All,2-company-level-financials,13,Berkshire Hathaway Inc.,BRK.A,NYSE,1060000000000.0,$1.06T,StockAnalysis
 2026-08-31,2026-08-22,Temporary,All,2-company-level-financials,14,JPMorgan Chase & Co.,JPM,NYSE,934570000000.0,$934.57B,StockAnalysis
 2026-08-31,2026-08-22,Temporary,All,2-company-level-financials,15,SK hynix Inc.,SKHY,NASDAQ,909840000000.0,$909.84B,StockAnalysis
 2026-08-31,2026-08-22,Temporary,All,2-company-level-financials,16,Walmart Inc.,WMT,NASDAQ,825250000000.0,$825.25B,StockAnalysis
@@ -732,7 +732,7 @@ SnapshotDate,DataDate,Status,ListType,RuleVersion,Rank,Company,Symbol,Exchange,M
 2026-08-31,2026-08-22,Temporary,ExFinancials,2-company-level-financials,106,"Lowe's Companies, Inc.",LOW,NYSE,121160000000.0,$121.16B,StockAnalysis
 2026-08-31,2026-08-22,Temporary,ExFinancials,2-company-level-financials,107,Medtronic plc,MDT,NYSE,119490000000.0,$119.49B,StockAnalysis
 2026-08-31,2026-08-22,Temporary,ExFinancials,2-company-level-financials,108,CVS Health Corporation,CVS,NYSE,118970000000.0,$118.97B,StockAnalysis
-2026-08-31,2026-08-22,Temporary,ExFinancials,2-company-level-financials,109,PetrÃ³leo Brasileiro S.A. - Petrobras,PBR.A,NYSE,117920000000.0,$117.92B,StockAnalysis
+2026-08-31,2026-08-22,Temporary,ExFinancials,2-company-level-financials,109,PetrÃ³leo Brasileiro S.A. - Petrobras,PBR,NYSE,117920000000.0,$117.92B,StockAnalysis
 2026-08-31,2026-08-22,Temporary,ExFinancials,2-company-level-financials,110,BP p.l.c.,BP,NYSE,115730000000.0,$115.73B,StockAnalysis
 2026-08-31,2026-08-22,Temporary,ExFinancials,2-company-level-financials,111,Snowflake Inc.,SNOW,NYSE,115340000000.0,$115.34B,StockAnalysis
 2026-08-31,2026-08-22,Temporary,ExFinancials,2-company-level-financials,112,Accenture plc,ACN,NYSE,113380000000.0,$113.38B,StockAnalysis
@@ -761,7 +761,7 @@ SnapshotDate,DataDate,Status,ListType,RuleVersion,Rank,Company,Symbol,Exchange,M
 2026-11-30,2026-08-22,Temporary,All,2-company-level-financials,10,"Meta Platforms, Inc.",META,NASDAQ,1400000000000.0,$1.40T,StockAnalysis
 2026-11-30,2026-08-22,Temporary,All,2-company-level-financials,11,Eli Lilly and Company,LLY,NYSE,1120000000000.0,$1.12T,StockAnalysis
 2026-11-30,2026-08-22,Temporary,All,2-company-level-financials,12,"Micron Technology, Inc.",MU,NASDAQ,1090000000000.0001,$1.09T,StockAnalysis
-2026-11-30,2026-08-22,Temporary,All,2-company-level-financials,13,Berkshire Hathaway Inc.,BRK.B,NYSE,1060000000000.0,$1.06T,StockAnalysis
+2026-11-30,2026-08-22,Temporary,All,2-company-level-financials,13,Berkshire Hathaway Inc.,BRK.A,NYSE,1060000000000.0,$1.06T,StockAnalysis
 2026-11-30,2026-08-22,Temporary,All,2-company-level-financials,14,JPMorgan Chase & Co.,JPM,NYSE,934570000000.0,$934.57B,StockAnalysis
 2026-11-30,2026-08-22,Temporary,All,2-company-level-financials,15,SK hynix Inc.,SKHY,NASDAQ,909840000000.0,$909.84B,StockAnalysis
 2026-11-30,2026-08-22,Temporary,All,2-company-level-financials,16,Walmart Inc.,WMT,NASDAQ,825250000000.0,$825.25B,StockAnalysis
@@ -982,7 +982,7 @@ SnapshotDate,DataDate,Status,ListType,RuleVersion,Rank,Company,Symbol,Exchange,M
 2026-11-30,2026-08-22,Temporary,ExFinancials,2-company-level-financials,106,"Lowe's Companies, Inc.",LOW,NYSE,121160000000.0,$121.16B,StockAnalysis
 2026-11-30,2026-08-22,Temporary,ExFinancials,2-company-level-financials,107,Medtronic plc,MDT,NYSE,119490000000.0,$119.49B,StockAnalysis
 2026-11-30,2026-08-22,Temporary,ExFinancials,2-company-level-financials,108,CVS Health Corporation,CVS,NYSE,118970000000.0,$118.97B,StockAnalysis
-2026-11-30,2026-08-22,Temporary,ExFinancials,2-company-level-financials,109,PetrÃ³leo Brasileiro S.A. - Petrobras,PBR.A,NYSE,117920000000.0,$117.92B,StockAnalysis
+2026-11-30,2026-08-22,Temporary,ExFinancials,2-company-level-financials,109,PetrÃ³leo Brasileiro S.A. - Petrobras,PBR,NYSE,117920000000.0,$117.92B,StockAnalysis
 2026-11-30,2026-08-22,Temporary,ExFinancials,2-company-level-financials,110,BP p.l.c.,BP,NYSE,115730000000.0,$115.73B,StockAnalysis
 2026-11-30,2026-08-22,Temporary,ExFinancials,2-company-level-financials,111,Snowflake Inc.,SNOW,NYSE,115340000000.0,$115.34B,StockAnalysis
 2026-11-30,2026-08-22,Temporary,ExFinancials,2-company-level-financials,112,Accenture plc,ACN,NYSE,113380000000.0,$113.38B,StockAnalysis
