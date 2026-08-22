@@ -26,9 +26,7 @@ permissions:
   id-token: write
 
 jobs:
-
   update-index:
-
     runs-on: ubuntu-latest
 
     environment:
@@ -36,7 +34,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v6
 
@@ -51,8 +48,13 @@ jobs:
           pip install -r requirements.txt
 
       - name: Update prices and weights
+        continue-on-error: true
         run: |
+          set +e
           python scripts/update_prices.py
+          status=$?
+          echo "price_update_exit_code=$status"
+          exit 0
 
       - name: Update quarterly Top 125
         continue-on-error: true
@@ -66,7 +68,7 @@ jobs:
           python scripts/update_risk_v3.py > data/risk_update.log 2>&1
           status=$?
           cat data/risk_update.log
-          echo "exit_code=$status" >> data/risk_update.log
+          echo "risk_base_exit_code=$status" >> data/risk_update.log
           exit 0
 
       - name: Update HY OAS risk indicator
@@ -75,7 +77,6 @@ jobs:
           set +e
           python scripts/add_hy_oas.py >> data/risk_update.log 2>&1
           status=$?
-          cat data/risk_update.log
           echo "hy_oas_exit_code=$status" >> data/risk_update.log
           exit 0
 
@@ -85,79 +86,16 @@ jobs:
           set +e
           python scripts/add_ci_sloos.py >> data/risk_update.log 2>&1
           status=$?
-          cat data/risk_update.log
           echo "ci_sloos_exit_code=$status" >> data/risk_update.log
+          cat data/risk_update.log
           exit 0
-
-      - name: Apply dashboard UI preferences
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          import pandas as pd
-
-          # Remove Mortgage Delinquency from the published dashboard data.
-          dashboard = Path("data/risk_dashboard.csv")
-          if dashboard.exists():
-              frame = pd.read_csv(dashboard)
-              if "Indicator" in frame.columns:
-                  frame = frame[frame["Indicator"] != "Mortgage Delinquency"]
-                  frame.to_csv(dashboard, index=False)
-
-          # Keep DFII10 and Mortgage Delinquency hidden from the visible table,
-          # and keep the risk-indicator footnote aligned with the visible rows.
-          path = Path("index.html")
-          text = path.read_text(encoding="utf-8")
-
-          text = text.replace(
-              'row => row.RowType === "Metric" && row.Indicator !== "DFII10 (10Y Real Yield)"',
-              'row => row.RowType === "Metric" && !["DFII10 (10Y Real Yield)", "Mortgage Delinquency"].includes(row.Indicator)'
-          )
-
-          text = text.replace(
-              '    `<strong>Mortgage Delinquency</strong>：住宅按揭贷款逾期率。判断重点不是单看绝对水平，而是是否连续上升，以及同比上升速度是否进入历史异常区间。<br>` +\n',
-              ''
-          )
-
-          text = text.replace(
-              'Mortgage Delinquency 来自 Federal Reserve Board；',
-              ''
-          )
-
-          hy_line = (
-              '    `<strong>HY OAS 3M Change</strong>：ICE BofA 美国高收益债期权调整利差相对约3个月前的变化。'
-              '利差短期快速扩大通常代表信用风险和市场压力上升；评级按3个月变化：&lt;50bp 安全，'
-              '50–&lt;100bp 注意，100–&lt;150bp 高风险，≥150bp 极高风险。<br>` +\n'
-          )
-          sloos_line = (
-              '    `<strong>C&amp;I SLOOS</strong>：美国银行收紧大中型企业商业与工业贷款标准的净比例。'
-              '数值越高表示银行信贷条件越紧；评级：≤5% 安全，&gt;5–10% 注意，'
-              '&gt;10–20% 高风险，&gt;20% 极高风险。<br>` +\n'
-          )
-          history_anchor = (
-              '    `<strong>历史百分位</strong>：当前值在可获得历史数据中的相对位置。'
-              '例如 90% 表示当前值高于约90%的历史观察值；对 Cushion 而言则反过来看，'
-              '百分位越低通常越危险。<br><br>` +\n'
-          )
-          if '<strong>HY OAS 3M Change</strong>' not in text and history_anchor in text:
-              text = text.replace(history_anchor, hy_line + history_anchor)
-          if '<strong>C&amp;I SLOOS</strong>' not in text and history_anchor in text:
-              text = text.replace(history_anchor, sloos_line + history_anchor)
-
-          text = text.replace(
-              'Credit-to-GDP Gap 来自 BIS。',
-              'HY OAS 来自 FRED BAMLH0A0HYM2；C&amp;I SLOOS 来自 FRED DRTSCILM；Credit-to-GDP Gap 来自 BIS。'
-          )
-
-          path.write_text(text, encoding="utf-8")
-          PY
 
       - name: Save updated data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Save all CSV databases, persistent source caches, and UI preferences.
-          git add data/*.csv data/risk_update.log index.html
+          git add data/*.csv data/*.log
 
           if git diff --cached --quiet; then
             echo "No data changes to commit"
