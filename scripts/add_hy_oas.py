@@ -1,8 +1,8 @@
 """Add ICE BofA US High Yield OAS 3-month change to the risk dashboard.
 
-FRED series: BAMLH0A0HYM2 (percent, daily).
-The repository CSV is the durable local cache. Remote sources are only used
-for refreshes; if they fail, the last good local cache is reused.
+Primary series: FRED BAMLH0A0HYM2 (percent, daily).
+The script keeps a local repository cache and uses multiple public endpoints so
+one temporary FRED timeout does not prevent the dashboard from updating.
 """
 
 from __future__ import annotations
@@ -16,7 +16,6 @@ from zoneinfo import ZoneInfo
 import pandas as pd
 import requests
 
-
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 DASHBOARD_FILE = DATA_DIR / "risk_dashboard.csv"
@@ -26,9 +25,10 @@ CACHE_FILE = DATA_DIR / "risk_source_hy_oas.csv"
 SERIES_ID = "BAMLH0A0HYM2"
 FRED_CSV_URL = "https://fred.stlouisfed.org/graph/fredgraph.csv"
 FRED_TABLE_URL = f"https://fred.stlouisfed.org/data/{SERIES_ID}"
+MIRROR_CSV_URL = f"https://govspending.org/api/export/fred/{SERIES_ID}.csv"
 TIMEZONE = ZoneInfo("America/New_York")
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; my-index/1.0)"}
-REQUEST_TIMEOUT = (6, 15)
+REQUEST_TIMEOUT = (6, 12)
 
 RISK_LABELS = {
     0: "🟢安全",
@@ -68,7 +68,15 @@ class SimpleTableParser(HTMLParser):
 def clean_frame(frame: pd.DataFrame) -> pd.DataFrame:
     if frame is None or frame.empty:
         return pd.DataFrame(columns=["Date", "Value"])
-    out = frame.iloc[:, :2].copy()
+
+    cols = list(frame.columns)
+    date_col = next((c for c in cols if str(c).lower() in {"date", "observation_date"}), cols[0])
+    value_col = next(
+        (c for c in cols if str(c).lower() in {"value", SERIES_ID.lower()}),
+        cols[1] if len(cols) > 1 else cols[0],
+    )
+
+    out = frame[[date_col, value_col]].copy()
     out.columns = ["Date", "Value"]
     out["Date"] = pd.to_datetime(out["Date"], errors="coerce")
     out["Value"] = pd.to_numeric(out["Value"], errors="coerce")
@@ -122,22 +130,31 @@ def save_cache(frame: pd.DataFrame) -> pd.DataFrame:
 def fetch_remote_hy_oas() -> pd.DataFrame:
     errors = []
 
-    # FRED's static table page is often more reliable than fredgraph.csv.
+    # 1) FRED table page.
     try:
-        response = requests.get(
-            FRED_TABLE_URL,
-            headers=HEADERS,
-            timeout=REQUEST_TIMEOUT,
-        )
+        response = requests.get(FRED_TABLE_URL, headers=HEADERS, timeout=REQUEST_TIMEOUT)
         response.raise_for_status()
         frame = parse_fred_table_html(response.text)
         if len(frame) >= 60:
             print(f"HY OAS loaded from FRED table page: {len(frame)} observations")
             return frame
-        errors.append(f"table page returned only {len(frame)} observations")
+        errors.append(f"FRED table returned {len(frame)} rows")
     except Exception as exc:
-        errors.append(f"table page failed: {exc}")
+        errors.append(f"FRED table failed: {exc}")
 
+    # 2) Public CSV mirror of the FRED series.
+    try:
+        response = requests.get(MIRROR_CSV_URL, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+        response.raise_for_status()
+        frame = clean_frame(pd.read_csv(StringIO(response.text)))
+        if len(frame) >= 60:
+            print(f"HY OAS loaded from FRED mirror: {len(frame)} observations")
+            return frame
+        errors.append(f"mirror returned {len(frame)} rows")
+    except Exception as exc:
+        errors.append(f"mirror failed: {exc}")
+
+    # 3) FRED graph CSV.
     try:
         response = requests.get(
             FRED_CSV_URL,
@@ -150,9 +167,9 @@ def fetch_remote_hy_oas() -> pd.DataFrame:
         if len(frame) >= 60:
             print(f"HY OAS loaded from FRED CSV: {len(frame)} observations")
             return frame
-        errors.append(f"CSV returned only {len(frame)} observations")
+        errors.append(f"FRED CSV returned {len(frame)} rows")
     except Exception as exc:
-        errors.append(f"CSV failed: {exc}")
+        errors.append(f"FRED CSV failed: {exc}")
 
     raise RuntimeError("; ".join(errors))
 
@@ -246,7 +263,7 @@ def main() -> None:
         "Rating": RISK_LABELS[level],
         "RatingLevel": level,
         "DataDate": pd.Timestamp(latest["Date"]).date().isoformat(),
-        "Source": "Local cache: FRED BAMLH0A0HYM2",
+        "Source": "FRED BAMLH0A0HYM2",
         "Note": (
             "ICE BofA US High Yield Index Option-Adjusted Spread 3-month change. "
             "Rating thresholds: <50bp safe; 50-<100bp watch; "
@@ -254,13 +271,13 @@ def main() -> None:
         ),
         "UpdatedAt": updated_at,
     }
-
     dashboard = pd.concat([dashboard, pd.DataFrame([row])], ignore_index=True)
     dashboard.to_csv(DASHBOARD_FILE, index=False)
 
     hy_history = changes[["Date", "ChangeBp"]].copy()
     hy_history["Date"] = pd.to_datetime(hy_history["Date"]).dt.date.astype(str)
     hy_history = hy_history.rename(columns={"ChangeBp": "HY_OAS_3M_Change_bp"})
+
     if HISTORY_FILE.exists():
         history = pd.read_csv(HISTORY_FILE)
         if "HY_OAS_3M_Change_bp" in history.columns:
@@ -274,7 +291,6 @@ def main() -> None:
     print(f"HY OAS current: {current_oas:.2f}%")
     print(f"HY OAS 3M ago: {past_oas:.2f}%")
     print(f"HY OAS 3M change: {change_bp:+.0f}bp")
-    print(f"HY OAS 3M-change percentile: {pct:.1f}%")
     print(f"HY OAS rating: {RISK_LABELS[level]}")
 
 
