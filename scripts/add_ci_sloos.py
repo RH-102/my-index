@@ -1,16 +1,14 @@
 """Add C&I SLOOS tightening-standards indicator to the risk dashboard.
 
-FRED series: DRTSCILM
-Net Percentage of Domestic Banks Tightening Standards for Commercial and
-Industrial Loans to Large and Middle-Market Firms (percent, quarterly).
-
-The repository CSV is the durable local cache. FRED is used only to refresh it;
-if FRED is temporarily unavailable, the last good local history is reused.
+FRED series: DRTSCILM (percent, quarterly).
+The repository CSV is the durable local cache. Remote sources are only used
+for refreshes; if they fail, the last good local cache is reused.
 """
 
 from __future__ import annotations
 
 from datetime import datetime
+from html.parser import HTMLParser
 from io import StringIO
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -26,10 +24,11 @@ HISTORY_FILE = DATA_DIR / "risk_history.csv"
 CACHE_FILE = DATA_DIR / "risk_source_ci_sloos.csv"
 
 SERIES_ID = "DRTSCILM"
-FRED_URL = "https://fred.stlouisfed.org/graph/fredgraph.csv"
+FRED_CSV_URL = "https://fred.stlouisfed.org/graph/fredgraph.csv"
+FRED_TABLE_URL = f"https://fred.stlouisfed.org/data/{SERIES_ID}"
 TIMEZONE = ZoneInfo("America/New_York")
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; my-index/1.0)"}
-REQUEST_TIMEOUT = (8, 20)
+REQUEST_TIMEOUT = (6, 15)
 
 RISK_LABELS = {
     0: "🟢安全",
@@ -39,17 +38,60 @@ RISK_LABELS = {
 }
 
 
+class SimpleTableParser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.rows = []
+        self.current_row = []
+        self.current_cell = []
+        self.in_cell = False
+
+    def handle_starttag(self, tag, attrs):
+        if tag in {"td", "th"}:
+            self.in_cell = True
+            self.current_cell = []
+
+    def handle_data(self, data):
+        if self.in_cell:
+            self.current_cell.append(data)
+
+    def handle_endtag(self, tag):
+        if tag in {"td", "th"} and self.in_cell:
+            self.current_row.append("".join(self.current_cell).strip())
+            self.in_cell = False
+        elif tag == "tr":
+            if self.current_row:
+                self.rows.append(self.current_row)
+            self.current_row = []
+
+
 def clean_frame(frame: pd.DataFrame) -> pd.DataFrame:
     if frame is None or frame.empty:
         return pd.DataFrame(columns=["Date", "Value"])
-
     out = frame.iloc[:, :2].copy()
     out.columns = ["Date", "Value"]
     out["Date"] = pd.to_datetime(out["Date"], errors="coerce")
     out["Value"] = pd.to_numeric(out["Value"], errors="coerce")
-    out = out.dropna().sort_values("Date")
-    out = out.drop_duplicates("Date", keep="last").reset_index(drop=True)
-    return out
+    return (
+        out.dropna()
+        .sort_values("Date")
+        .drop_duplicates("Date", keep="last")
+        .reset_index(drop=True)
+    )
+
+
+def parse_fred_table_html(text: str) -> pd.DataFrame:
+    parser = SimpleTableParser()
+    parser.feed(text)
+    rows = []
+    for row in parser.rows:
+        if len(row) < 2:
+            continue
+        date = pd.to_datetime(row[0], errors="coerce")
+        value = pd.to_numeric(row[1], errors="coerce")
+        if pd.notna(date) and pd.notna(value):
+            rows.append({"Date": date, "Value": float(value)})
+    return clean_frame(pd.DataFrame(rows))
 
 
 def load_cache() -> pd.DataFrame:
@@ -66,7 +108,6 @@ def save_cache(frame: pd.DataFrame) -> pd.DataFrame:
     out = clean_frame(frame)
     if out.empty:
         raise RuntimeError("Refusing to save an empty C&I SLOOS cache")
-
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     disk = out.copy()
     disk["Date"] = disk["Date"].dt.strftime("%Y-%m-%d")
@@ -78,26 +119,48 @@ def save_cache(frame: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
-def fetch_ci_sloos() -> pd.DataFrame:
-    cached = load_cache()
+def fetch_remote_ci_sloos() -> pd.DataFrame:
+    errors = []
 
     try:
         response = requests.get(
-            FRED_URL,
+            FRED_TABLE_URL,
+            headers=HEADERS,
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        frame = parse_fred_table_html(response.text)
+        if len(frame) >= 100:
+            print(f"C&I SLOOS loaded from FRED table page: {len(frame)} observations")
+            return frame
+        errors.append(f"table page returned only {len(frame)} observations")
+    except Exception as exc:
+        errors.append(f"table page failed: {exc}")
+
+    try:
+        response = requests.get(
+            FRED_CSV_URL,
             params={"id": SERIES_ID},
             headers=HEADERS,
             timeout=REQUEST_TIMEOUT,
         )
         response.raise_for_status()
-        fresh = clean_frame(pd.read_csv(StringIO(response.text)))
-        if len(fresh) < 100:
-            raise RuntimeError(
-                f"FRED returned only {len(fresh)} C&I SLOOS observations"
-            )
+        frame = clean_frame(pd.read_csv(StringIO(response.text)))
+        if len(frame) >= 100:
+            print(f"C&I SLOOS loaded from FRED CSV: {len(frame)} observations")
+            return frame
+        errors.append(f"CSV returned only {len(frame)} observations")
+    except Exception as exc:
+        errors.append(f"CSV failed: {exc}")
 
-        combined = pd.concat([cached, fresh], ignore_index=True)
-        return save_cache(combined)
+    raise RuntimeError("; ".join(errors))
 
+
+def fetch_ci_sloos() -> pd.DataFrame:
+    cached = load_cache()
+    try:
+        fresh = fetch_remote_ci_sloos()
+        return save_cache(pd.concat([cached, fresh], ignore_index=True))
     except Exception as exc:
         if len(cached) >= 100:
             print(
@@ -111,7 +174,6 @@ def fetch_ci_sloos() -> pd.DataFrame:
 
 
 def risk_level(value: float) -> int:
-    # User-defined thresholds. To remove boundary overlap:
     # <=5 safe; >5 to <=10 watch; >10 to <=20 high; >20 extreme.
     if value > 20:
         return 3
@@ -182,16 +244,13 @@ def main() -> None:
     sloos_history = sloos[["Date", "Value"]].copy()
     sloos_history["Date"] = pd.to_datetime(sloos_history["Date"]).dt.date.astype(str)
     sloos_history = sloos_history.rename(columns={"Value": "CI_SLOOS"})
-
     if HISTORY_FILE.exists():
         history = pd.read_csv(HISTORY_FILE)
         if "CI_SLOOS" in history.columns:
             history = history.drop(columns=["CI_SLOOS"])
-        history = history.merge(sloos_history, on="Date", how="outer")
-        history = history.sort_values("Date")
+        history = history.merge(sloos_history, on="Date", how="outer").sort_values("Date")
     else:
         history = sloos_history
-
     history.to_csv(HISTORY_FILE, index=False)
 
     print("SUCCESS")
