@@ -69,16 +69,38 @@ jobs:
           echo "exit_code=$status" >> data/risk_update.log
           exit 0
 
-      - name: Adjust risk summary badge size
+      - name: Apply dashboard UI preferences
         run: |
-          sed -i 's/font-size: 24px;/font-size: 16px;/' index.html
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("index.html")
+          text = path.read_text(encoding="utf-8")
+
+          text = text.replace(
+              'row => row.RowType === "Metric" && row.Indicator !== "DFII10 (10Y Real Yield)"',
+              'row => row.RowType === "Metric" && !["DFII10 (10Y Real Yield)", "Mortgage Delinquency"].includes(row.Indicator)'
+          )
+
+          text = text.replace(
+              '    `<strong>Mortgage Delinquency</strong>：住宅按揭贷款逾期率。判断重点不是单看绝对水平，而是是否连续上升，以及同比上升速度是否进入历史异常区间。<br>` +\n',
+              ''
+          )
+
+          text = text.replace(
+              'Mortgage Delinquency 来自 Federal Reserve Board；',
+              ''
+          )
+
+          path.write_text(text, encoding="utf-8")
+          PY
 
       - name: Save updated data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Save all CSV databases, persistent source caches, and any UI patch.
+          # Save all CSV databases, persistent source caches, and UI preferences.
           git add data/*.csv data/risk_update.log index.html
 
           if git diff --cached --quiet; then
