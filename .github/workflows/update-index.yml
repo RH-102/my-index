@@ -73,7 +73,18 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
+          import pandas as pd
 
+          # Remove Mortgage Delinquency from the published dashboard data.
+          dashboard = Path("data/risk_dashboard.csv")
+          if dashboard.exists():
+              frame = pd.read_csv(dashboard)
+              if "Indicator" in frame.columns:
+                  frame = frame[frame["Indicator"] != "Mortgage Delinquency"]
+                  frame.to_csv(dashboard, index=False)
+
+          # Keep DFII10 and Mortgage Delinquency hidden from the visible table,
+          # and remove the mortgage explanation/source text from the footnote.
           path = Path("index.html")
           text = path.read_text(encoding="utf-8")
 
