@@ -33,27 +33,12 @@ C&I SLOOS percentile: 51.4%
 C&I SLOOS rating: 🟢安全
 ci_sloos_exit_code=0
 Saved risk_source_sp500_price.csv: 9479 observations through 2026-08-21
-Traceback (most recent call last):
-  File "/home/runner/work/my-index/my-index/scripts/run_allocation_card.py", line 8, in <module>
-    update_allocation.main()
-  File "/home/runner/work/my-index/my-index/scripts/update_allocation.py", line 262, in main
-    eps_hist = implied_forward_eps(sp_pe, spx)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/my-index/my-index/scripts/update_allocation.py", line 193, in implied_forward_eps
-    merged = pd.merge_asof(
-             ^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/pandas/core/reshape/merge.py", line 917, in merge_asof
-    op = _AsOfMerge(
-         ^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/pandas/core/reshape/merge.py", line 2353, in __init__
-    _OrderedMerge.__init__(
-  File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/pandas/core/reshape/merge.py", line 2265, in __init__
-    _MergeOperation.__init__(
-  File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/pandas/core/reshape/merge.py", line 1026, in __init__
-    self._maybe_require_matching_dtypes(self.left_join_keys, self.right_join_keys)
-  File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/pandas/core/reshape/merge.py", line 2478, in _maybe_require_matching_dtypes
-    _check_dtype_match(lk, rk, i)
-  File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/pandas/core/reshape/merge.py", line 2474, in _check_dtype_match
-    raise MergeError(msg)
-pandas.errors.MergeError: incompatible merge keys [0] dtype('<M8[us]') and dtype('<M8[s]'), must be the same type
-allocation_exit_code=1
+SUCCESS
+S&P 500 date: 2026-08-21
+S&P 500 close: 7674.37; ATH: 7798.99; drawdown: 1.60%
+Daily estimated Forward P/E: 19.99x
+Cushion: 2.60%; V=0.441; D_eff=0.027; O=0.296
+Crisis R=0.000; R_eff=0.000; E=0.000; Gate=0
+Suggested S&P 500 allocation: 57.8%
+Published S&P 500 suggested allocation as summary card
+allocation_exit_code=0
