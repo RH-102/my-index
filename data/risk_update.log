@@ -15,8 +15,14 @@ Risk dashboard rows: 9
 Risk history rows: 5954
 Tech risk: 🟡注意
 Overall valuation risk: 🔴极高风险
-exit_code=0
-HY OAS enrichment skipped: HY OAS unavailable and no usable local cache exists: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)
+risk_base_exit_code=0
+HY OAS enrichment skipped: HY OAS unavailable and no usable local cache exists: FRED table failed: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=12); mirror failed: Error tokenizing data. C error: Expected 1 fields in line 5, saw 2
+; FRED CSV failed: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=12)
 hy_oas_exit_code=0
-C&I SLOOS enrichment skipped: C&I SLOOS unavailable and no usable local cache exists: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)
+C&I SLOOS loaded from Federal Reserve Board: 146 observations
+Saved risk_source_ci_sloos.csv: 146 observations through 2026-07-01
+SUCCESS
+C&I SLOOS current: 0.0%
+C&I SLOOS percentile: 51.4%
+C&I SLOOS rating: 🟢安全
 ci_sloos_exit_code=0
