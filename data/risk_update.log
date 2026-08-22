@@ -16,3 +16,5 @@ Risk history rows: 5954
 Tech risk: 🟡注意
 Overall valuation risk: 🔴极高风险
 exit_code=0
+HY OAS enrichment skipped: HY OAS unavailable and no usable local cache exists: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)
+hy_oas_exit_code=0
