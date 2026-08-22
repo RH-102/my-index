@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Market Risk History</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      color: #222;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+
+    a {
+      color: #1f5fbf;
+      text-decoration: none;
+    }
+
+    h1 {
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 22px;
+      line-height: 1.5;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    select {
+      padding: 9px 10px;
+      border: 1px solid #ccc;
+      border-radius: 7px;
+      background: white;
+      min-width: 220px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .card,
+    .section {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .card {
+      padding: 18px;
+    }
+
+    .card-title {
+      color: #777;
+      font-size: 13px;
+      margin-bottom: 7px;
+    }
+
+    .card-value {
+      font-size: 22px;
+      font-weight: bold;
+      word-break: break-word;
+    }
+
+    .section {
+      padding: 20px;
+      margin-bottom: 24px;
+      overflow-x: auto;
+    }
+
+    .chart-wrap {
+      position: relative;
+      min-height: 360px;
+    }
+
+    canvas {
+      max-height: 430px;
+    }
+
+    .definition {
+      color: #666;
+      font-size: 13px;
+      line-height: 1.6;
+      margin: 0 0 16px 0;
+    }
+
+    .risk-badge {
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-weight: 700;
+      white-space: nowrap;
+      font-size: 14px;
+    }
+
+    .risk-0 { background: #dcfce7; color: #166534; }
+    .risk-1 { background: #fef9c3; color: #854d0e; }
+    .risk-2 { background: #ffedd5; color: #9a3412; }
+    .risk-3 { background: #fee2e2; color: #991b1b; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 920px;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      border-bottom: 2px solid #ddd;
+      font-size: 14px;
+    }
+
+    th.number,
+    td.number {
+      text-align: right;
+    }
+
+    .loading,
+    .error {
+      padding: 28px;
+      text-align: center;
+      color: #666;
+    }
+
+    .error {
+      color: #b00020;
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        padding: 20px 12px;
+      }
+
+      .section {
+        padding: 15px;
+      }
+
+      select {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="nav-links">
+      <a href="index.html">← Back to My Index</a>
+      <a href="top100.html">NASDAQ + NYSE Top 125 →</a>
+    </div>
+
+    <h1>Market Risk History</h1>
+
+    <div class="subtitle">
+      Daily snapshots from the 股市风险监控 dashboard. Select an indicator to view its history. Slow-moving indicators remain flat until their source publishes a new observation.
+    </div>
+
+    <div class="controls">
+      <label>
+        Indicator:
+        <select id="indicatorSelect"></select>
+      </label>
+
+      <label>
+        Range:
+        <select id="rangeSelect">
+          <option value="all">All</option>
+          <option value="365">1 Year</option>
+          <option value="180">6 Months</option>
+          <option value="90">3 Months</option>
+          <option value="30">1 Month</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-title">Latest Value</div>
+        <div class="card-value" id="latestValue">--</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Latest Rating</div>
+        <div class="card-value" id="latestRating">--</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Indicator Data Date</div>
+        <div class="card-value" id="dataDate">--</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Daily Snapshots</div>
+        <div class="card-value" id="snapshotCount">--</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 id="chartTitle">History</h2>
+      <div class="definition" id="chartDefinition"></div>
+      <div class="chart-wrap">
+        <canvas id="historyChart"></canvas>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Snapshot History</h2>
+      <div id="tableArea" class="loading">Loading risk history...</div>
+    </div>
+  </div>
+
+<script>
+let allRows = [];
+let historyChart = null;
+
+const riskLabels = {
+  0: "安全",
+  1: "注意",
+  2: "高风险",
+  3: "极高风险"
+};
+
+function loadHistory() {
+  Papa.parse("data/risk_dashboard_history.csv?v=" + Date.now(), {
+    download: true,
+    header: true,
+    dynamicTyping: true,
+
+    complete: function(results) {
+      allRows = results.data.filter(row => row.SnapshotDate && row.Indicator);
+
+      if (allRows.length === 0) {
+        document.getElementById("tableArea").innerHTML =
+          '<div class="error">No risk history snapshots yet. The next workflow run will create them.</div>';
+        return;
+      }
+
+      populateIndicators();
+      document.getElementById("indicatorSelect").addEventListener("change", render);
+      document.getElementById("rangeSelect").addEventListener("change", render);
+      render();
+    },
+
+    error: function(error) {
+      document.getElementById("tableArea").innerHTML =
+        '<div class="error">Could not load risk_dashboard_history.csv</div>';
+      console.error(error);
+    }
+  });
+}
+
+function populateIndicators() {
+  const preferred = [
+    "S&P 500建议持仓",
+    "整体美股估值风险",
+    "科技/AI估值风险",
+    "S&P 500 Forward P/E",
+    "S&P 500 Cushion",
+    "Nasdaq-100 Forward P/E",
+    "Nasdaq Cushion",
+    "HY OAS 3M Change",
+    "C&I SLOOS",
+    "Credit-to-GDP Gap",
+    "DFII10 (10Y Real Yield)"
+  ];
+
+  const available = [...new Set(allRows.map(row => row.Indicator))];
+  const ordered = [
+    ...preferred.filter(name => available.includes(name)),
+    ...available.filter(name => !preferred.includes(name)).sort()
+  ];
+
+  const select = document.getElementById("indicatorSelect");
+  ordered.forEach(name => {
+    const option = document.createElement("option");
+    option.value = name;
+    option.textContent = name;
+    select.appendChild(option);
+  });
+
+  if (available.includes("S&P 500建议持仓")) {
+    select.value = "S&P 500建议持仓";
+  }
+}
+
+function selectedRows() {
+  const indicator = document.getElementById("indicatorSelect").value;
+  const range = document.getElementById("rangeSelect").value;
+
+  let rows = allRows
+    .filter(row => row.Indicator === indicator)
+    .sort((a, b) => new Date(a.SnapshotDate) - new Date(b.SnapshotDate));
+
+  if (range !== "all" && rows.length > 0) {
+    const latest = new Date(rows[rows.length - 1].SnapshotDate + "T00:00:00");
+    const cutoff = new Date(latest);
+    cutoff.setDate(cutoff.getDate() - Number(range));
+    rows = rows.filter(row => new Date(row.SnapshotDate + "T00:00:00") >= cutoff);
+  }
+
+  return rows;
+}
+
+function hasNumericValue(row) {
+  return row.NumericValue !== null &&
+    row.NumericValue !== "" &&
+    Number.isFinite(Number(row.NumericValue));
+}
+
+function valueForChart(row) {
+  if (hasNumericValue(row)) return Number(row.NumericValue);
+
+  if (row.RatingLevel !== null && row.RatingLevel !== "" && Number.isFinite(Number(row.RatingLevel))) {
+    return Number(row.RatingLevel);
+  }
+
+  return null;
+}
+
+function displayLatestValue(row) {
+  if (row.CurrentValue !== null && row.CurrentValue !== "") return String(row.CurrentValue);
+  if (row.Rating !== null && row.Rating !== "") return String(row.Rating);
+  return "--";
+}
+
+function render() {
+  const rows = selectedRows();
+  const indicator = document.getElementById("indicatorSelect").value;
+
+  if (rows.length === 0) {
+    document.getElementById("tableArea").innerHTML =
+      '<div class="error">No history is available for this selection.</div>';
+    return;
+  }
+
+  const latest = rows[rows.length - 1];
+  document.getElementById("latestValue").textContent = displayLatestValue(latest);
+  document.getElementById("dataDate").textContent = latest.DataDate || "--";
+  document.getElementById("snapshotCount").textContent = rows.length;
+
+  const ratingArea = document.getElementById("latestRating");
+  if (latest.Rating && latest.RatingLevel !== null && latest.RatingLevel !== "") {
+    const level = Number(latest.RatingLevel);
+    ratingArea.innerHTML = `<span class="risk-badge risk-${level}">${escapeHTML(latest.Rating)}</span>`;
+  } else {
+    ratingArea.textContent = "--";
+  }
+
+  document.getElementById("chartTitle").textContent = indicator + " — History";
+  document.getElementById("chartDefinition").textContent = latest.Note || "";
+
+  renderChart(rows, indicator);
+  renderTable(rows);
+}
+
+function renderChart(rows, indicator) {
+  const points = rows
+    .map(row => ({
+      x: row.SnapshotDate,
+      y: valueForChart(row),
+      row: row
+    }))
+    .filter(point => point.y !== null);
+
+  if (historyChart) historyChart.destroy();
+
+  const latestRow = rows[rows.length - 1];
+  const useRatingScale = !hasNumericValue(latestRow);
+  const unit = latestRow.Unit || "";
+
+  historyChart = new Chart(document.getElementById("historyChart"), {
+    type: "line",
+    data: {
+      labels: points.map(point => point.x),
+      datasets: [{
+        label: indicator,
+        data: points.map(point => point.y),
+        tension: 0.15,
+        pointRadius: points.length < 40 ? 4 : 2,
+        borderWidth: 2,
+        spanGaps: true
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: {
+        mode: "index",
+        intersect: false
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              const row = points[context.dataIndex].row;
+              if (useRatingScale) {
+                const level = Number(context.raw);
+                return `Risk level: ${level} (${riskLabels[level] || ""})`;
+              }
+              return `${row.CurrentValue || context.raw}`;
+            },
+            afterLabel: function(context) {
+              const row = points[context.dataIndex].row;
+              const extras = [];
+              if (row.HistoryPercentile) extras.push(`Percentile: ${row.HistoryPercentile}`);
+              if (row.Rating) extras.push(`Rating: ${row.Rating}`);
+              return extras.join("\n");
+            }
+          }
+        }
+      },
+      scales: {
+        y: useRatingScale ? {
+          min: 0,
+          max: 3,
+          ticks: {
+            stepSize: 1,
+            callback: value => riskLabels[value] || value
+          }
+        } : {
+          ticks: {
+            callback: value => `${value}${unit}`
+          }
+        }
+      }
+    }
+  });
+}
+
+function renderTable(rows) {
+  const newestFirst = [...rows].reverse();
+
+  let html = `
+    <table>
+      <thead>
+        <tr>
+          <th>Snapshot Date</th>
+          <th>Current Value</th>
+          <th>History Percentile</th>
+          <th>Recent Change</th>
+          <th>Rating</th>
+          <th>Data Date</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  newestFirst.forEach(row => {
+    const level = row.RatingLevel !== null && row.RatingLevel !== ""
+      ? Number(row.RatingLevel)
+      : null;
+
+    const rating = row.Rating
+      ? (level !== null
+          ? `<span class="risk-badge risk-${level}">${escapeHTML(row.Rating)}</span>`
+          : escapeHTML(row.Rating))
+      : "--";
+
+    html += `
+      <tr>
+        <td>${escapeHTML(row.SnapshotDate)}</td>
+        <td><strong>${escapeHTML(displayLatestValue(row))}</strong></td>
+        <td>${escapeHTML(row.HistoryPercentile || "--")}</td>
+        <td>${escapeHTML(row.RecentChange || "--")}</td>
+        <td>${rating}</td>
+        <td>${escapeHTML(row.DataDate || "--")}</td>
+      </tr>
+    `;
+  });
+
+  html += "</tbody></table>";
+  document.getElementById("tableArea").innerHTML = html;
+}
+
+function escapeHTML(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+loadHistory();
+</script>
+</body>
+</html>
