@@ -1,12 +1,14 @@
 """Add C&I SLOOS tightening-standards indicator to the risk dashboard.
 
-FRED series: DRTSCILM (percent, quarterly).
-The repository CSV is the durable local cache. Remote sources are only used
-for refreshes; if they fail, the last good local cache is reused.
+Primary concept: net percentage of domestic banks tightening standards for
+C&I loans to large and middle-market firms. The repository CSV is the durable
+local cache. The script prefers the Federal Reserve Board source, with FRED and
+a public FRED mirror as fallbacks.
 """
 
 from __future__ import annotations
 
+import csv
 from datetime import datetime
 from html.parser import HTMLParser
 from io import StringIO
@@ -16,7 +18,6 @@ from zoneinfo import ZoneInfo
 import pandas as pd
 import requests
 
-
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 DASHBOARD_FILE = DATA_DIR / "risk_dashboard.csv"
@@ -24,11 +25,18 @@ HISTORY_FILE = DATA_DIR / "risk_history.csv"
 CACHE_FILE = DATA_DIR / "risk_source_ci_sloos.csv"
 
 SERIES_ID = "DRTSCILM"
-FRED_CSV_URL = "https://fred.stlouisfed.org/graph/fredgraph.csv"
+FED_SERIES_CODE = "SUBLPDCILS_N.Q"
+FED_OUTPUT_URL = (
+    "https://www.federalreserve.gov/datadownload/Output.aspx?"
+    "filetype=csv&from=&label=include&lastobs=&layout=seriescolumn&"
+    "rel=SLOOS&series=2f17df6d07977715676ad71c7a655bbd&to=&type=package"
+)
 FRED_TABLE_URL = f"https://fred.stlouisfed.org/data/{SERIES_ID}"
+FRED_CSV_URL = "https://fred.stlouisfed.org/graph/fredgraph.csv"
+MIRROR_CSV_URL = f"https://govspending.org/api/export/fred/{SERIES_ID}.csv"
 TIMEZONE = ZoneInfo("America/New_York")
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; my-index/1.0)"}
-REQUEST_TIMEOUT = (6, 15)
+REQUEST_TIMEOUT = (6, 12)
 
 RISK_LABELS = {
     0: "🟢安全",
@@ -68,7 +76,14 @@ class SimpleTableParser(HTMLParser):
 def clean_frame(frame: pd.DataFrame) -> pd.DataFrame:
     if frame is None or frame.empty:
         return pd.DataFrame(columns=["Date", "Value"])
-    out = frame.iloc[:, :2].copy()
+
+    cols = list(frame.columns)
+    date_col = next((c for c in cols if str(c).lower() in {"date", "observation_date"}), cols[0])
+    value_col = next(
+        (c for c in cols if str(c).lower() in {"value", SERIES_ID.lower()}),
+        cols[1] if len(cols) > 1 else cols[0],
+    )
+    out = frame[[date_col, value_col]].copy()
     out.columns = ["Date", "Value"]
     out["Date"] = pd.to_datetime(out["Date"], errors="coerce")
     out["Value"] = pd.to_numeric(out["Value"], errors="coerce")
@@ -92,6 +107,41 @@ def parse_fred_table_html(text: str) -> pd.DataFrame:
         if pd.notna(date) and pd.notna(value):
             rows.append({"Date": date, "Value": float(value)})
     return clean_frame(pd.DataFrame(rows))
+
+
+def parse_fed_csv(text: str) -> pd.DataFrame:
+    rows = list(csv.reader(StringIO(text)))
+    target_col = None
+
+    for row in rows:
+        for idx, cell in enumerate(row):
+            if FED_SERIES_CODE in str(cell):
+                target_col = idx
+                break
+        if target_col is not None:
+            break
+
+    if target_col is None:
+        raise RuntimeError("Could not locate C&I SLOOS series in Federal Reserve CSV")
+
+    observations = []
+    for row in rows:
+        if not row or target_col >= len(row):
+            continue
+        period = str(row[0]).strip()
+        if not period or "Q" not in period:
+            continue
+        try:
+            date = pd.Period(period, freq="Q").start_time.normalize()
+            value = float(str(row[target_col]).strip())
+            observations.append({"Date": date, "Value": value})
+        except Exception:
+            continue
+
+    frame = clean_frame(pd.DataFrame(observations))
+    if len(frame) < 100:
+        raise RuntimeError(f"Federal Reserve SLOOS history too short: {len(frame)} rows")
+    return frame
 
 
 def load_cache() -> pd.DataFrame:
@@ -122,21 +172,41 @@ def save_cache(frame: pd.DataFrame) -> pd.DataFrame:
 def fetch_remote_ci_sloos() -> pd.DataFrame:
     errors = []
 
+    # 1) Federal Reserve Board official data download.
     try:
-        response = requests.get(
-            FRED_TABLE_URL,
-            headers=HEADERS,
-            timeout=REQUEST_TIMEOUT,
-        )
+        response = requests.get(FED_OUTPUT_URL, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+        response.raise_for_status()
+        frame = parse_fed_csv(response.text)
+        print(f"C&I SLOOS loaded from Federal Reserve Board: {len(frame)} observations")
+        return frame
+    except Exception as exc:
+        errors.append(f"Federal Reserve failed: {exc}")
+
+    # 2) FRED table page.
+    try:
+        response = requests.get(FRED_TABLE_URL, headers=HEADERS, timeout=REQUEST_TIMEOUT)
         response.raise_for_status()
         frame = parse_fred_table_html(response.text)
         if len(frame) >= 100:
             print(f"C&I SLOOS loaded from FRED table page: {len(frame)} observations")
             return frame
-        errors.append(f"table page returned only {len(frame)} observations")
+        errors.append(f"FRED table returned {len(frame)} rows")
     except Exception as exc:
-        errors.append(f"table page failed: {exc}")
+        errors.append(f"FRED table failed: {exc}")
 
+    # 3) Public CSV mirror of the FRED series.
+    try:
+        response = requests.get(MIRROR_CSV_URL, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+        response.raise_for_status()
+        frame = clean_frame(pd.read_csv(StringIO(response.text)))
+        if len(frame) >= 100:
+            print(f"C&I SLOOS loaded from FRED mirror: {len(frame)} observations")
+            return frame
+        errors.append(f"mirror returned {len(frame)} rows")
+    except Exception as exc:
+        errors.append(f"mirror failed: {exc}")
+
+    # 4) FRED graph CSV.
     try:
         response = requests.get(
             FRED_CSV_URL,
@@ -149,9 +219,9 @@ def fetch_remote_ci_sloos() -> pd.DataFrame:
         if len(frame) >= 100:
             print(f"C&I SLOOS loaded from FRED CSV: {len(frame)} observations")
             return frame
-        errors.append(f"CSV returned only {len(frame)} observations")
+        errors.append(f"FRED CSV returned {len(frame)} rows")
     except Exception as exc:
-        errors.append(f"CSV failed: {exc}")
+        errors.append(f"FRED CSV failed: {exc}")
 
     raise RuntimeError("; ".join(errors))
 
@@ -174,7 +244,6 @@ def fetch_ci_sloos() -> pd.DataFrame:
 
 
 def risk_level(value: float) -> int:
-    # <=5 safe; >5 to <=10 watch; >10 to <=20 high; >20 extreme.
     if value > 20:
         return 3
     if value > 10:
@@ -229,21 +298,21 @@ def main() -> None:
         "Rating": RISK_LABELS[level],
         "RatingLevel": level,
         "DataDate": current_date.date().isoformat(),
-        "Source": "Local cache: FRED DRTSCILM",
+        "Source": "Federal Reserve Board SLOOS / FRED DRTSCILM",
         "Note": (
             "Net percentage of domestic banks tightening C&I lending standards "
-            "for large and middle-market firms. Rating thresholds: <=5% safe; "
-            ">5% to <=10% watch; >10% to <=20% high risk; >20% extreme risk."
+            "for large and middle-market firms. Thresholds: <=5% safe; "
+            ">5%-10% watch; >10%-20% high risk; >20% extreme risk."
         ),
         "UpdatedAt": updated_at,
     }
-
     dashboard = pd.concat([dashboard, pd.DataFrame([row])], ignore_index=True)
     dashboard.to_csv(DASHBOARD_FILE, index=False)
 
     sloos_history = sloos[["Date", "Value"]].copy()
     sloos_history["Date"] = pd.to_datetime(sloos_history["Date"]).dt.date.astype(str)
     sloos_history = sloos_history.rename(columns={"Value": "CI_SLOOS"})
+
     if HISTORY_FILE.exists():
         history = pd.read_csv(HISTORY_FILE)
         if "CI_SLOOS" in history.columns:
