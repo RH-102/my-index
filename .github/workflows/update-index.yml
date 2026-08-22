@@ -79,6 +79,16 @@ jobs:
           echo "hy_oas_exit_code=$status" >> data/risk_update.log
           exit 0
 
+      - name: Update C&I SLOOS risk indicator
+        continue-on-error: true
+        run: |
+          set +e
+          python scripts/add_ci_sloos.py >> data/risk_update.log 2>&1
+          status=$?
+          cat data/risk_update.log
+          echo "ci_sloos_exit_code=$status" >> data/risk_update.log
+          exit 0
+
       - name: Apply dashboard UI preferences
         run: |
           python - <<'PY'
@@ -118,6 +128,11 @@ jobs:
               '利差短期快速扩大通常代表信用风险和市场压力上升；评级按3个月变化：&lt;50bp 安全，'
               '50–&lt;100bp 注意，100–&lt;150bp 高风险，≥150bp 极高风险。<br>` +\n'
           )
+          sloos_line = (
+              '    `<strong>C&amp;I SLOOS</strong>：美国银行收紧大中型企业商业与工业贷款标准的净比例。'
+              '数值越高表示银行信贷条件越紧；评级：≤5% 安全，&gt;5–10% 注意，'
+              '&gt;10–20% 高风险，&gt;20% 极高风险。<br>` +\n'
+          )
           history_anchor = (
               '    `<strong>历史百分位</strong>：当前值在可获得历史数据中的相对位置。'
               '例如 90% 表示当前值高于约90%的历史观察值；对 Cushion 而言则反过来看，'
@@ -125,10 +140,12 @@ jobs:
           )
           if '<strong>HY OAS 3M Change</strong>' not in text and history_anchor in text:
               text = text.replace(history_anchor, hy_line + history_anchor)
+          if '<strong>C&amp;I SLOOS</strong>' not in text and history_anchor in text:
+              text = text.replace(history_anchor, sloos_line + history_anchor)
 
           text = text.replace(
               'Credit-to-GDP Gap 来自 BIS。',
-              'HY OAS 来自 FRED BAMLH0A0HYM2；Credit-to-GDP Gap 来自 BIS。'
+              'HY OAS 来自 FRED BAMLH0A0HYM2；C&amp;I SLOOS 来自 FRED DRTSCILM；Credit-to-GDP Gap 来自 BIS。'
           )
 
           path.write_text(text, encoding="utf-8")
