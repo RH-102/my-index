@@ -380,8 +380,9 @@ def main():
     history = load_history()
 
     # Show all four quarterly targets for the current year. Future targets
-    # use a clearly marked Temporary snapshot until their actual trading
-    # date arrives, at which point they are replaced by Official data.
+    # are refreshed every weekday as clearly marked Temporary snapshots.
+    # On the actual snapshot trading day they are replaced by Official data,
+    # which is then preserved permanently.
     snapshot_targets = []
 
     for year in range(START_YEAR, today.year + 1):
@@ -398,9 +399,12 @@ def main():
     for target in snapshot_targets:
         target_text = target.isoformat()
 
-        if target == today:
+        if target >= today:
+            # Today's target must become Official. Future targets should keep
+            # following the latest available market-cap ranking each run.
             needs_current_data = True
         elif not snapshot_is_complete(history, target_text):
+            # Only backfill a past target when it is missing/incomplete.
             needs_current_data = True
 
     if not needs_current_data:
@@ -432,7 +436,9 @@ def main():
 
             print(f"Saved official Top 125 snapshots for {target_text}.")
 
-        elif not complete:
+        elif target > today:
+            # Future snapshots are live previews: replace yesterday's
+            # Temporary rows with today's current market-cap ranking.
             history = history[
                 history["SnapshotDate"].astype(str) != target_text
             ]
@@ -449,7 +455,31 @@ def main():
                 )
 
             print(
-                f"Saved temporary Top 125 snapshots for {target_text} "
+                f"Refreshed temporary Top 125 snapshots for {target_text} "
+                f"using data from {today.isoformat()}."
+            )
+
+        elif not complete:
+            # Preserve complete past snapshots. If a past target is missing,
+            # create a clearly marked Temporary placeholder until a true
+            # historical source is available.
+            history = history[
+                history["SnapshotDate"].astype(str) != target_text
+            ]
+
+            for list_type, ranked in current_lists.items():
+                new_snapshots.append(
+                    make_snapshot(
+                        ranked,
+                        list_type,
+                        target,
+                        today,
+                        "Temporary",
+                    )
+                )
+
+            print(
+                f"Saved temporary Top 125 snapshots for past target {target_text} "
                 f"using data from {today.isoformat()}."
             )
 
