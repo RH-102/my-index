@@ -69,6 +69,16 @@ jobs:
           echo "exit_code=$status" >> data/risk_update.log
           exit 0
 
+      - name: Update HY OAS risk indicator
+        continue-on-error: true
+        run: |
+          set +e
+          python scripts/add_hy_oas.py >> data/risk_update.log 2>&1
+          status=$?
+          cat data/risk_update.log
+          echo "hy_oas_exit_code=$status" >> data/risk_update.log
+          exit 0
+
       - name: Apply dashboard UI preferences
         run: |
           python - <<'PY'
@@ -84,7 +94,7 @@ jobs:
                   frame.to_csv(dashboard, index=False)
 
           # Keep DFII10 and Mortgage Delinquency hidden from the visible table,
-          # and remove the mortgage explanation/source text from the footnote.
+          # and keep the risk-indicator footnote aligned with the visible rows.
           path = Path("index.html")
           text = path.read_text(encoding="utf-8")
 
@@ -101,6 +111,24 @@ jobs:
           text = text.replace(
               'Mortgage Delinquency 来自 Federal Reserve Board；',
               ''
+          )
+
+          hy_line = (
+              '    `<strong>HY OAS 3M Change</strong>：ICE BofA 美国高收益债期权调整利差相对约3个月前的变化。'
+              '利差短期快速扩大通常代表信用风险和市场压力上升；评级按3个月变化：&lt;50bp 安全，'
+              '50–&lt;100bp 注意，100–&lt;150bp 高风险，≥150bp 极高风险。<br>` +\n'
+          )
+          history_anchor = (
+              '    `<strong>历史百分位</strong>：当前值在可获得历史数据中的相对位置。'
+              '例如 90% 表示当前值高于约90%的历史观察值；对 Cushion 而言则反过来看，'
+              '百分位越低通常越危险。<br><br>` +\n'
+          )
+          if '<strong>HY OAS 3M Change</strong>' not in text and history_anchor in text:
+              text = text.replace(history_anchor, hy_line + history_anchor)
+
+          text = text.replace(
+              'Credit-to-GDP Gap 来自 BIS。',
+              'HY OAS 来自 FRED BAMLH0A0HYM2；Credit-to-GDP Gap 来自 BIS。'
           )
 
           path.write_text(text, encoding="utf-8")
