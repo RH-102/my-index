@@ -87,6 +87,15 @@ jobs:
           python scripts/add_ci_sloos.py >> data/risk_update.log 2>&1
           status=$?
           echo "ci_sloos_exit_code=$status" >> data/risk_update.log
+          exit 0
+
+      - name: Update S&P 500 suggested allocation
+        continue-on-error: true
+        run: |
+          set +e
+          python scripts/run_allocation_card.py >> data/risk_update.log 2>&1
+          status=$?
+          echo "allocation_exit_code=$status" >> data/risk_update.log
           cat data/risk_update.log
           exit 0
 
