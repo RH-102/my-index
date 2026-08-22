@@ -16,8 +16,14 @@ Risk history rows: 5954
 Tech risk: 🟡注意
 Overall valuation risk: 🔴极高风险
 risk_base_exit_code=0
-HY OAS enrichment skipped: HY OAS unavailable and no usable local cache exists: FRED table failed: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=12); mirror failed: Error tokenizing data. C error: Expected 1 fields in line 5, saw 2
-; FRED CSV failed: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=12)
+HY OAS loaded from JSON mirror: 787 observations
+Saved risk_source_hy_oas.csv: 787 observations through 2026-08-20
+SUCCESS
+HY OAS current: 2.75%
+HY OAS 3M ago: 2.80%
+HY OAS 3M change: -5bp
+HY OAS percentile: 60.3%
+HY OAS rating: 🟢安全
 hy_oas_exit_code=0
 C&I SLOOS loaded from Federal Reserve Board: 146 observations
 Saved risk_source_ci_sloos.csv: 146 observations through 2026-07-01
