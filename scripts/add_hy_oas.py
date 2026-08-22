@@ -7,6 +7,7 @@ one temporary FRED timeout does not prevent the dashboard from updating.
 
 from __future__ import annotations
 
+import csv
 from datetime import datetime
 from html.parser import HTMLParser
 from io import StringIO
@@ -26,6 +27,7 @@ SERIES_ID = "BAMLH0A0HYM2"
 FRED_CSV_URL = "https://fred.stlouisfed.org/graph/fredgraph.csv"
 FRED_TABLE_URL = f"https://fred.stlouisfed.org/data/{SERIES_ID}"
 MIRROR_CSV_URL = f"https://govspending.org/api/export/fred/{SERIES_ID}.csv"
+MIRROR_JSON_URL = f"https://govspending.org/api/export/fred/{SERIES_ID}.json"
 TIMEZONE = ZoneInfo("America/New_York")
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; my-index/1.0)"}
 REQUEST_TIMEOUT = (6, 12)
@@ -70,10 +72,16 @@ def clean_frame(frame: pd.DataFrame) -> pd.DataFrame:
         return pd.DataFrame(columns=["Date", "Value"])
 
     cols = list(frame.columns)
-    date_col = next((c for c in cols if str(c).lower() in {"date", "observation_date"}), cols[0])
+    if len(cols) < 2:
+        return pd.DataFrame(columns=["Date", "Value"])
+
+    date_col = next(
+        (c for c in cols if str(c).lower() in {"date", "observation_date", "period"}),
+        cols[0],
+    )
     value_col = next(
         (c for c in cols if str(c).lower() in {"value", SERIES_ID.lower()}),
-        cols[1] if len(cols) > 1 else cols[0],
+        cols[1],
     )
 
     out = frame[[date_col, value_col]].copy()
@@ -100,6 +108,59 @@ def parse_fred_table_html(text: str) -> pd.DataFrame:
         if pd.notna(date) and pd.notna(value):
             rows.append({"Date": date, "Value": float(value)})
     return clean_frame(pd.DataFrame(rows))
+
+
+def parse_metadata_csv(text: str) -> pd.DataFrame:
+    """Parse exports that include metadata lines before the date/value rows."""
+    observations = []
+    for row in csv.reader(StringIO(text)):
+        if len(row) < 2:
+            continue
+        date = pd.to_datetime(str(row[0]).strip(), errors="coerce")
+        value = pd.to_numeric(str(row[1]).strip(), errors="coerce")
+        if pd.notna(date) and pd.notna(value):
+            observations.append({"Date": date, "Value": float(value)})
+    return clean_frame(pd.DataFrame(observations))
+
+
+def extract_json_series(payload) -> pd.DataFrame:
+    """Recursively locate date/value observations in a JSON export."""
+    observations = []
+
+    def visit(node):
+        if isinstance(node, dict):
+            lower = {str(k).lower(): k for k in node.keys()}
+            date_key = next(
+                (lower[k] for k in ("date", "observation_date", "period") if k in lower),
+                None,
+            )
+            value_key = next(
+                (lower[k] for k in ("value", SERIES_ID.lower()) if k in lower),
+                None,
+            )
+            if date_key is not None and value_key is not None:
+                date = pd.to_datetime(node.get(date_key), errors="coerce")
+                value = pd.to_numeric(node.get(value_key), errors="coerce")
+                if pd.notna(date) and pd.notna(value):
+                    observations.append({"Date": date, "Value": float(value)})
+
+            # Some exports use a date:value dictionary.
+            if node and all(not isinstance(v, (dict, list)) for v in node.values()):
+                for key, value in node.items():
+                    date = pd.to_datetime(key, errors="coerce")
+                    num = pd.to_numeric(value, errors="coerce")
+                    if pd.notna(date) and pd.notna(num):
+                        observations.append({"Date": date, "Value": float(num)})
+
+            for value in node.values():
+                visit(value)
+
+        elif isinstance(node, list):
+            for value in node:
+                visit(value)
+
+    visit(payload)
+    return clean_frame(pd.DataFrame(observations))
 
 
 def load_cache() -> pd.DataFrame:
@@ -130,7 +191,32 @@ def save_cache(frame: pd.DataFrame) -> pd.DataFrame:
 def fetch_remote_hy_oas() -> pd.DataFrame:
     errors = []
 
-    # 1) FRED table page.
+    # 1) JSON mirror. This avoids CSV metadata parsing problems and is usually
+    # more reliable from GitHub Actions than direct FRED requests.
+    try:
+        response = requests.get(MIRROR_JSON_URL, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+        response.raise_for_status()
+        frame = extract_json_series(response.json())
+        if len(frame) >= 60:
+            print(f"HY OAS loaded from JSON mirror: {len(frame)} observations")
+            return frame
+        errors.append(f"JSON mirror returned {len(frame)} rows")
+    except Exception as exc:
+        errors.append(f"JSON mirror failed: {exc}")
+
+    # 2) CSV mirror; parse row-by-row because its export contains metadata.
+    try:
+        response = requests.get(MIRROR_CSV_URL, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+        response.raise_for_status()
+        frame = parse_metadata_csv(response.text)
+        if len(frame) >= 60:
+            print(f"HY OAS loaded from CSV mirror: {len(frame)} observations")
+            return frame
+        errors.append(f"CSV mirror returned {len(frame)} rows")
+    except Exception as exc:
+        errors.append(f"CSV mirror failed: {exc}")
+
+    # 3) FRED table page.
     try:
         response = requests.get(FRED_TABLE_URL, headers=HEADERS, timeout=REQUEST_TIMEOUT)
         response.raise_for_status()
@@ -142,19 +228,7 @@ def fetch_remote_hy_oas() -> pd.DataFrame:
     except Exception as exc:
         errors.append(f"FRED table failed: {exc}")
 
-    # 2) Public CSV mirror of the FRED series.
-    try:
-        response = requests.get(MIRROR_CSV_URL, headers=HEADERS, timeout=REQUEST_TIMEOUT)
-        response.raise_for_status()
-        frame = clean_frame(pd.read_csv(StringIO(response.text)))
-        if len(frame) >= 60:
-            print(f"HY OAS loaded from FRED mirror: {len(frame)} observations")
-            return frame
-        errors.append(f"mirror returned {len(frame)} rows")
-    except Exception as exc:
-        errors.append(f"mirror failed: {exc}")
-
-    # 3) FRED graph CSV.
+    # 4) FRED graph CSV.
     try:
         response = requests.get(
             FRED_CSV_URL,
@@ -263,7 +337,7 @@ def main() -> None:
         "Rating": RISK_LABELS[level],
         "RatingLevel": level,
         "DataDate": pd.Timestamp(latest["Date"]).date().isoformat(),
-        "Source": "FRED BAMLH0A0HYM2",
+        "Source": "FRED BAMLH0A0HYM2 (via local cache / public mirror)",
         "Note": (
             "ICE BofA US High Yield Index Option-Adjusted Spread 3-month change. "
             "Rating thresholds: <50bp safe; 50-<100bp watch; "
@@ -291,6 +365,7 @@ def main() -> None:
     print(f"HY OAS current: {current_oas:.2f}%")
     print(f"HY OAS 3M ago: {past_oas:.2f}%")
     print(f"HY OAS 3M change: {change_bp:+.0f}bp")
+    print(f"HY OAS percentile: {pct:.1f}%")
     print(f"HY OAS rating: {RISK_LABELS[level]}")
 
 
