@@ -120,8 +120,30 @@ jobs:
             echo "No data changes to commit"
           else
             git commit -m "Update daily index data"
-            git pull --rebase origin main
-            git push origin main
+
+            # The branch can advance while this workflow is running (for example,
+            # an HTML/script edit can be committed from another session). Rebase
+            # the generated data commit onto the newest main and, if the same
+            # generated CSV/log files conflict, keep this workflow's freshly
+            # calculated version. Retry in case main advances again before push.
+            pushed=false
+            for attempt in 1 2 3; do
+              echo "Push attempt $attempt"
+              git fetch origin main
+              git rebase -X theirs origin/main
+
+              if git push origin HEAD:main; then
+                pushed=true
+                break
+              fi
+
+              sleep 2
+            done
+
+            if [ "$pushed" != "true" ]; then
+              echo "Failed to push updated data after 3 attempts"
+              exit 1
+            fi
           fi
 
       - name: Configure GitHub Pages
