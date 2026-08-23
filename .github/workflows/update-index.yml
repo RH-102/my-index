@@ -56,6 +56,15 @@ jobs:
           echo "price_update_exit_code=$status"
           exit 0
 
+      - name: Update Nasdaq-100 and S&P 500 benchmarks
+        continue-on-error: true
+        run: |
+          set +e
+          python scripts/update_benchmarks.py
+          status=$?
+          echo "benchmark_update_exit_code=$status"
+          exit 0
+
       - name: Update quarterly Top 125
         continue-on-error: true
         run: |
