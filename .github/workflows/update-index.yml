@@ -9,6 +9,7 @@ on:
     paths:
       - "scripts/**"
       - "*.html"
+      - "*.js"
       - "requirements.txt"
       - ".github/workflows/update-index.yml"
 
