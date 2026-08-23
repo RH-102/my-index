@@ -56,11 +56,11 @@
       original._convertedToReturn = true;
     }
 
-    // Keep all three comparison lines visually distinct.
-    original.borderColor = "#6b7280";
-    original.backgroundColor = "#6b7280";
-    original.pointBackgroundColor = "#6b7280";
-    original.pointBorderColor = "#6b7280";
+    // Translucent, visually distinct comparison colors.
+    original.borderColor = "rgba(107, 114, 128, 0.72)";
+    original.backgroundColor = "rgba(107, 114, 128, 0.18)";
+    original.pointBackgroundColor = "rgba(107, 114, 128, 0.88)";
+    original.pointBorderColor = "rgba(107, 114, 128, 0.88)";
 
     chart.data.datasets = [original];
 
@@ -76,10 +76,10 @@
           pointRadius: 3,
           borderWidth: 2,
           spanGaps: false,
-          borderColor: "#2563eb",
-          backgroundColor: "#2563eb",
-          pointBackgroundColor: "#2563eb",
-          pointBorderColor: "#2563eb"
+          borderColor: "rgba(37, 99, 235, 0.72)",
+          backgroundColor: "rgba(37, 99, 235, 0.18)",
+          pointBackgroundColor: "rgba(37, 99, 235, 0.88)",
+          pointBorderColor: "rgba(37, 99, 235, 0.88)"
         },
         {
           label: "S&P 500",
@@ -91,10 +91,10 @@
           pointRadius: 3,
           borderWidth: 2,
           spanGaps: false,
-          borderColor: "#16a34a",
-          backgroundColor: "#16a34a",
-          pointBackgroundColor: "#16a34a",
-          pointBorderColor: "#16a34a"
+          borderColor: "rgba(22, 163, 74, 0.72)",
+          backgroundColor: "rgba(22, 163, 74, 0.18)",
+          pointBackgroundColor: "rgba(22, 163, 74, 0.88)",
+          pointBorderColor: "rgba(22, 163, 74, 0.88)"
         }
       );
     }
