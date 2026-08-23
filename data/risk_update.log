@@ -40,43 +40,8 @@ Daily estimated Forward P/E: 19.99x
 Cushion: 2.60%; V=0.441; D_eff=0.027; O=0.296
 Crisis R=0.000; R_eff=0.000; E=0.000; Gate=0
 Suggested S&P 500 allocation: 57.8%
-Traceback (most recent call last):
-  File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/pandas/core/internals/blocks.py", line 1115, in setitem
-    casted = np_can_hold_element(values.dtype, value)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/pandas/core/dtypes/cast.py", line 1792, in np_can_hold_element
-    raise LossySetitemError
-pandas.errors.LossySetitemError
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/runner/work/my-index/my-index/scripts/run_allocation_card.py", line 88, in <module>
-    history.loc[latest_idx, "ModelVersion"] = "V3.2-Alpha"
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/pandas/core/indexing.py", line 938, in __setitem__
-    iloc._setitem_with_indexer(indexer, value, self.name)
-  File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/pandas/core/indexing.py", line 1953, in _setitem_with_indexer
-    self._setitem_with_indexer_split_path(indexer, value, name)
-  File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/pandas/core/indexing.py", line 2044, in _setitem_with_indexer_split_path
-    self._setitem_single_column(loc, value, pi)
-  File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/pandas/core/indexing.py", line 2181, in _setitem_single_column
-    self.obj._mgr.column_setitem(loc, plane_indexer, value)
-  File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 1541, in column_setitem
-    new_mgr = col_mgr.setitem((idx,), value)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 620, in setitem
-    return self.apply("setitem", indexer=indexer, value=value)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 445, in apply
-    applied = getattr(b, f)(**kwargs)
-              ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/pandas/core/internals/blocks.py", line 1118, in setitem
-    nb = self.coerce_to_target_dtype(value, raise_on_upcast=True)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/pandas/core/internals/blocks.py", line 468, in coerce_to_target_dtype
-    raise TypeError(f"Invalid value '{other}' for dtype '{self.values.dtype}'")
-TypeError: Invalid value 'V3.2-Alpha' for dtype 'float64'
-allocation_exit_code=1
+Published V3.2-Alpha S&P 500 suggested allocation as summary card
+V3.2-Alpha allocation: 100.0% (R_eff=0.000, E=0.000, Gate=0)
+allocation_exit_code=0
 Saved 11 dashboard rows for 2026-08-22; history now has 11 rows.
 risk_snapshot_exit_code=0
