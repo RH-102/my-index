@@ -85,7 +85,15 @@ allocation = max(60.0, min(100.0, w_raw))
 
 history.loc[latest_idx, "WRaw"] = w_raw
 history.loc[latest_idx, "AllocationPct"] = allocation
+
+# A completely blank CSV column is inferred as float64 by pandas. Force an
+# object column before writing the text model label, otherwise pandas 3.x raises.
+if "ModelVersion" not in history.columns:
+    history["ModelVersion"] = ""
+else:
+    history["ModelVersion"] = history["ModelVersion"].astype("object")
 history.loc[latest_idx, "ModelVersion"] = "V3.2-Alpha"
+
 history.to_csv(history_path, index=False)
 latest = history.loc[latest_idx].copy()
 
@@ -148,7 +156,6 @@ if mask.any():
     frame.loc[mask, "Note"] = note
     frame.loc[mask, "RowType"] = "Summary"
     frame.loc[mask, "Rating"] = current_value
-    # Reuse the existing compact green badge style for the allocation percentage.
     frame.loc[mask, "RatingLevel"] = 0
     frame.to_csv(path, index=False)
 
