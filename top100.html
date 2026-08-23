@@ -119,12 +119,13 @@
       color: #666;
       font-size: 13px;
       margin: 0 0 18px 0;
+      line-height: 1.55;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 760px;
+      min-width: 940px;
     }
 
     th,
@@ -141,6 +142,45 @@
 
     th {
       border-bottom: 2px solid #ddd;
+    }
+
+    .top55-missing {
+      background: #fff7ed;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 7px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .badge-missing {
+      background: #ffedd5;
+      color: #9a3412;
+    }
+
+    .badge-held {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .rank-up {
+      color: #16833b;
+      font-weight: 700;
+    }
+
+    .rank-down {
+      color: #c62828;
+      font-weight: 700;
+    }
+
+    .rank-flat,
+    .rank-new {
+      color: #64748b;
+      font-weight: 600;
     }
 
     .loading,
@@ -191,9 +231,7 @@
       </button>
     </div>
 
-    <div class="definition" id="definitionText">
-      Includes all companies in the combined NASDAQ + NYSE ranking.
-    </div>
+    <div class="definition" id="definitionText"></div>
 
     <div id="temporaryNotice" class="notice"></div>
 
@@ -217,6 +255,11 @@
         <div class="card-title">Companies</div>
         <div class="card-value" id="companyCount">--</div>
       </div>
+
+      <div class="card">
+        <div class="card-title">Top 55 Not Held</div>
+        <div class="card-value" id="top55MissingCount">--</div>
+      </div>
     </div>
 
     <div class="section">
@@ -230,79 +273,104 @@
 let allRows = [];
 let selectedRows = [];
 let selectedListType = "All";
+let portfolioSymbols = new Set();
+let snapshotDates = [];
+let previousRankMap = new Map();
+let previousSnapshotDate = "";
 
-Papa.parse("data/top100_history.csv", {
-  download: true,
-  header: true,
-  dynamicTyping: true,
+function normalizeSymbol(symbol) {
+  return String(symbol || "").trim().toUpperCase();
+}
 
-  complete: function(results) {
-    allRows = results.data.filter(
-      row => row.SnapshotDate && row.Symbol && row.ListType
-    );
+function loadCSV(path) {
+  const separator = path.includes("?") ? "&" : "?";
+  const url = path + separator + "v=" + Date.now();
 
-    if (allRows.length === 0) {
-      document.getElementById("tableArea").innerHTML =
-        '<div class="error">No Top 125 snapshots yet. Run the GitHub workflow once to rebuild the data.</div>';
-      return;
-    }
-
-    const dates = [
-      ...new Set(allRows.map(row => row.SnapshotDate))
-    ].sort();
-
-    const select = document.getElementById("snapshotSelect");
-
-    dates.forEach(date => {
-      const option = document.createElement("option");
-      option.value = date;
-      option.textContent = date;
-      select.appendChild(option);
+  return new Promise((resolve, reject) => {
+    Papa.parse(url, {
+      download: true,
+      header: true,
+      dynamicTyping: true,
+      complete: results => resolve(results.data),
+      error: reject
     });
+  });
+}
 
-    select.value = dates[dates.length - 1];
+Promise.all([
+  loadCSV("data/top100_history.csv"),
+  loadCSV("data/latest.csv")
+])
+.then(([historyRows, holdingRows]) => {
+  allRows = historyRows.filter(
+    row => row.SnapshotDate && row.Symbol && row.ListType
+  );
 
-    select.addEventListener("change", renderSnapshot);
+  portfolioSymbols = new Set(
+    holdingRows
+      .filter(row => row.Symbol)
+      .map(row => normalizeSymbol(row.Symbol))
+  );
 
-    document
-      .getElementById("searchBox")
-      .addEventListener("input", renderTable);
-
-    document.querySelectorAll(".tab").forEach(button => {
-      button.addEventListener("click", function() {
-        selectedListType = this.dataset.type;
-
-        document.querySelectorAll(".tab").forEach(tab => {
-          tab.classList.remove("active");
-        });
-
-        this.classList.add("active");
-        updateDefinition();
-        renderSnapshot();
-      });
-    });
-
-    updateDefinition();
-    renderSnapshot();
-  },
-
-  error: function(error) {
+  if (allRows.length === 0) {
     document.getElementById("tableArea").innerHTML =
-      '<div class="error">Could not load top100_history.csv</div>';
-    console.error(error);
+      '<div class="error">No Top 125 snapshots yet. Run the GitHub workflow once to rebuild the data.</div>';
+    return;
   }
+
+  snapshotDates = [
+    ...new Set(allRows.map(row => row.SnapshotDate))
+  ].sort();
+
+  const select = document.getElementById("snapshotSelect");
+
+  snapshotDates.forEach(date => {
+    const option = document.createElement("option");
+    option.value = date;
+    option.textContent = date;
+    select.appendChild(option);
+  });
+
+  select.value = snapshotDates[snapshotDates.length - 1];
+  select.addEventListener("change", renderSnapshot);
+
+  document
+    .getElementById("searchBox")
+    .addEventListener("input", renderTable);
+
+  document.querySelectorAll(".tab").forEach(button => {
+    button.addEventListener("click", function() {
+      selectedListType = this.dataset.type;
+
+      document.querySelectorAll(".tab").forEach(tab => {
+        tab.classList.remove("active");
+      });
+
+      this.classList.add("active");
+      updateDefinition();
+      renderSnapshot();
+    });
+  });
+
+  updateDefinition();
+  renderSnapshot();
+})
+.catch(error => {
+  document.getElementById("tableArea").innerHTML =
+    '<div class="error">Could not load Top 125 or portfolio data.</div>';
+  console.error(error);
 });
 
 function updateDefinition() {
   const text = document.getElementById("definitionText");
+  const base = selectedListType === "ExFinancials"
+    ? "Excludes companies classified in the Financials sector by StockAnalysis, then ranks the remaining NASDAQ + NYSE companies by market cap."
+    : "Includes all companies in the combined NASDAQ + NYSE ranking.";
 
-  if (selectedListType === "ExFinancials") {
-    text.textContent =
-      "Excludes companies classified in the Financials sector by StockAnalysis, then ranks the remaining NASDAQ + NYSE companies by market cap.";
-  } else {
-    text.textContent =
-      "Includes all companies in the combined NASDAQ + NYSE ranking.";
-  }
+  text.innerHTML =
+    base +
+    " <strong>Orange rows</strong> are companies ranked in the Top 55 that are not currently held in My Index. " +
+    "The <strong>vs Prev Quarter</strong> column compares the selected snapshot with the immediately preceding snapshot for the same list.";
 }
 
 function renderSnapshot() {
@@ -322,19 +390,41 @@ function renderSnapshot() {
     return;
   }
 
+  const availableDates = [
+    ...new Set(
+      allRows
+        .filter(row => row.ListType === selectedListType)
+        .map(row => row.SnapshotDate)
+    )
+  ].sort();
+
+  const currentIndex = availableDates.indexOf(date);
+  previousSnapshotDate = currentIndex > 0 ? availableDates[currentIndex - 1] : "";
+  previousRankMap = new Map();
+
+  if (previousSnapshotDate) {
+    allRows
+      .filter(
+        row =>
+          row.SnapshotDate === previousSnapshotDate &&
+          row.ListType === selectedListType
+      )
+      .forEach(row => {
+        previousRankMap.set(normalizeSymbol(row.Symbol), Number(row.Rank));
+      });
+  }
+
   const first = selectedRows[0];
 
-  document.getElementById("snapshotDate").textContent =
-    first.SnapshotDate;
+  document.getElementById("snapshotDate").textContent = first.SnapshotDate;
+  document.getElementById("dataDate").textContent = first.DataDate;
+  document.getElementById("status").textContent = first.Status;
+  document.getElementById("companyCount").textContent = selectedRows.length;
 
-  document.getElementById("dataDate").textContent =
-    first.DataDate;
-
-  document.getElementById("status").textContent =
-    first.Status;
-
-  document.getElementById("companyCount").textContent =
-    selectedRows.length;
+  const top55Missing = selectedRows.filter(
+    row => Number(row.Rank) <= 55 && !portfolioSymbols.has(normalizeSymbol(row.Symbol))
+  );
+  document.getElementById("top55MissingCount").textContent = top55Missing.length;
 
   const notice = document.getElementById("temporaryNotice");
 
@@ -347,6 +437,46 @@ function renderSnapshot() {
   }
 
   renderTable();
+}
+
+function rankChangeHTML(row) {
+  if (!previousSnapshotDate) {
+    return '<span class="rank-flat">—</span>';
+  }
+
+  const symbol = normalizeSymbol(row.Symbol);
+  const previousRank = previousRankMap.get(symbol);
+
+  if (previousRank === undefined) {
+    return '<span class="rank-new">NEW</span>';
+  }
+
+  const change = previousRank - Number(row.Rank);
+
+  if (change > 0) {
+    return `<span class="rank-up">↑ ${change}</span>`;
+  }
+
+  if (change < 0) {
+    return `<span class="rank-down">↓ ${Math.abs(change)}</span>`;
+  }
+
+  return '<span class="rank-flat">—</span>';
+}
+
+function portfolioStatusHTML(row) {
+  const held = portfolioSymbols.has(normalizeSymbol(row.Symbol));
+  const top55 = Number(row.Rank) <= 55;
+
+  if (held) {
+    return '<span class="badge badge-held">Held</span>';
+  }
+
+  if (top55) {
+    return '<span class="badge badge-missing">Top 55 · Not Held</span>';
+  }
+
+  return '—';
 }
 
 function renderTable() {
@@ -370,8 +500,10 @@ function renderTable() {
       <thead>
         <tr>
           <th class="number">Rank</th>
+          <th class="number">vs Prev Quarter</th>
           <th>Company</th>
           <th>Ticker</th>
+          <th>My Index</th>
           <th>Exchange</th>
           <th class="number">Market Cap</th>
         </tr>
@@ -380,11 +512,17 @@ function renderTable() {
   `;
 
   rows.forEach(row => {
+    const isMissingTop55 =
+      Number(row.Rank) <= 55 &&
+      !portfolioSymbols.has(normalizeSymbol(row.Symbol));
+
     html += `
-      <tr>
+      <tr class="${isMissingTop55 ? "top55-missing" : ""}">
         <td class="number">${row.Rank}</td>
+        <td class="number">${rankChangeHTML(row)}</td>
         <td>${row.Company}</td>
         <td><strong>${row.Symbol}</strong></td>
+        <td>${portfolioStatusHTML(row)}</td>
         <td>${row.Exchange}</td>
         <td class="number">${row.MarketCapDisplay}</td>
       </tr>
