@@ -57,10 +57,10 @@
     }
 
     // Keep all three comparison lines visually distinct.
-    original.borderColor = "#111827";
-    original.backgroundColor = "#111827";
-    original.pointBackgroundColor = "#111827";
-    original.pointBorderColor = "#111827";
+    original.borderColor = "#6b7280";
+    original.backgroundColor = "#6b7280";
+    original.pointBackgroundColor = "#6b7280";
+    original.pointBorderColor = "#6b7280";
 
     chart.data.datasets = [original];
 
@@ -91,10 +91,10 @@
           pointRadius: 3,
           borderWidth: 2,
           spanGaps: false,
-          borderColor: "#f59e0b",
-          backgroundColor: "#f59e0b",
-          pointBackgroundColor: "#f59e0b",
-          pointBorderColor: "#f59e0b"
+          borderColor: "#16a34a",
+          backgroundColor: "#16a34a",
+          pointBackgroundColor: "#16a34a",
+          pointBorderColor: "#16a34a"
         }
       );
     }
