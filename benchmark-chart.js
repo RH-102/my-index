@@ -56,6 +56,12 @@
       original._convertedToReturn = true;
     }
 
+    // Keep all three comparison lines visually distinct.
+    original.borderColor = "#111827";
+    original.backgroundColor = "#111827";
+    original.pointBackgroundColor = "#111827";
+    original.pointBorderColor = "#111827";
+
     chart.data.datasets = [original];
 
     if (benchmarkRows.length > 0) {
@@ -69,7 +75,11 @@
           tension: 0.15,
           pointRadius: 3,
           borderWidth: 2,
-          spanGaps: false
+          spanGaps: false,
+          borderColor: "#2563eb",
+          backgroundColor: "#2563eb",
+          pointBackgroundColor: "#2563eb",
+          pointBorderColor: "#2563eb"
         },
         {
           label: "S&P 500",
@@ -80,7 +90,11 @@
           tension: 0.15,
           pointRadius: 3,
           borderWidth: 2,
-          spanGaps: false
+          spanGaps: false,
+          borderColor: "#f59e0b",
+          backgroundColor: "#f59e0b",
+          pointBackgroundColor: "#f59e0b",
+          pointBorderColor: "#f59e0b"
         }
       );
     }
