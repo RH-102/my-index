@@ -499,503 +499,503 @@ SnapshotDate,DataDate,Status,ListType,RuleVersion,Rank,Company,Symbol,Exchange,M
 2026-05-29,2026-08-19,Temporary,ExFinancials,2-company-level-financials,123,The Southern Company,SO,NYSE,106050000000.0,$106.05B,StockAnalysis
 2026-05-29,2026-08-19,Temporary,ExFinancials,2-company-level-financials,124,General Dynamics Corporation,GD,NYSE,105990000000.0,$105.99B,StockAnalysis
 2026-05-29,2026-08-19,Temporary,ExFinancials,2-company-level-financials,125,Agnico Eagle Mines Limited,AEM,NYSE,105180000000.0,$105.18B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,1,NVIDIA Corporation,NVDA,NASDAQ,5160000000000.0,$5.16T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,2,Apple Inc.,AAPL,NASDAQ,4520000000000.0,$4.52T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,3,Alphabet Inc.,GOOGL,NASDAQ,4240000000000.0,$4.24T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,4,Microsoft Corporation,MSFT,NASDAQ,3650000000000.0,$3.65T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,5,"Amazon.com, Inc.",AMZN,NASDAQ,2820000000000.0,$2.82T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,6,Taiwan Semiconductor Manufacturing Company Limited,TSM,NYSE,1950000000000.0,$1.95T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,7,Space Exploration Technologies Corp.,SPCX,NASDAQ,1870000000000.0,$1.87T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,8,Broadcom Inc.,AVGO,NASDAQ,1700000000000.0,$1.70T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,9,"Meta Platforms, Inc.",META,NASDAQ,1450000000000.0,$1.45T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,10,"Tesla, Inc.",TSLA,NASDAQ,1380000000000.0,$1.38T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,11,Eli Lilly and Company,LLY,NYSE,1100000000000.0,$1.10T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,12,Berkshire Hathaway Inc.,BRK.B,NYSE,1080000000000.0001,$1.08T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,13,"Micron Technology, Inc.",MU,NASDAQ,1050000000000.0,$1.05T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,14,JPMorgan Chase & Co.,JPM,NYSE,948150000000.0,$948.15B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,15,SK hynix Inc.,SKHY,NASDAQ,883370000000.0,$883.37B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,16,Walmart Inc.,WMT,NASDAQ,838620000000.0,$838.62B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,17,"Advanced Micro Devices, Inc.",AMD,NASDAQ,782250000000.0,$782.25B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,18,Visa Inc.,V,NYSE,705130000000.0,$705.13B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,19,ASML Holding N.V.,ASML,NASDAQ,672730000000.0,$672.73B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,20,ExxonMobil Holdings Corporation,XOM,NYSE,660540000000.0,$660.54B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,21,Johnson & Johnson,JNJ,NYSE,658240000000.0,$658.24B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,22,Mastercard Incorporated,MA,NYSE,525049999999.99994,$525.05B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,23,AbbVie Inc.,ABBV,NYSE,469680000000.0,$469.68B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,24,Intel Corporation,INTC,NASDAQ,459670000000.0,$459.67B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,25,"Cisco Systems, Inc.",CSCO,NASDAQ,437930000000.0,$437.93B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,26,Bank of America Corporation,BAC,NYSE,436560000000.0,$436.56B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,27,Costco Wholesale Corporation,COST,NASDAQ,425740000000.0,$425.74B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,28,Oracle Corporation,ORCL,NYSE,416980000000.0,$416.98B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,29,Palantir Technologies Inc.,PLTR,NASDAQ,415080000000.0,$415.08B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,30,The Coca-Cola Company,KO,NYSE,394290000000.0,$394.29B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,31,Lam Research Corporation,LRCX,NASDAQ,393740000000.0,$393.74B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,32,Chevron Corporation,CVX,NYSE,392100000000.0,$392.10B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,33,"Merck & Co., Inc.",MRK,NYSE,385990000000.0,$385.99B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,34,"Applied Materials, Inc.",AMAT,NASDAQ,380960000000.0,$380.96B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,35,Caterpillar Inc.,CAT,NYSE,372930000000.0,$372.93B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,36,GE Aerospace,GE,NYSE,362670000000.0,$362.67B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,37,UnitedHealth Group Incorporated,UNH,NYSE,355980000000.0,$355.98B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,38,HSBC Holdings plc,HSBC,NYSE,354630000000.0,$354.63B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,39,"Netflix, Inc.",NFLX,NASDAQ,342400000000.0,$342.40B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,40,Morgan Stanley,MS,NYSE,340450000000.0,$340.45B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,41,The Procter & Gamble Company,PG,NYSE,337950000000.0,$337.95B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,42,"The Home Depot, Inc.",HD,NYSE,336910000000.0,$336.91B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,43,"The Goldman Sachs Group, Inc.",GS,NYSE,320590000000.0,$320.59B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,44,Novartis AG,NVS,NYSE,303810000000.0,$303.81B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,45,Philip Morris International Inc.,PM,NYSE,302250000000.0,$302.25B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,46,Dell Technologies Inc.,DELL,NYSE,291730000000.0,$291.73B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,47,Royal Bank of Canada,RY,NYSE,283960000000.0,$283.96B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,48,RTX Corporation,RTX,NYSE,283410000000.0,$283.41B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,49,"Palo Alto Networks, Inc.",PANW,NASDAQ,277020000000.0,$277.02B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,50,Alibaba Group Holding Limited,BABA,NYSE,272459999999.99997,$272.46B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,51,AstraZeneca PLC,AZN,NYSE,263839999999.99997,$263.84B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,52,Arm Holdings plc,ARM,NASDAQ,258010000000.0,$258.01B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,53,Shell plc,SHEL,NYSE,256760000000.0,$256.76B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,54,Wells Fargo & Company,WFC,NYSE,256399999999.99997,$256.40B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,55,SAP SE,SAP,NYSE,252120000000.0,$252.12B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,56,"Mitsubishi UFJ Financial Group, Inc.",MUFG,NYSE,249370000000.0,$249.37B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,57,GE Vernova Inc.,GEV,NYSE,246820000000.0,$246.82B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,58,BHP Group Limited,BHP,NYSE,246070000000.0,$246.07B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,59,"Arista Networks, Inc.",ANET,NYSE,240820000000.0,$240.82B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,60,KLA Corporation,KLAC,NASDAQ,239540000000.0,$239.54B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,61,Amgen Inc.,AMGN,NASDAQ,239090000000.0,$239.09B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,62,Texas Instruments Incorporated,TXN,NASDAQ,237490000000.0,$237.49B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,63,Thermo Fisher Scientific Inc.,TMO,NYSE,232260000000.0,$232.26B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,64,Toyota Motor Corporation,TM,NYSE,229130000000.0,$229.13B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,65,American Express Company,AXP,NYSE,226870000000.0,$226.87B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,66,Linde plc,LIN,NASDAQ,224590000000.0,$224.59B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,67,Citigroup Inc.,C,NYSE,223520000000.0,$223.52B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,68,International Business Machines Corporation,IBM,NYSE,220640000000.0,$220.64B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,69,Sandisk Corporation,SNDK,NASDAQ,216810000000.0,$216.81B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,70,"Banco Santander, S.A.",SAN,NYSE,214850000000.0,$214.85B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,71,Novo Nordisk A/S,NVO,NYSE,212510000000.0,$212.51B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,72,"Marvell Technology, Inc.",MRVL,NASDAQ,210800000000.0,$210.80B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,73,Verizon Communications Inc.,VZ,NYSE,208780000000.0,$208.78B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,74,Abbott Laboratories,ABT,NYSE,200950000000.0,$200.95B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,75,Shopify Inc.,SHOP,NASDAQ,197990000000.0,$197.99B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,76,TotalEnergies SE,TTE,NYSE,197060000000.0,$197.06B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,77,Amphenol Corporation,APH,NYSE,195770000000.0,$195.77B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,78,"T-Mobile US, Inc.",TMUS,NASDAQ,194810000000.0,$194.81B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,79,"PepsiCo, Inc.",PEP,NASDAQ,194180000000.0,$194.18B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,80,The Charles Schwab Corporation,SCHW,NYSE,194150000000.0,$194.15B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,81,The Toronto-Dominion Bank,TD,NYSE,192800000000.0,$192.80B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,82,The Walt Disney Company,DIS,NYSE,192090000000.0,$192.09B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,83,"BlackRock, Inc.",BLK,NYSE,191180000000.0,$191.18B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,84,McDonald's Corporation,MCD,NYSE,189720000000.0,$189.72B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,85,"CrowdStrike Holdings, Inc.",CRWD,NASDAQ,188760000000.0,$188.76B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,86,Seagate Technology Holdings plc,STX,NASDAQ,186230000000.0,$186.23B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,87,Southern Copper Corporation,SCCO,NYSE,185500000000.0,$185.50B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,88,"Gilead Sciences, Inc.",GILD,NASDAQ,184470000000.0,$184.47B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,89,Union Pacific Corporation,UNP,NYSE,183920000000.0,$183.92B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,90,"Analog Devices, Inc.",ADI,NASDAQ,181060000000.0,$181.06B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,91,Rio Tinto Group,RIO,NYSE,179880000000.0,$179.88B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,92,Blackstone Inc.,BX,NYSE,178380000000.0,$178.38B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,93,AT&T Inc.,T,NYSE,176590000000.0,$176.59B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,94,"NextEra Energy, Inc.",NEE,NYSE,175670000000.0,$175.67B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,95,Welltower Inc.,WELL,NYSE,173810000000.0,$173.81B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,96,QUALCOMM Incorporated,QCOM,NASDAQ,171490000000.0,$171.49B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,97,Deere & Company,DE,NYSE,170240000000.0,$170.24B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,98,"Salesforce, Inc.",CRM,NYSE,168460000000.0,$168.46B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,99,The Boeing Company,BA,NYSE,166830000000.0,$166.83B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,100,UBS Group AG,UBS,NYSE,164810000000.0,$164.81B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,101,"Uber Technologies, Inc.",UBER,NYSE,164120000000.0,$164.12B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,102,Pfizer Inc.,PFE,NYSE,162840000000.0,$162.84B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,103,Western Digital Corporation,WDC,NASDAQ,162510000000.0,$162.51B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,104,"Banco Bilbao Vizcaya Argentaria, S.A.",BBVA,NYSE,161450000000.0,$161.45B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,105,Booking Holdings Inc.,BKNG,NASDAQ,160630000000.0,$160.63B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,106,Eaton Corporation plc,ETN,NYSE,158930000000.0,$158.93B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,107,ConocoPhillips,COP,NYSE,158380000000.0,$158.38B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,108,"Sumitomo Mitsui Financial Group, Inc.",SMFG,NYSE,156830000000.0,$156.83B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,109,Anheuser-Busch InBev SA/NV,BUD,NYSE,155170000000.0,$155.17B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,110,"The TJX Companies, Inc.",TJX,NYSE,154080000000.0,$154.08B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,111,Danaher Corporation,DHR,NYSE,151820000000.0,$151.82B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,112,Newmont Corporation,NEM,NYSE,142010000000.0,$142.01B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,113,Sony Group Corporation,SONY,NYSE,141280000000.0,$141.28B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,114,Unilever PLC,UL,NYSE,140500000000.0,$140.50B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,115,Vertex Pharmaceuticals Incorporated,VRTX,NASDAQ,140130000000.0,$140.13B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,116,"Prologis, Inc.",PLD,NYSE,138960000000.0,$138.96B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,117,Bristol-Myers Squibb Company,BMY,NYSE,138740000000.0,$138.74B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,118,Capital One Financial Corporation,COF,NYSE,132660000000.0,$132.66B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,119,Chubb Limited,CB,NYSE,132370000000.0,$132.37B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,120,"Intuitive Surgical, Inc.",ISRG,NASDAQ,131360000000.00002,$131.36B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,121,"ServiceNow, Inc.",NOW,NYSE,131300000000.00002,$131.30B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,122,The Progressive Corporation,PGR,NYSE,129120000000.0,$129.12B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,123,Lockheed Martin Corporation,LMT,NYSE,128440000000.0,$128.44B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,124,Parker-Hannifin Corporation,PH,NYSE,128100000000.0,$128.10B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,All,2-company-level-financials,125,S&P Global Inc.,SPGI,NYSE,127630000000.0,$127.63B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,1,NVIDIA Corporation,NVDA,NASDAQ,5160000000000.0,$5.16T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,2,Apple Inc.,AAPL,NASDAQ,4520000000000.0,$4.52T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,3,Alphabet Inc.,GOOGL,NASDAQ,4240000000000.0,$4.24T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,4,Microsoft Corporation,MSFT,NASDAQ,3650000000000.0,$3.65T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,5,"Amazon.com, Inc.",AMZN,NASDAQ,2820000000000.0,$2.82T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,6,Taiwan Semiconductor Manufacturing Company Limited,TSM,NYSE,1950000000000.0,$1.95T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,7,Space Exploration Technologies Corp.,SPCX,NASDAQ,1870000000000.0,$1.87T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,8,Broadcom Inc.,AVGO,NASDAQ,1700000000000.0,$1.70T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,9,"Meta Platforms, Inc.",META,NASDAQ,1450000000000.0,$1.45T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,10,"Tesla, Inc.",TSLA,NASDAQ,1380000000000.0,$1.38T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,11,Eli Lilly and Company,LLY,NYSE,1100000000000.0,$1.10T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,12,"Micron Technology, Inc.",MU,NASDAQ,1050000000000.0,$1.05T,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,13,SK hynix Inc.,SKHY,NASDAQ,883370000000.0,$883.37B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,14,Walmart Inc.,WMT,NASDAQ,838620000000.0,$838.62B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,15,"Advanced Micro Devices, Inc.",AMD,NASDAQ,782250000000.0,$782.25B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,16,ASML Holding N.V.,ASML,NASDAQ,672730000000.0,$672.73B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,17,ExxonMobil Holdings Corporation,XOM,NYSE,660540000000.0,$660.54B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,18,Johnson & Johnson,JNJ,NYSE,658240000000.0,$658.24B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,19,AbbVie Inc.,ABBV,NYSE,469680000000.0,$469.68B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,20,Intel Corporation,INTC,NASDAQ,459670000000.0,$459.67B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,21,"Cisco Systems, Inc.",CSCO,NASDAQ,437930000000.0,$437.93B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,22,Costco Wholesale Corporation,COST,NASDAQ,425740000000.0,$425.74B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,23,Oracle Corporation,ORCL,NYSE,416980000000.0,$416.98B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,24,Palantir Technologies Inc.,PLTR,NASDAQ,415080000000.0,$415.08B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,25,The Coca-Cola Company,KO,NYSE,394290000000.0,$394.29B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,26,Lam Research Corporation,LRCX,NASDAQ,393740000000.0,$393.74B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,27,Chevron Corporation,CVX,NYSE,392100000000.0,$392.10B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,28,"Merck & Co., Inc.",MRK,NYSE,385990000000.0,$385.99B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,29,"Applied Materials, Inc.",AMAT,NASDAQ,380960000000.0,$380.96B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,30,Caterpillar Inc.,CAT,NYSE,372930000000.0,$372.93B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,31,GE Aerospace,GE,NYSE,362670000000.0,$362.67B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,32,UnitedHealth Group Incorporated,UNH,NYSE,355980000000.0,$355.98B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,33,"Netflix, Inc.",NFLX,NASDAQ,342400000000.0,$342.40B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,34,The Procter & Gamble Company,PG,NYSE,337950000000.0,$337.95B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,35,"The Home Depot, Inc.",HD,NYSE,336910000000.0,$336.91B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,36,Novartis AG,NVS,NYSE,303810000000.0,$303.81B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,37,Philip Morris International Inc.,PM,NYSE,302250000000.0,$302.25B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,38,Dell Technologies Inc.,DELL,NYSE,291730000000.0,$291.73B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,39,RTX Corporation,RTX,NYSE,283410000000.0,$283.41B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,40,"Palo Alto Networks, Inc.",PANW,NASDAQ,277020000000.0,$277.02B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,41,Alibaba Group Holding Limited,BABA,NYSE,272459999999.99997,$272.46B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,42,AstraZeneca PLC,AZN,NYSE,263839999999.99997,$263.84B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,43,Arm Holdings plc,ARM,NASDAQ,258010000000.0,$258.01B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,44,Shell plc,SHEL,NYSE,256760000000.0,$256.76B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,45,SAP SE,SAP,NYSE,252120000000.0,$252.12B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,46,GE Vernova Inc.,GEV,NYSE,246820000000.0,$246.82B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,47,BHP Group Limited,BHP,NYSE,246070000000.0,$246.07B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,48,"Arista Networks, Inc.",ANET,NYSE,240820000000.0,$240.82B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,49,KLA Corporation,KLAC,NASDAQ,239540000000.0,$239.54B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,50,Amgen Inc.,AMGN,NASDAQ,239090000000.0,$239.09B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,51,Texas Instruments Incorporated,TXN,NASDAQ,237490000000.0,$237.49B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,52,Thermo Fisher Scientific Inc.,TMO,NYSE,232260000000.0,$232.26B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,53,Toyota Motor Corporation,TM,NYSE,229130000000.0,$229.13B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,54,Linde plc,LIN,NASDAQ,224590000000.0,$224.59B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,55,International Business Machines Corporation,IBM,NYSE,220640000000.0,$220.64B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,56,Sandisk Corporation,SNDK,NASDAQ,216810000000.0,$216.81B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,57,Novo Nordisk A/S,NVO,NYSE,212510000000.0,$212.51B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,58,"Marvell Technology, Inc.",MRVL,NASDAQ,210800000000.0,$210.80B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,59,Verizon Communications Inc.,VZ,NYSE,208780000000.0,$208.78B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,60,Abbott Laboratories,ABT,NYSE,200950000000.0,$200.95B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,61,Shopify Inc.,SHOP,NASDAQ,197990000000.0,$197.99B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,62,TotalEnergies SE,TTE,NYSE,197060000000.0,$197.06B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,63,Amphenol Corporation,APH,NYSE,195770000000.0,$195.77B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,64,"T-Mobile US, Inc.",TMUS,NASDAQ,194810000000.0,$194.81B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,65,"PepsiCo, Inc.",PEP,NASDAQ,194180000000.0,$194.18B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,66,The Walt Disney Company,DIS,NYSE,192090000000.0,$192.09B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,67,McDonald's Corporation,MCD,NYSE,189720000000.0,$189.72B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,68,"CrowdStrike Holdings, Inc.",CRWD,NASDAQ,188760000000.0,$188.76B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,69,Seagate Technology Holdings plc,STX,NASDAQ,186230000000.0,$186.23B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,70,Southern Copper Corporation,SCCO,NYSE,185500000000.0,$185.50B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,71,"Gilead Sciences, Inc.",GILD,NASDAQ,184470000000.0,$184.47B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,72,Union Pacific Corporation,UNP,NYSE,183920000000.0,$183.92B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,73,"Analog Devices, Inc.",ADI,NASDAQ,181060000000.0,$181.06B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,74,Rio Tinto Group,RIO,NYSE,179880000000.0,$179.88B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,75,AT&T Inc.,T,NYSE,176590000000.0,$176.59B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,76,"NextEra Energy, Inc.",NEE,NYSE,175670000000.0,$175.67B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,77,Welltower Inc.,WELL,NYSE,173810000000.0,$173.81B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,78,QUALCOMM Incorporated,QCOM,NASDAQ,171490000000.0,$171.49B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,79,Deere & Company,DE,NYSE,170240000000.0,$170.24B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,80,"Salesforce, Inc.",CRM,NYSE,168460000000.0,$168.46B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,81,The Boeing Company,BA,NYSE,166830000000.0,$166.83B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,82,"Uber Technologies, Inc.",UBER,NYSE,164120000000.0,$164.12B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,83,Pfizer Inc.,PFE,NYSE,162840000000.0,$162.84B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,84,Western Digital Corporation,WDC,NASDAQ,162510000000.0,$162.51B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,85,Booking Holdings Inc.,BKNG,NASDAQ,160630000000.0,$160.63B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,86,Eaton Corporation plc,ETN,NYSE,158930000000.0,$158.93B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,87,ConocoPhillips,COP,NYSE,158380000000.0,$158.38B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,88,Anheuser-Busch InBev SA/NV,BUD,NYSE,155170000000.0,$155.17B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,89,"The TJX Companies, Inc.",TJX,NYSE,154080000000.0,$154.08B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,90,Danaher Corporation,DHR,NYSE,151820000000.0,$151.82B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,91,Newmont Corporation,NEM,NYSE,142010000000.0,$142.01B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,92,Sony Group Corporation,SONY,NYSE,141280000000.0,$141.28B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,93,Unilever PLC,UL,NYSE,140500000000.0,$140.50B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,94,Vertex Pharmaceuticals Incorporated,VRTX,NASDAQ,140130000000.0,$140.13B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,95,"Prologis, Inc.",PLD,NYSE,138960000000.0,$138.96B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,96,Bristol-Myers Squibb Company,BMY,NYSE,138740000000.0,$138.74B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,97,"Intuitive Surgical, Inc.",ISRG,NASDAQ,131360000000.00002,$131.36B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,98,"ServiceNow, Inc.",NOW,NYSE,131300000000.00002,$131.30B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,99,Lockheed Martin Corporation,LMT,NYSE,128440000000.0,$128.44B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,100,Parker-Hannifin Corporation,PH,NYSE,128100000000.0,$128.10B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,101,Stryker Corporation,SYK,NYSE,126810000000.0,$126.81B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,102,Corning Incorporated,GLW,NYSE,126760000000.0,$126.76B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,103,PDD Holdings Inc.,PDD,NASDAQ,124900000000.0,$124.90B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,104,British American Tobacco p.l.c.,BTI,NYSE,123450000000.0,$123.45B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,105,Starbucks Corporation,SBUX,NASDAQ,120550000000.0,$120.55B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,106,"Lowe's Companies, Inc.",LOW,NYSE,120330000000.0,$120.33B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,107,CVS Health Corporation,CVS,NYSE,118820000000.0,$118.82B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,108,Medtronic plc,MDT,NYSE,116660000000.0,$116.66B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,109,Freeport-McMoRan Inc.,FCX,NYSE,114750000000.0,$114.75B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,110,Accenture plc,ACN,NYSE,114390000000.0,$114.39B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,111,"Altria Group, Inc.",MO,NYSE,113660000000.0,$113.66B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,112,Spotify Technology S.A.,SPOT,NYSE,113600000000.0,$113.60B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,113,Agnico Eagle Mines Limited,AEM,NYSE,113480000000.0,$113.48B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,114,"Fortinet, Inc.",FTNT,NASDAQ,112740000000.0,$112.74B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,115,PetrÃ³leo Brasileiro S.A. - Petrobras,PBR,NYSE,112530000000.0,$112.53B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,116,BP p.l.c.,BP,NYSE,112510000000.0,$112.51B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,117,"Automatic Data Processing, Inc.",ADP,NASDAQ,112340000000.0,$112.34B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,118,"Airbnb, Inc.",ABNB,NASDAQ,112320000000.0,$112.32B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,119,Sanofi,SNY,NASDAQ,110090000000.0,$110.09B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,120,Snowflake Inc.,SNOW,NYSE,109880000000.0,$109.88B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,121,Enbridge Inc.,ENB,NYSE,109520000000.0,$109.52B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,122,Adobe Inc.,ADBE,NASDAQ,108880000000.0,$108.88B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,123,"Equinix, Inc.",EQIX,NASDAQ,105920000000.0,$105.92B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,124,McKesson Corporation,MCK,NYSE,105520000000.0,$105.52B,StockAnalysis
-2026-08-31,2026-08-25,Temporary,ExFinancials,2-company-level-financials,125,Howmet Aerospace Inc.,HWM,NYSE,105300000000.0,$105.30B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,1,NVIDIA Corporation,NVDA,NASDAQ,5160000000000.0,$5.16T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,2,Apple Inc.,AAPL,NASDAQ,4520000000000.0,$4.52T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,3,Alphabet Inc.,GOOGL,NASDAQ,4240000000000.0,$4.24T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,4,Microsoft Corporation,MSFT,NASDAQ,3650000000000.0,$3.65T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,5,"Amazon.com, Inc.",AMZN,NASDAQ,2820000000000.0,$2.82T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,6,Taiwan Semiconductor Manufacturing Company Limited,TSM,NYSE,1950000000000.0,$1.95T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,7,Space Exploration Technologies Corp.,SPCX,NASDAQ,1870000000000.0,$1.87T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,8,Broadcom Inc.,AVGO,NASDAQ,1700000000000.0,$1.70T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,9,"Meta Platforms, Inc.",META,NASDAQ,1450000000000.0,$1.45T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,10,"Tesla, Inc.",TSLA,NASDAQ,1380000000000.0,$1.38T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,11,Eli Lilly and Company,LLY,NYSE,1100000000000.0,$1.10T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,12,Berkshire Hathaway Inc.,BRK.B,NYSE,1080000000000.0001,$1.08T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,13,"Micron Technology, Inc.",MU,NASDAQ,1050000000000.0,$1.05T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,14,JPMorgan Chase & Co.,JPM,NYSE,948150000000.0,$948.15B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,15,SK hynix Inc.,SKHY,NASDAQ,883370000000.0,$883.37B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,16,Walmart Inc.,WMT,NASDAQ,838620000000.0,$838.62B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,17,"Advanced Micro Devices, Inc.",AMD,NASDAQ,782250000000.0,$782.25B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,18,Visa Inc.,V,NYSE,705130000000.0,$705.13B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,19,ASML Holding N.V.,ASML,NASDAQ,672730000000.0,$672.73B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,20,ExxonMobil Holdings Corporation,XOM,NYSE,660540000000.0,$660.54B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,21,Johnson & Johnson,JNJ,NYSE,658240000000.0,$658.24B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,22,Mastercard Incorporated,MA,NYSE,525049999999.99994,$525.05B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,23,AbbVie Inc.,ABBV,NYSE,469680000000.0,$469.68B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,24,Intel Corporation,INTC,NASDAQ,459670000000.0,$459.67B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,25,"Cisco Systems, Inc.",CSCO,NASDAQ,437930000000.0,$437.93B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,26,Bank of America Corporation,BAC,NYSE,436560000000.0,$436.56B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,27,Costco Wholesale Corporation,COST,NASDAQ,425740000000.0,$425.74B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,28,Oracle Corporation,ORCL,NYSE,416980000000.0,$416.98B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,29,Palantir Technologies Inc.,PLTR,NASDAQ,415080000000.0,$415.08B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,30,The Coca-Cola Company,KO,NYSE,394290000000.0,$394.29B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,31,Lam Research Corporation,LRCX,NASDAQ,393740000000.0,$393.74B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,32,Chevron Corporation,CVX,NYSE,392100000000.0,$392.10B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,33,"Merck & Co., Inc.",MRK,NYSE,385990000000.0,$385.99B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,34,"Applied Materials, Inc.",AMAT,NASDAQ,380960000000.0,$380.96B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,35,Caterpillar Inc.,CAT,NYSE,372930000000.0,$372.93B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,36,GE Aerospace,GE,NYSE,362670000000.0,$362.67B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,37,UnitedHealth Group Incorporated,UNH,NYSE,355980000000.0,$355.98B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,38,HSBC Holdings plc,HSBC,NYSE,354630000000.0,$354.63B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,39,"Netflix, Inc.",NFLX,NASDAQ,342400000000.0,$342.40B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,40,Morgan Stanley,MS,NYSE,340450000000.0,$340.45B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,41,The Procter & Gamble Company,PG,NYSE,337950000000.0,$337.95B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,42,"The Home Depot, Inc.",HD,NYSE,336910000000.0,$336.91B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,43,"The Goldman Sachs Group, Inc.",GS,NYSE,320590000000.0,$320.59B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,44,Novartis AG,NVS,NYSE,303810000000.0,$303.81B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,45,Philip Morris International Inc.,PM,NYSE,302250000000.0,$302.25B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,46,Dell Technologies Inc.,DELL,NYSE,291730000000.0,$291.73B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,47,Royal Bank of Canada,RY,NYSE,283960000000.0,$283.96B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,48,RTX Corporation,RTX,NYSE,283410000000.0,$283.41B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,49,"Palo Alto Networks, Inc.",PANW,NASDAQ,277020000000.0,$277.02B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,50,Alibaba Group Holding Limited,BABA,NYSE,272459999999.99997,$272.46B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,51,AstraZeneca PLC,AZN,NYSE,263839999999.99997,$263.84B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,52,Arm Holdings plc,ARM,NASDAQ,258010000000.0,$258.01B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,53,Shell plc,SHEL,NYSE,256760000000.0,$256.76B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,54,Wells Fargo & Company,WFC,NYSE,256399999999.99997,$256.40B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,55,SAP SE,SAP,NYSE,252120000000.0,$252.12B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,56,"Mitsubishi UFJ Financial Group, Inc.",MUFG,NYSE,249370000000.0,$249.37B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,57,GE Vernova Inc.,GEV,NYSE,246820000000.0,$246.82B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,58,BHP Group Limited,BHP,NYSE,246070000000.0,$246.07B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,59,"Arista Networks, Inc.",ANET,NYSE,240820000000.0,$240.82B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,60,KLA Corporation,KLAC,NASDAQ,239540000000.0,$239.54B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,61,Amgen Inc.,AMGN,NASDAQ,239090000000.0,$239.09B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,62,Texas Instruments Incorporated,TXN,NASDAQ,237490000000.0,$237.49B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,63,Thermo Fisher Scientific Inc.,TMO,NYSE,232260000000.0,$232.26B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,64,Toyota Motor Corporation,TM,NYSE,229130000000.0,$229.13B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,65,American Express Company,AXP,NYSE,226870000000.0,$226.87B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,66,Linde plc,LIN,NASDAQ,224590000000.0,$224.59B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,67,Citigroup Inc.,C,NYSE,223520000000.0,$223.52B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,68,International Business Machines Corporation,IBM,NYSE,220640000000.0,$220.64B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,69,Sandisk Corporation,SNDK,NASDAQ,216810000000.0,$216.81B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,70,"Banco Santander, S.A.",SAN,NYSE,214850000000.0,$214.85B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,71,Novo Nordisk A/S,NVO,NYSE,212510000000.0,$212.51B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,72,"Marvell Technology, Inc.",MRVL,NASDAQ,210800000000.0,$210.80B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,73,Verizon Communications Inc.,VZ,NYSE,208780000000.0,$208.78B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,74,Abbott Laboratories,ABT,NYSE,200950000000.0,$200.95B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,75,Shopify Inc.,SHOP,NASDAQ,197990000000.0,$197.99B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,76,TotalEnergies SE,TTE,NYSE,197060000000.0,$197.06B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,77,Amphenol Corporation,APH,NYSE,195770000000.0,$195.77B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,78,"T-Mobile US, Inc.",TMUS,NASDAQ,194810000000.0,$194.81B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,79,"PepsiCo, Inc.",PEP,NASDAQ,194180000000.0,$194.18B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,80,The Charles Schwab Corporation,SCHW,NYSE,194150000000.0,$194.15B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,81,The Toronto-Dominion Bank,TD,NYSE,192800000000.0,$192.80B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,82,The Walt Disney Company,DIS,NYSE,192090000000.0,$192.09B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,83,"BlackRock, Inc.",BLK,NYSE,191180000000.0,$191.18B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,84,McDonald's Corporation,MCD,NYSE,189720000000.0,$189.72B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,85,"CrowdStrike Holdings, Inc.",CRWD,NASDAQ,188760000000.0,$188.76B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,86,Seagate Technology Holdings plc,STX,NASDAQ,186230000000.0,$186.23B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,87,Southern Copper Corporation,SCCO,NYSE,185500000000.0,$185.50B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,88,"Gilead Sciences, Inc.",GILD,NASDAQ,184470000000.0,$184.47B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,89,Union Pacific Corporation,UNP,NYSE,183920000000.0,$183.92B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,90,"Analog Devices, Inc.",ADI,NASDAQ,181060000000.0,$181.06B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,91,Rio Tinto Group,RIO,NYSE,179880000000.0,$179.88B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,92,Blackstone Inc.,BX,NYSE,178380000000.0,$178.38B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,93,AT&T Inc.,T,NYSE,176590000000.0,$176.59B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,94,"NextEra Energy, Inc.",NEE,NYSE,175670000000.0,$175.67B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,95,Welltower Inc.,WELL,NYSE,173810000000.0,$173.81B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,96,QUALCOMM Incorporated,QCOM,NASDAQ,171490000000.0,$171.49B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,97,Deere & Company,DE,NYSE,170240000000.0,$170.24B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,98,"Salesforce, Inc.",CRM,NYSE,168460000000.0,$168.46B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,99,The Boeing Company,BA,NYSE,166830000000.0,$166.83B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,100,UBS Group AG,UBS,NYSE,164810000000.0,$164.81B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,101,"Uber Technologies, Inc.",UBER,NYSE,164120000000.0,$164.12B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,102,Pfizer Inc.,PFE,NYSE,162840000000.0,$162.84B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,103,Western Digital Corporation,WDC,NASDAQ,162510000000.0,$162.51B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,104,"Banco Bilbao Vizcaya Argentaria, S.A.",BBVA,NYSE,161450000000.0,$161.45B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,105,Booking Holdings Inc.,BKNG,NASDAQ,160630000000.0,$160.63B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,106,Eaton Corporation plc,ETN,NYSE,158930000000.0,$158.93B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,107,ConocoPhillips,COP,NYSE,158380000000.0,$158.38B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,108,"Sumitomo Mitsui Financial Group, Inc.",SMFG,NYSE,156830000000.0,$156.83B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,109,Anheuser-Busch InBev SA/NV,BUD,NYSE,155170000000.0,$155.17B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,110,"The TJX Companies, Inc.",TJX,NYSE,154080000000.0,$154.08B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,111,Danaher Corporation,DHR,NYSE,151820000000.0,$151.82B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,112,Newmont Corporation,NEM,NYSE,142010000000.0,$142.01B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,113,Sony Group Corporation,SONY,NYSE,141280000000.0,$141.28B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,114,Unilever PLC,UL,NYSE,140500000000.0,$140.50B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,115,Vertex Pharmaceuticals Incorporated,VRTX,NASDAQ,140130000000.0,$140.13B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,116,"Prologis, Inc.",PLD,NYSE,138960000000.0,$138.96B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,117,Bristol-Myers Squibb Company,BMY,NYSE,138740000000.0,$138.74B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,118,Capital One Financial Corporation,COF,NYSE,132660000000.0,$132.66B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,119,Chubb Limited,CB,NYSE,132370000000.0,$132.37B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,120,"Intuitive Surgical, Inc.",ISRG,NASDAQ,131360000000.00002,$131.36B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,121,"ServiceNow, Inc.",NOW,NYSE,131300000000.00002,$131.30B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,122,The Progressive Corporation,PGR,NYSE,129120000000.0,$129.12B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,123,Lockheed Martin Corporation,LMT,NYSE,128440000000.0,$128.44B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,124,Parker-Hannifin Corporation,PH,NYSE,128100000000.0,$128.10B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,All,2-company-level-financials,125,S&P Global Inc.,SPGI,NYSE,127630000000.0,$127.63B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,1,NVIDIA Corporation,NVDA,NASDAQ,5160000000000.0,$5.16T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,2,Apple Inc.,AAPL,NASDAQ,4520000000000.0,$4.52T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,3,Alphabet Inc.,GOOGL,NASDAQ,4240000000000.0,$4.24T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,4,Microsoft Corporation,MSFT,NASDAQ,3650000000000.0,$3.65T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,5,"Amazon.com, Inc.",AMZN,NASDAQ,2820000000000.0,$2.82T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,6,Taiwan Semiconductor Manufacturing Company Limited,TSM,NYSE,1950000000000.0,$1.95T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,7,Space Exploration Technologies Corp.,SPCX,NASDAQ,1870000000000.0,$1.87T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,8,Broadcom Inc.,AVGO,NASDAQ,1700000000000.0,$1.70T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,9,"Meta Platforms, Inc.",META,NASDAQ,1450000000000.0,$1.45T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,10,"Tesla, Inc.",TSLA,NASDAQ,1380000000000.0,$1.38T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,11,Eli Lilly and Company,LLY,NYSE,1100000000000.0,$1.10T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,12,"Micron Technology, Inc.",MU,NASDAQ,1050000000000.0,$1.05T,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,13,SK hynix Inc.,SKHY,NASDAQ,883370000000.0,$883.37B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,14,Walmart Inc.,WMT,NASDAQ,838620000000.0,$838.62B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,15,"Advanced Micro Devices, Inc.",AMD,NASDAQ,782250000000.0,$782.25B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,16,ASML Holding N.V.,ASML,NASDAQ,672730000000.0,$672.73B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,17,ExxonMobil Holdings Corporation,XOM,NYSE,660540000000.0,$660.54B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,18,Johnson & Johnson,JNJ,NYSE,658240000000.0,$658.24B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,19,AbbVie Inc.,ABBV,NYSE,469680000000.0,$469.68B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,20,Intel Corporation,INTC,NASDAQ,459670000000.0,$459.67B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,21,"Cisco Systems, Inc.",CSCO,NASDAQ,437930000000.0,$437.93B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,22,Costco Wholesale Corporation,COST,NASDAQ,425740000000.0,$425.74B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,23,Oracle Corporation,ORCL,NYSE,416980000000.0,$416.98B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,24,Palantir Technologies Inc.,PLTR,NASDAQ,415080000000.0,$415.08B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,25,The Coca-Cola Company,KO,NYSE,394290000000.0,$394.29B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,26,Lam Research Corporation,LRCX,NASDAQ,393740000000.0,$393.74B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,27,Chevron Corporation,CVX,NYSE,392100000000.0,$392.10B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,28,"Merck & Co., Inc.",MRK,NYSE,385990000000.0,$385.99B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,29,"Applied Materials, Inc.",AMAT,NASDAQ,380960000000.0,$380.96B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,30,Caterpillar Inc.,CAT,NYSE,372930000000.0,$372.93B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,31,GE Aerospace,GE,NYSE,362670000000.0,$362.67B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,32,UnitedHealth Group Incorporated,UNH,NYSE,355980000000.0,$355.98B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,33,"Netflix, Inc.",NFLX,NASDAQ,342400000000.0,$342.40B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,34,The Procter & Gamble Company,PG,NYSE,337950000000.0,$337.95B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,35,"The Home Depot, Inc.",HD,NYSE,336910000000.0,$336.91B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,36,Novartis AG,NVS,NYSE,303810000000.0,$303.81B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,37,Philip Morris International Inc.,PM,NYSE,302250000000.0,$302.25B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,38,Dell Technologies Inc.,DELL,NYSE,291730000000.0,$291.73B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,39,RTX Corporation,RTX,NYSE,283410000000.0,$283.41B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,40,"Palo Alto Networks, Inc.",PANW,NASDAQ,277020000000.0,$277.02B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,41,Alibaba Group Holding Limited,BABA,NYSE,272459999999.99997,$272.46B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,42,AstraZeneca PLC,AZN,NYSE,263839999999.99997,$263.84B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,43,Arm Holdings plc,ARM,NASDAQ,258010000000.0,$258.01B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,44,Shell plc,SHEL,NYSE,256760000000.0,$256.76B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,45,SAP SE,SAP,NYSE,252120000000.0,$252.12B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,46,GE Vernova Inc.,GEV,NYSE,246820000000.0,$246.82B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,47,BHP Group Limited,BHP,NYSE,246070000000.0,$246.07B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,48,"Arista Networks, Inc.",ANET,NYSE,240820000000.0,$240.82B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,49,KLA Corporation,KLAC,NASDAQ,239540000000.0,$239.54B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,50,Amgen Inc.,AMGN,NASDAQ,239090000000.0,$239.09B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,51,Texas Instruments Incorporated,TXN,NASDAQ,237490000000.0,$237.49B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,52,Thermo Fisher Scientific Inc.,TMO,NYSE,232260000000.0,$232.26B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,53,Toyota Motor Corporation,TM,NYSE,229130000000.0,$229.13B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,54,Linde plc,LIN,NASDAQ,224590000000.0,$224.59B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,55,International Business Machines Corporation,IBM,NYSE,220640000000.0,$220.64B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,56,Sandisk Corporation,SNDK,NASDAQ,216810000000.0,$216.81B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,57,Novo Nordisk A/S,NVO,NYSE,212510000000.0,$212.51B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,58,"Marvell Technology, Inc.",MRVL,NASDAQ,210800000000.0,$210.80B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,59,Verizon Communications Inc.,VZ,NYSE,208780000000.0,$208.78B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,60,Abbott Laboratories,ABT,NYSE,200950000000.0,$200.95B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,61,Shopify Inc.,SHOP,NASDAQ,197990000000.0,$197.99B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,62,TotalEnergies SE,TTE,NYSE,197060000000.0,$197.06B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,63,Amphenol Corporation,APH,NYSE,195770000000.0,$195.77B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,64,"T-Mobile US, Inc.",TMUS,NASDAQ,194810000000.0,$194.81B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,65,"PepsiCo, Inc.",PEP,NASDAQ,194180000000.0,$194.18B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,66,The Walt Disney Company,DIS,NYSE,192090000000.0,$192.09B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,67,McDonald's Corporation,MCD,NYSE,189720000000.0,$189.72B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,68,"CrowdStrike Holdings, Inc.",CRWD,NASDAQ,188760000000.0,$188.76B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,69,Seagate Technology Holdings plc,STX,NASDAQ,186230000000.0,$186.23B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,70,Southern Copper Corporation,SCCO,NYSE,185500000000.0,$185.50B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,71,"Gilead Sciences, Inc.",GILD,NASDAQ,184470000000.0,$184.47B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,72,Union Pacific Corporation,UNP,NYSE,183920000000.0,$183.92B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,73,"Analog Devices, Inc.",ADI,NASDAQ,181060000000.0,$181.06B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,74,Rio Tinto Group,RIO,NYSE,179880000000.0,$179.88B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,75,AT&T Inc.,T,NYSE,176590000000.0,$176.59B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,76,"NextEra Energy, Inc.",NEE,NYSE,175670000000.0,$175.67B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,77,Welltower Inc.,WELL,NYSE,173810000000.0,$173.81B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,78,QUALCOMM Incorporated,QCOM,NASDAQ,171490000000.0,$171.49B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,79,Deere & Company,DE,NYSE,170240000000.0,$170.24B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,80,"Salesforce, Inc.",CRM,NYSE,168460000000.0,$168.46B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,81,The Boeing Company,BA,NYSE,166830000000.0,$166.83B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,82,"Uber Technologies, Inc.",UBER,NYSE,164120000000.0,$164.12B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,83,Pfizer Inc.,PFE,NYSE,162840000000.0,$162.84B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,84,Western Digital Corporation,WDC,NASDAQ,162510000000.0,$162.51B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,85,Booking Holdings Inc.,BKNG,NASDAQ,160630000000.0,$160.63B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,86,Eaton Corporation plc,ETN,NYSE,158930000000.0,$158.93B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,87,ConocoPhillips,COP,NYSE,158380000000.0,$158.38B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,88,Anheuser-Busch InBev SA/NV,BUD,NYSE,155170000000.0,$155.17B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,89,"The TJX Companies, Inc.",TJX,NYSE,154080000000.0,$154.08B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,90,Danaher Corporation,DHR,NYSE,151820000000.0,$151.82B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,91,Newmont Corporation,NEM,NYSE,142010000000.0,$142.01B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,92,Sony Group Corporation,SONY,NYSE,141280000000.0,$141.28B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,93,Unilever PLC,UL,NYSE,140500000000.0,$140.50B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,94,Vertex Pharmaceuticals Incorporated,VRTX,NASDAQ,140130000000.0,$140.13B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,95,"Prologis, Inc.",PLD,NYSE,138960000000.0,$138.96B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,96,Bristol-Myers Squibb Company,BMY,NYSE,138740000000.0,$138.74B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,97,"Intuitive Surgical, Inc.",ISRG,NASDAQ,131360000000.00002,$131.36B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,98,"ServiceNow, Inc.",NOW,NYSE,131300000000.00002,$131.30B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,99,Lockheed Martin Corporation,LMT,NYSE,128440000000.0,$128.44B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,100,Parker-Hannifin Corporation,PH,NYSE,128100000000.0,$128.10B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,101,Stryker Corporation,SYK,NYSE,126810000000.0,$126.81B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,102,Corning Incorporated,GLW,NYSE,126760000000.0,$126.76B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,103,PDD Holdings Inc.,PDD,NASDAQ,124900000000.0,$124.90B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,104,British American Tobacco p.l.c.,BTI,NYSE,123450000000.0,$123.45B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,105,Starbucks Corporation,SBUX,NASDAQ,120550000000.0,$120.55B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,106,"Lowe's Companies, Inc.",LOW,NYSE,120330000000.0,$120.33B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,107,CVS Health Corporation,CVS,NYSE,118820000000.0,$118.82B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,108,Medtronic plc,MDT,NYSE,116660000000.0,$116.66B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,109,Freeport-McMoRan Inc.,FCX,NYSE,114750000000.0,$114.75B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,110,Accenture plc,ACN,NYSE,114390000000.0,$114.39B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,111,"Altria Group, Inc.",MO,NYSE,113660000000.0,$113.66B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,112,Spotify Technology S.A.,SPOT,NYSE,113600000000.0,$113.60B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,113,Agnico Eagle Mines Limited,AEM,NYSE,113480000000.0,$113.48B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,114,"Fortinet, Inc.",FTNT,NASDAQ,112740000000.0,$112.74B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,115,PetrÃ³leo Brasileiro S.A. - Petrobras,PBR,NYSE,112530000000.0,$112.53B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,116,BP p.l.c.,BP,NYSE,112510000000.0,$112.51B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,117,"Automatic Data Processing, Inc.",ADP,NASDAQ,112340000000.0,$112.34B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,118,"Airbnb, Inc.",ABNB,NASDAQ,112320000000.0,$112.32B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,119,Sanofi,SNY,NASDAQ,110090000000.0,$110.09B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,120,Snowflake Inc.,SNOW,NYSE,109880000000.0,$109.88B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,121,Enbridge Inc.,ENB,NYSE,109520000000.0,$109.52B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,122,Adobe Inc.,ADBE,NASDAQ,108880000000.0,$108.88B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,123,"Equinix, Inc.",EQIX,NASDAQ,105920000000.0,$105.92B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,124,McKesson Corporation,MCK,NYSE,105520000000.0,$105.52B,StockAnalysis
-2026-11-30,2026-08-25,Temporary,ExFinancials,2-company-level-financials,125,Howmet Aerospace Inc.,HWM,NYSE,105300000000.0,$105.30B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,1,NVIDIA Corporation,NVDA,NASDAQ,5080000000000.0,$5.08T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,2,Apple Inc.,AAPL,NASDAQ,4570000000000.0,$4.57T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,3,Alphabet Inc.,GOOG,NASDAQ,4219999999999.9995,$4.22T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,4,Microsoft Corporation,MSFT,NASDAQ,3690000000000.0,$3.69T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,5,"Amazon.com, Inc.",AMZN,NASDAQ,2810000000000.0,$2.81T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,6,Taiwan Semiconductor Manufacturing Company Limited,TSM,NYSE,1970000000000.0,$1.97T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,7,Space Exploration Technologies Corp.,SPCX,NASDAQ,1900000000000.0,$1.90T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,8,Broadcom Inc.,AVGO,NASDAQ,1690000000000.0,$1.69T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,9,"Meta Platforms, Inc.",META,NASDAQ,1470000000000.0,$1.47T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,10,"Tesla, Inc.",TSLA,NASDAQ,1370000000000.0,$1.37T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,11,Berkshire Hathaway Inc.,BRK.B,NYSE,1080000000000.0001,$1.08T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,12,"Micron Technology, Inc.",MU,NASDAQ,1060000000000.0,$1.06T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,13,Eli Lilly and Company,LLY,NYSE,1060000000000.0,$1.06T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,14,JPMorgan Chase & Co.,JPM,NYSE,947640000000.0,$947.64B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,15,SK hynix Inc.,SKHY,NASDAQ,887350000000.0,$887.35B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,16,Walmart Inc.,WMT,NASDAQ,830350000000.0,$830.35B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,17,"Advanced Micro Devices, Inc.",AMD,NASDAQ,785110000000.0,$785.11B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,18,Visa Inc.,V,NYSE,704690000000.0,$704.69B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,19,ASML Holding N.V.,ASML,NASDAQ,670110000000.0,$670.11B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,20,Johnson & Johnson,JNJ,NYSE,650670000000.0,$650.67B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,21,ExxonMobil Holdings Corporation,XOM,NYSE,650460000000.0,$650.46B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,22,Mastercard Incorporated,MA,NYSE,524270000000.0,$524.27B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,23,AbbVie Inc.,ABBV,NYSE,464580000000.0,$464.58B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,24,Intel Corporation,INTC,NASDAQ,463660000000.0,$463.66B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,25,"Cisco Systems, Inc.",CSCO,NASDAQ,442860000000.0,$442.86B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,26,Bank of America Corporation,BAC,NYSE,435160000000.0,$435.16B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,27,Oracle Corporation,ORCL,NYSE,428820000000.0,$428.82B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,28,Palantir Technologies Inc.,PLTR,NASDAQ,426540000000.0,$426.54B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,29,Costco Wholesale Corporation,COST,NASDAQ,424020000000.0,$424.02B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,30,Chevron Corporation,CVX,NYSE,392730000000.0,$392.73B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,31,Lam Research Corporation,LRCX,NASDAQ,391510000000.0,$391.51B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,32,The Coca-Cola Company,KO,NYSE,387570000000.0,$387.57B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,33,"Applied Materials, Inc.",AMAT,NASDAQ,380740000000.0,$380.74B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,34,Caterpillar Inc.,CAT,NYSE,377820000000.0,$377.82B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,35,"Merck & Co., Inc.",MRK,NYSE,377720000000.0,$377.72B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,36,GE Aerospace,GE,NYSE,367700000000.0,$367.70B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,37,UnitedHealth Group Incorporated,UNH,NYSE,359940000000.0,$359.94B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,38,HSBC Holdings plc,HSBC,NYSE,354700000000.0,$354.70B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,39,"Netflix, Inc.",NFLX,NASDAQ,339190000000.0,$339.19B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,40,The Procter & Gamble Company,PG,NYSE,337040000000.0,$337.04B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,41,Morgan Stanley,MS,NYSE,336230000000.0,$336.23B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,42,"The Home Depot, Inc.",HD,NYSE,334080000000.0,$334.08B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,43,"The Goldman Sachs Group, Inc.",GS,NYSE,315020000000.0,$315.02B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,44,Philip Morris International Inc.,PM,NYSE,302530000000.0,$302.53B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,45,Novartis AG,NVS,NYSE,300070000000.0,$300.07B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,46,Dell Technologies Inc.,DELL,NYSE,299690000000.0,$299.69B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,47,Royal Bank of Canada,RY,NYSE,287790000000.0,$287.79B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,48,RTX Corporation,RTX,NYSE,285710000000.0,$285.71B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,49,"Palo Alto Networks, Inc.",PANW,NASDAQ,276540000000.0,$276.54B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,50,Alibaba Group Holding Limited,BABA,NYSE,273350000000.00003,$273.35B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,51,Arm Holdings plc,ARM,NASDAQ,268149999999.99997,$268.15B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,52,AstraZeneca PLC,AZN,NYSE,257890000000.0,$257.89B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,53,Wells Fargo & Company,WFC,NYSE,257740000000.0,$257.74B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,54,"Arista Networks, Inc.",ANET,NYSE,255080000000.0,$255.08B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,55,GE Vernova Inc.,GEV,NYSE,253840000000.0,$253.84B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,56,Shell plc,SHEL,NYSE,253760000000.0,$253.76B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,57,"Mitsubishi UFJ Financial Group, Inc.",MUFG,NYSE,252770000000.0,$252.77B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,58,BHP Group Limited,BHP,NYSE,245530000000.0,$245.53B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,59,SAP SE,SAP,NYSE,242080000000.0,$242.08B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,60,KLA Corporation,KLAC,NASDAQ,240180000000.0,$240.18B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,61,Texas Instruments Incorporated,TXN,NASDAQ,239060000000.0,$239.06B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,62,Amgen Inc.,AMGN,NASDAQ,238060000000.0,$238.06B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,63,Thermo Fisher Scientific Inc.,TMO,NYSE,234310000000.0,$234.31B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,64,Toyota Motor Corporation,TM,NYSE,228110000000.0,$228.11B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,65,American Express Company,AXP,NYSE,227010000000.0,$227.01B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,66,Linde plc,LIN,NASDAQ,226030000000.0,$226.03B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,67,Citigroup Inc.,C,NYSE,224040000000.0,$224.04B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,68,Sandisk Corporation,SNDK,NASDAQ,219540000000.0,$219.54B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,69,International Business Machines Corporation,IBM,NYSE,216570000000.0,$216.57B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,70,"Marvell Technology, Inc.",MRVL,NASDAQ,214940000000.0,$214.94B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,71,"Banco Santander, S.A.",SAN,NYSE,214660000000.0,$214.66B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,72,Novo Nordisk A/S,NVO,NYSE,210230000000.0,$210.23B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,73,Verizon Communications Inc.,VZ,NYSE,208530000000.0,$208.53B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,74,Amphenol Corporation,APH,NYSE,198930000000.0,$198.93B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,75,Abbott Laboratories,ABT,NYSE,197440000000.0,$197.44B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,76,The Toronto-Dominion Bank,TD,NYSE,196640000000.0,$196.64B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,77,TotalEnergies SE,TTE,NYSE,194950000000.0,$194.95B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,78,"PepsiCo, Inc.",PEP,NASDAQ,194070000000.0,$194.07B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,79,Shopify Inc.,SHOP,NASDAQ,193370000000.0,$193.37B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,80,"T-Mobile US, Inc.",TMUS,NASDAQ,192660000000.0,$192.66B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,81,"CrowdStrike Holdings, Inc.",CRWD,NASDAQ,192630000000.0,$192.63B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,82,Seagate Technology Holdings plc,STX,NASDAQ,191830000000.0,$191.83B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,83,"BlackRock, Inc.",BLK,NYSE,190620000000.0,$190.62B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,84,The Walt Disney Company,DIS,NYSE,189300000000.0,$189.30B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,85,The Charles Schwab Corporation,SCHW,NYSE,189170000000.0,$189.17B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,86,McDonald's Corporation,MCD,NYSE,188890000000.0,$188.89B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,87,Union Pacific Corporation,UNP,NYSE,184530000000.0,$184.53B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,88,"Gilead Sciences, Inc.",GILD,NASDAQ,183620000000.0,$183.62B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,89,Southern Copper Corporation,SCCO,NYSE,180480000000.0,$180.48B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,90,"Analog Devices, Inc.",ADI,NASDAQ,180160000000.0,$180.16B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,91,Rio Tinto Group,RIO,NYSE,179500000000.0,$179.50B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,92,Blackstone Inc.,BX,NYSE,178110000000.0,$178.11B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,93,AT&T Inc.,T,NYSE,177270000000.0,$177.27B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,94,"NextEra Energy, Inc.",NEE,NYSE,175670000000.0,$175.67B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,95,QUALCOMM Incorporated,QCOM,NASDAQ,174860000000.0,$174.86B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,96,Welltower Inc.,WELL,NYSE,174100000000.0,$174.10B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,97,Deere & Company,DE,NYSE,171290000000.0,$171.29B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,98,Western Digital Corporation,WDC,NASDAQ,169050000000.0,$169.05B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,99,"Salesforce, Inc.",CRM,NYSE,168400000000.0,$168.40B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,100,The Boeing Company,BA,NYSE,167630000000.0,$167.63B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,101,UBS Group AG,UBS,NYSE,166850000000.0,$166.85B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,102,Eaton Corporation plc,ETN,NYSE,162910000000.0,$162.91B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,103,Pfizer Inc.,PFE,NYSE,161300000000.0,$161.30B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,104,"Banco Bilbao Vizcaya Argentaria, S.A.",BBVA,NYSE,160430000000.0,$160.43B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,105,"Uber Technologies, Inc.",UBER,NYSE,160320000000.0,$160.32B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,106,"Sumitomo Mitsui Financial Group, Inc.",SMFG,NYSE,158890000000.0,$158.89B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,107,Booking Holdings Inc.,BKNG,NASDAQ,156960000000.0,$156.96B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,108,ConocoPhillips,COP,NYSE,156910000000.0,$156.91B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,109,Anheuser-Busch InBev SA/NV,BUD,NYSE,155560000000.0,$155.56B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,110,Danaher Corporation,DHR,NYSE,151400000000.0,$151.40B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,111,"The TJX Companies, Inc.",TJX,NYSE,151160000000.0,$151.16B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,112,Sony Group Corporation,SONY,NYSE,142900000000.0,$142.90B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,113,Unilever PLC,UL,NYSE,139660000000.0,$139.66B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,114,Vertex Pharmaceuticals Incorporated,VRTX,NASDAQ,138720000000.0,$138.72B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,115,Newmont Corporation,NEM,NYSE,138290000000.0,$138.29B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,116,"Prologis, Inc.",PLD,NYSE,138240000000.0,$138.24B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,117,Bristol-Myers Squibb Company,BMY,NYSE,138030000000.0,$138.03B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,118,Capital One Financial Corporation,COF,NYSE,133259999999.99998,$133.26B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,119,Chubb Limited,CB,NYSE,132630000000.0,$132.63B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,120,Corning Incorporated,GLW,NYSE,131600000000.0,$131.60B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,121,Parker-Hannifin Corporation,PH,NYSE,131030000000.0,$131.03B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,122,"Intuitive Surgical, Inc.",ISRG,NASDAQ,130860000000.00002,$130.86B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,123,Lockheed Martin Corporation,LMT,NYSE,130539999999.99998,$130.54B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,124,"ServiceNow, Inc.",NOW,NYSE,130060000000.0,$130.06B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,125,The Progressive Corporation,PGR,NYSE,129360000000.00002,$129.36B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,1,NVIDIA Corporation,NVDA,NASDAQ,5080000000000.0,$5.08T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,2,Apple Inc.,AAPL,NASDAQ,4570000000000.0,$4.57T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,3,Alphabet Inc.,GOOG,NASDAQ,4219999999999.9995,$4.22T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,4,Microsoft Corporation,MSFT,NASDAQ,3690000000000.0,$3.69T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,5,"Amazon.com, Inc.",AMZN,NASDAQ,2810000000000.0,$2.81T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,6,Taiwan Semiconductor Manufacturing Company Limited,TSM,NYSE,1970000000000.0,$1.97T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,7,Space Exploration Technologies Corp.,SPCX,NASDAQ,1900000000000.0,$1.90T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,8,Broadcom Inc.,AVGO,NASDAQ,1690000000000.0,$1.69T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,9,"Meta Platforms, Inc.",META,NASDAQ,1470000000000.0,$1.47T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,10,"Tesla, Inc.",TSLA,NASDAQ,1370000000000.0,$1.37T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,11,"Micron Technology, Inc.",MU,NASDAQ,1060000000000.0,$1.06T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,12,Eli Lilly and Company,LLY,NYSE,1060000000000.0,$1.06T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,13,SK hynix Inc.,SKHY,NASDAQ,887350000000.0,$887.35B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,14,Walmart Inc.,WMT,NASDAQ,830350000000.0,$830.35B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,15,"Advanced Micro Devices, Inc.",AMD,NASDAQ,785110000000.0,$785.11B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,16,ASML Holding N.V.,ASML,NASDAQ,670110000000.0,$670.11B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,17,Johnson & Johnson,JNJ,NYSE,650670000000.0,$650.67B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,18,ExxonMobil Holdings Corporation,XOM,NYSE,650460000000.0,$650.46B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,19,AbbVie Inc.,ABBV,NYSE,464580000000.0,$464.58B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,20,Intel Corporation,INTC,NASDAQ,463660000000.0,$463.66B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,21,"Cisco Systems, Inc.",CSCO,NASDAQ,442860000000.0,$442.86B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,22,Oracle Corporation,ORCL,NYSE,428820000000.0,$428.82B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,23,Palantir Technologies Inc.,PLTR,NASDAQ,426540000000.0,$426.54B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,24,Costco Wholesale Corporation,COST,NASDAQ,424020000000.0,$424.02B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,25,Chevron Corporation,CVX,NYSE,392730000000.0,$392.73B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,26,Lam Research Corporation,LRCX,NASDAQ,391510000000.0,$391.51B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,27,The Coca-Cola Company,KO,NYSE,387570000000.0,$387.57B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,28,"Applied Materials, Inc.",AMAT,NASDAQ,380740000000.0,$380.74B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,29,Caterpillar Inc.,CAT,NYSE,377820000000.0,$377.82B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,30,"Merck & Co., Inc.",MRK,NYSE,377720000000.0,$377.72B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,31,GE Aerospace,GE,NYSE,367700000000.0,$367.70B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,32,UnitedHealth Group Incorporated,UNH,NYSE,359940000000.0,$359.94B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,33,"Netflix, Inc.",NFLX,NASDAQ,339190000000.0,$339.19B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,34,The Procter & Gamble Company,PG,NYSE,337040000000.0,$337.04B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,35,"The Home Depot, Inc.",HD,NYSE,334080000000.0,$334.08B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,36,Philip Morris International Inc.,PM,NYSE,302530000000.0,$302.53B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,37,Novartis AG,NVS,NYSE,300070000000.0,$300.07B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,38,Dell Technologies Inc.,DELL,NYSE,299690000000.0,$299.69B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,39,RTX Corporation,RTX,NYSE,285710000000.0,$285.71B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,40,"Palo Alto Networks, Inc.",PANW,NASDAQ,276540000000.0,$276.54B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,41,Alibaba Group Holding Limited,BABA,NYSE,273350000000.00003,$273.35B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,42,Arm Holdings plc,ARM,NASDAQ,268149999999.99997,$268.15B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,43,AstraZeneca PLC,AZN,NYSE,257890000000.0,$257.89B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,44,"Arista Networks, Inc.",ANET,NYSE,255080000000.0,$255.08B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,45,GE Vernova Inc.,GEV,NYSE,253840000000.0,$253.84B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,46,Shell plc,SHEL,NYSE,253760000000.0,$253.76B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,47,BHP Group Limited,BHP,NYSE,245530000000.0,$245.53B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,48,SAP SE,SAP,NYSE,242080000000.0,$242.08B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,49,KLA Corporation,KLAC,NASDAQ,240180000000.0,$240.18B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,50,Texas Instruments Incorporated,TXN,NASDAQ,239060000000.0,$239.06B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,51,Amgen Inc.,AMGN,NASDAQ,238060000000.0,$238.06B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,52,Thermo Fisher Scientific Inc.,TMO,NYSE,234310000000.0,$234.31B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,53,Toyota Motor Corporation,TM,NYSE,228110000000.0,$228.11B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,54,Linde plc,LIN,NASDAQ,226030000000.0,$226.03B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,55,Sandisk Corporation,SNDK,NASDAQ,219540000000.0,$219.54B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,56,International Business Machines Corporation,IBM,NYSE,216570000000.0,$216.57B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,57,"Marvell Technology, Inc.",MRVL,NASDAQ,214940000000.0,$214.94B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,58,Novo Nordisk A/S,NVO,NYSE,210230000000.0,$210.23B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,59,Verizon Communications Inc.,VZ,NYSE,208530000000.0,$208.53B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,60,Amphenol Corporation,APH,NYSE,198930000000.0,$198.93B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,61,Abbott Laboratories,ABT,NYSE,197440000000.0,$197.44B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,62,TotalEnergies SE,TTE,NYSE,194950000000.0,$194.95B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,63,"PepsiCo, Inc.",PEP,NASDAQ,194070000000.0,$194.07B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,64,Shopify Inc.,SHOP,NASDAQ,193370000000.0,$193.37B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,65,"T-Mobile US, Inc.",TMUS,NASDAQ,192660000000.0,$192.66B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,66,"CrowdStrike Holdings, Inc.",CRWD,NASDAQ,192630000000.0,$192.63B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,67,Seagate Technology Holdings plc,STX,NASDAQ,191830000000.0,$191.83B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,68,The Walt Disney Company,DIS,NYSE,189300000000.0,$189.30B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,69,McDonald's Corporation,MCD,NYSE,188890000000.0,$188.89B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,70,Union Pacific Corporation,UNP,NYSE,184530000000.0,$184.53B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,71,"Gilead Sciences, Inc.",GILD,NASDAQ,183620000000.0,$183.62B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,72,Southern Copper Corporation,SCCO,NYSE,180480000000.0,$180.48B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,73,"Analog Devices, Inc.",ADI,NASDAQ,180160000000.0,$180.16B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,74,Rio Tinto Group,RIO,NYSE,179500000000.0,$179.50B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,75,AT&T Inc.,T,NYSE,177270000000.0,$177.27B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,76,"NextEra Energy, Inc.",NEE,NYSE,175670000000.0,$175.67B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,77,QUALCOMM Incorporated,QCOM,NASDAQ,174860000000.0,$174.86B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,78,Welltower Inc.,WELL,NYSE,174100000000.0,$174.10B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,79,Deere & Company,DE,NYSE,171290000000.0,$171.29B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,80,Western Digital Corporation,WDC,NASDAQ,169050000000.0,$169.05B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,81,"Salesforce, Inc.",CRM,NYSE,168400000000.0,$168.40B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,82,The Boeing Company,BA,NYSE,167630000000.0,$167.63B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,83,Eaton Corporation plc,ETN,NYSE,162910000000.0,$162.91B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,84,Pfizer Inc.,PFE,NYSE,161300000000.0,$161.30B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,85,"Uber Technologies, Inc.",UBER,NYSE,160320000000.0,$160.32B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,86,Booking Holdings Inc.,BKNG,NASDAQ,156960000000.0,$156.96B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,87,ConocoPhillips,COP,NYSE,156910000000.0,$156.91B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,88,Anheuser-Busch InBev SA/NV,BUD,NYSE,155560000000.0,$155.56B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,89,Danaher Corporation,DHR,NYSE,151400000000.0,$151.40B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,90,"The TJX Companies, Inc.",TJX,NYSE,151160000000.0,$151.16B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,91,Sony Group Corporation,SONY,NYSE,142900000000.0,$142.90B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,92,Unilever PLC,UL,NYSE,139660000000.0,$139.66B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,93,Vertex Pharmaceuticals Incorporated,VRTX,NASDAQ,138720000000.0,$138.72B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,94,Newmont Corporation,NEM,NYSE,138290000000.0,$138.29B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,95,"Prologis, Inc.",PLD,NYSE,138240000000.0,$138.24B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,96,Bristol-Myers Squibb Company,BMY,NYSE,138030000000.0,$138.03B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,97,Corning Incorporated,GLW,NYSE,131600000000.0,$131.60B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,98,Parker-Hannifin Corporation,PH,NYSE,131030000000.0,$131.03B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,99,"Intuitive Surgical, Inc.",ISRG,NASDAQ,130860000000.00002,$130.86B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,100,Lockheed Martin Corporation,LMT,NYSE,130539999999.99998,$130.54B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,101,"ServiceNow, Inc.",NOW,NYSE,130060000000.0,$130.06B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,102,Stryker Corporation,SYK,NYSE,126450000000.0,$126.45B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,103,British American Tobacco p.l.c.,BTI,NYSE,124270000000.0,$124.27B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,104,Starbucks Corporation,SBUX,NASDAQ,123660000000.0,$123.66B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,105,PDD Holdings Inc.,PDD,NASDAQ,123470000000.0,$123.47B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,106,CVS Health Corporation,CVS,NYSE,120630000000.0,$120.63B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,107,"Lowe's Companies, Inc.",LOW,NYSE,117950000000.0,$117.95B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,108,Medtronic plc,MDT,NYSE,117780000000.0,$117.78B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,109,"Fortinet, Inc.",FTNT,NASDAQ,115590000000.0,$115.59B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,110,"Altria Group, Inc.",MO,NYSE,115410000000.0,$115.41B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,111,Freeport-McMoRan Inc.,FCX,NYSE,113450000000.0,$113.45B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,112,Spotify Technology S.A.,SPOT,NYSE,113080000000.0,$113.08B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,113,"Automatic Data Processing, Inc.",ADP,NASDAQ,111790000000.0,$111.79B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,114,Accenture plc,ACN,NYSE,110990000000.0,$110.99B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,115,"Airbnb, Inc.",ABNB,NASDAQ,110880000000.0,$110.88B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,116,PetrÃ³leo Brasileiro S.A. - Petrobras,PBR.A,NYSE,110190000000.0,$110.19B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,117,Enbridge Inc.,ENB,NYSE,109790000000.0,$109.79B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,118,BP p.l.c.,BP,NYSE,109770000000.0,$109.77B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,119,Snowflake Inc.,SNOW,NYSE,109310000000.0,$109.31B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,120,Sanofi,SNY,NASDAQ,109280000000.0,$109.28B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,121,Adobe Inc.,ADBE,NASDAQ,108700000000.0,$108.70B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,122,Agnico Eagle Mines Limited,AEM,NYSE,108380000000.0,$108.38B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,123,Howmet Aerospace Inc.,HWM,NYSE,107410000000.0,$107.41B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,124,"Equinix, Inc.",EQIX,NASDAQ,106530000000.0,$106.53B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,125,McKesson Corporation,MCK,NYSE,104540000000.0,$104.54B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,1,NVIDIA Corporation,NVDA,NASDAQ,5080000000000.0,$5.08T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,2,Apple Inc.,AAPL,NASDAQ,4570000000000.0,$4.57T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,3,Alphabet Inc.,GOOG,NASDAQ,4219999999999.9995,$4.22T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,4,Microsoft Corporation,MSFT,NASDAQ,3690000000000.0,$3.69T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,5,"Amazon.com, Inc.",AMZN,NASDAQ,2810000000000.0,$2.81T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,6,Taiwan Semiconductor Manufacturing Company Limited,TSM,NYSE,1970000000000.0,$1.97T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,7,Space Exploration Technologies Corp.,SPCX,NASDAQ,1900000000000.0,$1.90T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,8,Broadcom Inc.,AVGO,NASDAQ,1690000000000.0,$1.69T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,9,"Meta Platforms, Inc.",META,NASDAQ,1470000000000.0,$1.47T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,10,"Tesla, Inc.",TSLA,NASDAQ,1370000000000.0,$1.37T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,11,Berkshire Hathaway Inc.,BRK.B,NYSE,1080000000000.0001,$1.08T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,12,"Micron Technology, Inc.",MU,NASDAQ,1060000000000.0,$1.06T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,13,Eli Lilly and Company,LLY,NYSE,1060000000000.0,$1.06T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,14,JPMorgan Chase & Co.,JPM,NYSE,947640000000.0,$947.64B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,15,SK hynix Inc.,SKHY,NASDAQ,887350000000.0,$887.35B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,16,Walmart Inc.,WMT,NASDAQ,830350000000.0,$830.35B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,17,"Advanced Micro Devices, Inc.",AMD,NASDAQ,785110000000.0,$785.11B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,18,Visa Inc.,V,NYSE,704690000000.0,$704.69B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,19,ASML Holding N.V.,ASML,NASDAQ,670110000000.0,$670.11B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,20,Johnson & Johnson,JNJ,NYSE,650670000000.0,$650.67B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,21,ExxonMobil Holdings Corporation,XOM,NYSE,650460000000.0,$650.46B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,22,Mastercard Incorporated,MA,NYSE,524270000000.0,$524.27B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,23,AbbVie Inc.,ABBV,NYSE,464580000000.0,$464.58B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,24,Intel Corporation,INTC,NASDAQ,463660000000.0,$463.66B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,25,"Cisco Systems, Inc.",CSCO,NASDAQ,442860000000.0,$442.86B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,26,Bank of America Corporation,BAC,NYSE,435160000000.0,$435.16B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,27,Oracle Corporation,ORCL,NYSE,428820000000.0,$428.82B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,28,Palantir Technologies Inc.,PLTR,NASDAQ,426540000000.0,$426.54B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,29,Costco Wholesale Corporation,COST,NASDAQ,424020000000.0,$424.02B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,30,Chevron Corporation,CVX,NYSE,392730000000.0,$392.73B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,31,Lam Research Corporation,LRCX,NASDAQ,391510000000.0,$391.51B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,32,The Coca-Cola Company,KO,NYSE,387570000000.0,$387.57B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,33,"Applied Materials, Inc.",AMAT,NASDAQ,380740000000.0,$380.74B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,34,Caterpillar Inc.,CAT,NYSE,377820000000.0,$377.82B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,35,"Merck & Co., Inc.",MRK,NYSE,377720000000.0,$377.72B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,36,GE Aerospace,GE,NYSE,367700000000.0,$367.70B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,37,UnitedHealth Group Incorporated,UNH,NYSE,359940000000.0,$359.94B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,38,HSBC Holdings plc,HSBC,NYSE,354700000000.0,$354.70B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,39,"Netflix, Inc.",NFLX,NASDAQ,339190000000.0,$339.19B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,40,The Procter & Gamble Company,PG,NYSE,337040000000.0,$337.04B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,41,Morgan Stanley,MS,NYSE,336230000000.0,$336.23B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,42,"The Home Depot, Inc.",HD,NYSE,334080000000.0,$334.08B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,43,"The Goldman Sachs Group, Inc.",GS,NYSE,315020000000.0,$315.02B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,44,Philip Morris International Inc.,PM,NYSE,302530000000.0,$302.53B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,45,Novartis AG,NVS,NYSE,300070000000.0,$300.07B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,46,Dell Technologies Inc.,DELL,NYSE,299690000000.0,$299.69B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,47,Royal Bank of Canada,RY,NYSE,287790000000.0,$287.79B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,48,RTX Corporation,RTX,NYSE,285710000000.0,$285.71B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,49,"Palo Alto Networks, Inc.",PANW,NASDAQ,276540000000.0,$276.54B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,50,Alibaba Group Holding Limited,BABA,NYSE,273350000000.00003,$273.35B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,51,Arm Holdings plc,ARM,NASDAQ,268149999999.99997,$268.15B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,52,AstraZeneca PLC,AZN,NYSE,257890000000.0,$257.89B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,53,Wells Fargo & Company,WFC,NYSE,257740000000.0,$257.74B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,54,"Arista Networks, Inc.",ANET,NYSE,255080000000.0,$255.08B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,55,GE Vernova Inc.,GEV,NYSE,253840000000.0,$253.84B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,56,Shell plc,SHEL,NYSE,253760000000.0,$253.76B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,57,"Mitsubishi UFJ Financial Group, Inc.",MUFG,NYSE,252770000000.0,$252.77B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,58,BHP Group Limited,BHP,NYSE,245530000000.0,$245.53B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,59,SAP SE,SAP,NYSE,242080000000.0,$242.08B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,60,KLA Corporation,KLAC,NASDAQ,240180000000.0,$240.18B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,61,Texas Instruments Incorporated,TXN,NASDAQ,239060000000.0,$239.06B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,62,Amgen Inc.,AMGN,NASDAQ,238060000000.0,$238.06B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,63,Thermo Fisher Scientific Inc.,TMO,NYSE,234310000000.0,$234.31B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,64,Toyota Motor Corporation,TM,NYSE,228110000000.0,$228.11B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,65,American Express Company,AXP,NYSE,227010000000.0,$227.01B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,66,Linde plc,LIN,NASDAQ,226030000000.0,$226.03B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,67,Citigroup Inc.,C,NYSE,224040000000.0,$224.04B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,68,Sandisk Corporation,SNDK,NASDAQ,219540000000.0,$219.54B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,69,International Business Machines Corporation,IBM,NYSE,216570000000.0,$216.57B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,70,"Marvell Technology, Inc.",MRVL,NASDAQ,214940000000.0,$214.94B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,71,"Banco Santander, S.A.",SAN,NYSE,214660000000.0,$214.66B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,72,Novo Nordisk A/S,NVO,NYSE,210230000000.0,$210.23B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,73,Verizon Communications Inc.,VZ,NYSE,208530000000.0,$208.53B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,74,Amphenol Corporation,APH,NYSE,198930000000.0,$198.93B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,75,Abbott Laboratories,ABT,NYSE,197440000000.0,$197.44B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,76,The Toronto-Dominion Bank,TD,NYSE,196640000000.0,$196.64B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,77,TotalEnergies SE,TTE,NYSE,194950000000.0,$194.95B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,78,"PepsiCo, Inc.",PEP,NASDAQ,194070000000.0,$194.07B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,79,Shopify Inc.,SHOP,NASDAQ,193370000000.0,$193.37B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,80,"T-Mobile US, Inc.",TMUS,NASDAQ,192660000000.0,$192.66B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,81,"CrowdStrike Holdings, Inc.",CRWD,NASDAQ,192630000000.0,$192.63B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,82,Seagate Technology Holdings plc,STX,NASDAQ,191830000000.0,$191.83B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,83,"BlackRock, Inc.",BLK,NYSE,190620000000.0,$190.62B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,84,The Walt Disney Company,DIS,NYSE,189300000000.0,$189.30B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,85,The Charles Schwab Corporation,SCHW,NYSE,189170000000.0,$189.17B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,86,McDonald's Corporation,MCD,NYSE,188890000000.0,$188.89B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,87,Union Pacific Corporation,UNP,NYSE,184530000000.0,$184.53B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,88,"Gilead Sciences, Inc.",GILD,NASDAQ,183620000000.0,$183.62B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,89,Southern Copper Corporation,SCCO,NYSE,180480000000.0,$180.48B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,90,"Analog Devices, Inc.",ADI,NASDAQ,180160000000.0,$180.16B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,91,Rio Tinto Group,RIO,NYSE,179500000000.0,$179.50B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,92,Blackstone Inc.,BX,NYSE,178110000000.0,$178.11B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,93,AT&T Inc.,T,NYSE,177270000000.0,$177.27B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,94,"NextEra Energy, Inc.",NEE,NYSE,175670000000.0,$175.67B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,95,QUALCOMM Incorporated,QCOM,NASDAQ,174860000000.0,$174.86B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,96,Welltower Inc.,WELL,NYSE,174100000000.0,$174.10B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,97,Deere & Company,DE,NYSE,171290000000.0,$171.29B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,98,Western Digital Corporation,WDC,NASDAQ,169050000000.0,$169.05B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,99,"Salesforce, Inc.",CRM,NYSE,168400000000.0,$168.40B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,100,The Boeing Company,BA,NYSE,167630000000.0,$167.63B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,101,UBS Group AG,UBS,NYSE,166850000000.0,$166.85B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,102,Eaton Corporation plc,ETN,NYSE,162910000000.0,$162.91B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,103,Pfizer Inc.,PFE,NYSE,161300000000.0,$161.30B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,104,"Banco Bilbao Vizcaya Argentaria, S.A.",BBVA,NYSE,160430000000.0,$160.43B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,105,"Uber Technologies, Inc.",UBER,NYSE,160320000000.0,$160.32B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,106,"Sumitomo Mitsui Financial Group, Inc.",SMFG,NYSE,158890000000.0,$158.89B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,107,Booking Holdings Inc.,BKNG,NASDAQ,156960000000.0,$156.96B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,108,ConocoPhillips,COP,NYSE,156910000000.0,$156.91B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,109,Anheuser-Busch InBev SA/NV,BUD,NYSE,155560000000.0,$155.56B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,110,Danaher Corporation,DHR,NYSE,151400000000.0,$151.40B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,111,"The TJX Companies, Inc.",TJX,NYSE,151160000000.0,$151.16B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,112,Sony Group Corporation,SONY,NYSE,142900000000.0,$142.90B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,113,Unilever PLC,UL,NYSE,139660000000.0,$139.66B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,114,Vertex Pharmaceuticals Incorporated,VRTX,NASDAQ,138720000000.0,$138.72B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,115,Newmont Corporation,NEM,NYSE,138290000000.0,$138.29B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,116,"Prologis, Inc.",PLD,NYSE,138240000000.0,$138.24B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,117,Bristol-Myers Squibb Company,BMY,NYSE,138030000000.0,$138.03B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,118,Capital One Financial Corporation,COF,NYSE,133259999999.99998,$133.26B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,119,Chubb Limited,CB,NYSE,132630000000.0,$132.63B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,120,Corning Incorporated,GLW,NYSE,131600000000.0,$131.60B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,121,Parker-Hannifin Corporation,PH,NYSE,131030000000.0,$131.03B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,122,"Intuitive Surgical, Inc.",ISRG,NASDAQ,130860000000.00002,$130.86B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,123,Lockheed Martin Corporation,LMT,NYSE,130539999999.99998,$130.54B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,124,"ServiceNow, Inc.",NOW,NYSE,130060000000.0,$130.06B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,125,The Progressive Corporation,PGR,NYSE,129360000000.00002,$129.36B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,1,NVIDIA Corporation,NVDA,NASDAQ,5080000000000.0,$5.08T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,2,Apple Inc.,AAPL,NASDAQ,4570000000000.0,$4.57T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,3,Alphabet Inc.,GOOG,NASDAQ,4219999999999.9995,$4.22T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,4,Microsoft Corporation,MSFT,NASDAQ,3690000000000.0,$3.69T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,5,"Amazon.com, Inc.",AMZN,NASDAQ,2810000000000.0,$2.81T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,6,Taiwan Semiconductor Manufacturing Company Limited,TSM,NYSE,1970000000000.0,$1.97T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,7,Space Exploration Technologies Corp.,SPCX,NASDAQ,1900000000000.0,$1.90T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,8,Broadcom Inc.,AVGO,NASDAQ,1690000000000.0,$1.69T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,9,"Meta Platforms, Inc.",META,NASDAQ,1470000000000.0,$1.47T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,10,"Tesla, Inc.",TSLA,NASDAQ,1370000000000.0,$1.37T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,11,"Micron Technology, Inc.",MU,NASDAQ,1060000000000.0,$1.06T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,12,Eli Lilly and Company,LLY,NYSE,1060000000000.0,$1.06T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,13,SK hynix Inc.,SKHY,NASDAQ,887350000000.0,$887.35B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,14,Walmart Inc.,WMT,NASDAQ,830350000000.0,$830.35B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,15,"Advanced Micro Devices, Inc.",AMD,NASDAQ,785110000000.0,$785.11B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,16,ASML Holding N.V.,ASML,NASDAQ,670110000000.0,$670.11B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,17,Johnson & Johnson,JNJ,NYSE,650670000000.0,$650.67B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,18,ExxonMobil Holdings Corporation,XOM,NYSE,650460000000.0,$650.46B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,19,AbbVie Inc.,ABBV,NYSE,464580000000.0,$464.58B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,20,Intel Corporation,INTC,NASDAQ,463660000000.0,$463.66B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,21,"Cisco Systems, Inc.",CSCO,NASDAQ,442860000000.0,$442.86B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,22,Oracle Corporation,ORCL,NYSE,428820000000.0,$428.82B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,23,Palantir Technologies Inc.,PLTR,NASDAQ,426540000000.0,$426.54B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,24,Costco Wholesale Corporation,COST,NASDAQ,424020000000.0,$424.02B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,25,Chevron Corporation,CVX,NYSE,392730000000.0,$392.73B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,26,Lam Research Corporation,LRCX,NASDAQ,391510000000.0,$391.51B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,27,The Coca-Cola Company,KO,NYSE,387570000000.0,$387.57B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,28,"Applied Materials, Inc.",AMAT,NASDAQ,380740000000.0,$380.74B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,29,Caterpillar Inc.,CAT,NYSE,377820000000.0,$377.82B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,30,"Merck & Co., Inc.",MRK,NYSE,377720000000.0,$377.72B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,31,GE Aerospace,GE,NYSE,367700000000.0,$367.70B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,32,UnitedHealth Group Incorporated,UNH,NYSE,359940000000.0,$359.94B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,33,"Netflix, Inc.",NFLX,NASDAQ,339190000000.0,$339.19B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,34,The Procter & Gamble Company,PG,NYSE,337040000000.0,$337.04B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,35,"The Home Depot, Inc.",HD,NYSE,334080000000.0,$334.08B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,36,Philip Morris International Inc.,PM,NYSE,302530000000.0,$302.53B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,37,Novartis AG,NVS,NYSE,300070000000.0,$300.07B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,38,Dell Technologies Inc.,DELL,NYSE,299690000000.0,$299.69B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,39,RTX Corporation,RTX,NYSE,285710000000.0,$285.71B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,40,"Palo Alto Networks, Inc.",PANW,NASDAQ,276540000000.0,$276.54B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,41,Alibaba Group Holding Limited,BABA,NYSE,273350000000.00003,$273.35B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,42,Arm Holdings plc,ARM,NASDAQ,268149999999.99997,$268.15B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,43,AstraZeneca PLC,AZN,NYSE,257890000000.0,$257.89B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,44,"Arista Networks, Inc.",ANET,NYSE,255080000000.0,$255.08B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,45,GE Vernova Inc.,GEV,NYSE,253840000000.0,$253.84B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,46,Shell plc,SHEL,NYSE,253760000000.0,$253.76B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,47,BHP Group Limited,BHP,NYSE,245530000000.0,$245.53B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,48,SAP SE,SAP,NYSE,242080000000.0,$242.08B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,49,KLA Corporation,KLAC,NASDAQ,240180000000.0,$240.18B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,50,Texas Instruments Incorporated,TXN,NASDAQ,239060000000.0,$239.06B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,51,Amgen Inc.,AMGN,NASDAQ,238060000000.0,$238.06B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,52,Thermo Fisher Scientific Inc.,TMO,NYSE,234310000000.0,$234.31B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,53,Toyota Motor Corporation,TM,NYSE,228110000000.0,$228.11B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,54,Linde plc,LIN,NASDAQ,226030000000.0,$226.03B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,55,Sandisk Corporation,SNDK,NASDAQ,219540000000.0,$219.54B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,56,International Business Machines Corporation,IBM,NYSE,216570000000.0,$216.57B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,57,"Marvell Technology, Inc.",MRVL,NASDAQ,214940000000.0,$214.94B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,58,Novo Nordisk A/S,NVO,NYSE,210230000000.0,$210.23B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,59,Verizon Communications Inc.,VZ,NYSE,208530000000.0,$208.53B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,60,Amphenol Corporation,APH,NYSE,198930000000.0,$198.93B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,61,Abbott Laboratories,ABT,NYSE,197440000000.0,$197.44B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,62,TotalEnergies SE,TTE,NYSE,194950000000.0,$194.95B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,63,"PepsiCo, Inc.",PEP,NASDAQ,194070000000.0,$194.07B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,64,Shopify Inc.,SHOP,NASDAQ,193370000000.0,$193.37B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,65,"T-Mobile US, Inc.",TMUS,NASDAQ,192660000000.0,$192.66B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,66,"CrowdStrike Holdings, Inc.",CRWD,NASDAQ,192630000000.0,$192.63B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,67,Seagate Technology Holdings plc,STX,NASDAQ,191830000000.0,$191.83B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,68,The Walt Disney Company,DIS,NYSE,189300000000.0,$189.30B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,69,McDonald's Corporation,MCD,NYSE,188890000000.0,$188.89B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,70,Union Pacific Corporation,UNP,NYSE,184530000000.0,$184.53B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,71,"Gilead Sciences, Inc.",GILD,NASDAQ,183620000000.0,$183.62B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,72,Southern Copper Corporation,SCCO,NYSE,180480000000.0,$180.48B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,73,"Analog Devices, Inc.",ADI,NASDAQ,180160000000.0,$180.16B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,74,Rio Tinto Group,RIO,NYSE,179500000000.0,$179.50B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,75,AT&T Inc.,T,NYSE,177270000000.0,$177.27B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,76,"NextEra Energy, Inc.",NEE,NYSE,175670000000.0,$175.67B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,77,QUALCOMM Incorporated,QCOM,NASDAQ,174860000000.0,$174.86B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,78,Welltower Inc.,WELL,NYSE,174100000000.0,$174.10B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,79,Deere & Company,DE,NYSE,171290000000.0,$171.29B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,80,Western Digital Corporation,WDC,NASDAQ,169050000000.0,$169.05B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,81,"Salesforce, Inc.",CRM,NYSE,168400000000.0,$168.40B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,82,The Boeing Company,BA,NYSE,167630000000.0,$167.63B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,83,Eaton Corporation plc,ETN,NYSE,162910000000.0,$162.91B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,84,Pfizer Inc.,PFE,NYSE,161300000000.0,$161.30B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,85,"Uber Technologies, Inc.",UBER,NYSE,160320000000.0,$160.32B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,86,Booking Holdings Inc.,BKNG,NASDAQ,156960000000.0,$156.96B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,87,ConocoPhillips,COP,NYSE,156910000000.0,$156.91B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,88,Anheuser-Busch InBev SA/NV,BUD,NYSE,155560000000.0,$155.56B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,89,Danaher Corporation,DHR,NYSE,151400000000.0,$151.40B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,90,"The TJX Companies, Inc.",TJX,NYSE,151160000000.0,$151.16B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,91,Sony Group Corporation,SONY,NYSE,142900000000.0,$142.90B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,92,Unilever PLC,UL,NYSE,139660000000.0,$139.66B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,93,Vertex Pharmaceuticals Incorporated,VRTX,NASDAQ,138720000000.0,$138.72B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,94,Newmont Corporation,NEM,NYSE,138290000000.0,$138.29B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,95,"Prologis, Inc.",PLD,NYSE,138240000000.0,$138.24B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,96,Bristol-Myers Squibb Company,BMY,NYSE,138030000000.0,$138.03B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,97,Corning Incorporated,GLW,NYSE,131600000000.0,$131.60B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,98,Parker-Hannifin Corporation,PH,NYSE,131030000000.0,$131.03B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,99,"Intuitive Surgical, Inc.",ISRG,NASDAQ,130860000000.00002,$130.86B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,100,Lockheed Martin Corporation,LMT,NYSE,130539999999.99998,$130.54B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,101,"ServiceNow, Inc.",NOW,NYSE,130060000000.0,$130.06B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,102,Stryker Corporation,SYK,NYSE,126450000000.0,$126.45B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,103,British American Tobacco p.l.c.,BTI,NYSE,124270000000.0,$124.27B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,104,Starbucks Corporation,SBUX,NASDAQ,123660000000.0,$123.66B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,105,PDD Holdings Inc.,PDD,NASDAQ,123470000000.0,$123.47B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,106,CVS Health Corporation,CVS,NYSE,120630000000.0,$120.63B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,107,"Lowe's Companies, Inc.",LOW,NYSE,117950000000.0,$117.95B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,108,Medtronic plc,MDT,NYSE,117780000000.0,$117.78B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,109,"Fortinet, Inc.",FTNT,NASDAQ,115590000000.0,$115.59B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,110,"Altria Group, Inc.",MO,NYSE,115410000000.0,$115.41B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,111,Freeport-McMoRan Inc.,FCX,NYSE,113450000000.0,$113.45B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,112,Spotify Technology S.A.,SPOT,NYSE,113080000000.0,$113.08B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,113,"Automatic Data Processing, Inc.",ADP,NASDAQ,111790000000.0,$111.79B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,114,Accenture plc,ACN,NYSE,110990000000.0,$110.99B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,115,"Airbnb, Inc.",ABNB,NASDAQ,110880000000.0,$110.88B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,116,PetrÃ³leo Brasileiro S.A. - Petrobras,PBR.A,NYSE,110190000000.0,$110.19B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,117,Enbridge Inc.,ENB,NYSE,109790000000.0,$109.79B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,118,BP p.l.c.,BP,NYSE,109770000000.0,$109.77B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,119,Snowflake Inc.,SNOW,NYSE,109310000000.0,$109.31B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,120,Sanofi,SNY,NASDAQ,109280000000.0,$109.28B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,121,Adobe Inc.,ADBE,NASDAQ,108700000000.0,$108.70B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,122,Agnico Eagle Mines Limited,AEM,NYSE,108380000000.0,$108.38B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,123,Howmet Aerospace Inc.,HWM,NYSE,107410000000.0,$107.41B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,124,"Equinix, Inc.",EQIX,NASDAQ,106530000000.0,$106.53B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,125,McKesson Corporation,MCK,NYSE,104540000000.0,$104.54B,StockAnalysis
