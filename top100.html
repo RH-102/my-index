@@ -278,8 +278,14 @@ let snapshotDates = [];
 let previousRankMap = new Map();
 let previousSnapshotDate = "";
 
+const SYMBOL_ALIASES = {
+  GOOG: "ALPHABET",
+  GOOGL: "ALPHABET"
+};
+
 function normalizeSymbol(symbol) {
-  return String(symbol || "").trim().toUpperCase();
+  const normalized = String(symbol || "").trim().toUpperCase();
+  return SYMBOL_ALIASES[normalized] || normalized;
 }
 
 function loadCSV(path) {
