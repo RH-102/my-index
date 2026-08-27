@@ -501,7 +501,7 @@ SnapshotDate,DataDate,Status,ListType,RuleVersion,Rank,Company,Symbol,Exchange,M
 2026-05-29,2026-08-19,Temporary,ExFinancials,2-company-level-financials,125,Agnico Eagle Mines Limited,AEM,NYSE,105180000000.0,$105.18B,StockAnalysis
 2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,1,NVIDIA Corporation,NVDA,NASDAQ,5080000000000.0,$5.08T,StockAnalysis
 2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,2,Apple Inc.,AAPL,NASDAQ,4570000000000.0,$4.57T,StockAnalysis
-2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,3,Alphabet Inc.,GOOG,NASDAQ,4219999999999.9995,$4.22T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,3,Alphabet Inc.,GOOGL,NASDAQ,4179999999999.9995,$4.18T,StockAnalysis
 2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,4,Microsoft Corporation,MSFT,NASDAQ,3690000000000.0,$3.69T,StockAnalysis
 2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,5,"Amazon.com, Inc.",AMZN,NASDAQ,2810000000000.0,$2.81T,StockAnalysis
 2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,6,Taiwan Semiconductor Manufacturing Company Limited,TSM,NYSE,1970000000000.0,$1.97T,StockAnalysis
@@ -545,7 +545,7 @@ SnapshotDate,DataDate,Status,ListType,RuleVersion,Rank,Company,Symbol,Exchange,M
 2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,44,Philip Morris International Inc.,PM,NYSE,302530000000.0,$302.53B,StockAnalysis
 2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,45,Novartis AG,NVS,NYSE,300070000000.0,$300.07B,StockAnalysis
 2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,46,Dell Technologies Inc.,DELL,NYSE,299690000000.0,$299.69B,StockAnalysis
-2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,47,Royal Bank of Canada,RY,NYSE,287790000000.0,$287.79B,StockAnalysis
+2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,47,Royal Bank of Canada,RY,NYSE,288350000000.0,$288.35B,StockAnalysis
 2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,48,RTX Corporation,RTX,NYSE,285710000000.0,$285.71B,StockAnalysis
 2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,49,"Palo Alto Networks, Inc.",PANW,NASDAQ,276540000000.0,$276.54B,StockAnalysis
 2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,50,Alibaba Group Holding Limited,BABA,NYSE,273350000000.00003,$273.35B,StockAnalysis
@@ -626,7 +626,7 @@ SnapshotDate,DataDate,Status,ListType,RuleVersion,Rank,Company,Symbol,Exchange,M
 2026-08-31,2026-08-26,Temporary,All,2-company-level-financials,125,The Progressive Corporation,PGR,NYSE,129360000000.00002,$129.36B,StockAnalysis
 2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,1,NVIDIA Corporation,NVDA,NASDAQ,5080000000000.0,$5.08T,StockAnalysis
 2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,2,Apple Inc.,AAPL,NASDAQ,4570000000000.0,$4.57T,StockAnalysis
-2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,3,Alphabet Inc.,GOOG,NASDAQ,4219999999999.9995,$4.22T,StockAnalysis
+2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,3,Alphabet Inc.,GOOGL,NASDAQ,4179999999999.9995,$4.18T,StockAnalysis
 2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,4,Microsoft Corporation,MSFT,NASDAQ,3690000000000.0,$3.69T,StockAnalysis
 2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,5,"Amazon.com, Inc.",AMZN,NASDAQ,2810000000000.0,$2.81T,StockAnalysis
 2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,6,Taiwan Semiconductor Manufacturing Company Limited,TSM,NYSE,1970000000000.0,$1.97T,StockAnalysis
@@ -751,7 +751,7 @@ SnapshotDate,DataDate,Status,ListType,RuleVersion,Rank,Company,Symbol,Exchange,M
 2026-08-31,2026-08-26,Temporary,ExFinancials,2-company-level-financials,125,McKesson Corporation,MCK,NYSE,104540000000.0,$104.54B,StockAnalysis
 2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,1,NVIDIA Corporation,NVDA,NASDAQ,5080000000000.0,$5.08T,StockAnalysis
 2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,2,Apple Inc.,AAPL,NASDAQ,4570000000000.0,$4.57T,StockAnalysis
-2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,3,Alphabet Inc.,GOOG,NASDAQ,4219999999999.9995,$4.22T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,3,Alphabet Inc.,GOOGL,NASDAQ,4179999999999.9995,$4.18T,StockAnalysis
 2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,4,Microsoft Corporation,MSFT,NASDAQ,3690000000000.0,$3.69T,StockAnalysis
 2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,5,"Amazon.com, Inc.",AMZN,NASDAQ,2810000000000.0,$2.81T,StockAnalysis
 2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,6,Taiwan Semiconductor Manufacturing Company Limited,TSM,NYSE,1970000000000.0,$1.97T,StockAnalysis
@@ -795,7 +795,7 @@ SnapshotDate,DataDate,Status,ListType,RuleVersion,Rank,Company,Symbol,Exchange,M
 2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,44,Philip Morris International Inc.,PM,NYSE,302530000000.0,$302.53B,StockAnalysis
 2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,45,Novartis AG,NVS,NYSE,300070000000.0,$300.07B,StockAnalysis
 2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,46,Dell Technologies Inc.,DELL,NYSE,299690000000.0,$299.69B,StockAnalysis
-2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,47,Royal Bank of Canada,RY,NYSE,287790000000.0,$287.79B,StockAnalysis
+2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,47,Royal Bank of Canada,RY,NYSE,288350000000.0,$288.35B,StockAnalysis
 2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,48,RTX Corporation,RTX,NYSE,285710000000.0,$285.71B,StockAnalysis
 2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,49,"Palo Alto Networks, Inc.",PANW,NASDAQ,276540000000.0,$276.54B,StockAnalysis
 2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,50,Alibaba Group Holding Limited,BABA,NYSE,273350000000.00003,$273.35B,StockAnalysis
@@ -876,7 +876,7 @@ SnapshotDate,DataDate,Status,ListType,RuleVersion,Rank,Company,Symbol,Exchange,M
 2026-11-30,2026-08-26,Temporary,All,2-company-level-financials,125,The Progressive Corporation,PGR,NYSE,129360000000.00002,$129.36B,StockAnalysis
 2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,1,NVIDIA Corporation,NVDA,NASDAQ,5080000000000.0,$5.08T,StockAnalysis
 2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,2,Apple Inc.,AAPL,NASDAQ,4570000000000.0,$4.57T,StockAnalysis
-2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,3,Alphabet Inc.,GOOG,NASDAQ,4219999999999.9995,$4.22T,StockAnalysis
+2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,3,Alphabet Inc.,GOOGL,NASDAQ,4179999999999.9995,$4.18T,StockAnalysis
 2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,4,Microsoft Corporation,MSFT,NASDAQ,3690000000000.0,$3.69T,StockAnalysis
 2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,5,"Amazon.com, Inc.",AMZN,NASDAQ,2810000000000.0,$2.81T,StockAnalysis
 2026-11-30,2026-08-26,Temporary,ExFinancials,2-company-level-financials,6,Taiwan Semiconductor Manufacturing Company Limited,TSM,NYSE,1970000000000.0,$1.97T,StockAnalysis
