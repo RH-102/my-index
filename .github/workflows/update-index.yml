@@ -14,9 +14,11 @@ on:
       - ".github/workflows/update-index.yml"
 
   schedule:
-    - cron: "30 16 * * 1-5"
+    - cron: "37 16 * * 1-5"
       timezone: "America/New_York"
-    - cron: "30 18 * * 1-5"
+    - cron: "17 18 * * 1-5"
+      timezone: "America/New_York"
+    - cron: "7 20 * * 1-5"
       timezone: "America/New_York"
 
 concurrency:
@@ -46,7 +48,7 @@ jobs:
         run: |
           skip=false
 
-          if [ "${{ github.event_name }}" = "schedule" ] && [ "${{ github.event.schedule }}" = "30 18 * * 1-5" ]; then
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "${{ github.event.schedule }}" != "37 16 * * 1-5" ]; then
             today_et="$(TZ=America/New_York date +%F)"
             latest_date="$(tail -n 1 data/index_history.csv 2>/dev/null | cut -d',' -f1 | tr -d '\r')"
 
@@ -54,9 +56,9 @@ jobs:
 
             if [ "$latest_date" = "$today_et" ]; then
               skip=true
-              echo "Primary update already saved today's market data; backup run will skip."
+              echo "An earlier scheduled update already saved today's market data; this backup run will skip."
             else
-              echo "Today's market data is missing; backup run will proceed."
+              echo "Today's market data is missing; this backup run will proceed."
             fi
           fi
 
