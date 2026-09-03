@@ -306,6 +306,73 @@ def fetch_official_series(series_id: str) -> pd.DataFrame:
     return v2.fetch_fred(series_id)
 
 
+def apply_summary_logic() -> None:
+    """Use Forward P/E + Cushion for valuation summaries.
+
+    Real-yield momentum remains visible as an auxiliary rate-pressure metric,
+    but does not independently determine the valuation summary rating.
+    """
+    if not base.DASHBOARD_FILE.exists():
+        return
+
+    frame = pd.read_csv(base.DASHBOARD_FILE)
+    if frame.empty:
+        return
+
+    def level_for(indicator: str) -> int:
+        match = frame.loc[
+            (frame["RowType"] == "Metric") & (frame["Indicator"] == indicator),
+            "RatingLevel",
+        ]
+        if match.empty:
+            return 1
+        return int(float(match.iloc[0]))
+
+    tech_level = max(
+        level_for("Nasdaq-100 Forward P/E"),
+        level_for("Nasdaq Cushion"),
+    )
+    overall_level = max(
+        level_for("S&P 500 Forward P/E"),
+        level_for("S&P 500 Cushion"),
+    )
+
+    summaries = {
+        "科技/AI估值风险": (
+            tech_level,
+            "综合 Nasdaq-100 Forward P/E 与 Nasdaq Cushion；DFII10 三个月变化仅作为辅助利率压力指标，不参与主评级。",
+        ),
+        "整体美股估值风险": (
+            overall_level,
+            "综合 S&P 500 Forward P/E 与 S&P 500 Cushion；DFII10 三个月变化仅作为辅助利率压力指标，不参与主评级。",
+        ),
+    }
+
+    for indicator, (level, note) in summaries.items():
+        mask = (frame["RowType"] == "Summary") & (frame["Indicator"] == indicator)
+        if not mask.any():
+            continue
+        label = base.RISK_LABELS[level]
+        frame.loc[mask, "CurrentValue"] = label
+        frame.loc[mask, "Rating"] = label
+        frame.loc[mask, "RatingLevel"] = float(level)
+        frame.loc[mask, "Note"] = note
+
+    real_mask = (
+        (frame["RowType"] == "Metric")
+        & (frame["Indicator"] == "DFII10 (10Y Real Yield)")
+    )
+    if real_mask.any():
+        frame.loc[
+            real_mask, "Note"
+        ] = (
+            "辅助利率压力指标：评级主要看过去3个月实际收益率上升速度的历史百分位；"
+            "不参与科技/AI或整体美股估值主评级。"
+        )
+
+    frame.to_csv(base.DASHBOARD_FILE, index=False)
+
+
 def relabel_sources() -> None:
     if not base.DASHBOARD_FILE.exists():
         return
@@ -343,6 +410,7 @@ base.fetch_fred = fetch_official_series
 if __name__ == "__main__":
     try:
         base.main()
+        apply_summary_logic()
         relabel_sources()
     except Exception as exc:
         print(f"Risk refresh skipped: {exc}")
