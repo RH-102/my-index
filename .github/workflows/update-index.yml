@@ -102,6 +102,12 @@ jobs:
         run: |
           python scripts/update_top100.py
 
+      - name: Sanity-check Top 125 market caps
+        if: steps.backup-check.outputs.skip_backup != 'true'
+        continue-on-error: true
+        run: |
+          python scripts/sanitize_top100.py
+
       - name: Update market risk dashboard
         if: steps.backup-check.outputs.skip_backup != 'true'
         continue-on-error: true
