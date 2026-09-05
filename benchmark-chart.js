@@ -1,12 +1,6 @@
 (function () {
   const BENCHMARK_FILE = "data/benchmark_history.csv";
 
-  function hideTotalMarketValueCard() {
-    const totalValue = document.getElementById("totalValue");
-    const card = totalValue && totalValue.closest(".card");
-    if (card) card.style.display = "none";
-  }
-
   function loadBenchmarkCSV() {
     const url = BENCHMARK_FILE + "?v=" + Date.now();
     return new Promise((resolve) => {
@@ -120,7 +114,6 @@
   }
 
   async function init() {
-    hideTotalMarketValueCard();
     updateHeading();
     const benchmarkRows = await loadBenchmarkCSV();
 
