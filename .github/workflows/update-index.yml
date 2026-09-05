@@ -78,6 +78,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Validate official rebalance inputs
+        if: steps.backup-check.outputs.skip_backup != 'true'
+        run: |
+          python scripts/validate_official_rebalances.py
+
       - name: Update prices and weights
         if: steps.backup-check.outputs.skip_backup != 'true'
         continue-on-error: true
