@@ -760,7 +760,7 @@ SnapshotDate,DataDate,Status,ListType,RuleVersion,Rank,Company,Symbol,Exchange,M
 2026-11-30,2026-09-04,Temporary,All,2-company-level-financials,9,"Meta Platforms, Inc.",META,NASDAQ,1570000000000.0,$1.57T,StockAnalysis
 2026-11-30,2026-09-04,Temporary,All,2-company-level-financials,10,"Tesla, Inc.",TSLA,NASDAQ,1400000000000.0,$1.40T,StockAnalysis
 2026-11-30,2026-09-04,Temporary,All,2-company-level-financials,11,"Micron Technology, Inc.",MU,NASDAQ,1150000000000.0,$1.15T,StockAnalysis
-2026-11-30,2026-09-04,Temporary,All,2-company-level-financials,12,Berkshire Hathaway Inc.,BRK.A,NYSE,1080000000000.0,$1.08T,StockAnalysis
+2026-11-30,2026-09-04,Temporary,All,2-company-level-financials,12,Berkshire Hathaway Inc.,BRK.B,NYSE,1080000000000.0,$1.08T,StockAnalysis
 2026-11-30,2026-09-04,Temporary,All,2-company-level-financials,13,Eli Lilly and Company,LLY,NYSE,1020000000000.0,$1.02T,StockAnalysis
 2026-11-30,2026-09-04,Temporary,All,2-company-level-financials,14,JPMorgan Chase & Co.,JPM,NYSE,953330000000.0,$953.33B,StockAnalysis
 2026-11-30,2026-09-04,Temporary,All,2-company-level-financials,15,SK hynix Inc.,SKHY,NASDAQ,891370000000.0,$891.37B,StockAnalysis
