@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from io import StringIO
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -7,17 +7,19 @@ import re
 import pandas as pd
 import pandas_market_calendars as mcal
 import requests
+import yfinance as yf
 
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 OUTPUT_FILE = DATA_DIR / "top100_history.csv"
+OFFICIAL_CHECK_FILE = DATA_DIR / "official_share_checks.csv"
 
 START_YEAR = 2026
 QUARTER_MONTHS = [2, 5, 8, 11]
 TIMEZONE = ZoneInfo("America/New_York")
 LIST_SIZE = 125
-RULE_VERSION = "2-company-level-financials"
+RULE_VERSION = "3-official-shares-on-snapshot-day"
 
 SOURCES = {
     "NASDAQ": "https://stockanalysis.com/list/nasdaq-stocks/",
@@ -44,6 +46,18 @@ COLUMNS = [
 LIST_TYPES = [
     "All",
     "ExFinancials",
+]
+
+OFFICIAL_CHECK_COLUMNS = [
+    "SnapshotDate",
+    "Symbol",
+    "OfficialSharesOutstanding",
+    "ADRRatio",
+    "ListedShareEquivalent",
+    "SharesSourceURL",
+    "SharesSourceDate",
+    "VerifiedAt",
+    "Notes",
 ]
 
 
@@ -143,10 +157,6 @@ def fetch_financial_identifiers():
     financial_symbols = set()
     financial_company_keys = set()
 
-    # Read the complete Financials-sector list. We keep both ticker symbols
-    # and normalized company identities. The company-level match is important
-    # for companies with multiple share classes, e.g. Berkshire Hathaway
-    # BRK.A / BRK.B.
     for page in range(1, 21):
         url = FINANCIALS_URL
         if page > 1:
@@ -181,7 +191,6 @@ def fetch_financial_identifiers():
         financial_symbols.update(symbols.tolist())
         financial_company_keys.update(company_keys.tolist())
 
-        # No new tickers and no new companies means pagination has ended.
         if (
             len(financial_symbols) == before_symbols
             and len(financial_company_keys) == before_companies
@@ -206,7 +215,13 @@ def fetch_financial_identifiers():
 
 
 def rank_list(frame):
-    ranked = frame.head(LIST_SIZE).copy().reset_index(drop=True)
+    ranked = (
+        frame
+        .sort_values("MarketCap", ascending=False)
+        .head(LIST_SIZE)
+        .copy()
+        .reset_index(drop=True)
+    )
 
     if len(ranked) < LIST_SIZE:
         raise RuntimeError(
@@ -251,8 +266,6 @@ def fetch_current_lists():
         normalize_company_name
     )
 
-    # A company can have multiple share classes (for example GOOG/GOOGL).
-    # Keep only the largest market-cap listing so the ranking is by company.
     combined = combined.sort_values("MarketCap", ascending=False)
     combined = combined.drop_duplicates(
         subset=["CompanyKey"],
@@ -265,9 +278,6 @@ def fetch_current_lists():
 
     all_top125 = rank_list(combined)
 
-    # Exclude Financials using BOTH ticker-level and company-level matching.
-    # This prevents a different share class from slipping through when only
-    # one class appears on the sector page (for example BRK.A vs BRK.B).
     nonfinancial = combined[
         ~combined["Symbol"].isin(financial_symbols)
         & ~combined["CompanyKey"].isin(financial_company_keys)
@@ -310,6 +320,7 @@ def make_snapshot(
     snapshot_date,
     data_date,
     status,
+    source,
 ):
     snapshot = ranked.copy()
     snapshot.insert(0, "SnapshotDate", snapshot_date.isoformat())
@@ -317,7 +328,7 @@ def make_snapshot(
     snapshot.insert(2, "Status", status)
     snapshot.insert(3, "ListType", list_type)
     snapshot.insert(4, "RuleVersion", RULE_VERSION)
-    snapshot["Source"] = "StockAnalysis"
+    snapshot["Source"] = source
 
     return snapshot[COLUMNS]
 
@@ -332,7 +343,6 @@ def load_history():
 
     history = pd.read_csv(OUTPUT_FILE)
 
-    # Migrate the old Top-100 format by rebuilding the temporary snapshots.
     if "ListType" not in history.columns:
         print(
             "Legacy Top-100 file detected. "
@@ -347,10 +357,19 @@ def load_history():
     return history[COLUMNS]
 
 
-def snapshot_is_complete(history, target_text):
+def snapshot_rows(history, target_text, status=None):
     subset = history[
         history["SnapshotDate"].astype(str) == target_text
-    ]
+    ].copy()
+
+    if status is not None:
+        subset = subset[subset["Status"].astype(str) == status]
+
+    return subset
+
+
+def snapshot_is_complete(history, target_text):
+    subset = snapshot_rows(history, target_text)
 
     if subset.empty:
         return False
@@ -361,8 +380,6 @@ def snapshot_is_complete(history, target_text):
         if len(list_rows) != LIST_SIZE:
             return False
 
-        # Temporary snapshots are safe to rebuild when the ranking rule
-        # changes. Official historical snapshots are preserved.
         if (list_rows["Status"] == "Temporary").any():
             versions = set(
                 list_rows["RuleVersion"]
@@ -375,14 +392,298 @@ def snapshot_is_complete(history, target_text):
     return True
 
 
+def snapshot_is_official(history, target_text):
+    subset = snapshot_rows(history, target_text, "Official")
+    if subset.empty:
+        return False
+
+    return all(
+        len(subset[subset["ListType"] == list_type]) == LIST_SIZE
+        for list_type in LIST_TYPES
+    )
+
+
+def lists_from_snapshot_rows(rows):
+    result = {}
+
+    for list_type in LIST_TYPES:
+        frame = rows[rows["ListType"].astype(str) == list_type].copy()
+        if len(frame) != LIST_SIZE:
+            return None
+
+        frame["Rank"] = pd.to_numeric(frame["Rank"], errors="coerce")
+        frame["MarketCap"] = pd.to_numeric(
+            frame["MarketCap"], errors="coerce"
+        )
+        frame = frame.sort_values("Rank")
+
+        result[list_type] = frame[
+            [
+                "Rank",
+                "Company",
+                "Symbol",
+                "Exchange",
+                "MarketCap",
+                "MarketCapDisplay",
+            ]
+        ].copy()
+
+    return result
+
+
+def load_official_share_equivalents(snapshot_date, required_symbols):
+    target_text = snapshot_date.isoformat()
+
+    if not OFFICIAL_CHECK_FILE.exists():
+        return {}, sorted(required_symbols), [
+            f"{OFFICIAL_CHECK_FILE.name} does not exist."
+        ]
+
+    checks = pd.read_csv(OFFICIAL_CHECK_FILE)
+
+    for column in OFFICIAL_CHECK_COLUMNS:
+        if column not in checks.columns:
+            checks[column] = None
+
+    checks = checks[
+        checks["SnapshotDate"].astype(str) == target_text
+    ].copy()
+
+    if checks.empty:
+        return {}, sorted(required_symbols), []
+
+    checks["Symbol"] = (
+        checks["Symbol"]
+        .astype(str)
+        .str.strip()
+        .str.upper()
+    )
+
+    checks = checks.drop_duplicates(
+        subset=["Symbol"],
+        keep="last",
+    )
+
+    equivalents = {}
+    errors = []
+
+    for symbol in sorted(required_symbols):
+        row = checks[checks["Symbol"] == symbol]
+        if row.empty:
+            continue
+
+        row = row.iloc[-1]
+        source_url = str(row.get("SharesSourceURL", "") or "").strip()
+        source_date = str(row.get("SharesSourceDate", "") or "").strip()
+
+        if not source_url or source_url.lower() == "nan":
+            errors.append(f"{symbol}: SharesSourceURL is missing.")
+            continue
+
+        if not source_date or source_date.lower() == "nan":
+            errors.append(f"{symbol}: SharesSourceDate is missing.")
+            continue
+
+        listed_equivalent = pd.to_numeric(
+            pd.Series([row.get("ListedShareEquivalent")]),
+            errors="coerce",
+        ).iloc[0]
+
+        if pd.notna(listed_equivalent) and float(listed_equivalent) > 0:
+            equivalents[symbol] = float(listed_equivalent)
+            continue
+
+        shares = pd.to_numeric(
+            pd.Series([row.get("OfficialSharesOutstanding")]),
+            errors="coerce",
+        ).iloc[0]
+        adr_ratio = pd.to_numeric(
+            pd.Series([row.get("ADRRatio")]),
+            errors="coerce",
+        ).iloc[0]
+
+        if pd.isna(shares) or float(shares) <= 0:
+            errors.append(
+                f"{symbol}: OfficialSharesOutstanding is missing/invalid."
+            )
+            continue
+
+        if pd.isna(adr_ratio):
+            adr_ratio = 1.0
+
+        if float(adr_ratio) <= 0:
+            errors.append(f"{symbol}: ADRRatio must be positive.")
+            continue
+
+        equivalents[symbol] = float(shares) / float(adr_ratio)
+
+    missing = sorted(set(required_symbols) - set(equivalents))
+    return equivalents, missing, errors
+
+
+def yf_symbol(symbol):
+    return str(symbol).strip().upper().replace(".", "-")
+
+
+def fetch_snapshot_close_prices(symbols, snapshot_date):
+    start = snapshot_date.isoformat()
+    end = (snapshot_date + timedelta(days=1)).isoformat()
+
+    symbol_map = {
+        symbol: yf_symbol(symbol)
+        for symbol in sorted(symbols)
+    }
+
+    prices = {}
+
+    try:
+        downloaded = yf.download(
+            tickers=list(symbol_map.values()),
+            start=start,
+            end=end,
+            interval="1d",
+            auto_adjust=False,
+            group_by="ticker",
+            threads=True,
+            progress=False,
+            multi_level_index=True,
+        )
+    except Exception as exc:
+        print(f"Batch price download failed: {exc}")
+        downloaded = pd.DataFrame()
+
+    for symbol, ticker in symbol_map.items():
+        close_value = None
+
+        try:
+            if not downloaded.empty:
+                if isinstance(downloaded.columns, pd.MultiIndex):
+                    first_level = set(
+                        downloaded.columns.get_level_values(0)
+                    )
+                    second_level = set(
+                        downloaded.columns.get_level_values(1)
+                    )
+
+                    if ticker in first_level:
+                        series = downloaded[ticker]["Close"].dropna()
+                    elif ticker in second_level and "Close" in first_level:
+                        series = downloaded["Close"][ticker].dropna()
+                    else:
+                        series = pd.Series(dtype=float)
+                else:
+                    series = downloaded.get("Close", pd.Series(dtype=float)).dropna()
+
+                if not series.empty:
+                    close_value = float(series.iloc[-1])
+        except Exception:
+            close_value = None
+
+        if close_value is None:
+            try:
+                fallback = yf.Ticker(ticker).history(
+                    start=start,
+                    end=end,
+                    auto_adjust=False,
+                    actions=False,
+                )
+                if not fallback.empty and "Close" in fallback.columns:
+                    series = pd.to_numeric(
+                        fallback["Close"], errors="coerce"
+                    ).dropna()
+                    if not series.empty:
+                        close_value = float(series.iloc[-1])
+            except Exception as exc:
+                print(f"Price lookup failed for {symbol}: {exc}")
+
+        if close_value is not None and close_value > 0:
+            prices[symbol] = close_value
+
+    return prices
+
+
+def build_verified_official_lists(snapshot_date, provisional_lists):
+    required_symbols = set()
+
+    for ranked in provisional_lists.values():
+        required_symbols.update(
+            ranked["Symbol"].astype(str).str.strip().str.upper().tolist()
+        )
+
+    equivalents, missing_shares, share_errors = (
+        load_official_share_equivalents(
+            snapshot_date,
+            required_symbols,
+        )
+    )
+
+    if share_errors:
+        print("Official share-check validation errors:")
+        for error in share_errors:
+            print(f" - {error}")
+
+    if missing_shares:
+        print(
+            f"Official share verification incomplete for "
+            f"{snapshot_date.isoformat()}: "
+            f"{len(missing_shares)} symbols still missing."
+        )
+        if len(missing_shares) <= 20:
+            print("Missing symbols: " + ", ".join(missing_shares))
+        return None
+
+    prices = fetch_snapshot_close_prices(
+        required_symbols,
+        snapshot_date,
+    )
+
+    missing_prices = sorted(required_symbols - set(prices))
+    if missing_prices:
+        print(
+            "Official snapshot cannot be finalized because closing prices "
+            "are missing for: "
+            + ", ".join(missing_prices)
+        )
+        return None
+
+    verified_lists = {}
+
+    for list_type, ranked in provisional_lists.items():
+        verified = ranked.copy()
+        verified["Symbol"] = (
+            verified["Symbol"]
+            .astype(str)
+            .str.strip()
+            .str.upper()
+        )
+
+        verified["MarketCap"] = verified["Symbol"].map(
+            lambda symbol: equivalents[symbol] * prices[symbol]
+        )
+
+        verified_lists[list_type] = rank_list(verified)
+
+    return verified_lists
+
+
+def replace_snapshot(history, target_text, snapshots):
+    history = history[
+        history["SnapshotDate"].astype(str) != target_text
+    ].copy()
+
+    if snapshots:
+        history = pd.concat(
+            [history] + snapshots,
+            ignore_index=True,
+        )
+
+    return history
+
+
 def main():
     today = datetime.now(TIMEZONE).date()
     history = load_history()
 
-    # Show all four quarterly targets for the current year. Future targets
-    # are refreshed every weekday as clearly marked Temporary snapshots.
-    # On the actual snapshot trading day they are replaced by Official data,
-    # which is then preserved permanently.
     snapshot_targets = []
 
     for year in range(START_YEAR, today.year + 1):
@@ -394,100 +695,184 @@ def main():
         print("No quarterly snapshot dates are available.")
         return
 
-    needs_current_data = False
+    current_lists = None
+    changed = False
 
     for target in snapshot_targets:
         target_text = target.isoformat()
 
-        if target >= today:
-            # Today's target must become Official. Future targets should keep
-            # following the latest available market-cap ranking each run.
-            needs_current_data = True
-        elif not snapshot_is_complete(history, target_text):
-            # Only backfill a past target when it is missing/incomplete.
-            needs_current_data = True
+        if snapshot_is_official(history, target_text):
+            continue
 
-    if not needs_current_data:
-        print("Quarterly Top 125 history is already up to date.")
-        return
+        if target > today:
+            if current_lists is None:
+                current_lists = fetch_current_lists()
 
-    current_lists = fetch_current_lists()
-    new_snapshots = []
-
-    for target in snapshot_targets:
-        target_text = target.isoformat()
-        complete = snapshot_is_complete(history, target_text)
-
-        if target == today:
-            history = history[
-                history["SnapshotDate"].astype(str) != target_text
+            snapshots = [
+                make_snapshot(
+                    ranked,
+                    list_type,
+                    target,
+                    today,
+                    "Temporary",
+                    "StockAnalysis",
+                )
+                for list_type, ranked in current_lists.items()
             ]
 
-            for list_type, ranked in current_lists.items():
-                new_snapshots.append(
-                    make_snapshot(
-                        ranked,
-                        list_type,
-                        target,
-                        today,
-                        "Official",
-                    )
-                )
-
-            print(f"Saved official Top 125 snapshots for {target_text}.")
-
-        elif target > today:
-            # Future snapshots are live previews: replace yesterday's
-            # Temporary rows with today's current market-cap ranking.
-            history = history[
-                history["SnapshotDate"].astype(str) != target_text
-            ]
-
-            for list_type, ranked in current_lists.items():
-                new_snapshots.append(
-                    make_snapshot(
-                        ranked,
-                        list_type,
-                        target,
-                        today,
-                        "Temporary",
-                    )
-                )
-
+            history = replace_snapshot(
+                history,
+                target_text,
+                snapshots,
+            )
+            changed = True
             print(
                 f"Refreshed temporary Top 125 snapshots for {target_text} "
                 f"using data from {today.isoformat()}."
             )
+            continue
 
-        elif not complete:
-            # Preserve complete past snapshots. If a past target is missing,
-            # create a clearly marked Temporary placeholder until a true
-            # historical source is available.
-            history = history[
-                history["SnapshotDate"].astype(str) != target_text
-            ]
+        if target == today:
+            if current_lists is None:
+                current_lists = fetch_current_lists()
 
-            for list_type, ranked in current_lists.items():
-                new_snapshots.append(
+            verified_lists = build_verified_official_lists(
+                target,
+                current_lists,
+            )
+
+            if verified_lists is not None:
+                snapshots = [
                     make_snapshot(
                         ranked,
                         list_type,
                         target,
-                        today,
-                        "Temporary",
+                        target,
+                        "Official",
+                        "Official shares outstanding x snapshot close",
                     )
+                    for list_type, ranked in verified_lists.items()
+                ]
+                print(
+                    f"Saved VERIFIED official Top 125 snapshots for "
+                    f"{target_text}."
+                )
+            else:
+                snapshots = [
+                    make_snapshot(
+                        ranked,
+                        list_type,
+                        target,
+                        target,
+                        "PendingOfficial",
+                        "StockAnalysis - pending official shares check",
+                    )
+                    for list_type, ranked in current_lists.items()
+                ]
+                print(
+                    f"Saved PendingOfficial snapshots for {target_text}; "
+                    "they will not lock until every displayed company has "
+                    "an official share-count verification."
                 )
 
-            print(
-                f"Saved temporary Top 125 snapshots for past target {target_text} "
-                f"using data from {today.isoformat()}."
+            history = replace_snapshot(
+                history,
+                target_text,
+                snapshots,
+            )
+            changed = True
+            continue
+
+        # Past target: if it was captured as PendingOfficial on the true
+        # snapshot day, keep that exact provisional universe and allow a later
+        # official-share audit to finalize it using the original date's close.
+        pending_rows = snapshot_rows(
+            history,
+            target_text,
+            "PendingOfficial",
+        )
+
+        if not pending_rows.empty:
+            provisional_lists = lists_from_snapshot_rows(pending_rows)
+
+            if provisional_lists is None:
+                print(
+                    f"PendingOfficial snapshot {target_text} is incomplete; "
+                    "leaving it unchanged."
+                )
+                continue
+
+            verified_lists = build_verified_official_lists(
+                target,
+                provisional_lists,
             )
 
-    if new_snapshots:
-        history = pd.concat(
-            [history] + new_snapshots,
-            ignore_index=True,
+            if verified_lists is None:
+                print(
+                    f"PendingOfficial snapshot {target_text} still awaits "
+                    "complete official share verification."
+                )
+                continue
+
+            snapshots = [
+                make_snapshot(
+                    ranked,
+                    list_type,
+                    target,
+                    target,
+                    "Official",
+                    "Official shares outstanding x snapshot close",
+                )
+                for list_type, ranked in verified_lists.items()
+            ]
+
+            history = replace_snapshot(
+                history,
+                target_text,
+                snapshots,
+            )
+            changed = True
+            print(
+                f"Finalized verified Official snapshot for {target_text}."
+            )
+            continue
+
+        # Historical dates that predate this verification workflow cannot be
+        # reconstructed as truly official without a dedicated historical audit.
+        # Preserve any complete existing snapshot; otherwise create a clearly
+        # labeled Temporary placeholder instead of pretending it is Official.
+        if snapshot_is_complete(history, target_text):
+            continue
+
+        if current_lists is None:
+            current_lists = fetch_current_lists()
+
+        snapshots = [
+            make_snapshot(
+                ranked,
+                list_type,
+                target,
+                today,
+                "Temporary",
+                "StockAnalysis - historical placeholder",
+            )
+            for list_type, ranked in current_lists.items()
+        ]
+
+        history = replace_snapshot(
+            history,
+            target_text,
+            snapshots,
         )
+        changed = True
+        print(
+            f"Saved temporary placeholder for past target {target_text} "
+            f"using data from {today.isoformat()}."
+        )
+
+    if not changed:
+        print("Quarterly Top 125 history is already up to date.")
+        return
 
     history["Rank"] = pd.to_numeric(
         history["Rank"],
