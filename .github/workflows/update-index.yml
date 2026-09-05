@@ -11,6 +11,7 @@ on:
       - "*.html"
       - "*.js"
       - "data/rebalances.csv"
+      - "data/official_share_checks.csv"
       - "requirements.txt"
       - ".github/workflows/update-index.yml"
 
