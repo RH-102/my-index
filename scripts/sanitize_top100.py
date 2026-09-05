@@ -40,7 +40,6 @@ def format_market_cap(value: float) -> str:
 
 
 def yf_symbol(symbol: str) -> str:
-    # yfinance uses BRK-B rather than BRK.B, etc.
     return str(symbol).strip().upper().replace(".", "-")
 
 
@@ -93,8 +92,6 @@ def latest_reference_map(history: pd.DataFrame, current_date: date) -> dict[str,
     if rows.empty:
         return {}
 
-    # One row per company per data date is enough. Prefer Official if duplicate
-    # dates exist, then choose the latest prior observation.
     rows["StatusPriority"] = rows["Status"].astype(str).map({"Official": 1}).fillna(0)
     rows = rows.sort_values(["DataDateParsed", "StatusPriority"])
     rows = rows.drop_duplicates(subset=["SymbolNorm"], keep="last")
@@ -138,7 +135,6 @@ def corrected_cap(
                 return expected_cap, note
             return current_cap, None
 
-    # Fallback only for very large moves when the price cross-check is missing.
     if ratio >= EXTREME_UP_RATIO or ratio <= EXTREME_DOWN_RATIO:
         note = (
             f"{symbol}: extreme source cap jump from {format_market_cap(reference_cap)} "
@@ -157,8 +153,18 @@ def corrected_cap(
 def rerank_current_rows(history: pd.DataFrame, current_date: date) -> pd.DataFrame:
     current_text = current_date.isoformat()
     mask_current = history["DataDate"].astype(str) == current_text
-    if not mask_current.any():
-        print(f"No Top 125 rows use DataDate {current_text}; sanity check skipped.")
+
+    # Verified Official snapshots are immutable. The provider sanity checker is
+    # only allowed to touch Temporary/PendingOfficial provider-based rows.
+    editable_mask = mask_current & (
+        history["Status"].astype(str) != "Official"
+    )
+
+    if not editable_mask.any():
+        print(
+            f"No editable Top 125 rows use DataDate {current_text}; "
+            "sanity check skipped."
+        )
         return history
 
     references = latest_reference_map(history, current_date)
@@ -166,10 +172,8 @@ def rerank_current_rows(history: pd.DataFrame, current_date: date) -> pd.DataFra
         print("No recent prior Top 125 reference data; sanity check skipped.")
         return history
 
-    # Compute corrections once from the All list, then apply the same corrected
-    # company market cap to every list type for today's data.
     all_current = history[
-        mask_current & (history["ListType"].astype(str) == "All")
+        editable_mask & (history["ListType"].astype(str) == "All")
     ].copy()
     all_current["MarketCapNum"] = pd.to_numeric(all_current["MarketCap"], errors="coerce")
 
@@ -196,19 +200,24 @@ def rerank_current_rows(history: pd.DataFrame, current_date: date) -> pd.DataFra
 
     symbol_norm = history["Symbol"].astype(str).str.strip().str.upper()
     for symbol, cap in corrections.items():
-        mask = mask_current & (symbol_norm == symbol)
+        mask = editable_mask & (symbol_norm == symbol)
         history.loc[mask, "MarketCap"] = cap
         history.loc[mask, "MarketCapDisplay"] = format_market_cap(cap)
 
-    # Re-rank each current snapshot/list independently after corrections.
-    current_snapshot_dates = history.loc[mask_current, "SnapshotDate"].astype(str).unique()
+    current_snapshot_dates = history.loc[
+        editable_mask, "SnapshotDate"
+    ].astype(str).unique()
+
     for snapshot_date in current_snapshot_dates:
-        for list_type in history.loc[
-            mask_current & (history["SnapshotDate"].astype(str) == snapshot_date),
+        list_types = history.loc[
+            editable_mask
+            & (history["SnapshotDate"].astype(str) == snapshot_date),
             "ListType",
-        ].astype(str).unique():
+        ].astype(str).unique()
+
+        for list_type in list_types:
             group_mask = (
-                mask_current
+                editable_mask
                 & (history["SnapshotDate"].astype(str) == snapshot_date)
                 & (history["ListType"].astype(str) == list_type)
             )
