@@ -10,6 +10,7 @@ on:
       - "scripts/**"
       - "*.html"
       - "*.js"
+      - "data/rebalances.csv"
       - "requirements.txt"
       - ".github/workflows/update-index.yml"
 
