@@ -1,6 +1,51 @@
 (function () {
   const BENCHMARK_FILE = "data/benchmark_history.csv";
 
+  function formatQuantityDecimals() {
+    const tableArea = document.getElementById("tableArea");
+    if (!tableArea) return false;
+
+    const table = tableArea.querySelector("table");
+    if (!table) return false;
+
+    const headers = Array.from(table.querySelectorAll("thead th"));
+    const quantityIndex = headers.findIndex(
+      th => th.textContent.trim() === "Quantity"
+    );
+
+    if (quantityIndex < 0) return false;
+
+    table.querySelectorAll("tbody tr").forEach(row => {
+      const cell = row.children[quantityIndex];
+      if (!cell) return;
+
+      const value = Number(cell.textContent.replace(/,/g, "").trim());
+      if (Number.isFinite(value)) {
+        cell.textContent = value.toFixed(4);
+      }
+    });
+
+    return true;
+  }
+
+  function watchQuantityTable() {
+    if (formatQuantityDecimals()) return;
+
+    const tableArea = document.getElementById("tableArea");
+    if (!tableArea) return;
+
+    const observer = new MutationObserver(() => {
+      if (formatQuantityDecimals()) {
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(tableArea, {
+      childList: true,
+      subtree: true
+    });
+  }
+
   function loadBenchmarkCSV() {
     const url = BENCHMARK_FILE + "?v=" + Date.now();
     return new Promise((resolve) => {
@@ -114,6 +159,7 @@
   }
 
   async function init() {
+    watchQuantityTable();
     updateHeading();
     const benchmarkRows = await loadBenchmarkCSV();
 
