@@ -1,5 +1,6 @@
 from pathlib import Path
 from datetime import datetime, timedelta
+
 import pandas as pd
 import yfinance as yf
 
@@ -30,9 +31,13 @@ DIVISOR_HISTORY_FILE = DATA_DIR / "divisor_history.csv"
 
 # ============================================================
 # Read immutable rebalance snapshots
-# Each EffectiveDate must contain a complete portfolio snapshot.
-# The first snapshot starts the index. Future snapshots are appended;
-# old snapshots are never edited.
+#
+# Semantics:
+# - EffectiveDate is the trading-day CLOSE at which the rebalance occurs.
+# - That day's return is still earned by the old basket.
+# - At that close, the new basket is installed and the divisor is reset so
+#   the Index Level is exactly unchanged.
+# - The new basket drives returns from the next trading day onward.
 # ============================================================
 
 rebalances = pd.read_csv(REBALANCES_FILE)
@@ -50,12 +55,8 @@ rebalances["EffectiveDate"] = pd.to_datetime(
 ).dt.date.astype(str)
 
 rebalances["Symbol"] = (
-    rebalances["Symbol"]
-    .astype(str)
-    .str.strip()
-    .str.upper()
+    rebalances["Symbol"].astype(str).str.strip().str.upper()
 )
-
 rebalances["Name"] = rebalances["Name"].astype(str).str.strip()
 rebalances["Quantity"] = pd.to_numeric(
     rebalances["Quantity"], errors="raise"
@@ -76,8 +77,7 @@ if not effective_dates:
 
 if effective_dates[0] != BACKFILL_START:
     raise RuntimeError(
-        f"The first rebalance snapshot must be effective on "
-        f"{BACKFILL_START}."
+        f"The first rebalance snapshot must be effective on {BACKFILL_START}."
     )
 
 snapshots = {}
@@ -119,13 +119,9 @@ print(
 
 # ============================================================
 # Download daily price history
-# yfinance end date is exclusive, so add one day.
 # ============================================================
 
-end_date = (
-    datetime.now().date()
-    + timedelta(days=1)
-).isoformat()
+end_date = (datetime.now().date() + timedelta(days=1)).isoformat()
 
 prices = yf.download(
     tickers=symbols,
@@ -150,7 +146,6 @@ missing_symbols = []
 for symbol in symbols:
     try:
         close = prices[symbol]["Close"].dropna()
-
         if close.empty:
             missing_symbols.append(symbol)
             continue
@@ -159,7 +154,6 @@ for symbol in symbols:
             idx.date().isoformat(): float(value)
             for idx, value in close.items()
         }
-
     except Exception:
         missing_symbols.append(symbol)
 
@@ -167,15 +161,8 @@ if missing_symbols:
     print("\nMissing price history:")
     for symbol in missing_symbols:
         print(f" - {symbol}")
-
     raise RuntimeError(
-        "Some securities have no price history. "
-        "No index data was saved."
-    )
-
-if ANCHOR_SYMBOL not in price_history:
-    raise RuntimeError(
-        f"{ANCHOR_SYMBOL} price history is unavailable."
+        "Some securities have no price history. No index data was saved."
     )
 
 calendar_dates = sorted(
@@ -192,23 +179,18 @@ if BACKFILL_START not in calendar_dates:
         f"{BACKFILL_START} is not available for {ANCHOR_SYMBOL}."
     )
 
+# Rebalances are close-of-day events, so every stored effective date must be
+# an actual trading date once that date is in the historical window.
+for effective_date in effective_dates:
+    if effective_date <= calendar_dates[-1] and effective_date not in calendar_dates:
+        raise RuntimeError(
+            f"{effective_date}: rebalance EffectiveDate is not a trading day."
+        )
+
 
 # ============================================================
 # Helpers
 # ============================================================
-
-def effective_date_for(market_date):
-    eligible = [
-        effective_date
-        for effective_date in effective_dates
-        if effective_date <= market_date
-    ]
-
-    if not eligible:
-        return None
-
-    return eligible[-1]
-
 
 def aggregate_value(snapshot, market_date):
     missing = [
@@ -216,7 +198,6 @@ def aggregate_value(snapshot, market_date):
         for symbol in snapshot["Symbol"]
         if market_date not in price_history[symbol]
     ]
-
     if missing:
         raise RuntimeError(
             f"Missing prices on {market_date} for active holdings: "
@@ -225,8 +206,7 @@ def aggregate_value(snapshot, market_date):
 
     return float(
         sum(
-            float(row.Quantity)
-            * price_history[row.Symbol][market_date]
+            float(row.Quantity) * price_history[row.Symbol][market_date]
             for row in snapshot.itertuples(index=False)
         )
     )
@@ -234,112 +214,102 @@ def aggregate_value(snapshot, market_date):
 
 def build_market_snapshot(snapshot, market_date):
     result = snapshot.copy()
-
     result["Price"] = result["Symbol"].map(
         lambda symbol: price_history[symbol][market_date]
     )
-
-    result["MarketValue"] = (
-        result["Quantity"]
-        * result["Price"]
-    )
-
+    result["MarketValue"] = result["Quantity"] * result["Price"]
     total = float(result["MarketValue"].sum())
-
     result["Weight"] = result["MarketValue"] / total
-
     return result, total
 
 
 # ============================================================
-# Build index history with regime-specific quantities + divisor
+# Build index history
 #
-# First regime:
-#   Divisor = basket value / 100
+# Rebalance-day continuity:
+# 1) Calculate that day's close using the OLD basket/divisor.
+# 2) Install the NEW basket at the same close.
+# 3) NewDivisor = NewBasketValueAtClose / ExistingIndexLevel.
 #
-# Later rebalances:
-#   NewDivisor = value of NEW basket at the prior close
-#                / prior Index Level
-#
-# This keeps the Index Level continuous across rebalances even
-# though NVDA is reset to Quantity = 1 and all other quantities
-# are recomputed from verified market-cap weights.
+# Therefore a rebalance changes holdings/weights but cannot create an
+# artificial index gain or loss.
 # ============================================================
+
+first_snapshot = snapshots[BACKFILL_START]
+first_value = aggregate_value(first_snapshot, BACKFILL_START)
+current_divisor = first_value / BASE_INDEX_LEVEL
+current_snapshot = first_snapshot
+current_effective_date = BACKFILL_START
+
+divisor_history_rows = [
+    {
+        "EffectiveDate": BACKFILL_START,
+        "Divisor": current_divisor,
+        "NumberOfHoldings": len(current_snapshot),
+    }
+]
 
 holdings_history_rows = []
 index_history_rows = []
-divisor_history_rows = []
 
-current_effective_date = None
-current_divisor = None
-previous_market_date = None
 previous_level = None
 updated_at = datetime.now().isoformat(timespec="seconds")
 
 for market_date in calendar_dates:
-    active_effective_date = effective_date_for(market_date)
-
-    if active_effective_date is None:
-        continue
-
-    active_snapshot = snapshots[active_effective_date]
-
-    # A rebalance regime change becomes effective on this trading day.
-    if active_effective_date != current_effective_date:
-        if current_effective_date is None:
-            if market_date != BACKFILL_START:
-                raise RuntimeError(
-                    "The first active trading date does not match "
-                    f"{BACKFILL_START}."
-                )
-
-            initial_value = aggregate_value(
-                active_snapshot,
-                market_date,
-            )
-
-            current_divisor = (
-                initial_value / BASE_INDEX_LEVEL
-            )
-
-        else:
-            if previous_market_date is None or previous_level is None:
-                raise RuntimeError(
-                    "Cannot calculate a rebalance divisor without "
-                    "a prior trading day."
-                )
-
-            new_basket_at_prior_close = aggregate_value(
-                active_snapshot,
-                previous_market_date,
-            )
-
-            current_divisor = (
-                new_basket_at_prior_close
-                / previous_level
-            )
-
-        current_effective_date = active_effective_date
-
-        divisor_history_rows.append(
-            {
-                "EffectiveDate": current_effective_date,
-                "Divisor": current_divisor,
-                "NumberOfHoldings": len(active_snapshot),
-            }
-        )
-
-    market_snapshot, basket_value = build_market_snapshot(
-        active_snapshot,
+    # First calculate today's close with the basket that was active
+    # throughout the trading session.
+    pre_rebalance_value = aggregate_value(
+        current_snapshot,
         market_date,
     )
-
-    index_level = basket_value / current_divisor
+    index_level = pre_rebalance_value / current_divisor
 
     if previous_level is None:
         daily_return = 0.0
     else:
         daily_return = index_level / previous_level - 1.0
+
+    # A snapshot dated today is installed AFTER today's close.
+    if (
+        market_date in snapshots
+        and market_date != current_effective_date
+    ):
+        new_snapshot = snapshots[market_date]
+        new_basket_value = aggregate_value(
+            new_snapshot,
+            market_date,
+        )
+
+        current_divisor = new_basket_value / index_level
+        current_snapshot = new_snapshot
+        current_effective_date = market_date
+
+        divisor_history_rows.append(
+            {
+                "EffectiveDate": current_effective_date,
+                "Divisor": current_divisor,
+                "NumberOfHoldings": len(current_snapshot),
+            }
+        )
+
+        # Numerical safety check: the new basket must reproduce the same level.
+        continuity_level = new_basket_value / current_divisor
+        if abs(continuity_level - index_level) > 1e-10:
+            raise RuntimeError(
+                f"{market_date}: divisor reset failed continuity check."
+            )
+
+    # Holdings shown for a rebalance date are the NEW after-close holdings.
+    market_snapshot, basket_value = build_market_snapshot(
+        current_snapshot,
+        market_date,
+    )
+
+    displayed_level = basket_value / current_divisor
+    if abs(displayed_level - index_level) > 1e-8:
+        raise RuntimeError(
+            f"{market_date}: displayed basket does not match Index Level."
+        )
 
     for _, row in market_snapshot.iterrows():
         holdings_history_rows.append(
@@ -360,14 +330,13 @@ for market_date in calendar_dates:
             "Date": market_date,
             "IndexLevel": index_level,
             "DailyReturn": daily_return,
-            "NumberOfHoldings": len(active_snapshot),
+            "NumberOfHoldings": len(current_snapshot),
             "Divisor": current_divisor,
             "EffectiveDate": current_effective_date,
             "UpdatedAt": updated_at,
         }
     )
 
-    previous_market_date = market_date
     previous_level = index_level
 
 
@@ -375,48 +344,29 @@ for market_date in calendar_dates:
 # Save histories
 # ============================================================
 
-holdings_history = pd.DataFrame(holdings_history_rows)
-holdings_history = holdings_history.sort_values(
+holdings_history = pd.DataFrame(holdings_history_rows).sort_values(
     ["Date", "Weight"],
     ascending=[True, False],
 )
+holdings_history.to_csv(HOLDINGS_HISTORY_FILE, index=False)
 
-holdings_history.to_csv(
-    HOLDINGS_HISTORY_FILE,
-    index=False,
-)
-
-index_history = pd.DataFrame(index_history_rows)
-index_history = index_history.sort_values("Date")
-
-index_history.to_csv(
-    INDEX_HISTORY_FILE,
-    index=False,
-)
+index_history = pd.DataFrame(index_history_rows).sort_values("Date")
+index_history.to_csv(INDEX_HISTORY_FILE, index=False)
 
 divisor_history = pd.DataFrame(divisor_history_rows)
-divisor_history.to_csv(
-    DIVISOR_HISTORY_FILE,
-    index=False,
-)
+divisor_history.to_csv(DIVISOR_HISTORY_FILE, index=False)
 
 
 # ============================================================
-# Save latest portfolio snapshot
-# holdings.csv remains a convenient current-view file, but
-# rebalances.csv is the canonical history/source of truth.
+# Save latest current-view files
 # ============================================================
 
-latest_market_date = index_history.iloc[-1]["Date"]
-latest_effective_date = index_history.iloc[-1]["EffectiveDate"]
-latest_snapshot = snapshots[latest_effective_date].copy()
+latest_market_date = str(index_history.iloc[-1]["Date"])
 
+latest_snapshot = current_snapshot.copy()
 latest_snapshot[
     ["Symbol", "Name", "Quantity"]
-].to_csv(
-    HOLDINGS_FILE,
-    index=False,
-)
+].to_csv(HOLDINGS_FILE, index=False)
 
 latest, latest_basket_value = build_market_snapshot(
     latest_snapshot,
@@ -424,7 +374,6 @@ latest, latest_basket_value = build_market_snapshot(
 )
 
 latest["PriceDate"] = latest_market_date
-
 latest = latest[
     [
         "Symbol",
@@ -438,18 +387,11 @@ latest = latest[
 ]
 
 latest = (
-    latest
-    .sort_values(
-        by="Weight",
-        ascending=False,
-    )
+    latest.sort_values("Weight", ascending=False)
     .reset_index(drop=True)
 )
 
-latest.to_csv(
-    LATEST_FILE,
-    index=False,
-)
+latest.to_csv(LATEST_FILE, index=False)
 
 
 # ============================================================
@@ -462,20 +404,11 @@ print("\nSUCCESS")
 print(f"Backfill start: {BACKFILL_START}")
 print(f"Latest market date: {latest_market_date}")
 print(f"Trading days saved: {len(index_history)}")
-print(f"Active rebalance: {latest_effective_date}")
-print(f"Divisor: {latest_index['Divisor']:.12f}")
-print(f"Index level: {latest_index['IndexLevel']:.2f}")
+print(f"Active rebalance: {current_effective_date}")
+print(f"Divisor: {current_divisor:.12f}")
+print(f"Index level: {latest_index['IndexLevel']:.6f}")
 print(
     f"Daily return: "
-    f"{latest_index['DailyReturn'] * 100:.2f}%"
+    f"{latest_index['DailyReturn'] * 100:.4f}%"
 )
 print(f"Holdings: {len(latest_snapshot)}")
-
-print("\nTop 10 holdings:")
-
-for _, row in latest.head(10).iterrows():
-    print(
-        f"{row['Symbol']:6s} "
-        f"${row['Price']:10.2f} "
-        f"{row['Weight'] * 100:7.2f}%"
-    )
