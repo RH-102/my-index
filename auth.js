@@ -30,3 +30,5 @@
   document.close();
   window.stop();
 })();
+
+// Password gate active.
