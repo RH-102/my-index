@@ -869,7 +869,7 @@ SnapshotDate,DataDate,Status,ListType,RuleVersion,Rank,Company,Symbol,Exchange,M
 2026-11-30,2026-09-09,Temporary,All,3-official-shares-on-snapshot-day,118,"Prologis, Inc.",PLD,NYSE,131530000000.0,$131.53B,StockAnalysis
 2026-11-30,2026-09-09,Temporary,All,3-official-shares-on-snapshot-day,119,Booking Holdings Inc.,BKNG,NASDAQ,130310000000.0,$130.31B,StockAnalysis
 2026-11-30,2026-09-09,Temporary,All,3-official-shares-on-snapshot-day,120,Chubb Limited,CB,NYSE,130250000000.0,$130.25B,StockAnalysis
-2026-11-30,2026-09-09,Temporary,All,3-official-shares-on-snapshot-day,121,PetrÃ³leo Brasileiro S.A. - Petrobras,PBR,NYSE,129880000000.0,$129.88B,StockAnalysis
+2026-11-30,2026-09-09,Temporary,All,3-official-shares-on-snapshot-day,121,PetrÃ³leo Brasileiro S.A. - Petrobras,PBR.A,NYSE,129880000000.0,$129.88B,StockAnalysis
 2026-11-30,2026-09-09,Temporary,All,3-official-shares-on-snapshot-day,122,Capital One Financial Corporation,COF,NYSE,129360000000.00002,$129.36B,StockAnalysis
 2026-11-30,2026-09-09,Temporary,All,3-official-shares-on-snapshot-day,123,The Progressive Corporation,PGR,NYSE,125290000000.0,$125.29B,StockAnalysis
 2026-11-30,2026-09-09,Temporary,All,3-official-shares-on-snapshot-day,124,"Intuitive Surgical, Inc.",ISRG,NASDAQ,124790000000.0,$124.79B,StockAnalysis
@@ -971,7 +971,7 @@ SnapshotDate,DataDate,Status,ListType,RuleVersion,Rank,Company,Symbol,Exchange,M
 2026-11-30,2026-09-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,95,Bristol-Myers Squibb Company,BMY,NYSE,131570000000.0,$131.57B,StockAnalysis
 2026-11-30,2026-09-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,96,"Prologis, Inc.",PLD,NYSE,131530000000.0,$131.53B,StockAnalysis
 2026-11-30,2026-09-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,97,Booking Holdings Inc.,BKNG,NASDAQ,130310000000.0,$130.31B,StockAnalysis
-2026-11-30,2026-09-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,98,PetrÃ³leo Brasileiro S.A. - Petrobras,PBR,NYSE,129880000000.0,$129.88B,StockAnalysis
+2026-11-30,2026-09-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,98,PetrÃ³leo Brasileiro S.A. - Petrobras,PBR.A,NYSE,129880000000.0,$129.88B,StockAnalysis
 2026-11-30,2026-09-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,99,"Intuitive Surgical, Inc.",ISRG,NASDAQ,124790000000.0,$124.79B,StockAnalysis
 2026-11-30,2026-09-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,100,CVS Health Corporation,CVS,NYSE,121990000000.0,$121.99B,StockAnalysis
 2026-11-30,2026-09-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,101,Lockheed Martin Corporation,LMT,NYSE,121040000000.0,$121.04B,StockAnalysis
