@@ -1,14 +1,7 @@
 (() => {
-  const AUTH_KEY = "myIndexAuthenticated";
-
-  if (sessionStorage.getItem(AUTH_KEY) === "yes") {
-    return;
-  }
-
   const enteredPassword = window.prompt("请输入密码访问 My Index Dashboard:");
 
   if (enteredPassword === "888") {
-    sessionStorage.setItem(AUTH_KEY, "yes");
     return;
   }
 
@@ -30,5 +23,3 @@
   document.close();
   window.stop();
 })();
-
-// Password gate active.
