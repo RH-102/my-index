@@ -4,25 +4,25 @@ Saved local cache risk_source_nasdaq_forward_pe.csv: 1239 observations through 2
 S&P 500 forward P/E: 1495 observations, 1990-06-29 to 2026-08-05
 Saved local cache risk_source_sp500_forward_pe.csv: 1495 observations through 2026-08-05
 Fetching FRED DFII10 and DRSFRMACBS...
-Saved local cache risk_source_dfii10.csv: 5929 observations through 2026-09-14
-Local DFII10 history: 5929 observations, 2003-01-02 to 2026-09-14
+Saved local cache risk_source_dfii10.csv: 5930 observations through 2026-09-15
+Local DFII10 history: 5930 observations, 2003-01-02 to 2026-09-15
 Saved local cache risk_source_mortgage.csv: 142 observations through 2026-06-30
 Fetching BIS US credit-to-GDP gap...
 BIS credit-to-GDP gap: 274 observations through 2026-03-31
 Saved local cache risk_source_credit_gap.csv: 274 observations through 2026-03-31
 SUCCESS
 Risk dashboard rows: 9
-Risk history rows: 5969
+Risk history rows: 5970
 Tech risk: 🟠高风险
 Overall valuation risk: 🔴极高风险
 risk_base_exit_code=0
 HY OAS loaded from JSON mirror: 785 observations
-Saved risk_source_hy_oas.csv: 803 observations through 2026-09-11
+Saved risk_source_hy_oas.csv: 804 observations through 2026-09-14
 SUCCESS
-HY OAS current: 2.65%
-HY OAS 3M ago: 2.78%
-HY OAS 3M change: -13bp
-HY OAS percentile: 49.3%
+HY OAS current: 2.71%
+HY OAS 3M ago: 2.71%
+HY OAS 3M change: +0bp
+HY OAS percentile: 66.4%
 HY OAS rating: 🟢安全
 hy_oas_exit_code=0
 C&I SLOOS loaded from Federal Reserve Board: 146 observations
@@ -32,14 +32,14 @@ C&I SLOOS current: 0.0%
 C&I SLOOS percentile: 51.4%
 C&I SLOOS rating: 🟢安全
 ci_sloos_exit_code=0
-Saved risk_source_sp500_price.csv: 9494 observations through 2026-09-14
+Saved risk_source_sp500_price.csv: 9495 observations through 2026-09-15
 SUCCESS
-S&P 500 date: 2026-09-14
-S&P 500 close: 7619.98; ATH: 7798.99; drawdown: 2.30%
-Daily estimated Forward P/E: 19.85x
-Cushion: 2.44%; V=0.375; D_eff=0.038; O=0.257
+S&P 500 date: 2026-09-15
+S&P 500 close: 7585.73; ATH: 7798.99; drawdown: 2.73%
+Daily estimated Forward P/E: 19.76x
+Cushion: 2.44%; V=0.376; D_eff=0.046; O=0.260
 Crisis R=0.000; R_eff=0.000; E=0.000; Gate=0
-Suggested S&P 500 allocation: 55.4%
+Suggested S&P 500 allocation: 55.6%
 Published V3.2-Alpha S&P 500 suggested allocation as summary card
 V3.2-Alpha allocation: 100.0% (R_eff=0.000, E=0.000, Gate=0)
 allocation_exit_code=0
