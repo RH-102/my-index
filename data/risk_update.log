@@ -4,15 +4,15 @@ Saved local cache risk_source_nasdaq_forward_pe.csv: 1239 observations through 2
 S&P 500 forward P/E: 1495 observations, 1990-06-29 to 2026-08-05
 Saved local cache risk_source_sp500_forward_pe.csv: 1495 observations through 2026-08-05
 Fetching FRED DFII10 and DRSFRMACBS...
-Saved local cache risk_source_dfii10.csv: 5934 observations through 2026-09-21
-Local DFII10 history: 5934 observations, 2003-01-02 to 2026-09-21
+Saved local cache risk_source_dfii10.csv: 5935 observations through 2026-09-22
+Local DFII10 history: 5935 observations, 2003-01-02 to 2026-09-22
 Saved local cache risk_source_mortgage.csv: 142 observations through 2026-06-30
 Fetching BIS US credit-to-GDP gap...
 BIS credit-to-GDP gap: 274 observations through 2026-03-31
 Saved local cache risk_source_credit_gap.csv: 274 observations through 2026-03-31
 SUCCESS
 Risk dashboard rows: 9
-Risk history rows: 5974
+Risk history rows: 5975
 Tech risk: 🟠高风险
 Overall valuation risk: 🔴极高风险
 risk_base_exit_code=0
@@ -32,14 +32,14 @@ C&I SLOOS current: 0.0%
 C&I SLOOS percentile: 51.4%
 C&I SLOOS rating: 🟢安全
 ci_sloos_exit_code=0
-Saved risk_source_sp500_price.csv: 9499 observations through 2026-09-21
+Saved risk_source_sp500_price.csv: 9500 observations through 2026-09-22
 SUCCESS
-S&P 500 date: 2026-09-21
-S&P 500 close: 7764.70; ATH: 7798.99; drawdown: 0.44%
+S&P 500 date: 2026-09-22
+S&P 500 close: 7764.64; ATH: 7798.99; drawdown: 0.44%
 Daily estimated Forward P/E: 20.23x
-Cushion: 2.32%; V=0.330; D_eff=0.007; O=0.217
+Cushion: 2.31%; V=0.326; D_eff=0.007; O=0.214
 Crisis R=0.000; R_eff=0.000; E=0.000; Gate=0
-Suggested S&P 500 allocation: 53.0%
+Suggested S&P 500 allocation: 52.9%
 Published V3.2-Alpha S&P 500 suggested allocation as summary card
 V3.2-Alpha allocation: 100.0% (R_eff=0.000, E=0.000, Gate=0)
 allocation_exit_code=0
