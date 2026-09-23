@@ -179,6 +179,21 @@ if BACKFILL_START not in calendar_dates:
         f"{BACKFILL_START} is not available for {ANCHOR_SYMBOL}."
     )
 
+# Never let a temporary provider regression erase a market date that is
+# already stored. This can happen around late-evening Yahoo/yfinance refreshes.
+if INDEX_HISTORY_FILE.exists():
+    existing_history = pd.read_csv(INDEX_HISTORY_FILE)
+    if not existing_history.empty and "Date" in existing_history.columns:
+        existing_latest_date = str(existing_history.iloc[-1]["Date"])
+        downloaded_latest_date = calendar_dates[-1]
+        if existing_latest_date > downloaded_latest_date:
+            print(
+                "\nProvider data is temporarily stale; preserving existing "
+                f"index data through {existing_latest_date} instead of "
+                f"regressing to {downloaded_latest_date}."
+            )
+            raise SystemExit(0)
+
 # Rebalances are close-of-day events, so every stored effective date must be
 # an actual trading date once that date is in the historical window.
 for effective_date in effective_dates:
