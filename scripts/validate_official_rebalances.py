@@ -110,13 +110,6 @@ for effective_date in effective_dates:
             )
         continue
 
-    if source_types != {"Official"}:
-        raise RuntimeError(
-            f"{effective_date}: every post-inception rebalance must use "
-            "SourceType=Official. Temporary/provider market-cap data cannot "
-            "drive the actual index."
-        )
-
     if len(source_dates) != 1 or "" in source_dates:
         raise RuntimeError(
             f"{effective_date}: all rows must share one nonblank "
@@ -124,6 +117,37 @@ for effective_date in effective_dates:
         )
 
     source_snapshot_date = next(iter(source_dates))
+
+    # User-directed manual trades are allowed as explicit full-basket snapshots.
+    # They preserve the existing quantities unless the user intentionally changes
+    # them, and update_prices.py resets the divisor at the close so the index
+    # level remains continuous. Official scheduled rebalances still require the
+    # official-share ledger below.
+    if source_types == {"Manual"}:
+        if source_snapshot_date != effective_date:
+            raise RuntimeError(
+                f"{effective_date}: Manual snapshots must use "
+                "SourceSnapshotDate equal to EffectiveDate."
+            )
+
+        anchor = snapshot.loc[snapshot["Symbol"] == ANCHOR_SYMBOL]
+        if len(anchor) != 1 or abs(float(anchor.iloc[0]["Quantity"]) - 1.0) > 1e-9:
+            raise RuntimeError(
+                f"{effective_date}: Manual snapshot must contain "
+                f"{ANCHOR_SYMBOL} exactly once with Quantity=1."
+            )
+
+        print(
+            f"Validated manual rebalance {effective_date}: "
+            f"{len(snapshot)} holdings."
+        )
+        continue
+
+    if source_types != {"Official"}:
+        raise RuntimeError(
+            f"{effective_date}: post-inception snapshots must use "
+            "SourceType=Official or SourceType=Manual."
+        )
     ledger = official.loc[
         official["SnapshotDate"] == source_snapshot_date
     ].copy()
