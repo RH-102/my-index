@@ -138,37 +138,137 @@ prices = yf.download(
 
 # ============================================================
 # Build price map
+#
+# Yahoo/yfinance occasionally returns an incomplete historical day even
+# though that day was downloaded successfully on an earlier run. Preserve
+# those previously validated closes from holdings_history.csv and let fresh
+# downloads overwrite the cache whenever they are available.
 # ============================================================
 
-price_history = {}
-missing_symbols = []
+cached_price_history = {symbol: {} for symbol in symbols}
+existing_market_dates = []
+
+if HOLDINGS_HISTORY_FILE.exists():
+    cached_history = pd.read_csv(HOLDINGS_HISTORY_FILE)
+
+    cache_columns = {"Date", "Symbol", "Price"}
+    if cache_columns.issubset(cached_history.columns):
+        cached_history = cached_history.dropna(
+            subset=["Date", "Symbol", "Price"]
+        ).copy()
+        cached_history["Date"] = pd.to_datetime(
+            cached_history["Date"], errors="coerce"
+        ).dt.date.astype(str)
+        cached_history["Symbol"] = (
+            cached_history["Symbol"]
+            .astype(str)
+            .str.strip()
+            .str.upper()
+        )
+        cached_history["Price"] = pd.to_numeric(
+            cached_history["Price"], errors="coerce"
+        )
+        cached_history = cached_history.dropna(subset=["Price"])
+
+        for row in cached_history.itertuples(index=False):
+            if row.Symbol in cached_price_history:
+                cached_price_history[row.Symbol][row.Date] = float(row.Price)
+
+if INDEX_HISTORY_FILE.exists():
+    existing_history = pd.read_csv(INDEX_HISTORY_FILE)
+    if not existing_history.empty and "Date" in existing_history.columns:
+        existing_market_dates = sorted(
+            pd.to_datetime(
+                existing_history["Date"], errors="coerce"
+            )
+            .dropna()
+            .dt.date.astype(str)
+            .unique()
+            .tolist()
+        )
+
+downloaded_price_history = {}
 
 for symbol in symbols:
+    downloaded_price_history[symbol] = {}
+
     try:
         close = prices[symbol]["Close"].dropna()
-        if close.empty:
-            missing_symbols.append(symbol)
-            continue
-
-        price_history[symbol] = {
+        downloaded_price_history[symbol] = {
             idx.date().isoformat(): float(value)
             for idx, value in close.items()
         }
     except Exception:
+        pass
+
+# Fresh provider data wins. The saved history is only a fallback for holes in
+# dates that were already computed successfully on earlier runs.
+price_history = {}
+missing_symbols = []
+fallback_points = 0
+
+for symbol in symbols:
+    merged = dict(cached_price_history.get(symbol, {}))
+    downloaded = downloaded_price_history.get(symbol, {})
+
+    fallback_points += sum(
+        1 for date in merged
+        if date not in downloaded
+    )
+
+    merged.update(downloaded)
+
+    if not merged:
         missing_symbols.append(symbol)
+        continue
+
+    price_history[symbol] = merged
 
 if missing_symbols:
     print("\nMissing price history:")
     for symbol in missing_symbols:
         print(f" - {symbol}")
     raise RuntimeError(
-        "Some securities have no price history. No index data was saved."
+        "Some securities have no downloaded or cached price history. "
+        "No index data was saved."
     )
 
-calendar_dates = sorted(
+downloaded_calendar_dates = sorted(
     date
-    for date in price_history[ANCHOR_SYMBOL]
+    for date in downloaded_price_history.get(ANCHOR_SYMBOL, {})
     if date >= BACKFILL_START
+)
+
+if not downloaded_calendar_dates:
+    raise RuntimeError(
+        f"No downloaded trading dates were found for {ANCHOR_SYMBOL}."
+    )
+
+downloaded_latest_date = downloaded_calendar_dates[-1]
+
+# Never let a temporary provider regression erase a market date that is
+# already stored. This can happen around late-evening Yahoo/yfinance refreshes.
+if existing_market_dates:
+    existing_latest_date = existing_market_dates[-1]
+
+    if existing_latest_date > downloaded_latest_date:
+        print(
+            "\nProvider data is temporarily stale; preserving existing "
+            f"index data through {existing_latest_date} instead of "
+            f"regressing to {downloaded_latest_date}."
+        )
+        raise SystemExit(0)
+
+# Use the provider's trading calendar for new dates, while retaining dates
+# that have already been successfully stored. This protects against Yahoo
+# temporarily omitting an older historical day from the anchor ticker.
+calendar_dates = sorted(
+    set(downloaded_calendar_dates)
+    | {
+        date
+        for date in existing_market_dates
+        if BACKFILL_START <= date <= downloaded_latest_date
+    }
 )
 
 if not calendar_dates:
@@ -179,20 +279,11 @@ if BACKFILL_START not in calendar_dates:
         f"{BACKFILL_START} is not available for {ANCHOR_SYMBOL}."
     )
 
-# Never let a temporary provider regression erase a market date that is
-# already stored. This can happen around late-evening Yahoo/yfinance refreshes.
-if INDEX_HISTORY_FILE.exists():
-    existing_history = pd.read_csv(INDEX_HISTORY_FILE)
-    if not existing_history.empty and "Date" in existing_history.columns:
-        existing_latest_date = str(existing_history.iloc[-1]["Date"])
-        downloaded_latest_date = calendar_dates[-1]
-        if existing_latest_date > downloaded_latest_date:
-            print(
-                "\nProvider data is temporarily stale; preserving existing "
-                f"index data through {existing_latest_date} instead of "
-                f"regressing to {downloaded_latest_date}."
-            )
-            raise SystemExit(0)
+if fallback_points:
+    print(
+        f"Using {fallback_points} cached historical price point(s) "
+        "where the current Yahoo/yfinance download has gaps."
+    )
 
 # Rebalances are close-of-day events, so every stored effective date must be
 # an actual trading date once that date is in the historical window.
