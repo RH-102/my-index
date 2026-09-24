@@ -59,13 +59,63 @@ def download_close(ticker: str) -> pd.Series:
     return extract_close(raw, ticker)
 
 
+def load_cached_closes() -> dict[str, pd.Series]:
+    cached = {
+        "Nasdaq100": pd.Series(dtype=float),
+        "SP500": pd.Series(dtype=float),
+    }
+
+    if not OUTPUT_FILE.exists():
+        return cached
+
+    existing = pd.read_csv(OUTPUT_FILE)
+    required = {"Date", "Nasdaq100Close", "SP500Close"}
+    if existing.empty or not required.issubset(existing.columns):
+        return cached
+
+    existing["Date"] = pd.to_datetime(existing["Date"], errors="coerce")
+    existing = existing.dropna(subset=["Date"]).sort_values("Date")
+
+    for name, column in {
+        "Nasdaq100": "Nasdaq100Close",
+        "SP500": "SP500Close",
+    }.items():
+        values = pd.to_numeric(existing[column], errors="coerce")
+        series = pd.Series(values.to_numpy(), index=existing["Date"])
+        cached[name] = series.dropna().sort_index()
+
+    return cached
+
+
+def merge_closes(cached: pd.Series, fresh: pd.Series) -> tuple[pd.Series, int]:
+    merged = cached.copy()
+    fresh_dates = set(fresh.index)
+    fallback_count = sum(1 for date in merged.index if date not in fresh_dates)
+
+    for date, value in fresh.items():
+        merged.loc[date] = float(value)
+
+    merged = merged[~merged.index.duplicated(keep="last")].sort_index()
+    return merged, fallback_count
+
+
 def main() -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-    closes = {
+    cached = load_cached_closes()
+    fresh = {
         name: download_close(ticker)
         for name, ticker in BENCHMARKS.items()
     }
+
+    closes = {}
+    fallback_counts = {}
+
+    for name in BENCHMARKS:
+        closes[name], fallback_counts[name] = merge_closes(
+            cached[name],
+            fresh[name],
+        )
 
     base_ts = pd.Timestamp(BASE_DATE)
     for name, series in closes.items():
@@ -108,6 +158,13 @@ def main() -> None:
 
     out = pd.DataFrame(rows).sort_values("Date")
     out.to_csv(OUTPUT_FILE, index=False)
+
+    total_fallbacks = sum(fallback_counts.values())
+    if total_fallbacks:
+        print(
+            f"Preserved {total_fallbacks} cached benchmark close(s) "
+            "missing from the current Yahoo/yfinance download."
+        )
 
     latest = out.iloc[-1]
     print("SUCCESS")
