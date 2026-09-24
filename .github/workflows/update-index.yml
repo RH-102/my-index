@@ -85,13 +85,8 @@ jobs:
 
       - name: Update prices and weights
         if: steps.backup-check.outputs.skip_backup != 'true'
-        continue-on-error: true
         run: |
-          set +e
           python scripts/update_prices.py
-          status=$?
-          echo "price_update_exit_code=$status"
-          exit 0
 
       - name: Update Nasdaq-100 and S&P 500 benchmarks
         if: steps.backup-check.outputs.skip_backup != 'true'
