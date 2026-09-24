@@ -430,8 +430,15 @@ def main():
 
     ndx_cush = cushion_history(nasdaq_pe, real_yield)
     sp_cush = cushion_history(sp_pe, real_yield)
-    ndx_cush_current = 100.0 / ndx_current - real_current
-    sp_cush_current = 100.0 / sp_current - real_current
+    if ndx_cush.empty or sp_cush.empty:
+        raise RuntimeError("No date-aligned P/E and real-yield observations for Cushion")
+    # Current value, percentile and trailing changes must use the same dated
+    # series. Do not combine an older P/E with today's yield while reporting
+    # changes that end on the older P/E observation date.
+    ndx_cush_latest = ndx_cush.iloc[-1]
+    sp_cush_latest = sp_cush.iloc[-1]
+    ndx_cush_current = float(ndx_cush_latest["Cushion"])
+    sp_cush_current = float(sp_cush_latest["Cushion"])
     ndx_cush_pct = percentile_rank(ndx_cush["Cushion"], ndx_cush_current)
     sp_cush_pct = percentile_rank(sp_cush["Cushion"], sp_cush_current)
     ndx_cush_risk = max(risk_low_percentile(ndx_cush_pct), cushion_absolute_risk(ndx_cush_current))
@@ -493,8 +500,10 @@ def main():
         metric_row(
             "Nasdaq Cushion", fmt_num(ndx_cush_current, "%"), fmt_percentile(ndx_cush_pct),
             f"1M {fmt_num(ndx_cush_changes[1], 'pp', 2, True)} | 3M {fmt_num(ndx_cush_changes[3], 'pp', 2, True)}",
-            ndx_cush_risk, f"PE {ndx_date}; DFII10 {real_date}", "History of Market + FRED DFII10",
-            "Earnings Yield = 100 / Forward P/E; Cushion = Earnings Yield - DFII10. Lower historical percentile means thinner cushion and more valuation risk.",
+            ndx_cush_risk,
+            f"PE {ndx_cush_latest['Date'].date()}; DFII10 {ndx_cush_latest['RealYieldDate'].date()}",
+            "History of Market + FRED DFII10",
+            "Earnings Yield = 100 / Forward P/E; Cushion = Earnings Yield - DFII10. Current value, percentile and 1M/3M changes end on the same P/E observation date, using the latest yield on or before that date (within 10 days). This is a historical observation, not a live estimate.",
             updated_at,
         ),
         metric_row(
@@ -506,8 +515,10 @@ def main():
         metric_row(
             "S&P 500 Cushion", fmt_num(sp_cush_current, "%"), fmt_percentile(sp_cush_pct),
             f"1M {fmt_num(sp_cush_changes[1], 'pp', 2, True)} | 3M {fmt_num(sp_cush_changes[3], 'pp', 2, True)}",
-            sp_cush_risk, f"PE {sp_date}; DFII10 {real_date}", "History of Market + FRED DFII10",
-            "Absolute guide: ≥4.5% wide/safe; 3–4.5% reasonable; 2–3% elevated; 1–2% high; <1% extreme. Historical percentile is primary.",
+            sp_cush_risk,
+            f"PE {sp_cush_latest['Date'].date()}; DFII10 {sp_cush_latest['RealYieldDate'].date()}",
+            "History of Market + FRED DFII10",
+            "Current value, percentile and 1M/3M changes end on the same P/E observation date, using the latest yield on or before that date (within 10 days). This is a historical observation, not a live estimate. Absolute guide: ≥4.5% wide/safe; 3–4.5% reasonable; 2–3% elevated; 1–2% high; <1% extreme. Historical percentile is primary.",
             updated_at,
         ),
         metric_row(

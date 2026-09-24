@@ -301,19 +301,16 @@ def percentile_rank(values: pd.Series, current: float) -> float:
 
 def main() -> None:
     if not DASHBOARD_FILE.exists():
-        print("risk_dashboard.csv does not exist yet; HY OAS enrichment skipped.")
-        return
+        raise RuntimeError("risk_dashboard.csv is missing; HY OAS enrichment failed")
 
     try:
         hy = fetch_hy_oas()
     except Exception as exc:
-        print(f"HY OAS enrichment skipped: {exc}")
-        return
+        raise RuntimeError(f"HY OAS enrichment failed: {exc}") from exc
 
     changes = rolling_3m_change(hy)
     if changes.empty:
-        print("HY OAS history is too short to calculate a 3-month change.")
-        return
+        raise RuntimeError("HY OAS history is too short to calculate a 3-month change")
 
     latest = changes.iloc[-1]
     change_bp = float(latest["ChangeBp"])

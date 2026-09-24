@@ -262,14 +262,12 @@ def percentile_rank(values: pd.Series, current: float) -> float:
 
 def main() -> None:
     if not DASHBOARD_FILE.exists():
-        print("risk_dashboard.csv does not exist yet; C&I SLOOS enrichment skipped.")
-        return
+        raise RuntimeError("risk_dashboard.csv is missing; C&I SLOOS enrichment failed")
 
     try:
         sloos = fetch_ci_sloos()
     except Exception as exc:
-        print(f"C&I SLOOS enrichment skipped: {exc}")
-        return
+        raise RuntimeError(f"C&I SLOOS enrichment failed: {exc}") from exc
 
     current = float(sloos.iloc[-1]["Value"])
     current_date = pd.Timestamp(sloos.iloc[-1]["Date"])

@@ -1,5 +1,4 @@
 (function () {
-  const BENCHMARK_FILE = "data/benchmark_history.csv";
 
   function formatQuantityDecimals() {
     const tableArea = document.getElementById("tableArea");
@@ -46,19 +45,29 @@
     });
   }
 
-  function loadBenchmarkCSV() {
-    const url = BENCHMARK_FILE + "?v=" + Date.now();
-    return new Promise((resolve) => {
-      Papa.parse(url, {
-        download: true,
-        header: true,
-        dynamicTyping: true,
-        complete: results => resolve(
-          results.data.filter(row => row.Date)
-        ),
-        error: () => resolve([])
-      });
-    });
+  function validateRows(rows) {
+    const clean = rows.filter(row => row.Date);
+    if (!clean.length || clean.some(row =>
+      [row.Nasdaq100ReturnPct, row.SP500ReturnPct].some(value =>
+        value === null || value === "" || !Number.isFinite(Number(value))))) {
+      throw new Error("Benchmark data is empty or malformed");
+    }
+    return clean;
+  }
+
+  async function load(indexPromise, benchmarkPromise) {
+    // Explicit dependencies: a slow index load must never miss a polling window.
+    const [index, benchmark] = await Promise.allSettled([indexPromise, benchmarkPromise]);
+    if (index.status === "rejected") throw index.reason;
+    let benchmarkRows = [];
+    let benchmarkError = null;
+    try {
+      if (benchmark.status === "rejected") throw benchmark.reason;
+      benchmarkRows = validateRows(benchmark.value);
+    } catch (error) {
+      benchmarkError = error;
+    }
+    return { indexData: index.value, benchmarkRows, benchmarkError };
   }
 
   function signedPercent(value) {
@@ -84,9 +93,8 @@
     }
   }
 
-  function applyComparison(benchmarkRows) {
-    const chart = Chart.getChart("indexChart");
-    if (!chart) return false;
+  function applyComparison(chart, benchmarkRows) {
+    updateHeading();
 
     const benchmarkMap = new Map(
       benchmarkRows.map(row => [String(row.Date), row])
@@ -158,23 +166,6 @@
     return true;
   }
 
-  async function init() {
-    watchQuantityTable();
-    updateHeading();
-    const benchmarkRows = await loadBenchmarkCSV();
-
-    let attempts = 0;
-    const timer = setInterval(() => {
-      attempts += 1;
-      if (applyComparison(benchmarkRows) || attempts >= 50) {
-        clearInterval(timer);
-      }
-    }, 100);
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-  } else {
-    init();
-  }
+  window.IndexBenchmark = { load, validateRows, apply: applyComparison };
+  watchQuantityTable();
 })();

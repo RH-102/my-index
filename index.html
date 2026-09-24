@@ -215,6 +215,31 @@
       margin-top: 14px;
     }
 
+    .data-status {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .status-card {
+      background: #fff;
+      border: 1px solid #d1d5db;
+      border-left: 4px solid #16833b;
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .status-card.warning { border-left-color: #b45309; background: #fffbeb; }
+    .status-card.failed { border-left-color: #c62828; background: #fef2f2; }
+    .status-detail { display: block; color: #555; font-size: 12px; }
+    .data-warning { display: block; color: #92400e; font-size: 12px; margin-top: 5px; }
+    .chart-status { margin-top: 12px; font-size: 13px; color: #555; line-height: 1.6; }
+    .chart-status.warning { color: #92400e; }
+    .retry-button { margin-left: 10px; padding: 5px 10px; cursor: pointer; }
+
     @media (max-width: 700px) {
       .container {
         padding: 20px 12px;
@@ -239,6 +264,10 @@
   <div class="nav">
     <a href="top100.html">View NASDAQ + NYSE Top 125 →</a>
     <a href="risk-history.html">View Risk History →</a>
+  </div>
+
+  <div id="dataStatus" class="data-status" role="status" aria-live="polite">
+    <div class="status-card warning">正在核验数据更新状态…</div>
   </div>
 
   <div class="cards">
@@ -291,6 +320,7 @@
   <div class="section">
     <h2>Index Performance</h2>
     <canvas id="indexChart"></canvas>
+    <div id="benchmarkStatus" class="chart-status" role="status">Loading index and benchmark data…</div>
   </div>
 
   <div class="section">
@@ -312,20 +342,30 @@
 
 </div>
 
+<script src="benchmark-chart.js?v=20260924-status"></script>
+<script src="data-status.js?v=20260924-status"></script>
 <script>
 let holdingsData = [];
 let indexHistory = [];
+let indexChart = null;
 
 function loadCSV(path) {
   const separator = path.includes("?") ? "&" : "?";
   const url = path + separator + "v=" + Date.now();
 
   return new Promise((resolve, reject) => {
+    const timeout = setTimeout(() => reject(new Error("Data request timed out: " + path)), 30000);
     Papa.parse(url, {
       download: true,
       header: true,
       dynamicTyping: true,
+      skipEmptyLines: "greedy",
       complete: function(results) {
+        clearTimeout(timeout);
+        if (results.errors.length) {
+          reject(new Error("CSV parse error: " + path));
+          return;
+        }
         resolve(
           results.data.filter(
             row => Object.values(row).some(
@@ -334,7 +374,7 @@ function loadCSV(path) {
           )
         );
       },
-      error: reject
+      error: error => { clearTimeout(timeout); reject(error); }
     });
   });
 }
@@ -348,11 +388,11 @@ function escapeHTML(value) {
     .replaceAll("'", "&#039;");
 }
 
-Promise.all([
-  loadCSV("data/latest.csv"),
-  loadCSV("data/index_history.csv")
-])
-.then(([holdings, history]) => {
+IndexBenchmark.load(
+  Promise.all([loadCSV("data/latest.csv"), loadCSV("data/index_history.csv")]),
+  loadCSV("data/benchmark_history.csv")
+)
+.then(({ indexData: [holdings, history], benchmarkRows, benchmarkError }) => {
   holdingsData = holdings
     .filter(row => row.Symbol)
     .sort((a, b) => b.Weight - a.Weight);
@@ -362,15 +402,49 @@ Promise.all([
     .sort((a, b) => new Date(a.Date) - new Date(b.Date));
 
   updateSummary();
-  createIndexChart();
-  createHoldingsChart();
   createTable();
+  createHoldingsChart();
+  createIndexChart();
+  IndexBenchmark.apply(indexChart, benchmarkRows);
+  showBenchmarkStatus(benchmarkRows, benchmarkError);
 })
 .catch(error => {
   document.getElementById("tableArea").innerHTML =
     '<div class="error">Could not load index data.</div>';
+  document.getElementById("benchmarkStatus").textContent = "指数图表加载失败，请刷新页面重试。";
   console.error(error);
 });
+
+function showBenchmarkStatus(rows, error) {
+  const area = document.getElementById("benchmarkStatus");
+  const latestIndexDate = indexHistory[indexHistory.length - 1]?.Date;
+  const latestBenchmarkDate = rows.map(row => String(row.Date)).sort().pop();
+  const dates = new Set(rows.map(row => String(row.Date)));
+  const missing = indexHistory.filter(row => !dates.has(String(row.Date))).length;
+  area.classList.toggle("warning", Boolean(error) || missing > 0);
+  area.textContent = error
+    ? "基准数据加载失败，暂时仅显示 My Index。"
+    : `My Index 截至 ${latestIndexDate}；两条基准截至 ${latestBenchmarkDate}。` +
+      (missing ? ` 有 ${missing} 个指数交易日缺少基准数据。` : "");
+  if (error || missing) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "retry-button";
+    button.textContent = "重试基准数据";
+    button.addEventListener("click", async () => {
+      button.disabled = true;
+      button.textContent = "正在重试…";
+      try {
+        const fresh = IndexBenchmark.validateRows(await loadCSV("data/benchmark_history.csv"));
+        IndexBenchmark.apply(indexChart, fresh);
+        showBenchmarkStatus(fresh, null);
+      } catch (retryError) {
+        showBenchmarkStatus(rows, retryError);
+      }
+    });
+    area.appendChild(button);
+  }
+}
 
 loadCSV("data/risk_dashboard.csv")
   .then(renderRiskDashboard)
@@ -402,6 +476,7 @@ function renderRiskDashboard(rows) {
         <div class="risk-summary-value">
           <span class="risk-badge risk-${level}">${escapeHTML(row.Rating)}</span>
         </div>
+        ${DataStatus.riskDateNote(row)}
       </div>
     `;
   }).join("");
@@ -429,6 +504,7 @@ function renderRiskDashboard(rows) {
         <td>
           ${escapeHTML(row.CurrentValue)}
           <span class="risk-small">${escapeHTML(row.DataDate)}</span>
+          ${DataStatus.riskDateNote(row)}
         </td>
         <td>${escapeHTML(row.HistoryPercentile)}</td>
         <td>${escapeHTML(row.RecentChange)}</td>
@@ -445,6 +521,7 @@ function renderRiskDashboard(rows) {
     `<strong>指标说明：</strong><br>` +
     `<strong>Forward P/E</strong>：市场价格 ÷ 未来12个月预期盈利。数值越高，代表投资者为未来盈利支付的估值越高。<br>` +
     `<strong>Cushion</strong>：Earnings Yield（100 ÷ Forward P/E）− 10年期实际收益率。它表示股票盈利收益率相对无风险实际利率还剩多少“估值缓冲”；越高通常越宽松，越低代表估值对利率更敏感。<br>` +
+    `<strong>日期口径：</strong>Cushion 当前值、历史百分位及1M/3M变化，统一截至最近可配对的 P/E 观测日；利率取该日或之前最近可用值（最多相差10天）。数据较旧时会提示，不代表今日估值。<br>` +
     `<strong>Credit-to-GDP Gap</strong>：信贷占GDP比重相对长期趋势的偏离程度。明显为正且持续扩大，通常表示信用扩张过快、金融周期风险上升；负值一般表示没有明显信贷过热。<br>` +
     `<strong>HY OAS 3M Change</strong>：ICE BofA 美国高收益债期权调整利差相对约3个月前的变化。利差短期快速扩大通常代表信用风险和市场压力上升；评级按3个月变化：&lt;50bp 安全，50–&lt;100bp 注意，100–&lt;150bp 高风险，≥150bp 极高风险。<br>` +
     `<strong>C&amp;I SLOOS</strong>：美国银行收紧大中型企业商业与工业贷款标准的净比例。数值越高表示银行信贷条件越紧；评级：≤5% 安全，&gt;5–10% 注意，&gt;10–20% 高风险，&gt;20% 极高风险。<br>` +
@@ -495,7 +572,7 @@ function setReturn(elementId, value) {
 }
 
 function createIndexChart() {
-  new Chart(document.getElementById("indexChart"), {
+  indexChart = new Chart(document.getElementById("indexChart"), {
     type: "line",
     data: {
       labels: indexHistory.map(row => row.Date),
@@ -595,7 +672,6 @@ function createTable() {
   document.getElementById("tableArea").innerHTML = html;
 }
 </script>
-<script src="benchmark-chart.js?v=20260822-2352"></script>
 
 </body>
 </html>

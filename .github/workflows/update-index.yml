@@ -2,19 +2,17 @@ name: Update Index and Deploy
 
 on:
   workflow_dispatch:
-
   push:
-    branches:
-      - main
+    branches: [main]
     paths:
       - "scripts/**"
+      - "tests/**"
       - "*.html"
       - "*.js"
       - "data/rebalances.csv"
       - "data/official_share_checks.csv"
       - "requirements.txt"
       - ".github/workflows/update-index.yml"
-
   schedule:
     - cron: "37 16 * * 1-5"
       timezone: "America/New_York"
@@ -35,167 +33,76 @@ permissions:
 jobs:
   update-index:
     runs-on: ubuntu-latest
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
       - name: Check whether backup run is needed
         id: backup-check
         shell: bash
         run: |
           skip=false
-
           if [ "${{ github.event_name }}" = "schedule" ] && [ "${{ github.event.schedule }}" != "37 16 * * 1-5" ]; then
-            today_et="$(TZ=America/New_York date +%F)"
-            latest_index_date="$(tail -n 1 data/index_history.csv 2>/dev/null | cut -d',' -f1 | tr -d '\r')"
-            latest_benchmark_date="$(tail -n 1 data/benchmark_history.csv 2>/dev/null | cut -d',' -f1 | tr -d '\r')"
-
-            echo "Backup check: today=$today_et latest_index_date=$latest_index_date latest_benchmark_date=$latest_benchmark_date"
-
-            if [ "$latest_index_date" = "$today_et" ] && [ "$latest_benchmark_date" = "$today_et" ]; then
+            needed="$(python scripts/refresh_dashboard.py --backup-needed)"
+            if [ "$needed" = "false" ]; then
               skip=true
-              echo "An earlier scheduled update already saved today's index and benchmark data; this backup run will skip."
-            else
-              echo "Today's index or benchmark data is missing; this backup run will proceed."
             fi
           fi
-
           echo "skip_backup=$skip" >> "$GITHUB_OUTPUT"
 
-      - name: Set up Python
-        if: steps.backup-check.outputs.skip_backup != 'true'
-        uses: actions/setup-python@v6
-        with:
-          python-version: "3.12"
-
-      - name: Install dependencies
+      - name: Check calculation and loading regressions
         if: steps.backup-check.outputs.skip_backup != 'true'
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          python -m unittest discover -s tests
+          node --test tests/*.test.cjs
 
-      - name: Validate official rebalance inputs
+      - name: Refresh index, benchmarks and risk with status reporting
         if: steps.backup-check.outputs.skip_backup != 'true'
-        run: |
-          python scripts/validate_official_rebalances.py
-
-      - name: Update prices and weights
-        if: steps.backup-check.outputs.skip_backup != 'true'
-        run: |
-          python scripts/update_prices.py
-
-      - name: Update Nasdaq-100 and S&P 500 benchmarks
-        if: steps.backup-check.outputs.skip_backup != 'true'
-        continue-on-error: true
-        run: |
-          set +e
-          python scripts/update_benchmarks.py
-          status=$?
-          echo "benchmark_update_exit_code=$status"
-          exit 0
+        run: python scripts/refresh_dashboard.py
 
       - name: Update quarterly Top 125
         if: steps.backup-check.outputs.skip_backup != 'true'
         continue-on-error: true
-        run: |
-          python scripts/update_top100.py
+        run: python scripts/update_top100.py
 
       - name: Sanity-check Top 125 market caps
         if: steps.backup-check.outputs.skip_backup != 'true'
         continue-on-error: true
-        run: |
-          python scripts/sanitize_top100.py
-
-      - name: Update market risk dashboard
-        if: steps.backup-check.outputs.skip_backup != 'true'
-        continue-on-error: true
-        run: |
-          set +e
-          python scripts/update_risk_v3.py > data/risk_update.log 2>&1
-          status=$?
-          cat data/risk_update.log
-          echo "risk_base_exit_code=$status" >> data/risk_update.log
-          exit 0
-
-      - name: Update HY OAS risk indicator
-        if: steps.backup-check.outputs.skip_backup != 'true'
-        continue-on-error: true
-        run: |
-          set +e
-          python scripts/add_hy_oas.py >> data/risk_update.log 2>&1
-          status=$?
-          echo "hy_oas_exit_code=$status" >> data/risk_update.log
-          exit 0
-
-      - name: Update C&I SLOOS risk indicator
-        if: steps.backup-check.outputs.skip_backup != 'true'
-        continue-on-error: true
-        run: |
-          set +e
-          python scripts/add_ci_sloos.py >> data/risk_update.log 2>&1
-          status=$?
-          echo "ci_sloos_exit_code=$status" >> data/risk_update.log
-          exit 0
-
-      - name: Update S&P 500 suggested allocation
-        if: steps.backup-check.outputs.skip_backup != 'true'
-        continue-on-error: true
-        run: |
-          set +e
-          python scripts/run_allocation_card.py >> data/risk_update.log 2>&1
-          status=$?
-          echo "allocation_exit_code=$status" >> data/risk_update.log
-          cat data/risk_update.log
-          exit 0
-
-      - name: Save daily risk dashboard snapshot
-        if: steps.backup-check.outputs.skip_backup != 'true'
-        continue-on-error: true
-        run: |
-          set +e
-          python scripts/snapshot_risk_dashboard.py >> data/risk_update.log 2>&1
-          status=$?
-          echo "risk_snapshot_exit_code=$status" >> data/risk_update.log
-          cat data/risk_update.log
-          exit 0
+        run: python scripts/sanitize_top100.py
 
       - name: Save updated data
         if: steps.backup-check.outputs.skip_backup != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add data/*.csv data/*.log
-
+          git add data/*.csv data/*.log data/update_status.json
           if git diff --cached --quiet; then
             echo "No data changes to commit"
           else
-            git commit -m "Update daily index data"
-
-            # The branch can advance while this workflow is running (for example,
-            # an HTML/script edit can be committed from another session). Rebase
-            # the generated data commit onto the newest main and, if the same
-            # generated CSV/log files conflict, keep this workflow's freshly
-            # calculated version. Retry in case main advances again before push.
+            git commit -m "Update daily index data and refresh status"
             pushed=false
             for attempt in 1 2 3; do
-              echo "Push attempt $attempt"
               git fetch origin main
               git rebase -X theirs origin/main
-
               if git push origin HEAD:main; then
                 pushed=true
                 break
               fi
-
               sleep 2
             done
-
             if [ "$pushed" != "true" ]; then
               echo "Failed to push updated data after 3 attempts"
               exit 1
@@ -216,3 +123,9 @@ jobs:
         if: steps.backup-check.outputs.skip_backup != 'true'
         id: deployment
         uses: actions/deploy-pages@v4
+
+      # Publish the failure banner and the last complete data first, then fail
+      # the run. A green deployment alone must not imply every refresh worked.
+      - name: Verify dashboard refresh outcome
+        if: steps.backup-check.outputs.skip_backup != 'true'
+        run: python scripts/refresh_dashboard.py --check

@@ -357,6 +357,10 @@ def apply_summary_logic() -> None:
         frame.loc[mask, "Rating"] = label
         frame.loc[mask, "RatingLevel"] = float(level)
         frame.loc[mask, "Note"] = note
+        cushion_name = "Nasdaq Cushion" if indicator == "科技/AI估值风险" else "S&P 500 Cushion"
+        dates = frame.loc[frame["Indicator"].eq(cushion_name), "DataDate"]
+        if not dates.empty:
+            frame.loc[mask, "DataDate"] = str(dates.iloc[0])
 
     real_mask = (
         (frame["RowType"] == "Metric")
@@ -418,3 +422,4 @@ if __name__ == "__main__":
             "Any source caches successfully refreshed before the error were kept; "
             "the existing dashboard files were retained."
         )
+        raise
