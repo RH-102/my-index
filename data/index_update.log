@@ -8,10 +8,10 @@ Using 31 cached historical price point(s) where the current Yahoo/yfinance downl
 
 SUCCESS
 Backfill start: 2026-08-12
-Latest market date: 2026-09-23
-Trading days saved: 30
+Latest market date: 2026-09-24
+Trading days saved: 31
 Active rebalance: 2026-09-22
 Divisor: 19.944229196099
-Index level: 102.408671
-Daily return: -1.1221%
+Index level: 102.486193
+Daily return: 0.0757%
 Holdings: 57
