@@ -1,3 +1,4 @@
+--- update_risk_v3.py (exit 0) ---
 Fetching exact index forward P/E histories from History of Market...
 Nasdaq-100 forward P/E: 1239 observations, 2001-04-27 to 2026-08-05
 Saved local cache risk_source_nasdaq_forward_pe.csv: 1239 observations through 2026-08-05
@@ -15,7 +16,8 @@ Risk dashboard rows: 9
 Risk history rows: 5976
 Tech risk: 🟠高风险
 Overall valuation risk: 🔴极高风险
-risk_base_exit_code=0
+
+--- add_hy_oas.py (exit 0) ---
 HY OAS loaded from JSON mirror: 786 observations
 Saved risk_source_hy_oas.csv: 810 observations through 2026-09-22
 SUCCESS
@@ -24,14 +26,16 @@ HY OAS 3M ago: 2.65%
 HY OAS 3M change: +3bp
 HY OAS percentile: 69.9%
 HY OAS rating: 🟢安全
-hy_oas_exit_code=0
+
+--- add_ci_sloos.py (exit 0) ---
 C&I SLOOS loaded from Federal Reserve Board: 146 observations
 Saved risk_source_ci_sloos.csv: 146 observations through 2026-07-01
 SUCCESS
 C&I SLOOS current: 0.0%
 C&I SLOOS percentile: 51.4%
 C&I SLOOS rating: 🟢安全
-ci_sloos_exit_code=0
+
+--- run_allocation_card.py (exit 0) ---
 Saved risk_source_sp500_price.csv: 9501 observations through 2026-09-23
 SUCCESS
 S&P 500 date: 2026-09-23
@@ -42,6 +46,6 @@ Crisis R=0.000; R_eff=0.000; E=0.000; Gate=0
 Suggested S&P 500 allocation: 51.7%
 Published V3.2-Alpha S&P 500 suggested allocation as summary card
 V3.2-Alpha allocation: 100.0% (R_eff=0.000, E=0.000, Gate=0)
-allocation_exit_code=0
+
+--- snapshot_risk_dashboard.py (exit 0) ---
 Saved 11 dashboard rows for 2026-09-23; history now has 297 rows.
-risk_snapshot_exit_code=0
