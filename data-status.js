@@ -13,26 +13,15 @@
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" })[c]);
   }
 
-  function easternDate(now = new Date()) {
-    const parts = new Intl.DateTimeFormat("en-US", {
-      timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit"
-    }).formatToParts(now);
-    const get = type => parts.find(part => part.type === type).value;
-    return `${get("year")}-${get("month")}-${get("day")}`;
-  }
-
-  function riskDateNote(row, now = new Date()) {
+  function riskDateNote(row) {
     const limit = maxAgeDays[row.Indicator];
     if (limit === undefined) return "";
     const dates = String(row.DataDate || "").match(/\d{4}-\d{2}-\d{2}/g) || [];
     const date = dates.sort()[0];
     if (!date) return '<span class="data-warning">来源日期缺失，时效无法核验</span>';
-    const age = Math.floor((Date.parse(easternDate(now)) - Date.parse(date)) / 86400000);
     const summaryDate = row.RowType === "Summary"
       ? `<span class="risk-small">评级依据截至 ${escape(date)}</span>` : "";
-    return summaryDate + (age > limit
-      ? `<span class="data-warning">来源观测已距今 ${age} 天（提醒阈值 ${limit} 天），请结合数据日期阅读。</span>`
-      : "");
+    return summaryDate;
   }
 
   function render(report, now = new Date()) {
