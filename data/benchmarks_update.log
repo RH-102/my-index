@@ -1,7 +1,6 @@
 --- update_benchmarks.py (exit 0) ---
-Preserved 2 cached benchmark close(s) missing from the current Yahoo/yfinance download.
 SUCCESS
 Benchmark base date: 2026-08-12 = 100
-Latest benchmark date: 2026-09-24
-Nasdaq-100 return: +2.48%
-S&P 500 return: -0.57%
+Latest benchmark date: 2026-09-25
+Nasdaq-100 return: +2.91%
+S&P 500 return: -0.07%
