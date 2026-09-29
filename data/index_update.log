@@ -4,13 +4,14 @@ Official rebalance validation passed.
 
 --- update_prices.py (exit 0) ---
 Downloading history for 57 securities from 2026-08-12...
+Expected completed market date: 2026-09-28
 
 SUCCESS
 Backfill start: 2026-08-12
-Latest market date: 2026-09-25
-Trading days saved: 32
+Latest market date: 2026-09-28
+Trading days saved: 33
 Active rebalance: 2026-09-22
 Divisor: 19.944229196099
-Index level: 103.014030
-Daily return: 0.5150%
+Index level: 102.130091
+Daily return: -0.8581%
 Holdings: 57

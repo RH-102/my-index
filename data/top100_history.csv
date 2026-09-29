@@ -790,7 +790,7 @@ SnapshotDate,DataDate,Status,ListType,RuleVersion,Rank,Company,Symbol,Exchange,M
 2026-11-30,2026-09-28,Temporary,All,3-official-shares-on-snapshot-day,39,UnitedHealth Group Incorporated,UNH,NYSE,339140000000.0,$339.14B,StockAnalysis
 2026-11-30,2026-09-28,Temporary,All,3-official-shares-on-snapshot-day,40,GE Aerospace,GE,NYSE,330190000000.0,$330.19B,StockAnalysis
 2026-11-30,2026-09-28,Temporary,All,3-official-shares-on-snapshot-day,41,"Palo Alto Networks, Inc.",PANW,NASDAQ,320730000000.0,$320.73B,StockAnalysis
-2026-11-30,2026-09-28,Temporary,All,3-official-shares-on-snapshot-day,42,Morgan Stanley,MS.PRF,NYSE,308320000000.0,$308.32B,StockAnalysis
+2026-11-30,2026-09-28,Temporary,All,3-official-shares-on-snapshot-day,42,Morgan Stanley,MS.PRE,NYSE,304120000000.0,$304.12B,StockAnalysis
 2026-11-30,2026-09-28,Temporary,All,3-official-shares-on-snapshot-day,43,Arm Holdings plc,ARM,NASDAQ,302620000000.0,$302.62B,StockAnalysis
 2026-11-30,2026-09-28,Temporary,All,3-official-shares-on-snapshot-day,44,Philip Morris International Inc.,PM,NYSE,302000000000.0,$302.00B,StockAnalysis
 2026-11-30,2026-09-28,Temporary,All,3-official-shares-on-snapshot-day,45,"The Home Depot, Inc.",HD,NYSE,289220000000.0,$289.22B,StockAnalysis
