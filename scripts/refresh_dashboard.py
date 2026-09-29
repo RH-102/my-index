@@ -40,6 +40,10 @@ GROUPS = {
                     "sp500_allocation_history.csv", "sp500_allocation_state.csv",
                     "risk_dashboard_history.csv"],
     },
+    "valuation": {
+        "commands": ["update_valuation.py"],
+        "outputs": ["valuation_latest.csv", "valuation_reference_history.csv"],
+    },
 }
 
 # Monitoring thresholds, not claims about a source's publication schedule.
@@ -107,6 +111,16 @@ def validate_module(name: str) -> None:
     elif name == "benchmarks":
         dated_rows("benchmark_history.csv", ["Nasdaq100Close", "SP500Close",
                                             "Nasdaq100ReturnPct", "SP500ReturnPct"])
+    elif name == "valuation":
+        rows = read_csv("valuation_latest.csv")
+        expected = {"factset-sp500-ntm", "hom-ndx-etf-fy1fy2"}
+        if len(rows) != 2 or {row["SourceId"] for row in rows} != expected:
+            raise ValueError("Missing or duplicate current valuation references")
+        for row in rows:
+            value = float(row["ForwardPE"])
+            if not math.isfinite(value) or not 1 < value < 100:
+                raise ValueError("Invalid Forward P/E reference")
+            datetime.strptime(row["Date"], "%Y-%m-%d")
     else:
         rows = read_csv("risk_dashboard.csv")
         required = set(RISK_MAX_AGE_DAYS) | {"S&P 500建议持仓"}
@@ -163,6 +177,17 @@ def describe_module(name: str, result: dict, now: datetime, clock: dict) -> dict
             latest = max(row["Date"] for row in read_csv(file))
             result["data_date"] = latest
             result["freshness"] = "stale" if latest < clock["expected_market_date"] else "current"
+        elif name == "valuation":
+            indicators = []
+            for row in read_csv("valuation_latest.csv"):
+                age = (now.astimezone(ET).date() - datetime.strptime(row["Date"], "%Y-%m-%d").date()).days
+                indicators.append({"indicator": row["Index"], "data_date": row["Date"],
+                                   "age_days": age, "max_age_days": 14,
+                                   "stale": age < 0 or age > 14})
+            if not indicators:
+                raise ValueError("No dated valuation references")
+            result["indicators"] = indicators
+            result["freshness"] = "stale" if any(row["stale"] for row in indicators) else "current"
         else:
             indicators = []
             for row in read_csv("risk_dashboard.csv"):

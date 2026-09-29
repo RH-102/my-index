@@ -1,5 +1,5 @@
 (function () {
-  const names = { index: "指数", benchmarks: "基准", risk: "风险指标" };
+  const names = { index: "指数", benchmarks: "基准", valuation: "最新估值参考", risk: "历史风险指标" };
   const maxAgeDays = {
     "Nasdaq-100 Forward P/E": 14, "S&P 500 Forward P/E": 14,
     "Nasdaq Cushion": 14, "S&P 500 Cushion": 14,
@@ -33,6 +33,7 @@
       timeZone: "America/New_York", hour12: false
     });
     const html = Object.entries(names).map(([key, label]) => {
+      const sourceDated = ["risk", "valuation"].includes(key);
       const module = report.modules[key] || {};
       let style = "", title = "更新正常";
       let detail = module.data_date ? `数据截至 ${module.data_date}` : "各项来源日期见下表";
@@ -50,8 +51,8 @@
       }
       if (module.freshness === "stale") {
         style ||= "warning";
-        if (title === "更新正常") title = key === "risk" ? "部分来源数据较旧" : "数据尚未跟上交易日";
-        detail += key === "risk"
+        if (title === "更新正常") title = sourceDated ? "部分来源数据较旧" : "数据尚未跟上交易日";
+        detail += sourceDated
           ? `；${(module.indicators || []).filter(item => item.stale).length} 项超过提醒阈值`
           : `；应更新至 ${report.expected_market_date}`;
       }
