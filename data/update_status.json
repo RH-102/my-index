@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-29T01:34:34.220527+00:00",
+  "generated_at": "2026-09-29T01:48:08.224629+00:00",
   "expected_market_date": "2026-09-28",
   "next_update_due_at": "2026-09-29T23:00:00+00:00",
   "modules": {
@@ -77,6 +77,27 @@
         }
       ],
       "freshness": "stale"
+    },
+    "valuation": {
+      "state": "success",
+      "message": "更新完成",
+      "indicators": [
+        {
+          "indicator": "S&P 500",
+          "data_date": "2026-09-25",
+          "age_days": 3,
+          "max_age_days": 14,
+          "stale": false
+        },
+        {
+          "indicator": "Nasdaq-100",
+          "data_date": "2026-09-18",
+          "age_days": 10,
+          "max_age_days": 14,
+          "stale": false
+        }
+      ],
+      "freshness": "current"
     }
   }
 }
