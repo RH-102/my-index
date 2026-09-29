@@ -4,6 +4,9 @@ from datetime import datetime, timedelta
 import pandas as pd
 import yfinance as yf
 
+from price_download import (completed_market_dates, extract_closes,
+                            fill_missing_prices, required_price_dates, valid_price)
+
 
 # ============================================================
 # Configuration
@@ -121,19 +124,29 @@ print(
 # Download daily price history
 # ============================================================
 
-end_date = (datetime.now().date() + timedelta(days=1)).isoformat()
+calendar_dates = completed_market_dates(BACKFILL_START)
+if not calendar_dates or calendar_dates[0] != BACKFILL_START:
+    raise RuntimeError(f"No completed trading calendar starting on {BACKFILL_START}.")
+expected_market_date = calendar_dates[-1]
+print(f"Expected completed market date: {expected_market_date}", flush=True)
+end_date = (datetime.fromisoformat(expected_market_date).date() + timedelta(days=1)).isoformat()
 
-prices = yf.download(
-    tickers=symbols,
-    start=BACKFILL_START,
-    end=end_date,
-    interval="1d",
-    auto_adjust=False,
-    group_by="ticker",
-    threads=True,
-    progress=False,
-    multi_level_index=True,
-)
+try:
+    prices = yf.download(
+        tickers=symbols,
+        start=BACKFILL_START,
+        end=end_date,
+        interval="1d",
+        auto_adjust=False,
+        group_by="ticker",
+        threads=True,
+        progress=False,
+        multi_level_index=True,
+        timeout=15,
+    )
+except Exception as exc:
+    print(f"Batch download failed; retrying missing closes individually: {exc}", flush=True)
+    prices = pd.DataFrame()
 
 
 # ============================================================
@@ -171,7 +184,7 @@ if HOLDINGS_HISTORY_FILE.exists():
         cached_history = cached_history.dropna(subset=["Price"])
 
         for row in cached_history.itertuples(index=False):
-            if row.Symbol in cached_price_history:
+            if row.Symbol in cached_price_history and valid_price(row.Price):
                 cached_price_history[row.Symbol][row.Date] = float(row.Price)
 
 if INDEX_HISTORY_FILE.exists():
@@ -187,24 +200,13 @@ if INDEX_HISTORY_FILE.exists():
             .tolist()
         )
 
-downloaded_price_history = {}
-
-for symbol in symbols:
-    downloaded_price_history[symbol] = {}
-
-    try:
-        close = prices[symbol]["Close"].dropna()
-        downloaded_price_history[symbol] = {
-            idx.date().isoformat(): float(value)
-            for idx, value in close.items()
-        }
-    except Exception:
-        pass
+downloaded_price_history = {
+    symbol: extract_closes(prices, symbol) for symbol in symbols
+}
 
 # Fresh provider data wins. The saved history is only a fallback for holes in
 # dates that were already computed successfully on earlier runs.
 price_history = {}
-missing_symbols = []
 fallback_points = 0
 
 for symbol in symbols:
@@ -218,81 +220,31 @@ for symbol in symbols:
 
     merged.update(downloaded)
 
-    if not merged:
-        missing_symbols.append(symbol)
-        continue
-
     price_history[symbol] = merged
 
-if missing_symbols:
-    print("\nMissing price history:")
-    for symbol in missing_symbols:
-        print(f" - {symbol}")
+# Never let one ticker's missing latest bar define the index's calendar.
+# Verify every completed exchange session, including both baskets at rebalance.
+if existing_market_dates and existing_market_dates[-1] > expected_market_date:
     raise RuntimeError(
-        "Some securities have no downloaded or cached price history. "
-        "No index data was saved."
+        f"Saved index date {existing_market_dates[-1]} is later than the completed "
+        f"market date {expected_market_date}; refusing to truncate existing data."
     )
-
-downloaded_calendar_dates = sorted(
-    date
-    for date in downloaded_price_history.get(ANCHOR_SYMBOL, {})
-    if date >= BACKFILL_START
-)
-
-if not downloaded_calendar_dates:
-    raise RuntimeError(
-        f"No downloaded trading dates were found for {ANCHOR_SYMBOL}."
-    )
-
-downloaded_latest_date = downloaded_calendar_dates[-1]
-
-# Never let a temporary provider regression erase a market date that is
-# already stored. This can happen around late-evening Yahoo/yfinance refreshes.
-if existing_market_dates:
-    existing_latest_date = existing_market_dates[-1]
-
-    if existing_latest_date > downloaded_latest_date:
-        print(
-            "\nProvider data is temporarily stale; preserving existing "
-            f"index data through {existing_latest_date} instead of "
-            f"regressing to {downloaded_latest_date}."
+for effective_date in effective_dates:
+    if effective_date <= expected_market_date and effective_date not in calendar_dates:
+        raise RuntimeError(
+            f"{effective_date}: rebalance EffectiveDate is not a trading day."
         )
-        raise SystemExit(0)
-
-# Use the provider's trading calendar for new dates, while retaining dates
-# that have already been successfully stored. This protects against Yahoo
-# temporarily omitting an older historical day from the anchor ticker.
-calendar_dates = sorted(
-    set(downloaded_calendar_dates)
-    | {
-        date
-        for date in existing_market_dates
-        if BACKFILL_START <= date <= downloaded_latest_date
-    }
+required = required_price_dates(
+    calendar_dates,
+    {date: snapshot["Symbol"].tolist() for date, snapshot in snapshots.items()},
 )
-
-if not calendar_dates:
-    raise RuntimeError("No trading dates were found.")
-
-if BACKFILL_START not in calendar_dates:
-    raise RuntimeError(
-        f"{BACKFILL_START} is not available for {ANCHOR_SYMBOL}."
-    )
+fill_missing_prices(price_history, required)
 
 if fallback_points:
     print(
         f"Using {fallback_points} cached historical price point(s) "
         "where the current Yahoo/yfinance download has gaps."
     )
-
-# Rebalances are close-of-day events, so every stored effective date must be
-# an actual trading date once that date is in the historical window.
-for effective_date in effective_dates:
-    if effective_date <= calendar_dates[-1] and effective_date not in calendar_dates:
-        raise RuntimeError(
-            f"{effective_date}: rebalance EffectiveDate is not a trading day."
-        )
-
 
 # ============================================================
 # Helpers
