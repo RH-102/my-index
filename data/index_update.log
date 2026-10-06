@@ -4,20 +4,72 @@ Official rebalance validation passed.
 
 --- update_prices.py (exit 0) ---
 Downloading history for 57 securities from 2026-08-12...
-Expected completed market date: 2026-10-02
-
-1 Failed download:
-['RTX']: OperationalError('database is locked')
-Missing closing prices (retry 1/3): RTX: 2026-10-02
+Expected completed market date: 2026-10-05
+Missing closing prices (retry 1/3): AAPL: 2026-10-05; ABBV: 2026-10-05; AMAT: 2026-10-05; AMD: 2026-10-05; AMGN: 2026-10-05; AMZN: 2026-10-05; ANET: 2026-10-05; ARM: 2026-10-05; ASML: 2026-10-05; AVGO: 2026-10-05; AZN: 2026-10-05; BABA: 2026-10-05; BHP: 2026-10-05; CAT: 2026-10-05; COST: 2026-10-05; CRWD: 2026-10-05; CSCO: 2026-10-05; CVX: 2026-10-05; DELL: 2026-10-05; GE: 2026-10-05; GEV: 2026-10-05; GOOGL: 2026-10-05; HD: 2026-10-05; IBM: 2026-10-05; INTC: 2026-10-05; JNJ: 2026-10-05; KLAC: 2026-10-05; KO: 2026-10-05; LIN: 2026-10-05; LLY: 2026-10-05; LRCX: 2026-10-05; META: 2026-10-05; MRK: 2026-10-05; MSFT: 2026-10-05; MU: 2026-10-05; NFLX: 2026-10-05; NVDA: 2026-10-05; NVS: 2026-10-05; ORCL: 2026-10-05; PANW: 2026-10-05; PG: 2026-10-05; PLTR: 2026-10-05; PM: 2026-10-05; RTX: 2026-10-05; SAP: 2026-10-05; SHEL: 2026-10-05; SKHY: 2026-10-05; SNDK: 2026-10-05; SPCX: 2026-10-05; TM: 2026-10-05; TMO: 2026-10-05; TSLA: 2026-10-05; TSM: 2026-10-05; TXN: 2026-10-05; UNH: 2026-10-05; WMT: 2026-10-05; XOM: 2026-10-05
+AAPL: recovered 1/1 closes
+ABBV: recovered 1/1 closes
+AMAT: recovered 1/1 closes
+AMD: recovered 1/1 closes
+AMGN: recovered 1/1 closes
+AMZN: recovered 1/1 closes
+ANET: recovered 1/1 closes
+ARM: recovered 1/1 closes
+ASML: recovered 1/1 closes
+AVGO: recovered 1/1 closes
+AZN: recovered 1/1 closes
+BABA: recovered 1/1 closes
+BHP: recovered 1/1 closes
+CAT: recovered 1/1 closes
+COST: recovered 1/1 closes
+CRWD: recovered 1/1 closes
+CSCO: recovered 1/1 closes
+CVX: recovered 1/1 closes
+DELL: recovered 1/1 closes
+GE: recovered 1/1 closes
+GEV: recovered 1/1 closes
+GOOGL: recovered 1/1 closes
+HD: recovered 1/1 closes
+IBM: recovered 1/1 closes
+INTC: recovered 1/1 closes
+JNJ: recovered 1/1 closes
+KLAC: recovered 1/1 closes
+KO: recovered 1/1 closes
+LIN: recovered 1/1 closes
+LLY: recovered 1/1 closes
+LRCX: recovered 1/1 closes
+META: recovered 1/1 closes
+MRK: recovered 1/1 closes
+MSFT: recovered 1/1 closes
+MU: recovered 1/1 closes
+NFLX: recovered 1/1 closes
+NVDA: recovered 1/1 closes
+NVS: recovered 1/1 closes
+ORCL: recovered 1/1 closes
+PANW: recovered 1/1 closes
+PG: recovered 1/1 closes
+PLTR: recovered 1/1 closes
+PM: recovered 1/1 closes
 RTX: recovered 1/1 closes
-Using 36 cached historical price point(s) where the current Yahoo/yfinance download has gaps.
+SAP: recovered 1/1 closes
+SHEL: recovered 1/1 closes
+SKHY: recovered 1/1 closes
+SNDK: recovered 1/1 closes
+SPCX: recovered 1/1 closes
+TM: recovered 1/1 closes
+TMO: recovered 1/1 closes
+TSLA: recovered 1/1 closes
+TSM: recovered 1/1 closes
+TXN: recovered 1/1 closes
+UNH: recovered 1/1 closes
+WMT: recovered 1/1 closes
+XOM: recovered 1/1 closes
 
 SUCCESS
 Backfill start: 2026-08-12
-Latest market date: 2026-10-02
-Trading days saved: 37
+Latest market date: 2026-10-05
+Trading days saved: 38
 Active rebalance: 2026-09-22
 Divisor: 19.944229196099
-Index level: 103.717797
-Daily return: 1.4224%
+Index level: 104.770021
+Daily return: 1.0145%
 Holdings: 57
