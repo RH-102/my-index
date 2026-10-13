@@ -36,16 +36,16 @@ C&I SLOOS percentile: 51.4%
 C&I SLOOS rating: 🟢安全
 
 --- run_allocation_card.py (exit 0) ---
-Saved risk_source_sp500_price.csv: 9513 observations through 2026-10-09
+Saved risk_source_sp500_price.csv: 9514 observations through 2026-10-12
 SUCCESS
-S&P 500 date: 2026-10-09
-S&P 500 close: 7811.54; ATH: 7818.93; drawdown: 0.09%
-Daily estimated Forward P/E: 20.35x
-Cushion: 2.00%; V=0.202; D_eff=0.002; O=0.132
+S&P 500 date: 2026-10-12
+S&P 500 close: 7807.24; ATH: 7818.93; drawdown: 0.15%
+Daily estimated Forward P/E: 20.34x
+Cushion: 2.01%; V=0.203; D_eff=0.002; O=0.133
 Crisis R=0.000; R_eff=0.000; E=0.000; Gate=0
 Suggested S&P 500 allocation: 50.0%
 Published V3.2-Alpha S&P 500 suggested allocation as summary card
 V3.2-Alpha allocation: 100.0% (R_eff=0.000, E=0.000, Gate=0)
 
 --- snapshot_risk_dashboard.py (exit 0) ---
-Saved 11 dashboard rows for 2026-10-09; history now has 429 rows.
+Saved 11 dashboard rows for 2026-10-12; history now has 440 rows.
