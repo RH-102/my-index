@@ -4,16 +4,14 @@ Official rebalance validation passed.
 
 --- update_prices.py (exit 0) ---
 Downloading history for 57 securities from 2026-08-12...
-Expected completed market date: 2026-10-12
-Missing closing prices (retry 1/3): SHEL: 2026-10-12
-SHEL: recovered 1/1 closes
+Expected completed market date: 2026-10-13
 
 SUCCESS
 Backfill start: 2026-08-12
-Latest market date: 2026-10-12
-Trading days saved: 43
+Latest market date: 2026-10-13
+Trading days saved: 44
 Active rebalance: 2026-09-22
 Divisor: 19.944229196099
-Index level: 103.761132
-Daily return: -0.3384%
+Index level: 103.478145
+Daily return: -0.2727%
 Holdings: 57
