@@ -1,0 +1,76 @@
+{
+  "id": "2026-10-12-bms-ipf",
+  "date": "2026-10-12",
+  "category": "BIOPHARMA · CLINICAL DEVELOPMENT",
+  "title": "Why Did the Lower Dose Work Better?",
+  "subtitle": "Bristol Myers Squibb · Phase 3 ALOFT-IPF",
+  "source": {
+    "name": "Bristol Myers Squibb · Oct 12, 2026",
+    "url": "https://news.bms.com/news/corporate-financial/2026/Bristol-Myers-Squibb-Announces-Phase-3-ALOFT-IPF-Trial-Evaluating-Admilparant-in-Adults-with-Idiopathic-Pulmonary-Fibrosis-Met-Primary-Endpoint/default.aspx"
+  },
+  "secondarySource": {
+    "name": "Reuters",
+    "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/bristol-myers-lung-disease-drug-meets-main-goal-late-stage-trial-2026-10-12/"
+  },
+  "text": "On Monday, Bristol Myers Squibb shared results from a Phase Three study of admilparant, an experimental medicine for idiopathic pulmonary fibrosis. This condition causes progressive scarring in the lungs, making it harder for patients to breathe. In the trial, people receiving the lower dose showed a smaller decline in lung function over fifty-two weeks than those taking a placebo. But there was a surprise: the higher dose did not reach statistical significance on the study's main measure. The company said the medicine was generally well tolerated in both dose groups. Scientists now want to examine the full data to understand why the results differed. The findings highlight a lesson in drug development: a higher dose does not always lead to a better outcome. Bristol Myers plans to discuss the results with regulators and present more detailed findings at a future medical meeting. For patients, this is encouraging news, but the medicine is still investigational.",
+  "questions": [
+    {
+      "q": "What was the main finding in the Phase 3 trial?",
+      "choices": [
+        "Both doses had the same positive result.",
+        "The lower dose met the main goal; the higher dose did not.",
+        "The trial was stopped because of safety concerns."
+      ],
+      "correct": 1,
+      "explanation": "The lower dose reached the primary endpoint, while the higher dose did not reach statistical significance."
+    },
+    {
+      "q": "What will researchers need to do next?",
+      "choices": [
+        "Examine the complete trial data.",
+        "Immediately launch the drug worldwide.",
+        "Stop all further clinical studies."
+      ],
+      "correct": 0,
+      "explanation": "The company intends to assess the full results and engage with regulators."
+    }
+  ],
+  "vocab": [
+    {
+      "term": "idiopathic pulmonary fibrosis",
+      "meaning": "特发性肺纤维化",
+      "note": "idiopathic = 病因不明；pulmonary = 肺部的；fibrosis = 纤维化",
+      "example": "The trial enrolled patients with idiopathic pulmonary fibrosis."
+    },
+    {
+      "term": "placebo",
+      "meaning": "安慰剂",
+      "note": "常见搭配：compared with placebo / placebo-controlled trial",
+      "example": "The lower dose was compared with a placebo."
+    },
+    {
+      "term": "statistical significance",
+      "meaning": "统计学显著性",
+      "note": "常见搭配：reach statistical significance / statistically significant",
+      "example": "The higher dose did not reach statistical significance."
+    }
+  ],
+  "recognition": [
+    {
+      "term": "making it harder",
+      "tip": "注意 making it 的弱读与连读。",
+      "context": "making it harder for patients to breathe"
+    },
+    {
+      "term": "a smaller decline",
+      "tip": "注意 a 的弱读，以及 smaller decline 的节奏。",
+      "context": "showed a smaller decline in lung function"
+    },
+    {
+      "term": "does not always lead to",
+      "tip": "注意 does not 的弱读与 lead to 的连读。",
+      "context": "does not always lead to a better outcome"
+    }
+  ],
+  "modelSummary": "Bristol Myers Squibb reported mixed Phase 3 results for an experimental lung disease drug. The lower dose met the trial's main goal, while the higher dose did not reach statistical significance. Researchers need to study the full data before drawing conclusions."
+}
