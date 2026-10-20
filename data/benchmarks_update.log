@@ -1,6 +1,6 @@
 --- update_benchmarks.py (exit 0) ---
 SUCCESS
 Benchmark base date: 2026-08-12 = 100
-Latest benchmark date: 2026-10-19
-Nasdaq-100 return: -0.72%
-S&P 500 return: -0.75%
+Latest benchmark date: 2026-10-20
+Nasdaq-100 return: -0.85%
+S&P 500 return: -0.46%
