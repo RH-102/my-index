@@ -5,26 +5,26 @@ Saved local cache risk_source_nasdaq_forward_pe.csv: 1239 observations through 2
 S&P 500 forward P/E: 1495 observations, 1990-06-29 to 2026-08-05
 Saved local cache risk_source_sp500_forward_pe.csv: 1495 observations through 2026-08-05
 Fetching FRED DFII10 and DRSFRMACBS...
-Saved local cache risk_source_dfii10.csv: 5954 observations through 2026-10-20
-Local DFII10 history: 5954 observations, 2003-01-02 to 2026-10-20
+Saved local cache risk_source_dfii10.csv: 5955 observations through 2026-10-21
+Local DFII10 history: 5955 observations, 2003-01-02 to 2026-10-21
 Saved local cache risk_source_mortgage.csv: 142 observations through 2026-06-30
 Fetching BIS US credit-to-GDP gap...
 BIS credit-to-GDP gap: 274 observations through 2026-03-31
 Saved local cache risk_source_credit_gap.csv: 274 observations through 2026-03-31
 SUCCESS
 Risk dashboard rows: 9
-Risk history rows: 5994
+Risk history rows: 5995
 Tech risk: 🟠高风险
 Overall valuation risk: 🔴极高风险
 
 --- add_hy_oas.py (exit 0) ---
-HY OAS loaded from JSON mirror: 784 observations
-Saved risk_source_hy_oas.csv: 828 observations through 2026-10-16
+HY OAS loaded from JSON mirror: 120 observations
+Saved risk_source_hy_oas.csv: 930 observations through 2026-10-16
 SUCCESS
 HY OAS current: 3.31%
 HY OAS 3M ago: 2.71%
 HY OAS 3M change: +60bp
-HY OAS percentile: 95.7%
+HY OAS percentile: 94.6%
 HY OAS rating: 🟡注意
 
 --- add_ci_sloos.py (exit 0) ---
@@ -36,16 +36,16 @@ C&I SLOOS percentile: 51.4%
 C&I SLOOS rating: 🟢安全
 
 --- run_allocation_card.py (exit 0) ---
-Saved risk_source_sp500_price.csv: 9520 observations through 2026-10-20
+Saved risk_source_sp500_price.csv: 9521 observations through 2026-10-21
 SUCCESS
-S&P 500 date: 2026-10-20
-S&P 500 close: 7712.57; ATH: 7818.93; drawdown: 1.36%
-Daily estimated Forward P/E: 20.09x
-Cushion: 2.21%; V=0.283; D_eff=0.023; O=0.192
+S&P 500 date: 2026-10-21
+S&P 500 close: 7757.17; ATH: 7818.93; drawdown: 0.79%
+Daily estimated Forward P/E: 20.21x
+Cushion: 2.19%; V=0.275; D_eff=0.013; O=0.184
 Crisis R=0.010; R_eff=0.010; E=0.000; Gate=0
-Suggested S&P 500 allocation: 51.3%
+Suggested S&P 500 allocation: 50.8%
 Published V3.2-Alpha S&P 500 suggested allocation as summary card
 V3.2-Alpha allocation: 99.7% (R_eff=0.010, E=0.000, Gate=0)
 
 --- snapshot_risk_dashboard.py (exit 0) ---
-Saved 11 dashboard rows for 2026-10-20; history now has 506 rows.
+Saved 11 dashboard rows for 2026-10-21; history now has 517 rows.
