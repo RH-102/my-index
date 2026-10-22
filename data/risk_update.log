@@ -5,26 +5,26 @@ Saved local cache risk_source_nasdaq_forward_pe.csv: 1239 observations through 2
 S&P 500 forward P/E: 1495 observations, 1990-06-29 to 2026-08-05
 Saved local cache risk_source_sp500_forward_pe.csv: 1495 observations through 2026-08-05
 Fetching FRED DFII10 and DRSFRMACBS...
-Saved local cache risk_source_dfii10.csv: 5955 observations through 2026-10-21
-Local DFII10 history: 5955 observations, 2003-01-02 to 2026-10-21
+Saved local cache risk_source_dfii10.csv: 5956 observations through 2026-10-22
+Local DFII10 history: 5956 observations, 2003-01-02 to 2026-10-22
 Saved local cache risk_source_mortgage.csv: 142 observations through 2026-06-30
 Fetching BIS US credit-to-GDP gap...
 BIS credit-to-GDP gap: 274 observations through 2026-03-31
 Saved local cache risk_source_credit_gap.csv: 274 observations through 2026-03-31
 SUCCESS
 Risk dashboard rows: 9
-Risk history rows: 5995
-Tech risk: 🟠高风险
+Risk history rows: 5996
+Tech risk: 🟡注意
 Overall valuation risk: 🔴极高风险
 
 --- add_hy_oas.py (exit 0) ---
-HY OAS loaded from JSON mirror: 120 observations
-Saved risk_source_hy_oas.csv: 930 observations through 2026-10-16
+HY OAS loaded from JSON mirror: 785 observations
+Saved risk_source_hy_oas.csv: 932 observations through 2026-10-20
 SUCCESS
-HY OAS current: 3.31%
-HY OAS 3M ago: 2.71%
-HY OAS 3M change: +60bp
-HY OAS percentile: 94.6%
+HY OAS current: 3.33%
+HY OAS 3M ago: 2.69%
+HY OAS 3M change: +64bp
+HY OAS percentile: 95.3%
 HY OAS rating: 🟡注意
 
 --- add_ci_sloos.py (exit 0) ---
@@ -36,16 +36,25 @@ C&I SLOOS percentile: 51.4%
 C&I SLOOS rating: 🟢安全
 
 --- run_allocation_card.py (exit 0) ---
-Saved risk_source_sp500_price.csv: 9521 observations through 2026-10-21
+/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/yfinance/utils.py:568: Pandas4Warning: The inplace keyword in DataFrame.sort_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  quotes.sort_index(inplace=True)
+/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/yfinance/multi.py:220: Pandas4Warning: The inplace keyword in DataFrame.rename is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  data.rename(columns=ctx.isins, inplace=True)
+/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/yfinance/multi.py:224: Pandas4Warning: The inplace keyword in DataFrame.sort_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  data.sort_index(level=0, axis=1, inplace=True)
+Saved risk_source_sp500_price.csv: 9522 observations through 2026-10-22
 SUCCESS
-S&P 500 date: 2026-10-21
-S&P 500 close: 7757.17; ATH: 7818.93; drawdown: 0.79%
-Daily estimated Forward P/E: 20.21x
-Cushion: 2.19%; V=0.275; D_eff=0.013; O=0.184
-Crisis R=0.010; R_eff=0.010; E=0.000; Gate=0
-Suggested S&P 500 allocation: 50.8%
+S&P 500 date: 2026-10-22
+S&P 500 close: 7663.43; ATH: 7818.93; drawdown: 1.99%
+Daily estimated Forward P/E: 19.96x
+Cushion: 2.37%; V=0.348; D_eff=0.033; O=0.238
+Crisis R=0.014; R_eff=0.014; E=0.000; Gate=0
+Suggested S&P 500 allocation: 53.9%
 Published V3.2-Alpha S&P 500 suggested allocation as summary card
-V3.2-Alpha allocation: 99.7% (R_eff=0.010, E=0.000, Gate=0)
+V3.2-Alpha allocation: 99.6% (R_eff=0.014, E=0.000, Gate=0)
 
 --- snapshot_risk_dashboard.py (exit 0) ---
-Saved 11 dashboard rows for 2026-10-21; history now has 517 rows.
+Saved 11 dashboard rows for 2026-10-22; history now has 528 rows.
