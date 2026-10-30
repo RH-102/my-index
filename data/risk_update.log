@@ -5,27 +5,27 @@ Saved local cache risk_source_nasdaq_forward_pe.csv: 1239 observations through 2
 S&P 500 forward P/E: 1495 observations, 1990-06-29 to 2026-08-05
 Saved local cache risk_source_sp500_forward_pe.csv: 1495 observations through 2026-08-05
 Fetching FRED DFII10 and DRSFRMACBS...
-Saved local cache risk_source_dfii10.csv: 5960 observations through 2026-10-28
-Local DFII10 history: 5960 observations, 2003-01-02 to 2026-10-28
+Saved local cache risk_source_dfii10.csv: 5961 observations through 2026-10-29
+Local DFII10 history: 5961 observations, 2003-01-02 to 2026-10-29
 Saved local cache risk_source_mortgage.csv: 142 observations through 2026-06-30
 Fetching BIS US credit-to-GDP gap...
 BIS credit-to-GDP gap: 274 observations through 2026-03-31
 Saved local cache risk_source_credit_gap.csv: 274 observations through 2026-03-31
 SUCCESS
 Risk dashboard rows: 9
-Risk history rows: 6000
+Risk history rows: 6001
 Tech risk: 🟡注意
 Overall valuation risk: 🔴极高风险
 
 --- add_hy_oas.py (exit 0) ---
-HY OAS loaded from JSON mirror: 784 observations
-Saved risk_source_hy_oas.csv: 936 observations through 2026-10-26
+HY OAS loaded from JSON mirror: 785 observations
+Saved risk_source_hy_oas.csv: 937 observations through 2026-10-27
 SUCCESS
-HY OAS current: 3.30%
-HY OAS 3M ago: 2.79%
-HY OAS 3M change: +51bp
-HY OAS percentile: 91.6%
-HY OAS rating: 🟡注意
+HY OAS current: 3.18%
+HY OAS 3M ago: 2.81%
+HY OAS 3M change: +37bp
+HY OAS percentile: 86.7%
+HY OAS rating: 🟢安全
 
 --- add_ci_sloos.py (exit 0) ---
 C&I SLOOS loaded from Federal Reserve Board: 146 observations
@@ -45,16 +45,16 @@ See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace 
 /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/yfinance/multi.py:224: Pandas4Warning: The inplace keyword in DataFrame.sort_index is deprecated and will be removed in a future version (PDEP-8).
 See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
   data.sort_index(level=0, axis=1, inplace=True)
-Saved risk_source_sp500_price.csv: 9526 observations through 2026-10-28
+Saved risk_source_sp500_price.csv: 9527 observations through 2026-10-29
 SUCCESS
-S&P 500 date: 2026-10-28
-S&P 500 close: 7743.98; ATH: 7818.93; drawdown: 0.96%
-Daily estimated Forward P/E: 20.17x
-Cushion: 2.29%; V=0.315; D_eff=0.016; O=0.210
-Crisis R=0.001; R_eff=0.001; E=0.000; Gate=0
-Suggested S&P 500 allocation: 52.6%
+S&P 500 date: 2026-10-29
+S&P 500 close: 7720.39; ATH: 7818.93; drawdown: 1.26%
+Daily estimated Forward P/E: 20.11x
+Cushion: 2.34%; V=0.337; D_eff=0.021; O=0.226
+Crisis R=0.000; R_eff=0.000; E=0.000; Gate=0
+Suggested S&P 500 allocation: 53.6%
 Published V3.2-Alpha S&P 500 suggested allocation as summary card
-V3.2-Alpha allocation: 100.0% (R_eff=0.001, E=0.000, Gate=0)
+V3.2-Alpha allocation: 100.0% (R_eff=0.000, E=0.000, Gate=0)
 
 --- snapshot_risk_dashboard.py (exit 0) ---
-Saved 11 dashboard rows for 2026-10-28; history now has 572 rows.
+Saved 11 dashboard rows for 2026-10-29; history now has 583 rows.
