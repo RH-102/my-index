@@ -749,253 +749,253 @@ SnapshotDate,DataDate,Status,ListType,RuleVersion,Rank,Company,Symbol,Exchange,M
 2026-08-31,2026-08-31,Official,ExFinancials,2-company-level-financials,123,Marathon Petroleum Corporation,MPC,NYSE,104840000000.0,$104.84B,StockAnalysis
 2026-08-31,2026-08-31,Official,ExFinancials,2-company-level-financials,124,AppLovin Corporation,APP,NASDAQ,104430000000.0,$104.43B,StockAnalysis
 2026-08-31,2026-08-31,Official,ExFinancials,2-company-level-financials,125,Valero Energy Corporation,VLO,NYSE,103340000000.0,$103.34B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,1,Apple Inc.,AAPL,NASDAQ,5030000000000.0,$5.03T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,2,NVIDIA Corporation,NVDA,NASDAQ,4940000000000.0,$4.94T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,3,Microsoft Corporation,MSFT,NASDAQ,3880000000000.0,$3.88T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,4,Alphabet Inc.,GOOGL,NASDAQ,3440000000000.0,$3.44T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,5,"Amazon.com, Inc.",AMZN,NASDAQ,2600000000000.0,$2.60T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,6,Space Exploration Technologies Corp.,SPCX,NASDAQ,1830000000000.0,$1.83T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,7,Taiwan Semiconductor Manufacturing Company Limited,TSM,NYSE,1770000000000.0,$1.77T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,8,"Tesla, Inc.",TSLA,NASDAQ,1580000000000.0,$1.58T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,9,"Meta Platforms, Inc.",META,NASDAQ,1570000000000.0,$1.57T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,10,Broadcom Inc.,AVGO,NASDAQ,1560000000000.0,$1.56T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,11,Eli Lilly and Company,LLY,NYSE,1260000000000.0,$1.26T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,12,Berkshire Hathaway Inc.,BRK.B,NYSE,1160000000000.0,$1.16T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,13,"Micron Technology, Inc.",MU,NASDAQ,1000000000000.0,$1.00T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,14,Walmart Inc.,WMT,NASDAQ,979900000000.0,$979.90B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,15,JPMorgan Chase & Co.,JPM,NYSE,895040000000.0,$895.04B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,16,"Advanced Micro Devices, Inc.",AMD,NASDAQ,824070000000.0,$824.07B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,17,SK hynix Inc.,SKHY,NASDAQ,774890000000.0,$774.89B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,18,ExxonMobil Holdings Corporation,XOM,NYSE,769960000000.0,$769.96B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,19,Visa Inc.,V,NYSE,769070000000.0,$769.07B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,20,Johnson & Johnson,JNJ,NYSE,657680000000.0,$657.68B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,21,ASML Holding N.V.,ASML,NASDAQ,564450000000.0,$564.45B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,22,Mastercard Incorporated,MA,NYSE,555820000000.0,$555.82B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,23,AbbVie Inc.,ABBV,NYSE,521110000000.0,$521.11B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,24,Chevron Corporation,CVX,NYSE,462000000000.0,$462.00B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,25,Costco Wholesale Corporation,COST,NASDAQ,448570000000.0,$448.57B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,26,Palantir Technologies Inc.,PLTR,NASDAQ,442430000000.0,$442.43B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,27,"Cisco Systems, Inc.",CSCO,NASDAQ,411450000000.0,$411.45B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,28,The Coca-Cola Company,KO,NYSE,404720000000.0,$404.72B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,29,Oracle Corporation,ORCL,NYSE,396130000000.0,$396.13B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,30,The Procter & Gamble Company,PG,NYSE,374480000000.0,$374.48B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,31,"Merck & Co., Inc.",MRK,NYSE,368890000000.0,$368.89B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,32,UnitedHealth Group Incorporated,UNH,NYSE,365290000000.0,$365.29B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,33,Intel Corporation,INTC,NASDAQ,349190000000.0,$349.19B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,34,Bank of America Corporation,BAC,NYSE,346200000000.0,$346.20B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,35,"The Home Depot, Inc.",HD,NYSE,328440000000.0,$328.44B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,36,Philip Morris International Inc.,PM,NYSE,325430000000.0,$325.43B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,37,GE Aerospace,GE,NYSE,311870000000.0,$311.87B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,38,Shell plc,SHEL,NYSE,311460000000.0,$311.46B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,39,"Applied Materials, Inc.",AMAT,NASDAQ,309570000000.0,$309.57B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,40,Novartis AG,NVS,NYSE,306110000000.0,$306.11B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,41,"Palo Alto Networks, Inc.",PANW,NASDAQ,299560000000.0,$299.56B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,42,Lam Research Corporation,LRCX,NASDAQ,298690000000.0,$298.69B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,43,HSBC Holdings plc,HSBC,NYSE,292800000000.0,$292.80B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,44,AstraZeneca PLC,AZN,NYSE,289740000000.0,$289.74B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,45,Morgan Stanley,MS,NYSE,288430000000.0,$288.43B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,46,Caterpillar Inc.,CAT,NYSE,286260000000.0,$286.26B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,47,Royal Bank of Canada,RY,NYSE,281130000000.0,$281.13B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,48,"The Goldman Sachs Group, Inc.",GS.PRD,NYSE,280880000000.0,$280.88B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,49,Texas Instruments Incorporated,TXN,NASDAQ,275020000000.0,$275.02B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,50,SAP SE,SAP,NYSE,273350000000.00003,$273.35B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,51,Dell Technologies Inc.,DELL,NYSE,269779999999.99997,$269.78B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,52,RTX Corporation,RTX,NYSE,269620000000.0,$269.62B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,53,Thermo Fisher Scientific Inc.,TMO,NYSE,257709999999.99997,$257.71B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,54,"CrowdStrike Holdings, Inc.",CRWD,NASDAQ,256970000000.00003,$256.97B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,55,"Netflix, Inc.",NFLX,NASDAQ,254920000000.0,$254.92B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,56,Amgen Inc.,AMGN,NASDAQ,251940000000.0,$251.94B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,57,Wells Fargo & Company,WFC,NYSE,250350000000.0,$250.35B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,58,"Mitsubishi UFJ Financial Group, Inc.",MUFG,NYSE,246320000000.0,$246.32B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,59,Alibaba Group Holding Limited,BABA,NYSE,243690000000.0,$243.69B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,60,International Business Machines Corporation,IBM,NYSE,243660000000.0,$243.66B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,61,Linde plc,LIN,NASDAQ,236080000000.0,$236.08B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,62,Toyota Motor Corporation,TM,NYSE,228000000000.0,$228.00B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,63,GE Vernova Inc.,GEV,NYSE,225860000000.0,$225.86B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,64,Arm Holdings plc,ARM,NASDAQ,219990000000.0,$219.99B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,65,TotalEnergies SE,TTE,NYSE,214950000000.0,$214.95B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,66,American Express Company,AXP,NYSE,213980000000.0,$213.98B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,67,"Arista Networks, Inc.",ANET,NYSE,212970000000.0,$212.97B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,68,"Gilead Sciences, Inc.",GILD,NASDAQ,211640000000.0,$211.64B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,69,BHP Group Limited,BHP,NYSE,205840000000.0,$205.84B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,70,KLA Corporation,KLAC,NASDAQ,205750000000.0,$205.75B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,71,The Toronto-Dominion Bank,TD,NYSE,203580000000.0,$203.58B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,72,Citigroup Inc.,C,NYSE,202990000000.0,$202.99B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,73,Shopify Inc.,SHOP,NASDAQ,202630000000.0,$202.63B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,74,"Analog Devices, Inc.",ADI,NASDAQ,202120000000.0,$202.12B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,75,Amphenol Corporation,APH,NYSE,195550000000.0,$195.55B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,76,The Walt Disney Company,DIS,NYSE,191560000000.0,$191.56B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,77,"Salesforce, Inc.",CRM,NYSE,188610000000.0,$188.61B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,78,"PepsiCo, Inc.",PEP,NASDAQ,187160000000.0,$187.16B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,79,"BlackRock, Inc.",BLK,NYSE,186140000000.0,$186.14B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,80,Verizon Communications Inc.,VZ,NYSE,185410000000.0,$185.41B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,81,ConocoPhillips,COP,NYSE,185040000000.0,$185.04B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,82,Abbott Laboratories,ABT,NYSE,183770000000.0,$183.77B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,83,McDonald's Corporation,MCD,NYSE,182660000000.0,$182.66B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,84,Deere & Company,DE,NYSE,182130000000.0,$182.13B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,85,Union Pacific Corporation,UNP,NYSE,180650000000.0,$180.65B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,86,Novo Nordisk A/S,NVO,NYSE,179650000000.0,$179.65B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,87,QUALCOMM Incorporated,QCOM,NASDAQ,175970000000.0,$175.97B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,88,"NextEra Energy, Inc.",NEE.PRS,NYSE,175570000000.0,$175.57B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,89,Pfizer Inc.,PFE,NYSE,173950000000.0,$173.95B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,90,"Marvell Technology, Inc.",MRVL,NASDAQ,172230000000.0,$172.23B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,91,Welltower Inc.,WELL,NYSE,172100000000.0,$172.10B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,92,Sandisk Corporation,SNDK,NASDAQ,165730000000.0,$165.73B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,93,"T-Mobile US, Inc.",TMUS,NASDAQ,165710000000.0,$165.71B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,94,Danaher Corporation,DHR,NYSE,163380000000.0,$163.38B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,95,"Banco Santander, S.A.",SAN,NYSE,162260000000.0,$162.26B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,96,Anheuser-Busch InBev SA/NV,BUD,NYSE,157260000000.0,$157.26B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,97,"The TJX Companies, Inc.",TJX,NYSE,154340000000.0,$154.34B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,98,Accenture plc,ACN,NYSE,152550000000.0,$152.55B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,99,"Sumitomo Mitsui Financial Group, Inc.",SMFG,NYSE,152510000000.0,$152.51B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,100,The Charles Schwab Corporation,SCHW,NYSE,152270000000.0,$152.27B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,101,Southern Copper Corporation,SCCO,NYSE,149890000000.0,$149.89B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,102,"Intuitive Surgical, Inc.",ISRG,NASDAQ,149750000000.0,$149.75B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,103,Seagate Technology Holdings plc,STX,NASDAQ,147970000000.0,$147.97B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,104,Blackstone Inc.,BX,NYSE,147360000000.0,$147.36B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,105,Lockheed Martin Corporation,LMT,NYSE,147140000000.0,$147.14B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,106,Sony Group Corporation,SONY,NYSE,146580000000.0,$146.58B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,107,UBS Group AG,UBS,NYSE,145790000000.0,$145.79B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,108,AT&T Inc.,T,NYSE,144230000000.0,$144.23B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,109,Eaton Corporation plc,ETN,NYSE,143700000000.0,$143.70B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,110,Vertex Pharmaceuticals Incorporated,VRTX,NASDAQ,141650000000.0,$141.65B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,111,Unilever PLC,UL,NYSE,140500000000.0,$140.50B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,112,Chubb Limited,CB,NYSE,139120000000.0,$139.12B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,113,Rio Tinto Group,RIO,NYSE,138630000000.0,$138.63B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,114,Western Digital Corporation,WDC,NASDAQ,137039999999.99998,$137.04B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,115,The Boeing Company,BA,NYSE,135940000000.0,$135.94B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,116,S&P Global Inc.,SPGI,NYSE,135250000000.0,$135.25B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,117,PetrÃ³leo Brasileiro S.A. - Petrobras,PBR,NYSE,135110000000.00002,$135.11B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,118,The Progressive Corporation,PGR,NYSE,134030000000.0,$134.03B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,119,British American Tobacco p.l.c.,BTI,NYSE,133710000000.00002,$133.71B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,120,"Uber Technologies, Inc.",UBER,NYSE,133280000000.0,$133.28B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,121,BP p.l.c.,BP,NYSE,129889999999.99998,$129.89B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,122,"Altria Group, Inc.",MO,NYSE,129800000000.00002,$129.80B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,123,Bristol-Myers Squibb Company,BMY,NYSE,127630000000.0,$127.63B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,124,Marathon Petroleum Corporation,MPC,NYSE,124890000000.0,$124.89B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,All,3-official-shares-on-snapshot-day,125,"Prologis, Inc.",PLD,NYSE,124130000000.0,$124.13B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,1,Apple Inc.,AAPL,NASDAQ,5030000000000.0,$5.03T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,2,NVIDIA Corporation,NVDA,NASDAQ,4940000000000.0,$4.94T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,3,Microsoft Corporation,MSFT,NASDAQ,3880000000000.0,$3.88T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,4,Alphabet Inc.,GOOGL,NASDAQ,3440000000000.0,$3.44T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,5,"Amazon.com, Inc.",AMZN,NASDAQ,2600000000000.0,$2.60T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,6,Space Exploration Technologies Corp.,SPCX,NASDAQ,1830000000000.0,$1.83T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,7,Taiwan Semiconductor Manufacturing Company Limited,TSM,NYSE,1770000000000.0,$1.77T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,8,"Tesla, Inc.",TSLA,NASDAQ,1580000000000.0,$1.58T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,9,"Meta Platforms, Inc.",META,NASDAQ,1570000000000.0,$1.57T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,10,Broadcom Inc.,AVGO,NASDAQ,1560000000000.0,$1.56T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,11,Eli Lilly and Company,LLY,NYSE,1260000000000.0,$1.26T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,12,"Micron Technology, Inc.",MU,NASDAQ,1000000000000.0,$1.00T,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,13,Walmart Inc.,WMT,NASDAQ,979900000000.0,$979.90B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,14,"Advanced Micro Devices, Inc.",AMD,NASDAQ,824070000000.0,$824.07B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,15,SK hynix Inc.,SKHY,NASDAQ,774890000000.0,$774.89B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,16,ExxonMobil Holdings Corporation,XOM,NYSE,769960000000.0,$769.96B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,17,Johnson & Johnson,JNJ,NYSE,657680000000.0,$657.68B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,18,ASML Holding N.V.,ASML,NASDAQ,564450000000.0,$564.45B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,19,AbbVie Inc.,ABBV,NYSE,521110000000.0,$521.11B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,20,Chevron Corporation,CVX,NYSE,462000000000.0,$462.00B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,21,Costco Wholesale Corporation,COST,NASDAQ,448570000000.0,$448.57B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,22,Palantir Technologies Inc.,PLTR,NASDAQ,442430000000.0,$442.43B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,23,"Cisco Systems, Inc.",CSCO,NASDAQ,411450000000.0,$411.45B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,24,The Coca-Cola Company,KO,NYSE,404720000000.0,$404.72B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,25,Oracle Corporation,ORCL,NYSE,396130000000.0,$396.13B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,26,The Procter & Gamble Company,PG,NYSE,374480000000.0,$374.48B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,27,"Merck & Co., Inc.",MRK,NYSE,368890000000.0,$368.89B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,28,UnitedHealth Group Incorporated,UNH,NYSE,365290000000.0,$365.29B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,29,Intel Corporation,INTC,NASDAQ,349190000000.0,$349.19B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,30,"The Home Depot, Inc.",HD,NYSE,328440000000.0,$328.44B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,31,Philip Morris International Inc.,PM,NYSE,325430000000.0,$325.43B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,32,GE Aerospace,GE,NYSE,311870000000.0,$311.87B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,33,Shell plc,SHEL,NYSE,311460000000.0,$311.46B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,34,"Applied Materials, Inc.",AMAT,NASDAQ,309570000000.0,$309.57B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,35,Novartis AG,NVS,NYSE,306110000000.0,$306.11B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,36,"Palo Alto Networks, Inc.",PANW,NASDAQ,299560000000.0,$299.56B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,37,Lam Research Corporation,LRCX,NASDAQ,298690000000.0,$298.69B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,38,AstraZeneca PLC,AZN,NYSE,289740000000.0,$289.74B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,39,Caterpillar Inc.,CAT,NYSE,286260000000.0,$286.26B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,40,Texas Instruments Incorporated,TXN,NASDAQ,275020000000.0,$275.02B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,41,SAP SE,SAP,NYSE,273350000000.00003,$273.35B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,42,Dell Technologies Inc.,DELL,NYSE,269779999999.99997,$269.78B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,43,RTX Corporation,RTX,NYSE,269620000000.0,$269.62B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,44,Thermo Fisher Scientific Inc.,TMO,NYSE,257709999999.99997,$257.71B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,45,"CrowdStrike Holdings, Inc.",CRWD,NASDAQ,256970000000.00003,$256.97B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,46,"Netflix, Inc.",NFLX,NASDAQ,254920000000.0,$254.92B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,47,Amgen Inc.,AMGN,NASDAQ,251940000000.0,$251.94B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,48,Alibaba Group Holding Limited,BABA,NYSE,243690000000.0,$243.69B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,49,International Business Machines Corporation,IBM,NYSE,243660000000.0,$243.66B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,50,Linde plc,LIN,NASDAQ,236080000000.0,$236.08B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,51,Toyota Motor Corporation,TM,NYSE,228000000000.0,$228.00B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,52,GE Vernova Inc.,GEV,NYSE,225860000000.0,$225.86B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,53,Arm Holdings plc,ARM,NASDAQ,219990000000.0,$219.99B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,54,TotalEnergies SE,TTE,NYSE,214950000000.0,$214.95B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,55,"Arista Networks, Inc.",ANET,NYSE,212970000000.0,$212.97B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,56,"Gilead Sciences, Inc.",GILD,NASDAQ,211640000000.0,$211.64B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,57,BHP Group Limited,BHP,NYSE,205840000000.0,$205.84B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,58,KLA Corporation,KLAC,NASDAQ,205750000000.0,$205.75B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,59,Shopify Inc.,SHOP,NASDAQ,202630000000.0,$202.63B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,60,"Analog Devices, Inc.",ADI,NASDAQ,202120000000.0,$202.12B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,61,Amphenol Corporation,APH,NYSE,195550000000.0,$195.55B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,62,The Walt Disney Company,DIS,NYSE,191560000000.0,$191.56B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,63,"Salesforce, Inc.",CRM,NYSE,188610000000.0,$188.61B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,64,"PepsiCo, Inc.",PEP,NASDAQ,187160000000.0,$187.16B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,65,Verizon Communications Inc.,VZ,NYSE,185410000000.0,$185.41B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,66,ConocoPhillips,COP,NYSE,185040000000.0,$185.04B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,67,Abbott Laboratories,ABT,NYSE,183770000000.0,$183.77B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,68,McDonald's Corporation,MCD,NYSE,182660000000.0,$182.66B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,69,Deere & Company,DE,NYSE,182130000000.0,$182.13B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,70,Union Pacific Corporation,UNP,NYSE,180650000000.0,$180.65B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,71,Novo Nordisk A/S,NVO,NYSE,179650000000.0,$179.65B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,72,QUALCOMM Incorporated,QCOM,NASDAQ,175970000000.0,$175.97B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,73,"NextEra Energy, Inc.",NEE.PRS,NYSE,175570000000.0,$175.57B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,74,Pfizer Inc.,PFE,NYSE,173950000000.0,$173.95B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,75,"Marvell Technology, Inc.",MRVL,NASDAQ,172230000000.0,$172.23B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,76,Welltower Inc.,WELL,NYSE,172100000000.0,$172.10B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,77,Sandisk Corporation,SNDK,NASDAQ,165730000000.0,$165.73B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,78,"T-Mobile US, Inc.",TMUS,NASDAQ,165710000000.0,$165.71B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,79,Danaher Corporation,DHR,NYSE,163380000000.0,$163.38B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,80,Anheuser-Busch InBev SA/NV,BUD,NYSE,157260000000.0,$157.26B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,81,"The TJX Companies, Inc.",TJX,NYSE,154340000000.0,$154.34B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,82,Accenture plc,ACN,NYSE,152550000000.0,$152.55B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,83,Southern Copper Corporation,SCCO,NYSE,149890000000.0,$149.89B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,84,"Intuitive Surgical, Inc.",ISRG,NASDAQ,149750000000.0,$149.75B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,85,Seagate Technology Holdings plc,STX,NASDAQ,147970000000.0,$147.97B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,86,Lockheed Martin Corporation,LMT,NYSE,147140000000.0,$147.14B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,87,Sony Group Corporation,SONY,NYSE,146580000000.0,$146.58B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,88,AT&T Inc.,T,NYSE,144230000000.0,$144.23B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,89,Eaton Corporation plc,ETN,NYSE,143700000000.0,$143.70B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,90,Vertex Pharmaceuticals Incorporated,VRTX,NASDAQ,141650000000.0,$141.65B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,91,Unilever PLC,UL,NYSE,140500000000.0,$140.50B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,92,Rio Tinto Group,RIO,NYSE,138630000000.0,$138.63B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,93,Western Digital Corporation,WDC,NASDAQ,137039999999.99998,$137.04B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,94,The Boeing Company,BA,NYSE,135940000000.0,$135.94B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,95,PetrÃ³leo Brasileiro S.A. - Petrobras,PBR,NYSE,135110000000.00002,$135.11B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,96,British American Tobacco p.l.c.,BTI,NYSE,133710000000.00002,$133.71B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,97,"Uber Technologies, Inc.",UBER,NYSE,133280000000.0,$133.28B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,98,BP p.l.c.,BP,NYSE,129889999999.99998,$129.89B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,99,"Altria Group, Inc.",MO,NYSE,129800000000.00002,$129.80B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,100,Bristol-Myers Squibb Company,BMY,NYSE,127630000000.0,$127.63B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,101,Marathon Petroleum Corporation,MPC,NYSE,124890000000.0,$124.89B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,102,"Prologis, Inc.",PLD,NYSE,124130000000.0,$124.13B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,103,Spotify Technology S.A.,SPOT,NYSE,121970000000.0,$121.97B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,104,Equinor ASA,EQNR,NYSE,118450000000.0,$118.45B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,105,Starbucks Corporation,SBUX,NASDAQ,118190000000.0,$118.19B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,106,Medtronic plc,MDT,NYSE,118180000000.0,$118.18B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,107,"Lowe's Companies, Inc.",LOW,NYSE,117300000000.0,$117.30B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,108,"Automatic Data Processing, Inc.",ADP,NASDAQ,116240000000.0,$116.24B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,109,McKesson Corporation,MCK,NYSE,115960000000.0,$115.96B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,110,Canadian Natural Resources Limited,CNQ,NYSE,115860000000.0,$115.86B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,111,CVS Health Corporation,CVS,NYSE,115430000000.0,$115.43B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,112,Parker-Hannifin Corporation,PH,NYSE,113480000000.0,$113.48B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,113,Stryker Corporation,SYK,NYSE,111950000000.0,$111.95B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,114,PDD Holdings Inc.,PDD,NASDAQ,111890000000.0,$111.89B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,115,Valero Energy Corporation,VLO,NYSE,111460000000.0,$111.46B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,116,Booking Holdings Inc.,BKNG,NASDAQ,111300000000.0,$111.30B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,117,Newmont Corporation,NEM,NYSE,110790000000.0,$110.79B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,118,Phillips 66,PSX,NYSE,110320000000.0,$110.32B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,119,Enbridge Inc.,ENB,NYSE,110250000000.0,$110.25B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,120,"ServiceNow, Inc.",NOW,NYSE,109110000000.0,$109.11B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,121,Snowflake Inc.,SNOW,NYSE,107880000000.0,$107.88B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,122,The Southern Company,SO,NYSE,107800000000.0,$107.80B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,123,Corning Incorporated,GLW,NYSE,106220000000.0,$106.22B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,124,Sanofi,SNY,NASDAQ,104710000000.0,$104.71B,StockAnalysis
-2026-11-30,2026-10-30,Temporary,ExFinancials,3-official-shares-on-snapshot-day,125,"Marriott International, Inc.",MAR,NASDAQ,104120000000.0,$104.12B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,1,Apple Inc.,AAPL,NASDAQ,5100000000000.0,$5.10T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,2,NVIDIA Corporation,NVDA,NASDAQ,4309999999999.9995,$4.31T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,3,Microsoft Corporation,MSFT,NASDAQ,4050000000000.0,$4.05T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,4,Alphabet Inc.,GOOGL,NASDAQ,3540000000000.0,$3.54T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,5,"Amazon.com, Inc.",AMZN,NASDAQ,2890000000000.0,$2.89T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,6,Space Exploration Technologies Corp.,SPCX,NASDAQ,1930000000000.0,$1.93T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,7,Taiwan Semiconductor Manufacturing Company Limited,TSM,NYSE,1770000000000.0,$1.77T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,8,"Meta Platforms, Inc.",META,NASDAQ,1640000000000.0,$1.64T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,9,Broadcom Inc.,AVGO,NASDAQ,1530000000000.0,$1.53T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,10,"Tesla, Inc.",TSLA,NASDAQ,1490000000000.0,$1.49T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,11,Eli Lilly and Company,LLY,NYSE,1260000000000.0,$1.26T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,12,Berkshire Hathaway Inc.,BRK.B,NYSE,1220000000000.0,$1.22T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,13,Walmart Inc.,WMT,NASDAQ,996950000000.0,$996.95B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,14,JPMorgan Chase & Co.,JPM,NYSE,908430000000.0,$908.43B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,15,"Advanced Micro Devices, Inc.",AMD,NASDAQ,834120000000.0,$834.12B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,16,"Micron Technology, Inc.",MU,NASDAQ,829500000000.0,$829.50B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,17,Visa Inc.,V,NYSE,796320000000.0,$796.32B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,18,Johnson & Johnson,JNJ,NYSE,679130000000.0,$679.13B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,19,ExxonMobil Holdings Corporation,XOM,NYSE,671970000000.0,$671.97B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,20,SK hynix Inc.,SKHY,NASDAQ,615500000000.0,$615.50B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,21,ASML Holding N.V.,ASML,NASDAQ,575690000000.0,$575.69B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,22,Mastercard Incorporated,MA,NYSE,571330000000.0,$571.33B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,23,AbbVie Inc.,ABBV,NYSE,518440000000.00006,$518.44B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,24,Costco Wholesale Corporation,COST,NASDAQ,472460000000.0,$472.46B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,25,The Coca-Cola Company,KO,NYSE,413110000000.0,$413.11B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,26,Chevron Corporation,CVX,NYSE,411290000000.0,$411.29B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,27,Palantir Technologies Inc.,PLTR,NASDAQ,407690000000.0,$407.69B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,28,The Procter & Gamble Company,PG,NYSE,390130000000.0,$390.13B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,29,"Cisco Systems, Inc.",CSCO,NASDAQ,388380000000.0,$388.38B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,30,Oracle Corporation,ORCL,NYSE,373470000000.0,$373.47B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,31,"Merck & Co., Inc.",MRK,NYSE,366730000000.0,$366.73B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,32,UnitedHealth Group Incorporated,UNH,NYSE,356280000000.0,$356.28B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,33,"The Home Depot, Inc.",HD,NYSE,352600000000.0,$352.60B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,34,Bank of America Corporation,BAC,NYSE,348810000000.0,$348.81B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,35,GE Aerospace,GE,NYSE,346730000000.0,$346.73B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,36,Intel Corporation,INTC,NASDAQ,315550000000.0,$315.55B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,37,HSBC Holdings plc,HSBC,NYSE,306880000000.0,$306.88B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,38,Novartis AG,NVS,NYSE,306880000000.0,$306.88B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,39,Philip Morris International Inc.,PM,NYSE,301010000000.0,$301.01B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,40,"Applied Materials, Inc.",AMAT,NASDAQ,294070000000.0,$294.07B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,41,AstraZeneca PLC,AZN,NYSE,292660000000.0,$292.66B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,42,Morgan Stanley,MS,NYSE,292450000000.0,$292.45B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,43,Shell plc,SHEL,NYSE,282690000000.0,$282.69B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,44,Royal Bank of Canada,RY,NYSE,282540000000.0,$282.54B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,45,Lam Research Corporation,LRCX,NASDAQ,276450000000.0,$276.45B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,46,Caterpillar Inc.,CAT,NYSE,273800000000.0,$273.80B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,47,SAP SE,SAP,NYSE,273680000000.0,$273.68B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,48,"The Goldman Sachs Group, Inc.",GS,NYSE,271890000000.0,$271.89B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,49,"Palo Alto Networks, Inc.",PANW,NASDAQ,270250000000.0,$270.25B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,50,Texas Instruments Incorporated,TXN,NASDAQ,270230000000.00003,$270.23B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,51,Thermo Fisher Scientific Inc.,TMO,NYSE,267380000000.0,$267.38B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,52,RTX Corporation,RTX,NYSE,264910000000.00003,$264.91B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,53,"Netflix, Inc.",NFLX,NASDAQ,262600000000.00003,$262.60B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,54,Alibaba Group Holding Limited,BABA,NYSE,261940000000.0,$261.94B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,55,Toyota Motor Corporation,TM,NYSE,259160000000.00003,$259.16B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,56,Wells Fargo & Company,WFC,NYSE,256630000000.0,$256.63B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,57,Amgen Inc.,AMGN,NASDAQ,251650000000.0,$251.65B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,58,"Mitsubishi UFJ Financial Group, Inc.",MUFG,NYSE,239710000000.0,$239.71B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,59,Linde plc,LIN,NASDAQ,238880000000.0,$238.88B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,60,"Arista Networks, Inc.",ANET,NYSE,235210000000.0,$235.21B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,61,"CrowdStrike Holdings, Inc.",CRWD,NASDAQ,234550000000.0,$234.55B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,62,International Business Machines Corporation,IBM,NYSE,232600000000.0,$232.60B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,63,Dell Technologies Inc.,DELL,NYSE,220190000000.0,$220.19B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,64,GE Vernova Inc.,GEV,NYSE,218350000000.0,$218.35B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,65,American Express Company,AXP,NYSE,217470000000.0,$217.47B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,66,"Gilead Sciences, Inc.",GILD,NASDAQ,210010000000.0,$210.01B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,67,BHP Group Limited,BHP,NYSE,207840000000.0,$207.84B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,68,The Walt Disney Company,DIS,NYSE,205680000000.0,$205.68B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,69,The Toronto-Dominion Bank,TD,NYSE,202900000000.0,$202.90B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,70,Citigroup Inc.,C,NYSE,201890000000.0,$201.89B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,71,Arm Holdings plc,ARM,NASDAQ,199340000000.0,$199.34B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,72,Amphenol Corporation,APH,NYSE,199290000000.0,$199.29B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,73,McDonald's Corporation,MCD,NYSE,198640000000.0,$198.64B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,74,KLA Corporation,KLAC,NASDAQ,197240000000.0,$197.24B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,75,"BlackRock, Inc.",BLK,NYSE,196820000000.0,$196.82B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,76,Shopify Inc.,SHOP,NASDAQ,195630000000.0,$195.63B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,77,TotalEnergies SE,TTE,NYSE,194690000000.0,$194.69B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,78,"PepsiCo, Inc.",PEP,NASDAQ,193350000000.0,$193.35B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,79,Abbott Laboratories,ABT,NYSE,191400000000.0,$191.40B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,80,"Analog Devices, Inc.",ADI,NASDAQ,191240000000.0,$191.24B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,81,Verizon Communications Inc.,VZ,NYSE,190900000000.0,$190.90B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,82,Deere & Company,DE,NYSE,186390000000.0,$186.39B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,83,Novo Nordisk A/S,NVO,NYSE,185050000000.0,$185.05B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,84,QUALCOMM Incorporated,QCOM,NASDAQ,183470000000.0,$183.47B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,85,"NextEra Energy, Inc.",NEE,NYSE,182170000000.0,$182.17B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,86,Welltower Inc.,WELL,NYSE,181460000000.0,$181.46B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,87,"T-Mobile US, Inc.",TMUS,NASDAQ,178710000000.0,$178.71B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,88,"Banco Santander, S.A.",SAN,NYSE,177790000000.0,$177.79B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,89,"Salesforce, Inc.",CRM,NYSE,176900000000.0,$176.90B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,90,Union Pacific Corporation,UNP,NYSE,176500000000.0,$176.50B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,91,Anheuser-Busch InBev SA/NV,BUD,NYSE,166810000000.0,$166.81B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,92,Pfizer Inc.,PFE,NYSE,166610000000.0,$166.61B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,93,Danaher Corporation,DHR,NYSE,165410000000.0,$165.41B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,94,The Charles Schwab Corporation,SCHW,NYSE,160050000000.0,$160.05B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,95,"Intuitive Surgical, Inc.",ISRG,NASDAQ,159650000000.0,$159.65B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,96,ConocoPhillips,COP,NYSE,158990000000.0,$158.99B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,97,Sony Group Corporation,SONY,NYSE,158770000000.0,$158.77B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,98,Blackstone Inc.,BX,NYSE,154240000000.0,$154.24B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,99,"The TJX Companies, Inc.",TJX,NYSE,151940000000.0,$151.94B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,100,Accenture plc,ACN,NYSE,150270000000.0,$150.27B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,101,Southern Copper Corporation,SCCO,NYSE,150200000000.0,$150.20B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,102,"Sumitomo Mitsui Financial Group, Inc.",SMFG,NYSE,149900000000.0,$149.90B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,103,UBS Group AG,UBS,NYSE,147430000000.0,$147.43B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,104,Rio Tinto Group,RIO,NYSE,147060000000.0,$147.06B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,105,AT&T Inc.,T,NYSE,146860000000.0,$146.86B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,106,"Uber Technologies, Inc.",UBER,NYSE,145320000000.0,$145.32B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,107,"Banco Bilbao Vizcaya Argentaria, S.A.",BBVA,NYSE,142220000000.0,$142.22B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,108,Unilever PLC,UL,NYSE,141980000000.0,$141.98B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,109,Vertex Pharmaceuticals Incorporated,VRTX,NASDAQ,139670000000.0,$139.67B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,110,Eaton Corporation plc,ETN,NYSE,139590000000.0,$139.59B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,111,Chubb Limited,CB,NYSE,138870000000.0,$138.87B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,112,The Boeing Company,BA,NYSE,136600000000.0,$136.60B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,113,S&P Global Inc.,SPGI,NYSE,136570000000.0,$136.57B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,114,Lockheed Martin Corporation,LMT,NYSE,135870000000.0,$135.87B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,115,AppLovin Corporation,APP,NASDAQ,135840000000.0,$135.84B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,116,"Marvell Technology, Inc.",MRVL,NASDAQ,135740000000.00002,$135.74B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,117,The Progressive Corporation,PGR,NYSE,131820000000.0,$131.82B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,118,HDFC Bank Limited,HDB,NYSE,131410000000.0,$131.41B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,119,"Lowe's Companies, Inc.",LOW,NYSE,130220000000.0,$130.22B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,120,Newmont Corporation,NEM,NYSE,129750000000.0,$129.75B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,121,British American Tobacco p.l.c.,BTI,NYSE,129090000000.0,$129.09B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,122,Bristol-Myers Squibb Company,BMY,NYSE,127020000000.0,$127.02B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,123,"Prologis, Inc.",PLD,NYSE,126620000000.0,$126.62B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,124,Sandisk Corporation,SNDK,NASDAQ,126140000000.0,$126.14B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,All,3-official-shares-on-snapshot-day,125,"Altria Group, Inc.",MO,NYSE,126110000000.0,$126.11B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,1,Apple Inc.,AAPL,NASDAQ,5100000000000.0,$5.10T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,2,NVIDIA Corporation,NVDA,NASDAQ,4309999999999.9995,$4.31T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,3,Microsoft Corporation,MSFT,NASDAQ,4050000000000.0,$4.05T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,4,Alphabet Inc.,GOOGL,NASDAQ,3540000000000.0,$3.54T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,5,"Amazon.com, Inc.",AMZN,NASDAQ,2890000000000.0,$2.89T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,6,Space Exploration Technologies Corp.,SPCX,NASDAQ,1930000000000.0,$1.93T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,7,Taiwan Semiconductor Manufacturing Company Limited,TSM,NYSE,1770000000000.0,$1.77T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,8,"Meta Platforms, Inc.",META,NASDAQ,1640000000000.0,$1.64T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,9,Broadcom Inc.,AVGO,NASDAQ,1530000000000.0,$1.53T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,10,"Tesla, Inc.",TSLA,NASDAQ,1490000000000.0,$1.49T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,11,Eli Lilly and Company,LLY,NYSE,1260000000000.0,$1.26T,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,12,Walmart Inc.,WMT,NASDAQ,996950000000.0,$996.95B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,13,"Advanced Micro Devices, Inc.",AMD,NASDAQ,834120000000.0,$834.12B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,14,"Micron Technology, Inc.",MU,NASDAQ,829500000000.0,$829.50B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,15,Johnson & Johnson,JNJ,NYSE,679130000000.0,$679.13B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,16,ExxonMobil Holdings Corporation,XOM,NYSE,671970000000.0,$671.97B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,17,SK hynix Inc.,SKHY,NASDAQ,615500000000.0,$615.50B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,18,ASML Holding N.V.,ASML,NASDAQ,575690000000.0,$575.69B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,19,AbbVie Inc.,ABBV,NYSE,518440000000.00006,$518.44B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,20,Costco Wholesale Corporation,COST,NASDAQ,472460000000.0,$472.46B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,21,The Coca-Cola Company,KO,NYSE,413110000000.0,$413.11B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,22,Chevron Corporation,CVX,NYSE,411290000000.0,$411.29B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,23,Palantir Technologies Inc.,PLTR,NASDAQ,407690000000.0,$407.69B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,24,The Procter & Gamble Company,PG,NYSE,390130000000.0,$390.13B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,25,"Cisco Systems, Inc.",CSCO,NASDAQ,388380000000.0,$388.38B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,26,Oracle Corporation,ORCL,NYSE,373470000000.0,$373.47B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,27,"Merck & Co., Inc.",MRK,NYSE,366730000000.0,$366.73B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,28,UnitedHealth Group Incorporated,UNH,NYSE,356280000000.0,$356.28B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,29,"The Home Depot, Inc.",HD,NYSE,352600000000.0,$352.60B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,30,GE Aerospace,GE,NYSE,346730000000.0,$346.73B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,31,Intel Corporation,INTC,NASDAQ,315550000000.0,$315.55B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,32,Novartis AG,NVS,NYSE,306880000000.0,$306.88B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,33,Philip Morris International Inc.,PM,NYSE,301010000000.0,$301.01B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,34,"Applied Materials, Inc.",AMAT,NASDAQ,294070000000.0,$294.07B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,35,AstraZeneca PLC,AZN,NYSE,292660000000.0,$292.66B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,36,Shell plc,SHEL,NYSE,282690000000.0,$282.69B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,37,Lam Research Corporation,LRCX,NASDAQ,276450000000.0,$276.45B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,38,Caterpillar Inc.,CAT,NYSE,273800000000.0,$273.80B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,39,SAP SE,SAP,NYSE,273680000000.0,$273.68B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,40,"Palo Alto Networks, Inc.",PANW,NASDAQ,270250000000.0,$270.25B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,41,Texas Instruments Incorporated,TXN,NASDAQ,270230000000.00003,$270.23B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,42,Thermo Fisher Scientific Inc.,TMO,NYSE,267380000000.0,$267.38B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,43,RTX Corporation,RTX,NYSE,264910000000.00003,$264.91B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,44,"Netflix, Inc.",NFLX,NASDAQ,262600000000.00003,$262.60B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,45,Alibaba Group Holding Limited,BABA,NYSE,261940000000.0,$261.94B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,46,Toyota Motor Corporation,TM,NYSE,259160000000.00003,$259.16B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,47,Amgen Inc.,AMGN,NASDAQ,251650000000.0,$251.65B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,48,Linde plc,LIN,NASDAQ,238880000000.0,$238.88B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,49,"Arista Networks, Inc.",ANET,NYSE,235210000000.0,$235.21B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,50,"CrowdStrike Holdings, Inc.",CRWD,NASDAQ,234550000000.0,$234.55B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,51,International Business Machines Corporation,IBM,NYSE,232600000000.0,$232.60B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,52,Dell Technologies Inc.,DELL,NYSE,220190000000.0,$220.19B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,53,GE Vernova Inc.,GEV,NYSE,218350000000.0,$218.35B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,54,"Gilead Sciences, Inc.",GILD,NASDAQ,210010000000.0,$210.01B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,55,BHP Group Limited,BHP,NYSE,207840000000.0,$207.84B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,56,The Walt Disney Company,DIS,NYSE,205680000000.0,$205.68B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,57,Arm Holdings plc,ARM,NASDAQ,199340000000.0,$199.34B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,58,Amphenol Corporation,APH,NYSE,199290000000.0,$199.29B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,59,McDonald's Corporation,MCD,NYSE,198640000000.0,$198.64B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,60,KLA Corporation,KLAC,NASDAQ,197240000000.0,$197.24B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,61,Shopify Inc.,SHOP,NASDAQ,195630000000.0,$195.63B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,62,TotalEnergies SE,TTE,NYSE,194690000000.0,$194.69B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,63,"PepsiCo, Inc.",PEP,NASDAQ,193350000000.0,$193.35B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,64,Abbott Laboratories,ABT,NYSE,191400000000.0,$191.40B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,65,"Analog Devices, Inc.",ADI,NASDAQ,191240000000.0,$191.24B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,66,Verizon Communications Inc.,VZ,NYSE,190900000000.0,$190.90B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,67,Deere & Company,DE,NYSE,186390000000.0,$186.39B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,68,Novo Nordisk A/S,NVO,NYSE,185050000000.0,$185.05B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,69,QUALCOMM Incorporated,QCOM,NASDAQ,183470000000.0,$183.47B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,70,"NextEra Energy, Inc.",NEE,NYSE,182170000000.0,$182.17B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,71,Welltower Inc.,WELL,NYSE,181460000000.0,$181.46B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,72,"T-Mobile US, Inc.",TMUS,NASDAQ,178710000000.0,$178.71B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,73,"Salesforce, Inc.",CRM,NYSE,176900000000.0,$176.90B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,74,Union Pacific Corporation,UNP,NYSE,176500000000.0,$176.50B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,75,Anheuser-Busch InBev SA/NV,BUD,NYSE,166810000000.0,$166.81B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,76,Pfizer Inc.,PFE,NYSE,166610000000.0,$166.61B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,77,Danaher Corporation,DHR,NYSE,165410000000.0,$165.41B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,78,"Intuitive Surgical, Inc.",ISRG,NASDAQ,159650000000.0,$159.65B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,79,ConocoPhillips,COP,NYSE,158990000000.0,$158.99B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,80,Sony Group Corporation,SONY,NYSE,158770000000.0,$158.77B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,81,"The TJX Companies, Inc.",TJX,NYSE,151940000000.0,$151.94B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,82,Accenture plc,ACN,NYSE,150270000000.0,$150.27B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,83,Southern Copper Corporation,SCCO,NYSE,150200000000.0,$150.20B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,84,Rio Tinto Group,RIO,NYSE,147060000000.0,$147.06B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,85,AT&T Inc.,T,NYSE,146860000000.0,$146.86B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,86,"Uber Technologies, Inc.",UBER,NYSE,145320000000.0,$145.32B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,87,Unilever PLC,UL,NYSE,141980000000.0,$141.98B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,88,Vertex Pharmaceuticals Incorporated,VRTX,NASDAQ,139670000000.0,$139.67B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,89,Eaton Corporation plc,ETN,NYSE,139590000000.0,$139.59B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,90,The Boeing Company,BA,NYSE,136600000000.0,$136.60B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,91,Lockheed Martin Corporation,LMT,NYSE,135870000000.0,$135.87B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,92,AppLovin Corporation,APP,NASDAQ,135840000000.0,$135.84B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,93,"Marvell Technology, Inc.",MRVL,NASDAQ,135740000000.00002,$135.74B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,94,"Lowe's Companies, Inc.",LOW,NYSE,130220000000.0,$130.22B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,95,Newmont Corporation,NEM,NYSE,129750000000.0,$129.75B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,96,British American Tobacco p.l.c.,BTI,NYSE,129090000000.0,$129.09B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,97,Bristol-Myers Squibb Company,BMY,NYSE,127020000000.0,$127.02B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,98,"Prologis, Inc.",PLD,NYSE,126620000000.0,$126.62B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,99,Sandisk Corporation,SNDK,NASDAQ,126140000000.0,$126.14B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,100,"Altria Group, Inc.",MO,NYSE,126110000000.0,$126.11B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,101,Medtronic plc,MDT,NYSE,125830000000.0,$125.83B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,102,Spotify Technology S.A.,SPOT,NYSE,125190000000.0,$125.19B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,103,Starbucks Corporation,SBUX,NASDAQ,124770000000.0,$124.77B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,104,Stryker Corporation,SYK,NYSE,124000000000.0,$124.00B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,105,McKesson Corporation,MCK,NYSE,122310000000.0,$122.31B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,106,Booking Holdings Inc.,BKNG,NASDAQ,121590000000.0,$121.59B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,107,Parker-Hannifin Corporation,PH,NYSE,120620000000.0,$120.62B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,108,"Automatic Data Processing, Inc.",ADP,NASDAQ,119240000000.0,$119.24B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,109,Seagate Technology Holdings plc,STX,NASDAQ,116190000000.0,$116.19B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,110,BP p.l.c.,BP,NYSE,115410000000.0,$115.41B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,111,Sanofi,SNY,NASDAQ,115110000000.0,$115.11B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,112,PDD Holdings Inc.,PDD,NASDAQ,114580000000.0,$114.58B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,113,PetrÃ³leo Brasileiro S.A. - Petrobras,PBR,NYSE,113370000000.0,$113.37B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,114,"Airbnb, Inc.",ABNB,NASDAQ,111800000000.0,$111.80B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,115,CVS Health Corporation,CVS,NYSE,109080000000.0,$109.08B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,116,The Southern Company,SO,NYSE,108940000000.0,$108.94B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,117,"Moderna, Inc.",MRNA,NASDAQ,108840000000.0,$108.84B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,118,Western Digital Corporation,WDC,NASDAQ,108470000000.0,$108.47B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,119,"Marriott International, Inc.",MAR,NASDAQ,107420000000.0,$107.42B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,120,"ServiceNow, Inc.",NOW,NYSE,106660000000.0,$106.66B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,121,Marathon Petroleum Corporation,MPC,NYSE,106160000000.0,$106.16B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,122,Enbridge Inc.,ENB,NYSE,105500000000.0,$105.50B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,123,"HCA Healthcare, Inc.",HCA,NYSE,105470000000.0,$105.47B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,124,"Cloudflare, Inc.",NET,NYSE,105280000000.0,$105.28B,StockAnalysis
+2026-11-30,2026-11-09,Temporary,ExFinancials,3-official-shares-on-snapshot-day,125,"Equinix, Inc.",EQIX,NASDAQ,104380000000.0,$104.38B,StockAnalysis
