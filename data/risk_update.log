@@ -19,12 +19,12 @@ Overall valuation risk: 🔴极高风险
 
 --- add_hy_oas.py (exit 0) ---
 HY OAS loaded from JSON mirror: 784 observations
-Saved risk_source_hy_oas.csv: 945 observations through 2026-11-06
+Saved risk_source_hy_oas.csv: 946 observations through 2026-11-09
 SUCCESS
-HY OAS current: 3.42%
-HY OAS 3M ago: 2.71%
-HY OAS 3M change: +71bp
-HY OAS percentile: 96.0%
+HY OAS current: 3.34%
+HY OAS 3M ago: 2.70%
+HY OAS 3M change: +64bp
+HY OAS percentile: 94.9%
 HY OAS rating: 🟡注意
 
 --- add_ci_sloos.py (exit 0) ---
@@ -36,16 +36,16 @@ C&I SLOOS percentile: 53.1%
 C&I SLOOS rating: 🟢安全
 
 --- run_allocation_card.py (exit 0) ---
-Saved risk_source_sp500_price.csv: 9535 observations through 2026-11-10
+Saved risk_source_sp500_price.csv: 9536 observations through 2026-11-11
 SUCCESS
-S&P 500 date: 2026-11-10
-S&P 500 close: 7520.93; ATH: 7818.93; drawdown: 3.81%
-Daily estimated Forward P/E: 19.59x
-Cushion: 2.32%; V=0.330; D_eff=0.000; O=0.214
-Crisis R=0.034; R_eff=0.034; E=0.000; Gate=0
-Suggested S&P 500 allocation: 52.0%
+S&P 500 date: 2026-11-11
+S&P 500 close: 7619.38; ATH: 7818.93; drawdown: 2.55%
+Daily estimated Forward P/E: 19.85x
+Cushion: 2.26%; V=0.303; D_eff=0.000; O=0.197
+Crisis R=0.027; R_eff=0.027; E=0.000; Gate=0
+Suggested S&P 500 allocation: 51.2%
 Published V3.2-Alpha S&P 500 suggested allocation as summary card
-V3.2-Alpha allocation: 99.0% (R_eff=0.034, E=0.000, Gate=0)
+V3.2-Alpha allocation: 99.2% (R_eff=0.027, E=0.000, Gate=0)
 
 --- snapshot_risk_dashboard.py (exit 0) ---
-Saved 11 dashboard rows for 2026-11-10; history now has 671 rows.
+Saved 11 dashboard rows for 2026-11-11; history now has 682 rows.
