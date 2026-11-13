@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-11-12T02:29:22.730253+00:00",
-  "expected_market_date": "2026-11-11",
-  "next_update_due_at": "2026-11-13T00:00:00+00:00",
+  "generated_at": "2026-11-13T02:05:49.368728+00:00",
+  "expected_market_date": "2026-11-12",
+  "next_update_due_at": "2026-11-14T00:00:00+00:00",
   "modules": {
     "index": {
       "state": "success",
       "message": "更新完成",
-      "data_date": "2026-11-11",
+      "data_date": "2026-11-12",
       "freshness": "current"
     },
     "benchmarks": {
       "state": "success",
       "message": "更新完成",
-      "data_date": "2026-11-11",
+      "data_date": "2026-11-12",
       "freshness": "current"
     },
     "risk": {
@@ -22,56 +22,56 @@
         {
           "indicator": "Nasdaq-100 Forward P/E",
           "data_date": "2026-08-05",
-          "age_days": 98,
+          "age_days": 99,
           "max_age_days": 14,
           "stale": true
         },
         {
           "indicator": "Nasdaq Cushion",
           "data_date": "2026-08-05",
-          "age_days": 98,
+          "age_days": 99,
           "max_age_days": 14,
           "stale": true
         },
         {
           "indicator": "S&P 500 Forward P/E",
           "data_date": "2026-08-05",
-          "age_days": 98,
+          "age_days": 99,
           "max_age_days": 14,
           "stale": true
         },
         {
           "indicator": "S&P 500 Cushion",
           "data_date": "2026-08-05",
-          "age_days": 98,
+          "age_days": 99,
           "max_age_days": 14,
           "stale": true
         },
         {
           "indicator": "DFII10 (10Y Real Yield)",
-          "data_date": "2026-11-10",
-          "age_days": 1,
+          "data_date": "2026-11-12",
+          "age_days": 0,
           "max_age_days": 7,
           "stale": false
         },
         {
           "indicator": "Credit-to-GDP Gap",
           "data_date": "2026-03-31",
-          "age_days": 225,
+          "age_days": 226,
           "max_age_days": 210,
           "stale": true
         },
         {
           "indicator": "HY OAS 3M Change",
           "data_date": "2026-11-09",
-          "age_days": 2,
+          "age_days": 3,
           "max_age_days": 7,
           "stale": false
         },
         {
           "indicator": "C&I SLOOS",
           "data_date": "2026-10-01",
-          "age_days": 41,
+          "age_days": 42,
           "max_age_days": 150,
           "stale": false
         }
@@ -85,13 +85,13 @@
         {
           "indicator": "S&P 500",
           "data_date": "2026-11-06",
-          "age_days": 5,
+          "age_days": 6,
           "max_age_days": 14,
           "stale": false
         },
         {
           "indicator": "Nasdaq-100",
-          "data_date": "2026-11-11",
+          "data_date": "2026-11-12",
           "age_days": 0,
           "max_age_days": 14,
           "stale": false
