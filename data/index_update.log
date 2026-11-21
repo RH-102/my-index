@@ -4,34 +4,16 @@ Official rebalance validation passed.
 
 --- update_prices.py (exit 0) ---
 Downloading history for 57 securities from 2026-08-12...
-Expected completed market date: 2026-11-19
-
-1 Failed download:
-['AMAT']: OperationalError('database is locked')
-Missing closing prices (retry 1/3): ABBV: 2026-11-19; AMAT: 2026-11-19; ANET: 2026-11-19; ARM: 2026-11-19; BABA: 2026-11-19; CRWD: 2026-11-19; DELL: 2026-11-19; GEV: 2026-11-19; META: 2026-11-19; PANW: 2026-11-19; PLTR: 2026-11-19; SHEL: 2026-11-19; SKHY: 2026-11-19; SNDK: 2026-11-19; SPCX: 2026-11-19
-ABBV: recovered 1/1 closes
-AMAT: recovered 1/1 closes
-ANET: recovered 1/1 closes
-ARM: recovered 1/1 closes
-BABA: recovered 1/1 closes
-CRWD: recovered 1/1 closes
-DELL: recovered 1/1 closes
-GEV: recovered 1/1 closes
-META: recovered 1/1 closes
-PANW: recovered 1/1 closes
-PLTR: recovered 1/1 closes
-SHEL: recovered 1/1 closes
-SKHY: recovered 1/1 closes
+Expected completed market date: 2026-11-20
+Missing closing prices (retry 1/3): SNDK: 2026-11-20
 SNDK: recovered 1/1 closes
-SPCX: recovered 1/1 closes
-Using 110 cached historical price point(s) where the current Yahoo/yfinance download has gaps.
 
 SUCCESS
 Backfill start: 2026-08-12
-Latest market date: 2026-11-19
-Trading days saved: 71
+Latest market date: 2026-11-20
+Trading days saved: 72
 Active rebalance: 2026-09-22
-Divisor: 19.944229196099
-Index level: 90.314557
-Daily return: -2.3684%
+Divisor: 19.847618702436
+Index level: 85.906672
+Daily return: -5.1305%
 Holdings: 57

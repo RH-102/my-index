@@ -1,55 +1,59 @@
 {
-  "generated_at": "2026-11-20T02:33:14.818452+00:00",
-  "expected_market_date": "2026-11-19",
-  "next_update_due_at": "2026-11-21T00:00:00+00:00",
+  "generated_at": "2026-11-21T02:47:30.093376+00:00",
+  "expected_market_date": "2026-11-20",
+  "next_update_due_at": "2026-11-24T00:00:00+00:00",
   "modules": {
     "index": {
       "state": "success",
       "message": "更新完成",
-      "data_date": "2026-11-19",
+      "data_date": "2026-11-20",
       "freshness": "current"
     },
     "benchmarks": {
       "state": "success",
       "message": "更新完成",
-      "data_date": "2026-11-19",
+      "data_date": "2026-11-20",
       "freshness": "current"
     },
     "risk": {
-      "state": "success",
-      "message": "更新完成",
+      "state": "cached",
+      "message": "来源刷新未完成，部分数据使用缓存",
+      "details": [
+        "Mortgage delinquency remote refresh failed (503 Server Error: Service Unavailable for url: https://www.federalreserve.gov/datadownload/Output.aspx?filetype=csv&from=&label=include&lastobs=&layout=seriescolumn&rel=CHGDEL&series=e77af32404312ad2d45dd60dfa36477a&to=&type=package); using local cache through 2026-06-30.",
+        "; FRED CSV failed: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=12)); using local cache through 2026-10-01."
+      ],
       "indicators": [
         {
           "indicator": "Nasdaq-100 Forward P/E",
           "data_date": "2026-08-05",
-          "age_days": 106,
+          "age_days": 107,
           "max_age_days": 14,
           "stale": true
         },
         {
           "indicator": "Nasdaq Cushion",
           "data_date": "2026-08-05",
-          "age_days": 106,
+          "age_days": 107,
           "max_age_days": 14,
           "stale": true
         },
         {
           "indicator": "S&P 500 Forward P/E",
           "data_date": "2026-08-05",
-          "age_days": 106,
+          "age_days": 107,
           "max_age_days": 14,
           "stale": true
         },
         {
           "indicator": "S&P 500 Cushion",
           "data_date": "2026-08-05",
-          "age_days": 106,
+          "age_days": 107,
           "max_age_days": 14,
           "stale": true
         },
         {
           "indicator": "DFII10 (10Y Real Yield)",
-          "data_date": "2026-11-19",
+          "data_date": "2026-11-20",
           "age_days": 0,
           "max_age_days": 7,
           "stale": false
@@ -57,13 +61,13 @@
         {
           "indicator": "Credit-to-GDP Gap",
           "data_date": "2026-03-31",
-          "age_days": 233,
+          "age_days": 234,
           "max_age_days": 210,
           "stale": true
         },
         {
           "indicator": "HY OAS 3M Change",
-          "data_date": "2026-11-17",
+          "data_date": "2026-11-18",
           "age_days": 2,
           "max_age_days": 7,
           "stale": false
@@ -71,7 +75,7 @@
         {
           "indicator": "C&I SLOOS",
           "data_date": "2026-10-01",
-          "age_days": 49,
+          "age_days": 50,
           "max_age_days": 150,
           "stale": false
         }
@@ -84,15 +88,15 @@
       "indicators": [
         {
           "indicator": "S&P 500",
-          "data_date": "2026-11-13",
-          "age_days": 6,
+          "data_date": "2026-11-20",
+          "age_days": 0,
           "max_age_days": 14,
           "stale": false
         },
         {
           "indicator": "Nasdaq-100",
           "data_date": "2026-11-19",
-          "age_days": 0,
+          "age_days": 1,
           "max_age_days": 14,
           "stale": false
         }

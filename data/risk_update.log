@@ -5,47 +5,47 @@ Saved local cache risk_source_nasdaq_forward_pe.csv: 1239 observations through 2
 S&P 500 forward P/E: 1495 observations, 1990-06-29 to 2026-08-05
 Saved local cache risk_source_sp500_forward_pe.csv: 1495 observations through 2026-08-05
 Fetching FRED DFII10 and DRSFRMACBS...
-Saved local cache risk_source_dfii10.csv: 5975 observations through 2026-11-19
-Local DFII10 history: 5975 observations, 2003-01-02 to 2026-11-19
-Saved local cache risk_source_mortgage.csv: 142 observations through 2026-06-30
+Saved local cache risk_source_dfii10.csv: 5976 observations through 2026-11-20
+Local DFII10 history: 5976 observations, 2003-01-02 to 2026-11-20
+Mortgage delinquency remote refresh failed (503 Server Error: Service Unavailable for url: https://www.federalreserve.gov/datadownload/Output.aspx?filetype=csv&from=&label=include&lastobs=&layout=seriescolumn&rel=CHGDEL&series=e77af32404312ad2d45dd60dfa36477a&to=&type=package); using local cache through 2026-06-30.
 Fetching BIS US credit-to-GDP gap...
 BIS credit-to-GDP gap: 274 observations through 2026-03-31
 Saved local cache risk_source_credit_gap.csv: 274 observations through 2026-03-31
 SUCCESS
 Risk dashboard rows: 9
-Risk history rows: 6015
+Risk history rows: 6016
 Tech risk: 🟠高风险
 Overall valuation risk: 🔴极高风险
 
 --- add_hy_oas.py (exit 0) ---
-HY OAS loaded from JSON mirror: 785 observations
-Saved risk_source_hy_oas.csv: 952 observations through 2026-11-17
+HY OAS loaded from JSON mirror: 786 observations
+Saved risk_source_hy_oas.csv: 953 observations through 2026-11-18
 SUCCESS
-HY OAS current: 3.43%
-HY OAS 3M ago: 2.70%
-HY OAS 3M change: +73bp
-HY OAS percentile: 96.4%
+HY OAS current: 3.47%
+HY OAS 3M ago: 2.75%
+HY OAS 3M change: +72bp
+HY OAS percentile: 96.1%
 HY OAS rating: 🟡注意
 
 --- add_ci_sloos.py (exit 0) ---
-C&I SLOOS loaded from Federal Reserve Board: 147 observations
-Saved risk_source_ci_sloos.csv: 147 observations through 2026-10-01
+C&I SLOOS remote refresh failed (Federal Reserve failed: 503 Server Error: Service Unavailable for url: https://www.federalreserve.gov/datadownload/Output.aspx?filetype=csv&from=&label=include&lastobs=&layout=seriescolumn&rel=SLOOS&series=2f17df6d07977715676ad71c7a655bbd&to=&type=package; FRED table failed: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=12); mirror failed: Error tokenizing data. C error: Expected 1 fields in line 11, saw 2
+; FRED CSV failed: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=12)); using local cache through 2026-10-01.
 SUCCESS
 C&I SLOOS current: 1.7%
 C&I SLOOS percentile: 53.1%
 C&I SLOOS rating: 🟢安全
 
 --- run_allocation_card.py (exit 0) ---
-Saved risk_source_sp500_price.csv: 9542 observations through 2026-11-19
+Saved risk_source_sp500_price.csv: 9543 observations through 2026-11-20
 SUCCESS
-S&P 500 date: 2026-11-19
-S&P 500 close: 7175.83; ATH: 7818.93; drawdown: 8.22%
-Daily estimated Forward P/E: 18.69x
-Cushion: 2.47%; V=0.388; D_eff=0.000; O=0.252
-Crisis R=0.036; R_eff=0.036; E=0.000; Gate=0
-Suggested S&P 500 allocation: 54.2%
+S&P 500 date: 2026-11-20
+S&P 500 close: 6910.39; ATH: 7818.93; drawdown: 11.62%
+Daily estimated Forward P/E: 18.00x
+Cushion: 2.79%; V=0.514; D_eff=0.000; O=0.334
+Crisis R=0.035; R_eff=0.035; E=0.000; Gate=0
+Suggested S&P 500 allocation: 59.2%
 Published V3.2-Alpha S&P 500 suggested allocation as summary card
-V3.2-Alpha allocation: 98.9% (R_eff=0.036, E=0.000, Gate=0)
+V3.2-Alpha allocation: 99.0% (R_eff=0.035, E=0.000, Gate=0)
 
 --- snapshot_risk_dashboard.py (exit 0) ---
-Saved 11 dashboard rows for 2026-11-19; history now has 748 rows.
+Saved 11 dashboard rows for 2026-11-20; history now has 759 rows.
