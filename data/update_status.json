@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-21T02:47:30.093376+00:00",
+  "generated_at": "2026-11-21T04:01:29.789659+00:00",
   "expected_market_date": "2026-11-20",
   "next_update_due_at": "2026-11-24T00:00:00+00:00",
   "modules": {
@@ -16,12 +16,8 @@
       "freshness": "current"
     },
     "risk": {
-      "state": "cached",
-      "message": "来源刷新未完成，部分数据使用缓存",
-      "details": [
-        "Mortgage delinquency remote refresh failed (503 Server Error: Service Unavailable for url: https://www.federalreserve.gov/datadownload/Output.aspx?filetype=csv&from=&label=include&lastobs=&layout=seriescolumn&rel=CHGDEL&series=e77af32404312ad2d45dd60dfa36477a&to=&type=package); using local cache through 2026-06-30.",
-        "; FRED CSV failed: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=12)); using local cache through 2026-10-01."
-      ],
+      "state": "success",
+      "message": "更新完成",
       "indicators": [
         {
           "indicator": "Nasdaq-100 Forward P/E",

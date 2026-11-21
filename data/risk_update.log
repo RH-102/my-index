@@ -7,7 +7,7 @@ Saved local cache risk_source_sp500_forward_pe.csv: 1495 observations through 20
 Fetching FRED DFII10 and DRSFRMACBS...
 Saved local cache risk_source_dfii10.csv: 5976 observations through 2026-11-20
 Local DFII10 history: 5976 observations, 2003-01-02 to 2026-11-20
-Mortgage delinquency remote refresh failed (503 Server Error: Service Unavailable for url: https://www.federalreserve.gov/datadownload/Output.aspx?filetype=csv&from=&label=include&lastobs=&layout=seriescolumn&rel=CHGDEL&series=e77af32404312ad2d45dd60dfa36477a&to=&type=package); using local cache through 2026-06-30.
+Saved local cache risk_source_mortgage.csv: 142 observations through 2026-06-30
 Fetching BIS US credit-to-GDP gap...
 BIS credit-to-GDP gap: 274 observations through 2026-03-31
 Saved local cache risk_source_credit_gap.csv: 274 observations through 2026-03-31
@@ -28,8 +28,8 @@ HY OAS percentile: 96.1%
 HY OAS rating: 🟡注意
 
 --- add_ci_sloos.py (exit 0) ---
-C&I SLOOS remote refresh failed (Federal Reserve failed: 503 Server Error: Service Unavailable for url: https://www.federalreserve.gov/datadownload/Output.aspx?filetype=csv&from=&label=include&lastobs=&layout=seriescolumn&rel=SLOOS&series=2f17df6d07977715676ad71c7a655bbd&to=&type=package; FRED table failed: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=12); mirror failed: Error tokenizing data. C error: Expected 1 fields in line 11, saw 2
-; FRED CSV failed: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=12)); using local cache through 2026-10-01.
+C&I SLOOS loaded from Federal Reserve Board: 147 observations
+Saved risk_source_ci_sloos.csv: 147 observations through 2026-10-01
 SUCCESS
 C&I SLOOS current: 1.7%
 C&I SLOOS percentile: 53.1%
