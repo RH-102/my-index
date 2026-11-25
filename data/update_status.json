@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-11-24T05:29:14.222472+00:00",
-  "expected_market_date": "2026-11-23",
-  "next_update_due_at": "2026-11-25T00:00:00+00:00",
+  "generated_at": "2026-11-25T04:32:35.688008+00:00",
+  "expected_market_date": "2026-11-24",
+  "next_update_due_at": "2026-11-26T00:00:00+00:00",
   "modules": {
     "index": {
       "state": "success",
       "message": "更新完成",
-      "data_date": "2026-11-23",
+      "data_date": "2026-11-24",
       "freshness": "current"
     },
     "benchmarks": {
       "state": "success",
       "message": "更新完成",
-      "data_date": "2026-11-23",
+      "data_date": "2026-11-24",
       "freshness": "current"
     },
     "risk": {
@@ -49,8 +49,8 @@
         },
         {
           "indicator": "DFII10 (10Y Real Yield)",
-          "data_date": "2026-11-23",
-          "age_days": 1,
+          "data_date": "2026-11-24",
+          "age_days": 0,
           "max_age_days": 7,
           "stale": false
         },
@@ -63,8 +63,8 @@
         },
         {
           "indicator": "HY OAS 3M Change",
-          "data_date": "2026-11-19",
-          "age_days": 5,
+          "data_date": "2026-11-20",
+          "age_days": 4,
           "max_age_days": 7,
           "stale": false
         },
