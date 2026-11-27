@@ -18,14 +18,14 @@ Tech risk: 🟠高风险
 Overall valuation risk: 🔴极高风险
 
 --- add_hy_oas.py (exit 0) ---
-HY OAS loaded from JSON mirror: 784 observations
-Saved risk_source_hy_oas.csv: 956 observations through 2026-11-23
+HY OAS loaded from JSON mirror: 785 observations
+Saved risk_source_hy_oas.csv: 957 observations through 2026-11-24
 SUCCESS
-HY OAS current: 3.63%
-HY OAS 3M ago: 2.70%
-HY OAS 3M change: +93bp
-HY OAS percentile: 97.1%
-HY OAS rating: 🟡注意
+HY OAS current: 3.72%
+HY OAS 3M ago: 2.69%
+HY OAS 3M change: +103bp
+HY OAS percentile: 97.5%
+HY OAS rating: 🟠高风险
 
 --- add_ci_sloos.py (exit 0) ---
 C&I SLOOS loaded from Federal Reserve Board: 147 observations
@@ -42,10 +42,10 @@ S&P 500 date: 2026-11-25
 S&P 500 close: 7182.78; ATH: 7818.93; drawdown: 8.14%
 Daily estimated Forward P/E: 18.71x
 Cushion: 2.61%; V=0.446; D_eff=0.000; O=0.290
-Crisis R=0.056; R_eff=0.056; E=0.000; Gate=0
-Suggested S&P 500 allocation: 56.0%
+Crisis R=0.066; R_eff=0.066; E=0.000; Gate=0
+Suggested S&P 500 allocation: 55.7%
 Published V3.2-Alpha S&P 500 suggested allocation as summary card
-V3.2-Alpha allocation: 98.3% (R_eff=0.056, E=0.000, Gate=0)
+V3.2-Alpha allocation: 98.0% (R_eff=0.066, E=0.000, Gate=0)
 
 --- snapshot_risk_dashboard.py (exit 0) ---
-Saved 11 dashboard rows for 2026-11-25; history now has 781 rows.
+Saved 11 dashboard rows for 2026-11-26; history now has 792 rows.
